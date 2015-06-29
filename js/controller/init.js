@@ -1,5 +1,5 @@
 (function(){
-  if ('addEventListener' in document && /micromessenger/i.test(navigator.userAgent.toLowerCase())) {
+  if ('addEventListener' in document && /(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase())) {
     document.addEventListener('DOMContentLoaded', function() {
       FastClick.attach(document.body);
     }, false);
