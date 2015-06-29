@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>样式测试</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui" media="(device-height:568px)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon-precomposed" href="">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/demo.css">
+<script src="js/zepto.min.js"></script>
+<script src="js/plugins.js"></script>
+<style>
+.demo .in_sms{padding-right:150px;}
+.demo .in_sms img,
+.demo .in_sms a{position:absolute;top:50%;right:10px;width:120px;margin-top:-15px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mbox">
+  <h1>Mobile Web Style - cxStyle</h1>
+
+  <h2>微信分享提示</h2>
+  <div class="demo">
+    <a class="button small green" href="javascript://" rel="wechat_share" rev="demo">分享到朋友圈</a>
+  </div>
+
+  <h2>发送短信</h2>
+  <h3>需要输入手机号码</h3>
+  <div class="demo">
+    <div class="form">
+      <dl class="row">
+        <dt>手机号码</dt>
+        <dd><input type="tel" name="phone" id="sms_phone_1" class="input full"></dd>
+        <dt>短信验证码</dt>
+        <dd class="in_sms">
+          <input type="tel" name="" class="input full">
+          <a class="button small blue" href="_ajax/test.php" rel="send_sms" data-input="sms_phone_1">发送验证码</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+
+  <h3>需要输入手机号码 + 图片验证码</h3>
+  <div class="demo">
+    <div class="form">
+      <div class="row">
+        <input type="tel" name="" id="sms_phone_2" class="input full" placeholder="手机号码">
+      </div>
+      <div class="row">
+        <div class="in_sms">
+          <input type="tel" name="" id="sms_captcha" class="input full" placeholder="图片验证码">
+          <img src="http://placehold.it/120x30?text=9527">
+        </div>
+      </div>
+      <div class="row">
+        <div class="in_sms">
+          <input type="tel" name="" class="input full" placeholder="短信验证码">
+          <a class="button small blue" href="_ajax/test.php" rel="send_sms" data-input="sms_phone_2" data-phone-name="phone" data-captcha="sms_captcha" data-captcha-name="captcha">发送验证码</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>不需要输入手机号码，发送到默认号码</h3>
+  <div class="demo">
+    <div class="form">
+      <div class="row">
+        <div class="in_sms">
+          <input type="tel" name="" class="input full" placeholder="短信验证码">
+          <a class="button small blue" href="_ajax/test.php" rel="send_sms">发送验证码</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="js/controller/init.js"></script>
+</body>
+</html>

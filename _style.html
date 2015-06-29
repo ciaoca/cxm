@@ -1,0 +1,485 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>样式测试</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui" media="(device-height:568px)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon-precomposed" href="">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/demo.css">
+<style>
+body,.wrap{background:#f3f3f3;}
+
+@media screen and (min-width:641px){
+body{background:#fff;}
+}
+</style>
+<script src="js/zepto.min.js"></script>
+<script src="js/plugins.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="mbox">
+    <h1>Mobile Web Style - cxStyle</h1>
+
+    <h2>Link</h2>
+    <div class="demo demo_link">
+      <a class="link red" href="#">Red</a>
+      <a class="link orange" href="#">Orange</a>
+      <a class="link yellow" href="#">Yellow</a>
+      <a class="link green" href="#">Green</a>
+      <a class="link blue" href="#">Blue</a>
+      <a class="link purple" href="#">Purple</a>
+      <a class="link pink" href="#">Pink</a>
+      <a class="link gray" href="#">Gray</a>
+      <a class="link lightgray" href="#">Light Gray</a>
+      <a class="link mediumgray" href="#">Medium Gray</a>
+      <a class="link darkgray" href="#">Dark Gray</a>
+      <a class="link white" href="#">Dark Gray</a>
+    </div>
+
+    <h2>Button</h2>
+
+    <h3>Small</h3>
+    <div class="demo">
+      <p>
+        <a class="button small" href="#">Default</a>
+        <a class="button small white" href="#">White</a>
+      </p>
+      <p>
+        <a class="button small red" href="#">Red</a>
+        <a class="button small orange" href="#">Orange</a>
+        <a class="button small yellow" href="#">Yellow</a>
+      </p>
+      <p>
+        <a class="button small green" href="#">Green</a>
+        <a class="button small blue" href="#">Blue</a>
+      </p>
+      <p>
+        <a class="button small purple" href="#">Purple</a>
+        <a class="button small pink" href="#">Pink</a>
+      </p>
+      <p>
+        <a class="button small full" href="#">Default Full</a>
+        <a class="button small full red" href="#">Red Full</a>
+        <button type="button" class="button full small blue">Blue Full</button>
+      </p>
+
+      <p class="button_group">
+        <a class="button small" href="#">Button</a>
+        <a class="button small" href="#">Group</a>
+      </p>
+
+      <p class="button_group">
+        <a class="button small full red" href="#">Red</a>
+        <a class="button small full yellow" href="#">Yellow</a>
+        <a class="button small full blue" href="#">Blue</a>
+      </p>
+
+      <p class="button_group">
+        <button type="button" class="button small orange">Yellow</button>
+        <button type="button" class="button small purple">Purple</button>
+        <button type="button" class="button small pink">Pink</button>
+      </p>
+
+      <p class="button_group">
+        <a class="button small gray" href="#">Gray</a>
+        <a class="button small lightgray" href="#">Light</a>
+        <a class="button small mediumgray" href="#">Medium</a>
+        <a class="button small darkgray" href="#">Dark</a>
+      </p>
+    </div>
+
+    <h3>Default</h3>
+    <div class="demo">
+      <p>
+        <a class="button" href="#">Default</a>
+        <a class="button white" href="#">White</a>
+      </p>
+      <p>
+        <a class="button red" href="#">Red</a>
+        <a class="button orange" href="#">Orange</a>
+        <a class="button yellow" href="#">Yellow</a>
+      </p>
+      <p>
+        <a class="button green" href="#">Green</a>
+        <a class="button blue" href="#">Blue</a>
+      </p>
+      <p>
+        <a class="button purple" href="#">Purple</a>
+        <a class="button pink" href="#">Pink</a>
+      </p>
+      <p>
+        <a class="button full" href="#">Default Full</a>
+        <a class="button full red" href="#">Red Full</a>
+        <button type="button" class="button full blue">Blue Full</button>
+      </p>
+
+      <p class="button_group">
+        <a class="button" href="#">Button</a>
+        <a class="button" href="#">Group</a>
+      </p>
+
+      <p class="button_group">
+        <a class="button red" href="#">Red</a>
+        <a class="button yellow" href="#">Yellow</a>
+        <a class="button blue" href="#">Blue</a>
+      </p>
+
+      <p class="button_group">
+        <button type="button" class="button orange">Yellow</button>
+        <button type="button" class="button purple">Purple</button>
+        <button type="button" class="button pink">Pink</button>
+      </p>
+
+      <p class="button_group">
+        <a class="button gray" href="#">Gray</a>
+        <a class="button lightgray" href="#">Light Gray</a>
+        <a class="button mediumgray" href="#">Medium Gray</a>
+        <a class="button darkgray" href="#">Dark Gray</a>
+      </p>
+    </div>
+
+    <h2>Pages</h2>
+    <h3>Default</h3>
+    <div class="demo">
+      <div class="pages">
+        <a href="#">首页</a>
+        <a href="#">上一页</a>
+        <a href="#">下一页</a>
+        <a href="#">末页</a>
+      </div>
+      <div class="pages">
+        <span>共 99 页</span>
+        <span>第 15 页</span>
+        <a href="#">上一页</a>
+        <a href="#">下一页</a>
+      </div>
+    </div>
+
+    <h3>Full</h3>
+    <div class="demo">
+      <div class="pages full">
+        <a href="#">首页</a>
+        <a href="#">上一页</a>
+        <a href="#">下一页</a>
+        <a href="#">末页</a>
+      </div>
+      <div class="pages full">
+        <span>共 99 页</span>
+        <span>第 15 页</span>
+        <a href="#">上一页</a>
+        <a href="#">下一页</a>
+      </div>
+    </div>
+
+    <h2>Radio</h2>
+    <div class="demo">
+      <p>
+        <input type="radio" name="test_radio" id="test_radio_1a" class="radio"><label for="test_radio_1a">Radio A</label>
+        <input type="radio" name="test_radio" id="test_radio_1b" class="radio"><label for="test_radio_1b">Radio B</label>
+        <input type="radio" name="test_radio" id="test_radio_2a" class="radio onright"><label for="test_radio_2a">选项一</label>
+        <input type="radio" name="test_radio" id="test_radio_2b" class="radio onright"><label for="test_radio_2b">选项二</label>
+      </p>
+    </div>
+
+    <h2>Checkbox</h2>
+    <div class="demo">
+      <p>
+        <input type="checkbox" name="test_checkbox" id="test_checkbox_1a" class="checkbox"><label for="test_checkbox_1a">Checkbox A</label>
+        <input type="checkbox" name="test_checkbox" id="test_checkbox_1b" class="checkbox"><label for="test_checkbox_1b">Checkbox B</label>
+        <input type="checkbox" name="test_checkbox" id="test_checkbox_2a" class="checkbox onright"><label for="test_checkbox_2a">选项一</label>
+        <input type="checkbox" name="test_checkbox" id="test_checkbox_2b" class="checkbox onright"><label for="test_checkbox_2b">选项二</label>
+      </p>
+    </div>
+
+    <h2>CheckSwitch</h2>
+    <div class="demo">
+      <p>
+        <input type="checkbox" name="test_checkbox" id="test_checkswitch_1a" class="checkswitch"><label for="test_checkswitch_1a">Checkbox A</label>
+        <input type="checkbox" name="test_checkbox" id="test_checkswitch_1b" class="checkswitch"><label for="test_checkswitch_1b">Checkbox B</label>
+        <input type="checkbox" name="test_checkbox" id="test_checkswitch_2a" class="checkswitch onright"><label for="test_checkswitch_2a">选项一</label>
+        <input type="checkbox" name="test_checkbox" id="test_checkswitch_2b" class="checkswitch onright"><label for="test_checkswitch_2b">选项二</label>
+      </p>
+    </div>
+
+    <h2>Select</h2>
+    <h3>Small</h3>
+    <div class="demo">
+      <p>
+        <select class="select small">
+          <option>Option Master</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+        <select class="select small">
+          <option>Option Sub</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+      </p>
+    </div>
+
+    <h3>Default</h3>
+    <div class="demo">
+      <p>
+        <select class="select">
+          <option>Option Master</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+        <select class="select">
+          <option>Option Sub</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+      </p>
+    </div>
+
+    <h3>Full</h3>
+    <div class="demo">
+      <p>
+        <select class="select full small">
+          <option>Option Master</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+      </p>
+      <p>
+        <select class="select full">
+          <option>Option Master</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+      </p>
+    </div>
+
+    <h3>Border</h3>
+    <div class="demo">
+      <p>
+        <select class="select small border">
+          <option>Option Master</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+        <select class="select small border">
+          <option>Option Sub</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+      </p>
+      <p>
+        <select class="select border">
+          <option>Option Master</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+        <select class="select border">
+          <option>Option Sub</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+      </p>
+      <p>
+        <select class="select full small border">
+          <option>Option Master</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+      </p>
+      <p>
+        <select class="select full border">
+          <option>Option Master</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+      </p>
+    </div>
+
+    <h3>Group</h3>
+    <div class="demo">
+      <p class="select_group">
+        <select class="select small">
+          <option>Option Master</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+        <select class="select small">
+          <option>Option Sub</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+      </p>
+      <p class="select_group">
+        <select class="select">
+          <option>Option Master</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+        <select class="select">
+          <option>Option Sub</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+      </p>
+      <p class="select_group">
+        <select class="select small border">
+          <option>Option Master</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+        <select class="select small border">
+          <option>Option Sub</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+      </p>
+      <p class="select_group">
+        <select class="select border">
+          <option>Option Master</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+        <select class="select border">
+          <option>Option Sub</option>
+          <optgroup label="optgroup">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+      </p>
+    </div>
+
+    <h2>Input</h2>
+    <h3>Small</h3>
+    <div class="demo">
+      <p><input type="text" class="input small"></p>
+      <p><input type="text" class="input small" size="20"></p>
+      <p><input type="text" class="input small" size="30"></p>
+    </div>
+
+    <h3>Default</h3>
+    <div class="demo">
+      <p><input type="text" class="input"></p>
+      <p><input type="text" class="input" size="20"></p>
+      <p><input type="text" class="input" size="30"></p>
+    </div>
+
+    <h3>Full</h3>
+    <div class="demo">
+      <p><input type="text" class="input full"></p>
+    </div>
+
+    <h3>Border</h3>
+    <div class="demo">
+      <p><input type="text" class="input small border" size="30"></p>
+      <p><input type="text" class="input border" size="30"></p>
+      <p><input type="text" class="input full border"></p>
+    </div>
+
+    <h3>Status</h3>
+    <div class="demo">
+      <p><input type="text" class="input" value="Readonly" readonly></p>
+      <p><input type="text" class="input" value="Disabled" disabled></p>
+      <p><input type="text" class="input border" value="Readonly" readonly></p>
+      <p><input type="text" class="input border" value="Disabled" disabled></p>
+    </div>
+
+    <h2>Textarea</h2>
+    <div class="demo">
+      <p><textarea class="input"></textarea></p>
+      <p><textarea class="input" cols="20"></textarea></p>
+      <p><textarea class="input" cols="30"></textarea></p>
+    </div>
+
+    <h3>Full</h3>
+    <div class="demo">
+      <p><textarea class="input full"></textarea></p>
+    </div>
+
+    <h3>Border</h3>
+    <div class="demo">
+      <p><textarea class="input border"></textarea></p>
+      <p><textarea class="input border" cols="30"></textarea></p>
+      <p><textarea class="input full border"></textarea></p>
+    </div>
+
+    <h3>Status</h3>
+    <div class="demo">
+      <p><textarea class="input" readonly>Readonly</textarea></p>
+      <p><textarea class="input" disabled>Disabled</textarea></p>
+      <p><textarea class="input border" readonly>Readonly</textarea></p>
+      <p><textarea class="input border" disabled>Disabled</textarea></p>
+    </div>
+
+  </div>
+</div>
+<script src="js/controller/init.js"></script>
+</body>
+</html>
