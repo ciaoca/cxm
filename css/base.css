@@ -43,7 +43,7 @@ body{color:#333;font-family:Arial,'\5fae\8f6f\96c5\9ed1',sans-serif;font-size:1.
 .form .note{margin:14px 10px;line-height:20px;}
 .form .btns{margin:20px 10px 10px 10px;}
 .form dl.row{overflow:hidden;}
-.form dl.row > dt{float:left;width:6em;line-height:48px;}
+.form dl.row > dt{float:left;width:6em;line-height:44px;}
 .form dl.row > dd{overflow:hidden;position:relative;font-size:1.4rem;}
 .form dl .note{margin-left:0;margin-right:0;}
 
@@ -58,8 +58,8 @@ body{color:#333;font-family:Arial,'\5fae\8f6f\96c5\9ed1',sans-serif;font-size:1.
 .input.full{display:block;width:100%;}
 .input.border{padding-left:10px;padding-right:10px;border:1px solid #ccc;}
 
-input.input{padding:5px 0;height:48px;line-height:38px;}
-input.input.small{height:30px;line-height:30px;}
+input.input{padding:5px 0;height:44px;line-height:38px;}
+input.input.small{height:32px;line-height:32px;}
 textarea.input{resize:none;}
 
 .input[size='4'],.input[cols='4']{width:40px;}
@@ -121,7 +121,7 @@ textarea.input{resize:none;}
 .radio + label,
 .checkbox + label,
 .checkright + label,
-.checkswitch + label{position:relative;display:block;height:48px;border-bottom:1px solid #ddd;font-size:1.4rem;line-height:48px;cursor:pointer;}
+.checkswitch + label{position:relative;display:block;height:44px;border-bottom:1px solid #ddd;font-size:1.4rem;line-height:44px;cursor:pointer;}
 
 /* 单选框 */
 .radio + label{padding-left:40px;}
@@ -147,7 +147,7 @@ transform:rotate(45deg);
 
 /* 开关 */
 .checkswitch + label{padding-left:70px;}
-.checkswitch + label:before{content:'';position:absolute;top:50%;left:10px;width:48px;height:28px;margin-top:-15px;border:1px solid #eee;border-radius:15px;background-color:#fff;
+.checkswitch + label:before{content:'';position:absolute;top:50%;left:10px;width:44px;height:28px;margin-top:-15px;border:1px solid #eee;border-radius:15px;background-color:#fff;
 -webkit-transition:border-color 0.2s ease-out, background-color 0.2s ease-out;
 transition:border-color 0.2s ease-out, background-color 0.2s ease-out;
 ;}
@@ -167,11 +167,11 @@ transition:right 0.2s ease-out;
 .checkswitch.onright:checked + label:after{right:11px;}
 
 /* 下拉框 */
-.select{box-sizing:border-box;height:48px;padding:0 20px 0 0;border:none;border-radius:3px;background-color:#fff;background-repeat:no-repeat;background-position:right center;font-size:1.4rem;outline:none;
+.select{box-sizing:border-box;height:44px;padding:0 20px 0 0;border:none;border-radius:3px;background-color:#fff;background-repeat:no-repeat;background-position:right center;font-size:1.4rem;outline:none;
 background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAFCAYAAACaTbYsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjFDOThEOEMwQjI0MTFFNThEMjI5MjI3OTdENEIxNEYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjFDOThEOEQwQjI0MTFFNThEMjI5MjI3OTdENEIxNEYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyMUM5OEQ4QTBCMjQxMUU1OEQyMjkyMjc5N0Q0QjE0RiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyMUM5OEQ4QjBCMjQxMUU1OEQyMjkyMjc5N0Q0QjE0RiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pl9k4GwAAAA2SURBVHjaYuzo6PjPQACUl5czYhNnwiVBSCNYMz4FhAxmwqWQkEYw+P//PwoGhQG6GC4MEGAATn041sA4aL4AAAAASUVORK5CYII=);
 -webkit-appearance:none;
 }
-.select.small{height:30px;}
+.select.small{height:32px;}
 .select.full{display:block;width:100%;}
 .select.border{padding-left:10px;border:1px solid #ccc;}
 
@@ -221,11 +221,11 @@ a.link.white,a.link.white:hover{color:#fff;}
  * 按钮样式
  * ------------------------------ */
 .button,
-.button:hover{box-sizing:border-box;display:inline-block;position:relative;height:48px;padding:0 1.5em;border:none;border-radius:3px;background-color:#555;color:#fff;font-size:1.6rem;line-height:48px;text-align:center;text-decoration:none;cursor:pointer;
+.button:hover{box-sizing:border-box;display:inline-block;position:relative;height:44px;padding:0 1.5em;border:none;border-radius:3px;background-color:#555;color:#fff;font-size:1.6rem;line-height:44px;text-align:center;text-decoration:none;cursor:pointer;
 -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
-.button.small{height:30px;padding:0 1em;font-size:1.4rem;line-height:30px;}
+.button.small{height:32px;padding:0 1em;font-size:1.4rem;line-height:32px;}
 .button.full{display:block;width:100%;padding:0;}
 .button.full + .button.full{margin-top:10px;margin-left:0;}
 
@@ -280,13 +280,19 @@ flex:1 1 50%;
 .mb{margin-bottom:10px;}
 
 /* 分页 */
-.pages{clear:both;padding:15px 0;color:#999;font:1.4rem/36px Tahoma;text-align:center;}
+.pages{clear:both;padding:15px 0;color:#999;font:1.4rem/44px Tahoma;text-align:center;}
 .pages a,
 .pages span,
-.pages strong{box-sizing:border-box;display:inline-block;min-width:36px;margin:0 4px 0 0;border-radius:3px;text-align:center;}
-.pages a{padding:0 1em;border:1px solid #ccc;background:#fff;color:#777;}
+.pages strong{box-sizing:border-box;display:inline-block;min-width:42px;margin:0 4px 0 0;border-radius:3px;text-align:center;}
+.pages a{padding:0 1em;border:1px solid #ccc;background:#fff;color:#777;line-height:42px;}
 .pages a:hover{border-color:#c00;color:#c00;text-decoration:none;}
 .pages strong{padding:0 1em;background:#a00;color:#fff;}
+
+.pages.small{line-height:32px;}
+.pages.small a,
+.pages.small span,
+.pages.small strong{min-width:32px;}
+.pages.small a{line-height:30px;}
 
 .pages.full{
 display:-webkit-box;
