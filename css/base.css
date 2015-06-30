@@ -312,11 +312,6 @@ flex:1 1 50%;
 .face{border-radius:50%;background-repeat:no-repeat;background-position:center;background-size:cover;}
 
 
-/* 当前页二维码 */
-.this_qrcode{display:none;position:absolute;top:20px;left:50%;margin-left:330px;padding:14px;border:1px solid #d9dadc;background:#fff;color:#777;font-size:1.4rem;line-height:1.6rem;text-align:center;}
-.this_qrcode p{margin-top:8px;}
-
-
 /**
  * loading 动画
  * ------------------------------ */
@@ -362,12 +357,12 @@ animation:loadingB 2s infinite ease-out;
 /**
  * 全屏 loading 动画
  * ------------------------------ */
-#fixed_loading{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);z-index:999;}
-#fixed_loading:before{content:'';position:absolute;bottom:60%;left:50%;width:24px;height:24px;margin-left:-15px;border:3px solid #eee;border-top-color:transparent;border-bottom-color:transparent;border-radius:50%;
+#full_loading{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);z-index:999;}
+#full_loading:before{content:'';position:absolute;bottom:60%;left:50%;width:24px;height:24px;margin-left:-15px;border:3px solid #eee;border-top-color:transparent;border-bottom-color:transparent;border-radius:50%;
 -webkit-animation:loadingRotate 1s infinite linear;
 animation:loadingRotate 1s infinite linear;
 }
-#fixed_loading:after{content:attr(title);position:absolute;top:41%;left:0;width:100%;color:#eee;font-size:1.4rem;text-align:center;}
+#full_loading:after{content:attr(title);position:absolute;top:41%;left:0;width:100%;color:#eee;font-size:1.4rem;text-align:center;}
 
 @-webkit-keyframes loadingRotate{
 0%{-webkit-transform:rotate(0);}
@@ -378,6 +373,23 @@ animation:loadingRotate 1s infinite linear;
 0%{transform:rotate(0);}
 100%{transform:rotate(360deg);}
 }
+
+
+/**
+ * 当前页二维码
+ * ------------------------------ */
+.this_qrcode{display:none;position:absolute;top:60px;left:50%;margin-left:330px;padding:14px;border:1px solid #d9dadc;background:#fff;color:#777;font-size:1.4rem;line-height:1.6rem;text-align:center;}
+.this_qrcode p{margin-top:8px;}
+
+
+/**
+ * 展示二维码
+ * ------------------------------ */
+#full_qrcode{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);z-index:999;}
+#full_qrcode .box{box-sizing:border-box;position:absolute;top:10%;left:10%;width:80%;padding:20px;background-color:#fff;}
+#full_qrcode .qrcode{margin:0 auto;}
+#full_qrcode .before{margin-bottom:10px;}
+#full_qrcode .after{margin-top:10px;}
 
 
 /**
