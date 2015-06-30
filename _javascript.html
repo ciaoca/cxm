@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>样式测试</title>
+<title>JavaScript 测试</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
@@ -14,13 +14,11 @@
 <link rel="apple-touch-icon-precomposed" href="">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/demo.css">
+<link rel="stylesheet" href="css/_demo.css">
 <script src="js/zepto.min.js"></script>
 <script src="js/plugins.js"></script>
+<script src="js/controller/init.js"></script>
 <style>
-.demo .in_sms{padding-right:150px;}
-.demo .in_sms img,
-.demo .in_sms a{position:absolute;top:50%;right:10px;width:120px;margin-top:-15px;}
 </style>
 </head>
 <body>
@@ -28,22 +26,43 @@
   <div class="mbox">
   <h1>Mobile Web Style - cxStyle</h1>
 
+  <h2>展示二维码</h2>
+  <div class="demo">
+    <a class="button small" href="javascript://" rel="call_qrcode" rev="http://ciaoca.com/">二维码链接</a>
+    <a class="button small" href="javascript://" rel="call_qrcode" rev="自定义内容">二维码内容</a>
+  </div>
+
   <h2>微信分享提示</h2>
   <div class="demo">
-    <a class="button small green" href="javascript://" rel="wechat_share" rev="demo">分享到朋友圈</a>
+    <a class="button small green" href="javascript://" rel="call_wechat_share" rev="demo">分享到朋友圈</a>
   </div>
 
   <h2>发送短信</h2>
+  <div class="demo">
+    <h3>发送按钮设置</h3>
+<pre><code>data- 参数
+  url            发送短信的接口地址
+  input          手机号码输入框
+  captcha        验证码输入框
+  phone-name     URL 中手机号码的参数名称
+  captcha-name   URL 中验证码的参数名称
+
+&lt;div data-url="your-api.php" data-input="user-phone"&gt;发送短信&lt;/div&gt;
+&lt;a href="your-api.php" data-input="user-phone"&gt;发送短信&lt;/div&gt;
+</code></pre>
+  </div>
   <h3>需要输入手机号码</h3>
   <div class="demo">
     <div class="form">
       <dl class="row">
         <dt>手机号码</dt>
         <dd><input type="tel" name="phone" id="sms_phone_1" class="input full"></dd>
+      </dl>
+      <dl class="row">
         <dt>短信验证码</dt>
         <dd class="in_sms">
           <input type="tel" name="" class="input full">
-          <a class="button small blue" href="_ajax/test.php" rel="send_sms" data-input="sms_phone_1">发送验证码</a>
+          <a class="button small blue" href="_ajax/test.php" rel="call_sms" data-input="sms_phone_1">发送验证码</a>
         </dd>
       </dl>
     </div>
@@ -64,7 +83,7 @@
       <div class="row">
         <div class="in_sms">
           <input type="tel" name="" class="input full" placeholder="短信验证码">
-          <a class="button small blue" href="_ajax/test.php" rel="send_sms" data-input="sms_phone_2" data-phone-name="phone" data-captcha="sms_captcha" data-captcha-name="captcha">发送验证码</a>
+          <a class="button small blue" href="_ajax/test.php" rel="call_sms" data-input="sms_phone_2" data-phone-name="phone" data-captcha="sms_captcha" data-captcha-name="captcha">发送验证码</a>
         </div>
       </div>
     </div>
@@ -76,13 +95,13 @@
       <div class="row">
         <div class="in_sms">
           <input type="tel" name="" class="input full" placeholder="短信验证码">
-          <a class="button small blue" href="_ajax/test.php" rel="send_sms">发送验证码</a>
+          <a class="button small blue" href="_ajax/test.php" rel="call_sms">发送验证码</a>
         </div>
       </div>
     </div>
   </div>
 
 </div>
-<script src="js/controller/init.js"></script>
+<script src="js/controller/reday.js"></script>
 </body>
 </html>
