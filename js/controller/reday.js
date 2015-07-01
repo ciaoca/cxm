@@ -36,22 +36,32 @@
 // 解决 iOS 输入框获取焦点时 fixed 错位
 (function(){
   if ('addEventListener' in document && /(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase())) {
-    var _tags = ['input', 'textarea', 'select'];
-    var _body = document.body;
 
-    _body.addEventListener('focus', function(e) {
+    var docbody = document.body;
+
+    var hasFix = function(e) {
+      var _types = ['checkbox', 'radio', 'file', 'button', 'submit','reset', 'image', 'range'];
       var _nodeName = e.target.nodeName.toLowerCase();
 
-      if (_tags.indexOf(_nodeName) >= 0 && !_body.classList.contains('onfocus')) {
-        _body.classList.add('onfocus');
+      if (_nodeName === 'textarea' || _nodeName === 'select') {
+        return true;
+      } else if (_nodeName === 'input') {
+        if (_types.indexOf(e.target.type) <= -1) {
+          return true;
+        };
+      };
+      return false;
+    };
+
+    docbody.addEventListener('focus', function(e) {
+      if (hasFix(e) && !docbody.classList.contains('onfocus')) {
+        docbody.classList.add('onfocus');
       };
     }, true);
 
-    _body.addEventListener('blur', function(e) {
-      var _nodeName = e.target.nodeName.toLowerCase();
-
-      if (_tags.indexOf(_nodeName) >= 0) {
-        _body.classList.remove('onfocus');
+    docbody.addEventListener('blur', function(e) {
+      if (hasFix(e)) {
+        docbody.classList.remove('onfocus');
       };
     }, true);
   };
