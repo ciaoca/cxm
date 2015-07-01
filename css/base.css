@@ -37,7 +37,7 @@ body{color:#333;font-family:Arial,'\5fae\8f6f\96c5\9ed1',sans-serif;font-size:1.
 /**
  * 表单
  * ------------------------------ */
-.form .row_group{position:relative;padding-left:10px;background-color:#fff;}
+.form .row_group{position:relative;background-color:#fff;}
 .form .row{position:relative;background-color:#fff;}
 .form .row + .row{border-top:1px solid #ddd;}
 .form .note{margin:14px 10px;line-height:20px;}
