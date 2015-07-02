@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JavaScript 测试</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui" media="(device-height:568px)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon-precomposed" href="">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="css/demo.css">
+<script src="../js/zepto.min.js"></script>
+<script src="../js/plugins.js"></script>
+<script src="../js/controller/init.js"></script>
+<style>
+body.onfocus .thefixed .box{position:relative;}
+
+.thefixed{position:relative;height:50px;z-index:9;}
+.thefixed .box{position:fixed;top:0;left:0;width:100%;height:50px;background:#ddd;font-size:1.4rem;line-height:50px;text-align:center;}
+
+
+@media screen and (min-width:641px){
+.thefixed .box{position:relative;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="thefixed">
+    <div class="box">iOS 输入框取得焦点时，Fixed 定位错误测试</div>
+  </div>
+
+  <div class="mbox">
+    <h1>Mobile Web Style - cxStyle</h1>
+
+    <h2>输入控件测试</h2>
+
+    <form action="#" method="get" class="demo form">
+      <h3>Input</h3>
+
+      <div class="demo">
+        <dl class="row">
+          <dt>Text</dt>
+          <dd class="note"><input type="text"></dd>
+        </dl>
+        <dl class="row">
+          <dt>Password</dt>
+          <dd class="note"><input type="password"></dd>
+        </dl>
+        <dl class="row">
+          <dt>Search</dt>
+          <dd class="note"><input type="search"></dd>
+        </dl>
+        <dl class="row">
+          <dt>Email</dt>
+          <dd class="note"><input type="email"></dd>
+        </dl>
+        <dl class="row">
+          <dt>Url</dt>
+          <dd class="note"><input type="url"></dd>
+        </dl>
+        <dl class="row">
+          <dt>Number</dt>
+          <dd class="note"><input type="number"></dd>
+        </dl>
+        <dl class="row">
+          <dt>Tel</dt>
+          <dd class="note"><input type="tel"></dd>
+        </dl>
+        <dl class="row">
+          <dt>Date</dt>
+          <dd class="note"><input type="date"></dd>
+        </dl>
+        <dl class="row">
+          <dt>Time</dt>
+          <dd class="note"><input type="time"></dd>
+        </dl>
+        <dl class="row">
+          <dt>Color</dt>
+          <dd class="note"><input type="color"></dd>
+        </dl>
+        <dl class="row">
+          <dt>Range</dt>
+          <dd class="note"><input type="range"></dd>
+        </dl>
+        <dl class="row">
+          <dt>File</dt>
+          <dd class="note"><input type="file"></dd>
+        </dl>
+      </div>
+
+      <h3>Textarea</h3>
+      <div class="demo">
+        <textarea rows="3"></textarea>
+      </div>
+
+      <h3>Select</h3>
+      <div class="demo">
+        <select>
+          <option>option A</option>
+          <option>option B</option>
+          <option>option C</option>
+        </select>
+      </div>
+    </form>
+
+  </div>
+</div>
+<script src="../js/controller/reday.js"></script>
+</body>
+</html>
