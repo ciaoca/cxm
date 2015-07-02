@@ -185,7 +185,7 @@
     if (typeof el.dataset.url === 'string' && el.dataset.url.length) {
       _url = el.dataset.url;
     } else if (el.tagName.toLowerCase() === 'a') {
-      _url = el.href;
+      _url = el.getAttribute('href');
     };
 
     if (!_url) {
