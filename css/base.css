@@ -138,6 +138,10 @@ textarea.input{resize:none;}
 .input.full{display:block;width:100%;}
 .input.border{padding-left:10px;padding-right:10px;border:1px solid #ccc;}
 
+.input[readonly]{color:#888;}
+.input:disabled{border-color:#ccc;color:#aaa;}
+
+
 /* 选框 */
 .radio,
 .checkbox,
@@ -152,8 +156,12 @@ textarea.input{resize:none;}
 .radio + label{padding-left:40px;}
 .radio + label:before{content:'';position:absolute;top:50%;left:10px;width:18px;height:18px;margin-top:-10px;border:1px solid #ccc;border-radius:50%;background:#fff;}
 .radio + label:after{content:'';position:absolute;top:50%;left:16px;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:transparent;}
+
 .radio:checked + label:before{border-color:#007aff;}
 .radio:checked + label:after{background:#007aff;}
+.radio:disabled + label{color:#aaa;}
+.radio:disabled + label:before{border-color:#ccc;}
+.radio:checked:disabled + label:after{background:#ccc;}
 
 .radio.onright + label{padding-left:0;padding-right:40px;}
 .radio.onright + label:before{left:auto;right:10px;}
@@ -165,7 +173,10 @@ textarea.input{resize:none;}
 -webkit-transform:rotate(45deg);
 transform:rotate(45deg);
 }
+
 .checkbox:checked + label:after{border-color:#007aff;}
+.checkbox:disabled + label{color:#aaa;}
+.checkbox:checked:disabled + label:after{border-color:#ccc;}
 
 .checkbox.onright + label{padding-left:0;padding-right:30px;}
 .checkbox.onright + label:after{left:auto;right:10px;}
@@ -180,8 +191,11 @@ transition:border-color 0.2s ease-out, background-color 0.2s ease-out;
 -webkit-transition:left 0.2s ease-out;
 transition:left 0.2s ease-out;
 }
+
 .checkswitch:checked + label:before{border-color:#4bd763;background-color:#4bd763;}
 .checkswitch:checked + label:after{left:31px;}
+.checkswitch:disabled + label{color:#aaa;}
+.checkswitch:checked:disabled + label:before{border-color:#ccc;background-color:#ddd;}
 
 .checkswitch.onright + label{padding-left:0;padding-right:30px;}
 .checkswitch.onright + label:before{left:auto;right:10px;}
@@ -212,12 +226,7 @@ flex:1 1 50%;
 }
 .select_group .select + .select{margin-left:4px;}
 
-/* 状态
-.input[readonly],
-.select[readonly]{border-color:#eee;box-shadow:none;}
-.input[disabled],
-.select[disabled]{border-color:#eee;color:#ccc;}
- */
+.select:disabled{border-color:#ccc;color:#aaa;}
 
 
 /**
@@ -283,7 +292,7 @@ flex:1 1 50%;
 .mb{margin-bottom:10px;}
 
 /* 分页 */
-.pages{clear:both;padding:15px 0;color:#999;font:1.4rem/42px Tahoma;text-align:center;}
+.pages{clear:both;padding:15px 0;color:#888;font:1.4rem/42px Tahoma;text-align:center;}
 .pages a,
 .pages span,
 .pages strong{box-sizing:border-box;display:inline-block;min-width:42px;margin:0 4px 0 0;padding:0 1em;border-radius:3px;text-align:center;}
