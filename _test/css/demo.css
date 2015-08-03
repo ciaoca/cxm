@@ -1,8 +1,9 @@
 
 h1{padding:1em 0;font-size:2.4rem;}
-h2,h3{margin-bottom:0.5em;}
+h2,h3,h4{margin:0.5em 0;}
 h2{font-size:1.8rem;}
-h3{color:#555;font-size:1.4rem;}
+h3{color:#555;font-size:1.6rem;}
+h4{color:#555;font-size:1.4rem;}
 
 code{margin:0 3px;padding:0 5px;border:1px solid #ddd;border-radius:3px;background:#f8f8f8;font-family:Consolas,'Lucida Console',Monaco,Courier,'Courier New';}
 
@@ -16,6 +17,7 @@ pre code{margin:0;padding:0;border:none;background:none;font-family:Consolas,'Lu
 .demo h3{margin-top:10px;}
 .demo h3:first-child{margin-top:0;}
 .demo p + p{margin-top:10px;}
+.demo_link{font-size:1.4rem;line-height:2;}
 .demo_link a{margin-right:10px;}
 
 .form .in_sms{padding-right:150px;}
