@@ -7,10 +7,12 @@
     }, false);
   };
 
+  // cxDialog 默认设置
   $.cxDialog.defaults.baseClass = 'ios';
   $.cxDialog.defaults.background = 'rgba(0,0,0,0.4)';
   $.cxDialog.defaults.ok = function(){};
 
+  // 全局操作
   $('body').on('click', 'a', function(){
     var _rel = this.rel;
     var _rev = this.rev;
@@ -28,6 +30,18 @@
     } else if (_rel === 'call_wechat_share') {
       window.CallWechatTip.show(_rev);
       return false;
+    };
+  });
+
+  // 顶部操作
+  $('#header').on('click', 'dt', function() {
+    var _dl = $(this).closest('dl');
+    if (_dl.hasClass('menu')) {
+      _dl.toggleClass('open');
+    } else {
+      setTimeout(function() {
+        _dl.removeClass('open');
+      }, 200);
     };
   });
 })();
