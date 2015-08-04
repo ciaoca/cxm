@@ -20,22 +20,92 @@
 <body>
 <div class="wrap">
   <!-- Header File Start -->
-  <header class="header">
-    <h1 class="logo"><a href="#">网站标题</a></h1>
-  </header>
+  <div id="header" class="header">
+    <header>
+      <h1>标题</h1>
+      <a class="icon back" href="#"></a>
+      <!-- <a class="icon onright go" href="#"></a> -->
+      <!--
+      <dl class="menu">
+        <dt></dt>
+        <dd>
+          <a href="#">菜单</a>
+          <a href="#">菜单</a>
+          <a href="#">菜单</a>
+        </dd>
+      </dl>
+      -->
+      <dl class="menu onright">
+        <dt></dt>
+        <dd>
+          <a href="#">菜单</a>
+          <a href="#">菜单</a>
+          <a href="#">菜单</a>
+        </dd>
+      </dl>
+    </header>
+  </div>
   <!-- Header File End -->
+
+  <div id="home_slide" class="slide home_slide">
+    <ul class="box">
+      <li>
+        <div class="item" style="background-image:url(http://placehold.it/640x360)"></div>
+      </li>
+      <li>
+        <div class="item" style="background-image:url(http://placehold.it/640x360)"></div>
+      </li>
+      <li>
+        <div class="item" style="background-image:url(http://placehold.it/640x360)"></div>
+      </li>
+    </ul>
+    <div id="home_slide_btns" class="btns">
+      <i></i>
+      <i></i>
+      <i></i>
+    </div>
+  </div>
 
   <div class="home_main">
     
   </div>
 
   <!-- Footer File Start -->
-  <footer class="footer">
-    <p class="ft_copyright"></p>
-  </footer>
+  <div class="footer_nav">
+    <nav>
+      <a href="#">导航</a>
+      <a href="#">导航</a>
+      <a href="#">导航</a>
+      <a href="#">导航</a>
+    </nav>
+  </div>
   <!-- Footer File End -->
 </div>
 
 <script src="js/controller/reday.js"></script>
+<script>
+(function() {
+  var start = 0;
+  var slideBtns = $('#home_slide_btns');
+
+  var toggleBtn = function(n){
+    if (this.slideSum === 2 && n > 1) {
+      n -= 2;
+    };
+
+    slideBtns.find('i').removeClass('n').eq(n).addClass('n');
+  };
+
+  var mySwipe = new Swipe(document.getElementById('home_slide'), {
+    speed: 600,
+    auto: 5000,
+    callback: function(index){
+      toggleBtn(index);
+    }
+  });
+
+  toggleBtn(start);
+})();
+</script>
 </body>
 </html>
