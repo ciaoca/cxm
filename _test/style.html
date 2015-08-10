@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>CSS 样式测试</title>
+<title>CSS 样式</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
@@ -19,622 +19,787 @@
 <script src="../js/plugins.js"></script>
 <script src="../js/controller/init.js"></script>
 <style>
-body,.wrap{background:#f3f3f3;}
+html,.wrap{background:#f3f3f3;}
 
 @media screen and (min-width:641px){
-body{background:#fff;}
+html{background:#fff;}
 }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="mbox">
-    <h1>Mobile Web Style - cxStyle</h1>
+  <div id="header" class="header">
+    <header>
+      <h1>cxStyle</h1>
+      <a class="icon back" href="index.html"></a>
+    </header>
+  </div>
 
-    <h2>Link</h2>
-    <div class="demo demo_link">
-      <a class="link red" href="#">Red</a>
-      <a class="link orange" href="#">Orange</a>
-      <a class="link yellow" href="#">Yellow</a>
-      <a class="link green" href="#">Green</a>
-      <a class="link blue" href="#">Blue</a>
-      <a class="link purple" href="#">Purple</a>
-      <a class="link pink" href="#">Pink</a>
-      <a class="link gray" href="#">Gray</a>
-      <a class="link lightgray" href="#">Light Gray</a>
-      <a class="link mediumgray" href="#">Medium Gray</a>
-      <a class="link darkgray" href="#">Dark Gray</a>
-      <a class="link white" href="#">White</a>
-    </div>
+  <div id="hd_nav" class="hd_nav">
+    <nav>
+      <a href="javascript://" rel="tab" rev="link">Link &amp; Page</a>
+      <a href="javascript://" rel="tab" rev="button">Button</a>
+      <a href="javascript://" rel="tab" rev="input">Input</a>
+      <a href="javascript://" rel="tab" rev="select">Select</a>
+    </nav>
+  </div>
 
-    <h2>Button</h2>
+  <div id="style_tab" class="mbox style_tab">
 
-    <h3>Small</h3>
-    <div class="demo">
-      <p>
-        <a class="button small" href="#">Default</a>
-        <a class="button small white" href="#">White</a>
-      </p>
-      <p>
-        <a class="button small red" href="#">Red</a>
-        <a class="button small orange" href="#">Orange</a>
-        <a class="button small yellow" href="#">Yellow</a>
-      </p>
-      <p>
-        <a class="button small green" href="#">Green</a>
-        <a class="button small blue" href="#">Blue</a>
-      </p>
-      <p>
-        <a class="button small purple" href="#">Purple</a>
-        <a class="button small pink" href="#">Pink</a>
-      </p>
-
-      <h4>Border</h4>
-      <p>
-        <a class="button small border" href="#">Default</a>
-        <a class="button small border white" href="#">White</a>
-      </p>
-      <p>
-        <a class="button small border red" href="#">Red</a>
-        <a class="button small border orange" href="#">Orange</a>
-        <a class="button small border yellow" href="#">Yellow</a>
-      </p>
-      <p>
-        <a class="button small border green" href="#">Green</a>
-        <a class="button small border blue" href="#">Blue</a>
-      </p>
-      <p>
-        <a class="button small border purple" href="#">Purple</a>
-        <a class="button small border pink" href="#">Pink</a>
-      </p>
-
-      <h4>Full</h4>
-      <p>
-        <a class="button small full" href="#">Button Full</a>
-        <a class="button small full red" href="#">Red</a>
-        <button type="button" class="button full small border blue">Blue</button>
-      </p>
-
-      <h4>Box</h4>
-      <div class="button_box">
-        <a class="button small" href="#">Button</a>
-        <a class="button small" href="#">Box</a>
+    <div class="item for_link">
+      <h2>Link</h2>
+      <div class="demo demo_link">
+        <a class="link" href="#">Default</a>
+        <a class="link red" href="#">Red</a>
+        <a class="link orange" href="#">Orange</a>
+        <a class="link yellow" href="#">Yellow</a>
+        <a class="link green" href="#">Green</a>
+        <a class="link blue" href="#">Blue</a>
+        <a class="link purple" href="#">Purple</a>
+        <a class="link pink" href="#">Pink</a>
+        <a class="link gray" href="#">Gray</a>
+        <a class="link lightgray" href="#">Light Gray</a>
+        <a class="link mediumgray" href="#">Medium Gray</a>
+        <a class="link darkgray" href="#">Dark Gray</a>
+        <a class="link white" href="#">White</a>
       </div>
 
-      <div class="button_box">
-        <a class="button small full red" href="#">Red</a>
-        <a class="button small full yellow" href="#">Yellow</a>
-        <a class="button small full blue" href="#">Blue</a>
+      <h3>Underline</h3>
+      <div class="demo demo_link">
+        <a class="link und" href="#">Default</a>
+        <a class="link und red" href="#">Red</a>
+        <a class="link und orange" href="#">Orange</a>
+        <a class="link und yellow" href="#">Yellow</a>
+        <a class="link und green" href="#">Green</a>
+        <a class="link und blue" href="#">Blue</a>
+        <a class="link und purple" href="#">Purple</a>
+        <a class="link und pink" href="#">Pink</a>
+        <a class="link und gray" href="#">Gray</a>
+        <a class="link und lightgray" href="#">Light Gray</a>
+        <a class="link und mediumgray" href="#">Medium Gray</a>
+        <a class="link und darkgray" href="#">Dark Gray</a>
+        <a class="link und white" href="#">White</a>
       </div>
 
-      <div class="button_box">
-        <a class="button small gray" href="#">Gray</a>
-        <a class="button small lightgray" href="#">Light</a>
-        <a class="button small mediumgray" href="#">Medium</a>
-        <a class="button small darkgray" href="#">Dark</a>
+      <h2>Pages</h2>
+      <h3>Small</h3>
+      <div class="demo">
+        <div class="pages small">
+          <a href="#">首页</a>
+          <a href="#">上一页</a>
+          <a href="#">下一页</a>
+          <a href="#">末页</a>
+        </div>
+        <div class="pages small">
+          <span>共 99 页</span>
+          <span>第 15 页</span>
+          <a href="#">上一页</a>
+          <a href="#">下一页</a>
+        </div>
       </div>
 
-      <div class="button_box">
-        <a class="button small border gray" href="#">Gray</a>
-        <a class="button small border lightgray" href="#">Light</a>
-        <a class="button small border mediumgray" href="#">Medium</a>
-        <a class="button small border darkgray" href="#">Dark</a>
+      <h3>Default</h3>
+      <div class="demo">
+        <div class="pages">
+          <a href="#">首页</a>
+          <a href="#">上一页</a>
+          <a href="#">下一页</a>
+          <a href="#">末页</a>
+        </div>
+        <div class="pages">
+          <span>共 99 页</span>
+          <span>第 15 页</span>
+          <a href="#">上一页</a>
+          <a href="#">下一页</a>
+        </div>
       </div>
 
-      <h4>Group</h4>
-      <div class="button_group">
-        <a class="button small" href="#">Button</a>
-        <a class="button small" href="#">Group</a>
+      <h3>Full</h3>
+      <div class="demo">
+        <div class="pages full small">
+          <a href="#">首页</a>
+          <a href="#">上一页</a>
+          <a href="#">下一页</a>
+          <a href="#">末页</a>
+        </div>
+        <div class="pages full">
+          <a href="#">首页</a>
+          <a href="#">上一页</a>
+          <a href="#">下一页</a>
+          <a href="#">末页</a>
+        </div>
+        <div class="pages full">
+          <span>共 99 页</span>
+          <span>第 15 页</span>
+          <a href="#">上一页</a>
+          <a href="#">下一页</a>
+        </div>
       </div>
 
-      <div class="button_group">
-        <a class="button small full red" href="#">Red</a>
-        <a class="button small full yellow" href="#">Yellow</a>
-        <a class="button small full blue" href="#">Blue</a>
+    </div>
+    <div class="item for_button">
+      <h2>Button</h2>
+
+      <h3>Small</h3>
+      <div class="demo">
+        <p>
+          <button type="button" class="button small">Default</button>
+          <button type="button" class="button small white">White</button>
+        </p>
+        <p>
+          <button type="button" class="button small red">Red</button>
+          <button type="button" class="button small orange">Orange</button>
+          <button type="button" class="button small yellow">Yellow</button>
+        </p>
+        <p>
+          <button type="button" class="button small green">Green</button>
+          <button type="button" class="button small blue">Blue</button>
+          <button type="button" class="button small purple">Purple</button>
+          <button type="button" class="button small pink">Pink</button>
+        </p>
+        <p>
+          <button type="button" class="button small gray">Gray</button>
+          <button type="button" class="button small lightgray">Light</button>
+          <button type="button" class="button small mediumgray">Medium</button>
+          <button type="button" class="button small darkgray">Dark</button>
+        </p>
+
+        <h4>Radius</h4>
+        <p>
+          <button type="button" class="button small radius">Default</button>
+          <button type="button" class="button small radius red">Red</button>
+          <button type="button" class="button small radius blue">Blue</button>
+        </p>
+
+        <h4>Border</h4>
+        <p>
+          <button type="button" class="button small border">Default</button>
+          <button type="button" class="button small border red">Red</button>
+          <button type="button" class="button small border blue">Blue</button>
+        </p>
+
+        <h4>Radius &amp; Border</h4>
+        <p>
+          <button type="button" class="button small radius border">Default</button>
+          <button type="button" class="button small radius border red">Red</button>
+          <button type="button" class="button small radius border blue">Blue</button>
+        </p>
+
+        <h4>Full</h4>
+        <p>
+          <button type="button" class="button small full">Button Full</button>
+          <button type="button" class="button small full red">Red</button>
+          <button type="button" class="button small full border blue">Blue</button>
+        </p>
+
+        <h4>Box</h4>
+        <div class="button_box">
+          <button type="button" class="button small">Button</button>
+          <button type="button" class="button small">Box</button>
+        </div>
+
+        <div class="button_box">
+          <button type="button" class="button small red">Red</button>
+          <button type="button" class="button small yellow">Yellow</button>
+          <button type="button" class="button small blue">Blue</button>
+        </div>
+
+        <div class="button_box">
+          <button type="button" class="button small gray">Gray</button>
+          <button type="button" class="button small lightgray">Light</button>
+          <button type="button" class="button small mediumgray">Medium</button>
+          <button type="button" class="button small darkgray">Dark</button>
+        </div>
+
+        <div class="button_box">
+          <button type="button" class="button small border gray">Gray</button>
+          <button type="button" class="button small border lightgray">Light</button>
+          <button type="button" class="button small border mediumgray">Medium</button>
+          <button type="button" class="button small border darkgray">Dark</button>
+        </div>
+
+        <h4>Group</h4>
+        <div class="button_group">
+          <button type="button" class="button small">Button</button>
+          <button type="button" class="button small">Group</button>
+        </div>
+
+        <div class="button_group">
+          <button type="button" class="button small red">Red</button>
+          <button type="button" class="button small yellow">Yellow</button>
+          <button type="button" class="button small blue">Blue</button>
+        </div>
+
+        <div class="button_group">
+          <button type="button" class="button small gray">Gray</button>
+          <button type="button" class="button small lightgray">Light</button>
+          <button type="button" class="button small mediumgray">Medium</button>
+          <button type="button" class="button small darkgray">Dark</button>
+        </div>
       </div>
 
-      <div class="button_group">
-        <a class="button small gray" href="#">Gray</a>
-        <a class="button small lightgray" href="#">Light</a>
-        <a class="button small mediumgray" href="#">Medium</a>
-        <a class="button small darkgray" href="#">Dark</a>
+      <h3>Default</h3>
+      <div class="demo">
+        <p>
+          <button type="button" class="button">Default</button>
+          <button type="button" class="button white">White</button>
+        </p>
+        <p>
+          <button type="button" class="button red">Red</button>
+          <button type="button" class="button orange">Orange</button>
+          <button type="button" class="button yellow">Yellow</button>
+        </p>
+        <p>
+          <button type="button" class="button green">Green</button>
+          <button type="button" class="button blue">Blue</button>
+          <button type="button" class="button purple">Purple</button>
+          <button type="button" class="button pink">Pink</button>
+        </p>
+        <p>
+          <button type="button" class="button gray">Gray</button>
+          <button type="button" class="button lightgray">Light</button>
+          <button type="button" class="button mediumgray">Medium</button>
+          <button type="button" class="button darkgray">Dark</button>
+        </p>
+
+        <h4>Radius</h4>
+        <p>
+          <button type="button" class="button radius">Default</button>
+          <button type="button" class="button radius red">Red</button>
+          <button type="button" class="button radius blue">Blue</button>
+        </p>
+
+        <h4>Border</h4>
+        <p>
+          <button type="button" class="button border">Default</button>
+          <button type="button" class="button border red">Red</button>
+          <button type="button" class="button border blue">Blue</button>
+        </p>
+
+        <h4>Radius &amp; Border</h4>
+        <p>
+          <button type="button" class="button radius border">Default</button>
+          <button type="button" class="button radius border red">Red</button>
+          <button type="button" class="button radius border blue">Blue</button>
+        </p>
+
+        <h4>Full</h4>
+        <p>
+          <button type="button" class="button full">Button Full</button>
+          <button type="button" class="button full red">Red</button>
+          <button type="button" class="button full border blue">Blue</button>
+        </p>
+
+        <h4>Box</h4>
+        <div class="button_box">
+          <button type="button" class="button">Button</button>
+          <button type="button" class="button">Box</button>
+        </div>
+
+        <div class="button_box">
+          <button type="button" class="button red">Red</button>
+          <button type="button" class="button yellow">Yellow</button>
+          <button type="button" class="button blue">Blue</button>
+        </div>
+
+        <div class="button_box">
+          <button type="button" class="button gray">Gray</button>
+          <button type="button" class="button lightgray">Light</button>
+          <button type="button" class="button mediumgray">Medium</button>
+          <button type="button" class="button darkgray">Dark</button>
+        </div>
+
+        <div class="button_box">
+          <button type="button" class="button border gray">Gray</button>
+          <button type="button" class="button border lightgray">Light</button>
+          <button type="button" class="button border mediumgray">Medium</button>
+          <button type="button" class="button border darkgray">Dark</button>
+        </div>
+
+        <h4>Group</h4>
+        <div class="button_group">
+          <button type="button" class="button">Button</button>
+          <button type="button" class="button">Group</button>
+        </div>
+
+        <div class="button_group">
+          <button type="button" class="button red">Red</button>
+          <button type="button" class="button yellow">Yellow</button>
+          <button type="button" class="button blue">Blue</button>
+        </div>
+
+        <div class="button_group">
+          <button type="button" class="button gray">Gray</button>
+          <button type="button" class="button lightgray">Light</button>
+          <button type="button" class="button mediumgray">Medium</button>
+          <button type="button" class="button darkgray">Dark</button>
+        </div>
       </div>
+
     </div>
+    <div class="item for_input">
 
-    <h3>Default</h3>
-    <div class="demo">
-      <p>
-        <a class="button" href="#">Default</a>
-        <a class="button white" href="#">White</a>
-      </p>
-      <p>
-        <a class="button red" href="#">Red</a>
-        <a class="button orange" href="#">Orange</a>
-        <a class="button yellow" href="#">Yellow</a>
-      </p>
-      <p>
-        <a class="button green" href="#">Green</a>
-        <a class="button blue" href="#">Blue</a>
-      </p>
-      <p>
-        <a class="button purple" href="#">Purple</a>
-        <a class="button pink" href="#">Pink</a>
-      </p>
-
-      <h4>Border</h4>
-      <p>
-        <a class="button border" href="#">Default</a>
-        <a class="button border white" href="#">White</a>
-      </p>
-      <p>
-        <a class="button border red" href="#">Red</a>
-        <a class="button border orange" href="#">Orange</a>
-        <a class="button border yellow" href="#">Yellow</a>
-      </p>
-      <p>
-        <a class="button border green" href="#">Green</a>
-        <a class="button border blue" href="#">Blue</a>
-      </p>
-      <p>
-        <a class="button border purple" href="#">Purple</a>
-        <a class="button border pink" href="#">Pink</a>
-      </p>
-
-      <h4>Full</h4>
-      <p>
-        <a class="button full" href="#">Default Full</a>
-        <a class="button full red" href="#">Red Full</a>
-        <button type="button" class="button full border blue">Blue Full</button>
-      </p>
-
-      <h4>Box</h4>
-      <div class="button_box">
-        <a class="button" href="#">Button</a>
-        <a class="button" href="#">Box</a>
+      <h2>Input</h2>
+      <h3>Small</h3>
+      <div class="demo">
+        <p><input type="text" class="input small"></p>
+        <p><input type="text" class="input small" size="20"></p>
+        <p><input type="text" class="input small" size="30"></p>
       </div>
 
-      <div class="button_box">
-        <a class="button full red" href="#">Red</a>
-        <a class="button full yellow" href="#">Yellow</a>
-        <a class="button full blue" href="#">Blue</a>
+      <h3>Default</h3>
+      <div class="demo">
+        <p><input type="text" class="input"></p>
+        <p><input type="text" class="input" size="20"></p>
+        <p><input type="text" class="input" size="30"></p>
       </div>
 
-      <div class="button_box">
-        <a class="button gray" href="#">Gray</a>
-        <a class="button lightgray" href="#">Light</a>
-        <a class="button mediumgray" href="#">Medium</a>
-        <a class="button darkgray" href="#">Dark</a>
+      <h3>Full</h3>
+      <div class="demo">
+        <p><input type="text" class="input full"></p>
       </div>
 
-      <div class="button_box">
-        <a class="button border gray" href="#">Gray</a>
-        <a class="button border lightgray" href="#">Light</a>
-        <a class="button border mediumgray" href="#">Medium</a>
-        <a class="button border darkgray" href="#">Dark</a>
+      <h3>Border</h3>
+      <div class="demo">
+        <p><input type="text" class="input small border" size="30"></p>
+        <p><input type="text" class="input border" size="30"></p>
+        <p><input type="text" class="input full border"></p>
       </div>
 
-      <h4>Group</h4>
-      <div class="button_group">
-        <a class="button" href="#">Button</a>
-        <a class="button" href="#">Group</a>
+      <h3>Status</h3>
+      <div class="demo">
+        <p><input type="text" class="input" value="Readonly" readonly></p>
+        <p><input type="text" class="input" value="Disabled" disabled></p>
+        <p><input type="text" class="input border" value="Readonly" readonly></p>
+        <p><input type="text" class="input border" value="Disabled" disabled></p>
       </div>
 
-      <div class="button_group">
-        <a class="button full red" href="#">Red</a>
-        <a class="button full yellow" href="#">Yellow</a>
-        <a class="button full blue" href="#">Blue</a>
+      <h2>Textarea</h2>
+      <div class="demo">
+        <p><textarea class="input"></textarea></p>
+        <p><textarea class="input" cols="20"></textarea></p>
+        <p><textarea class="input" cols="30"></textarea></p>
       </div>
 
-      <div class="button_group">
-        <a class="button gray" href="#">Gray</a>
-        <a class="button lightgray" href="#">Light</a>
-        <a class="button mediumgray" href="#">Medium</a>
-        <a class="button darkgray" href="#">Dark</a>
+      <h3>Full</h3>
+      <div class="demo">
+        <p><textarea class="input full"></textarea></p>
       </div>
-    </div>
 
-    <h2>Pages</h2>
-    <h3>Small</h3>
-    <div class="demo">
-      <div class="pages small">
-        <a href="#">首页</a>
-        <a href="#">上一页</a>
-        <a href="#">下一页</a>
-        <a href="#">末页</a>
+      <h3>Border</h3>
+      <div class="demo">
+        <p><textarea class="input border"></textarea></p>
+        <p><textarea class="input border" cols="30"></textarea></p>
+        <p><textarea class="input full border"></textarea></p>
       </div>
-      <div class="pages small">
-        <span>共 99 页</span>
-        <span>第 15 页</span>
-        <a href="#">上一页</a>
-        <a href="#">下一页</a>
+
+      <h3>Status</h3>
+      <div class="demo">
+        <p><textarea class="input" readonly>Readonly</textarea></p>
+        <p><textarea class="input" disabled>Disabled</textarea></p>
+        <p><textarea class="input border" readonly>Readonly</textarea></p>
+        <p><textarea class="input border" disabled>Disabled</textarea></p>
       </div>
-    </div>
 
-    <h3>Default</h3>
-    <div class="demo">
-      <div class="pages">
-        <a href="#">首页</a>
-        <a href="#">上一页</a>
-        <a href="#">下一页</a>
-        <a href="#">末页</a>
+      <h2>Radio</h2>
+      <div class="demo">
+        <p>
+          <input type="radio" name="test_radio" id="test_radio_1" class="radio"><label for="test_radio_1">Radio A</label>
+          <input type="radio" name="test_radio" id="test_radio_2" class="radio"><label for="test_radio_2">Radio B</label>
+          <input type="radio" name="test_radio" id="test_radio_3" class="radio onright"><label for="test_radio_3">选项一</label>
+          <input type="radio" name="test_radio" id="test_radio_4" class="radio onright"><label for="test_radio_4">选项二</label>
+        </p>
       </div>
-      <div class="pages">
-        <span>共 99 页</span>
-        <span>第 15 页</span>
-        <a href="#">上一页</a>
-        <a href="#">下一页</a>
+
+      <h3>Status</h3>
+      <div class="demo">
+        <p>
+          <input type="radio" name="test_radio_a" id="test_radio_a_1" class="radio" disabled><label for="test_radio_a_1">Disabled A</label>
+          <input type="radio" name="test_radio_a" id="test_radio_a_2" class="radio" checked disabled><label for="test_radio_a_2">Disabled B</label>
+          <input type="radio" name="test_radio_b" id="test_radio_b_1" class="radio onright" disabled><label for="test_radio_b_1">Disabled C</label>
+          <input type="radio" name="test_radio_b" id="test_radio_b_2" class="radio onright" checked disabled><label for="test_radio_b_2">Disabled D</label>
+        </p>
       </div>
-    </div>
 
-    <h3>Full</h3>
-    <div class="demo">
-      <div class="pages full">
-        <a href="#">首页</a>
-        <a href="#">上一页</a>
-        <a href="#">下一页</a>
-        <a href="#">末页</a>
+      <h2>Checkbox</h2>
+      <div class="demo">
+        <p>
+          <input type="checkbox" name="test_checkbox" id="test_checkbox_1" class="checkbox"><label for="test_checkbox_1">Checkbox A</label>
+          <input type="checkbox" name="test_checkbox" id="test_checkbox_2" class="checkbox"><label for="test_checkbox_2">Checkbox B</label>
+          <input type="checkbox" name="test_checkbox" id="test_checkbox_3" class="checkbox onright"><label for="test_checkbox_3">选项一</label>
+          <input type="checkbox" name="test_checkbox" id="test_checkbox_4" class="checkbox onright"><label for="test_checkbox_4">选项二</label>
+        </p>
       </div>
-      <div class="pages full">
-        <span>共 99 页</span>
-        <span>第 15 页</span>
-        <a href="#">上一页</a>
-        <a href="#">下一页</a>
+
+      <h3>Status</h3>
+      <div class="demo">
+        <p>
+          <input type="checkbox" name="test_checkbox" id="test_checkbox_5" class="checkbox" disabled><label for="test_checkbox_5">Disabled A</label>
+          <input type="checkbox" name="test_checkbox" id="test_checkbox_6" class="checkbox" checked disabled><label for="test_checkbox_6">Disabled B</label>
+          <input type="checkbox" name="test_checkbox" id="test_checkbox_7" class="checkbox onright" disabled><label for="test_checkbox_7">Disabled C</label>
+          <input type="checkbox" name="test_checkbox" id="test_checkbox_8" class="checkbox onright" checked disabled><label for="test_checkbox_8">Disabled D</label>
+        </p>
       </div>
-    </div>
 
-    <h2>Radio</h2>
-    <div class="demo">
-      <p>
-        <input type="radio" name="test_radio" id="test_radio_1" class="radio"><label for="test_radio_1">Radio A</label>
-        <input type="radio" name="test_radio" id="test_radio_2" class="radio"><label for="test_radio_2">Radio B</label>
-        <input type="radio" name="test_radio" id="test_radio_3" class="radio onright"><label for="test_radio_3">选项一</label>
-        <input type="radio" name="test_radio" id="test_radio_4" class="radio onright"><label for="test_radio_4">选项二</label>
-      </p>
-    </div>
+      <h2>CheckSwitch</h2>
+      <div class="demo">
+        <p>
+          <input type="checkbox" name="test_checkswitch" id="test_checkswitch_1" class="checkswitch"><label for="test_checkswitch_1">Checkbox A</label>
+          <input type="checkbox" name="test_checkswitch" id="test_checkswitch_2" class="checkswitch"><label for="test_checkswitch_2">Checkbox B</label>
+          <input type="checkbox" name="test_checkswitch" id="test_checkswitch_3" class="checkswitch onright"><label for="test_checkswitch_3">选项一</label>
+          <input type="checkbox" name="test_checkswitch" id="test_checkswitch_4" class="checkswitch onright"><label for="test_checkswitch_4">选项二</label>
+        </p>
+      </div>
 
-    <h3>Status</h3>
-    <div class="demo">
-      <p>
-        <input type="radio" name="test_radio_a" id="test_radio_a_1" class="radio" disabled><label for="test_radio_a_1">Disabled A</label>
-        <input type="radio" name="test_radio_a" id="test_radio_a_2" class="radio" checked disabled><label for="test_radio_a_2">Disabled B</label>
-        <input type="radio" name="test_radio_b" id="test_radio_b_1" class="radio onright" disabled><label for="test_radio_b_1">Disabled C</label>
-        <input type="radio" name="test_radio_b" id="test_radio_b_2" class="radio onright" checked disabled><label for="test_radio_b_2">Disabled D</label>
-      </p>
-    </div>
+      <h3>Status</h3>
+      <div class="demo">
+        <p>
+          <input type="checkbox" name="test_checkswitch" id="test_checkswitch_5" class="checkswitch" disabled><label for="test_checkswitch_5">Disabled A</label>
+          <input type="checkbox" name="test_checkswitch" id="test_checkswitch_6" class="checkswitch" checked disabled><label for="test_checkswitch_6">Disabled B</label>
+          <input type="checkbox" name="test_checkswitch" id="test_checkswitch_7" class="checkswitch onright" disabled><label for="test_checkswitch_7">Disabled C</label>
+          <input type="checkbox" name="test_checkswitch" id="test_checkswitch_8" class="checkswitch onright" checked disabled><label for="test_checkswitch_8">Disabled D</label>
+        </p>
+      </div>
 
-    <h2>Checkbox</h2>
-    <div class="demo">
-      <p>
-        <input type="checkbox" name="test_checkbox" id="test_checkbox_1" class="checkbox"><label for="test_checkbox_1">Checkbox A</label>
-        <input type="checkbox" name="test_checkbox" id="test_checkbox_2" class="checkbox"><label for="test_checkbox_2">Checkbox B</label>
-        <input type="checkbox" name="test_checkbox" id="test_checkbox_3" class="checkbox onright"><label for="test_checkbox_3">选项一</label>
-        <input type="checkbox" name="test_checkbox" id="test_checkbox_4" class="checkbox onright"><label for="test_checkbox_4">选项二</label>
-      </p>
     </div>
+    <div class="item for_select">
 
-    <h3>Status</h3>
-    <div class="demo">
-      <p>
-        <input type="checkbox" name="test_checkbox" id="test_checkbox_5" class="checkbox" disabled><label for="test_checkbox_5">Disabled A</label>
-        <input type="checkbox" name="test_checkbox" id="test_checkbox_6" class="checkbox" checked disabled><label for="test_checkbox_6">Disabled B</label>
-        <input type="checkbox" name="test_checkbox" id="test_checkbox_7" class="checkbox onright" disabled><label for="test_checkbox_7">Disabled C</label>
-        <input type="checkbox" name="test_checkbox" id="test_checkbox_8" class="checkbox onright" checked disabled><label for="test_checkbox_8">Disabled D</label>
-      </p>
-    </div>
+      <h2>Select</h2>
+      <h3>Small</h3>
+      <div class="demo">
+        <p>
+          <select class="select small">
+            <option>Option Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select small">
+            <option>Option Sub</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+      </div>
 
-    <h2>CheckSwitch</h2>
-    <div class="demo">
-      <p>
-        <input type="checkbox" name="test_checkswitch" id="test_checkswitch_1" class="checkswitch"><label for="test_checkswitch_1">Checkbox A</label>
-        <input type="checkbox" name="test_checkswitch" id="test_checkswitch_2" class="checkswitch"><label for="test_checkswitch_2">Checkbox B</label>
-        <input type="checkbox" name="test_checkswitch" id="test_checkswitch_3" class="checkswitch onright"><label for="test_checkswitch_3">选项一</label>
-        <input type="checkbox" name="test_checkswitch" id="test_checkswitch_4" class="checkswitch onright"><label for="test_checkswitch_4">选项二</label>
-      </p>
-    </div>
+      <h3>Default</h3>
+      <div class="demo">
+        <p>
+          <select class="select">
+            <option>Option Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select">
+            <option>Option Sub</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+      </div>
 
-    <h3>Status</h3>
-    <div class="demo">
-      <p>
-        <input type="checkbox" name="test_checkswitch" id="test_checkswitch_5" class="checkswitch" disabled><label for="test_checkswitch_5">Disabled A</label>
-        <input type="checkbox" name="test_checkswitch" id="test_checkswitch_6" class="checkswitch" checked disabled><label for="test_checkswitch_6">Disabled B</label>
-        <input type="checkbox" name="test_checkswitch" id="test_checkswitch_7" class="checkswitch onright" disabled><label for="test_checkswitch_7">Disabled C</label>
-        <input type="checkbox" name="test_checkswitch" id="test_checkswitch_8" class="checkswitch onright" checked disabled><label for="test_checkswitch_8">Disabled D</label>
-      </p>
-    </div>
+      <h3>Full</h3>
+      <div class="demo">
+        <p>
+          <select class="select full small">
+            <option>Option Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p>
+          <select class="select full">
+            <option>Option Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+      </div>
 
-    <h2>Select</h2>
-    <h3>Small</h3>
-    <div class="demo">
-      <p>
-        <select class="select small">
-          <option>Option Master</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-        <select class="select small">
-          <option>Option Sub</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-      </p>
-    </div>
+      <h3>Border</h3>
+      <div class="demo">
+        <p>
+          <select class="select small border">
+            <option>Option Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select small border">
+            <option>Option Sub</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p>
+          <select class="select border">
+            <option>Option Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select border">
+            <option>Option Sub</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p>
+          <select class="select full small border">
+            <option>Option Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p>
+          <select class="select full border">
+            <option>Option Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+      </div>
 
-    <h3>Default</h3>
-    <div class="demo">
-      <p>
-        <select class="select">
-          <option>Option Master</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-        <select class="select">
-          <option>Option Sub</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-      </p>
-    </div>
+      <h3>Box</h3>
+      <div class="demo">
+        <p class="select_box">
+          <select class="select small">
+            <option>Option Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select small">
+            <option>Option Sub</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p class="select_box">
+          <select class="select">
+            <option>Option Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select">
+            <option>Option Sub</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p class="select_box">
+          <select class="select small border">
+            <option>Option Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select small border">
+            <option>Option Sub</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p class="select_box">
+          <select class="select border">
+            <option>Option Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select border">
+            <option>Option Sub</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+      </div>
 
-    <h3>Full</h3>
-    <div class="demo">
-      <p>
-        <select class="select full small">
-          <option>Option Master</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-      </p>
-      <p>
-        <select class="select full">
-          <option>Option Master</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-      </p>
-    </div>
+      <h3>Group</h3>
+      <div class="demo">
+        <p class="select_group">
+          <select class="select small">
+            <option>Option Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select small">
+            <option>Option Sub</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p class="select_group">
+          <select class="select">
+            <option>Option Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select">
+            <option>Option Sub</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p class="select_group">
+          <select class="select small border">
+            <option>Option Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select small border">
+            <option>Option Sub</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p class="select_group">
+          <select class="select border">
+            <option>Option Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select border">
+            <option>Option Sub</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+      </div>
 
-    <h3>Border</h3>
-    <div class="demo">
-      <p>
-        <select class="select small border">
-          <option>Option Master</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-        <select class="select small border">
-          <option>Option Sub</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-      </p>
-      <p>
-        <select class="select border">
-          <option>Option Master</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-        <select class="select border">
-          <option>Option Sub</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-      </p>
-      <p>
-        <select class="select full small border">
-          <option>Option Master</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-      </p>
-      <p>
-        <select class="select full border">
-          <option>Option Master</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-      </p>
-    </div>
+      <h3>Status</h3>
+      <div class="demo">
+        <p>
+          <select class="select full" disabled>
+            <option>Option Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p>
+          <select class="select full border" disabled>
+            <option>Option Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+      </div>
 
-    <h3>Group</h3>
-    <div class="demo">
-      <p class="select_group">
-        <select class="select small">
-          <option>Option Master</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-        <select class="select small">
-          <option>Option Sub</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-      </p>
-      <p class="select_group">
-        <select class="select">
-          <option>Option Master</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-        <select class="select">
-          <option>Option Sub</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-      </p>
-      <p class="select_group">
-        <select class="select small border">
-          <option>Option Master</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-        <select class="select small border">
-          <option>Option Sub</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-      </p>
-      <p class="select_group">
-        <select class="select border">
-          <option>Option Master</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-        <select class="select border">
-          <option>Option Sub</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-      </p>
-    </div>
-
-    <h3>Status</h3>
-    <div class="demo">
-      <p>
-        <select class="select full" disabled>
-          <option>Option Master</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-      </p>
-      <p>
-        <select class="select full border" disabled>
-          <option>Option Master</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-      </p>
-    </div>
-
-    <h2>Input</h2>
-    <h3>Small</h3>
-    <div class="demo">
-      <p><input type="text" class="input small"></p>
-      <p><input type="text" class="input small" size="20"></p>
-      <p><input type="text" class="input small" size="30"></p>
-    </div>
-
-    <h3>Default</h3>
-    <div class="demo">
-      <p><input type="text" class="input"></p>
-      <p><input type="text" class="input" size="20"></p>
-      <p><input type="text" class="input" size="30"></p>
-    </div>
-
-    <h3>Full</h3>
-    <div class="demo">
-      <p><input type="text" class="input full"></p>
-    </div>
-
-    <h3>Border</h3>
-    <div class="demo">
-      <p><input type="text" class="input small border" size="30"></p>
-      <p><input type="text" class="input border" size="30"></p>
-      <p><input type="text" class="input full border"></p>
-    </div>
-
-    <h3>Status</h3>
-    <div class="demo">
-      <p><input type="text" class="input" value="Readonly" readonly></p>
-      <p><input type="text" class="input" value="Disabled" disabled></p>
-      <p><input type="text" class="input border" value="Readonly" readonly></p>
-      <p><input type="text" class="input border" value="Disabled" disabled></p>
-    </div>
-
-    <h2>Textarea</h2>
-    <div class="demo">
-      <p><textarea class="input"></textarea></p>
-      <p><textarea class="input" cols="20"></textarea></p>
-      <p><textarea class="input" cols="30"></textarea></p>
-    </div>
-
-    <h3>Full</h3>
-    <div class="demo">
-      <p><textarea class="input full"></textarea></p>
-    </div>
-
-    <h3>Border</h3>
-    <div class="demo">
-      <p><textarea class="input border"></textarea></p>
-      <p><textarea class="input border" cols="30"></textarea></p>
-      <p><textarea class="input full border"></textarea></p>
-    </div>
-
-    <h3>Status</h3>
-    <div class="demo">
-      <p><textarea class="input" readonly>Readonly</textarea></p>
-      <p><textarea class="input" disabled>Disabled</textarea></p>
-      <p><textarea class="input border" readonly>Readonly</textarea></p>
-      <p><textarea class="input border" disabled>Disabled</textarea></p>
     </div>
 
   </div>
 </div>
 <script src="../js/controller/reday.js"></script>
+<script>
+(function() {
+  var navBox = $('#hd_nav');
+  var tabBox = $('#style_tab');
+  var tabGroup = [];
+
+  $.each(navBox.find('a'), function(index, val) {
+    if (this.rel === 'tab') {
+      tabGroup.push('to_' + this.rev);
+    };
+  });
+
+  navBox.on('click', 'a', function() {
+    var _rel = this.rel;
+    var _rev = this.rev;
+    var _a = $(this);
+
+    if (_rel === 'tab') {
+      tabBox.removeClass(tabGroup.join(' ')).addClass('to_' + _rev);
+      _a.addClass('n').siblings().removeClass('n');
+      return false;
+    };
+  });
+
+  navBox.find('a').eq(0).trigger('click');
+})();
+</script>
 </body>
 </html>

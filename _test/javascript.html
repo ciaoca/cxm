@@ -21,13 +21,19 @@
 </head>
 <body>
 <div class="wrap">
-  <div class="mbox">
-    <h1>Mobile Web Style - cxStyle</h1>
+  <div id="header" class="header">
+    <header>
+      <h1>cxStyle</h1>
+      <a class="icon back" href="index.html"></a>
+    </header>
+  </div>
 
+  <div class="mbox">
     <h2>展示二维码</h2>
     <div class="demo">
-      <a class="button small" href="javascript://" rel="call_qrcode" rev="http://ciaoca.com/">二维码链接</a>
-      <a class="button small" href="javascript://" rel="call_qrcode" rev="自定义内容">二维码内容</a>
+      <a class="button small" href="javascript://" rel="call_qrcode" rev="http://ciaoca.com/">链接</a>
+      <a class="button small" href="javascript://" rel="call_qrcode" rev="自定义内容">自定义内容</a>
+      <a class="button small" href="javascript://" rel="call_qrcode" rev='{"name":"string","age":18}'>JSON</a>
     </div>
 
     <h2>微信分享提示</h2>
@@ -38,28 +44,29 @@
     <h2>发送短信</h2>
     <div class="demo">
       <h3>发送按钮设置</h3>
-  <pre><code>data- 参数
-    url            发送短信的接口地址
-    input          手机号码输入框
-    captcha        验证码输入框
-    phone-name     URL 中手机号码的参数名称
-    captcha-name   URL 中验证码的参数名称
+<pre><code>data- 参数
+  url            发送短信的接口地址
+  input          手机号码输入框
+  captcha        验证码输入框
+  phone-name     URL 中手机号码的参数名称
+  captcha-name   URL 中验证码的参数名称
 
-  &lt;div data-url="your-api.php" data-input="user-phone"&gt;发送短信&lt;/div&gt;
-  &lt;a href="your-api.php" data-input="user-phone"&gt;发送短信&lt;/div&gt;
-  </code></pre>
+&lt;div data-url="your-api.php" data-input="user-phone"&gt;发送短信&lt;/div&gt;
+&lt;a href="your-api.php" data-input="user-phone"&gt;发送短信&lt;/div&gt;
+</code></pre>
     </div>
+
     <h3>需要输入手机号码</h3>
     <div class="demo">
       <div class="form">
         <dl class="row">
-          <dt>手机号码</dt>
+          <dt><label for="sms_phone_1">手机号码</label></dt>
           <dd><input type="tel" name="phone" id="sms_phone_1" class="input full"></dd>
         </dl>
         <dl class="row">
-          <dt>短信验证码</dt>
+          <dt><label for="sms_code_1">短信验证码</label></dt>
           <dd class="in_sms">
-            <input type="tel" name="" class="input full">
+            <input type="tel" id="sms_code_1" name="" class="input full">
             <a class="button small blue" href="ajax/default.php" rel="call_sms" data-input="sms_phone_1">发送验证码</a>
           </dd>
         </dl>

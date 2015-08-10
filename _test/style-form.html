@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSS 表单样式</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui" media="(device-height:568px)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon-precomposed" href="">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="css/demo.css">
+<script src="../js/zepto.min.js"></script>
+<script src="../js/plugins.js"></script>
+<script src="../js/controller/init.js"></script>
+<style>
+html,.wrap{background:#f3f3f3;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="header" class="header">
+    <header>
+      <h1>cxStyle</h1>
+      <a class="icon back" href="index.html"></a>
+    </header>
+  </div>
+
+  <div class="mbox">
+    <h2>Form</h2>
+  </div>
+
+  <form action="?" method="get" class="form">
+    <div class="row_group">
+      <dl class="row">
+        <dt><label for="login_name">用户名</label></dt>
+        <dd><input type="text" id="login_name" class="input full"></dd>
+      </dl>
+      <dl class="row">
+        <dt><label for="login_pwd">密码</label></dt>
+        <dd><input type="password" id="login_pwd" class="input full"></dd>
+      </dl>
+    </div>
+    <div class="btns">
+      <button type="submit" class="button full blue">登录</button>
+    </div>
+  </form>
+
+  <form action="?" method="get" class="form">
+    <div class="row_group">
+      <div class="row">
+        <input type="text" class="input full" placeholder="用户名">
+      </div>
+      <div class="row">
+        <input type="password" class="input full" placeholder="密码">
+      </div>
+    </div>
+    <div class="btns">
+      <button type="submit" class="button full blue">登录</button>
+    </div>
+  </form>
+</div>
+<script src="../js/controller/reday.js"></script>
+</body>
+</html>
