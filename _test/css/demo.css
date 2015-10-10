@@ -65,17 +65,30 @@ transform:rotate(45deg);
 .style_tab.to_input .for_input,
 .style_tab.to_select .for_select{display:block;}
 
+.upfile_pic{padding:10px;}
+.upfile_pic li{float:left;position:relative;width:80px;height:80px;margin:0 20px 20px 0;background-color:#eee;background-position:center;background-repeat:no-repeat;background-size:cover;}
+.upfile_pic li label{display:block;box-sizing:border-box;position:relative;overflow:hidden;width:80px;height:80px;border: 1px solid #ddd;color:#ccc;font-size:5rem;line-height:80px;text-align:center;}
+.upfile_pic li label:before{content:'+';}
+.upfile_pic li input[type='file']{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;}
+.upfile_pic li a[rel='remove']{display:none;position:absolute;top:-6px;right:-6px;width:24px;height:24px;border-radius:50%;background:#aaa;color:#fff;font-size:2rem;line-height:24px;text-align:center;
+-webkit-transform:rotate(45deg);
+transform:rotate(45deg);
+}
+.upfile_pic li a[rel='remove']:before{content:'+';}
+.upfile_pic li.have label{display:none;}
+.upfile_pic li.have a[rel='remove']{display:block;}
+
 
 
 /**
  * 响应式处理
  * ------------------------------ */
-@media screen and (min-width:480px){
+@media (min-width:480px){
 }
 
-@media screen and (min-width:568px){
+@media (min-width:568px){
 }
 
-@media screen and (min-width:641px){
+@media (min-width:641px){
 .hd_nav nav{position:relative;top:0;}
 }
