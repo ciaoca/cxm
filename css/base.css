@@ -552,19 +552,19 @@ background:linear-gradient(to bottom, rgba(194,194,194,1) 0%, rgba(150,150,150,1
 /**
  * 响应式处理
  * ------------------------------ */
-@media screen and (min-width:480px){
+@media (min-width:480px){
 }
 
-@media screen and (min-width:640px){
+@media (min-width:640px){
 html{font-size:11px;}
 .mbox{margin-left:20px;margin-right:20px;}
 }
 
-@media screen and (min-width:641px){
+@media (min-width:641px){
 html{background-color:#e7e8eb;}
 .wrap{width:640px;margin:0 auto;border-radius:0 0 3px 3px;background:#fff;box-shadow:0 0 2px #aaa;}
 }
 
-@media screen and (min-width:900px){
+@media (min-width:900px){
 .this_qrcode{display:block;}
 }
