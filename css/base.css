@@ -19,7 +19,7 @@ ins{text-decoration:underline;}
 del{text-decoration:line-through;}
 q:before,q:after{content:'';}
 hr{margin:4px 0;border:none;border-top:1px solid #ccc;border-bottom:1px solid #fff;}
-html{background-color:#fff;font-size:10px;}
+html{font-size:10px;}
 body{color:#333;font-family:Arial,'\5fae\8f6f\96c5\9ed1',sans-serif;font-size:1.2rem;line-height:1.6;
 /*-webkit-user-select:none;*/
 }
@@ -562,7 +562,7 @@ html{font-size:11px;}
 
 @media (min-width:641px){
 html{background-color:#e7e8eb;}
-.wrap{width:640px;margin:0 auto;border-radius:0 0 3px 3px;background:#fff;box-shadow:0 0 2px #aaa;}
+.wrap{width:640px;margin:0 auto;border-radius:0 0 3px 3px;box-shadow:0 0 2px #aaa;}
 }
 
 @media (min-width:900px){

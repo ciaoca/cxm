@@ -1,3 +1,6 @@
+body.gray{background-color:#f6f6f6;}
+body.notheader .wrap{background:none;}
+
 /* 解决 iOS 下输入框获取焦点时错位 */
 body.onfocus .header header,
 body.onfocus .footer_nav nav{position:relative;}
