@@ -1,11 +1,12 @@
 /**
  * 添加到全局（window）中简单的方法
  *
- * CallLoading        全屏 Loading 遮罩
- * CallFormAjax       表单 Ajax 提交
- * CallSms            发送短信
- * CallQrcode         展示二维码
- * CallWechatTip      微信分享提示
+ * CallLoading          全屏 Loading 遮罩
+ * CallFormValidation   表单验证
+ * CallFormAjax         表单 Ajax 提交
+ * CallSms              发送短信
+ * CallQrcode           展示二维码
+ * CallWechatTip        微信分享提示
  * ------------------------------ */
 
 /**
@@ -32,6 +33,81 @@
     hide: function() {
       dom.removeAttr('title').remove();
     }
+  };
+})();
+
+
+/**
+ * 表单验证
+ * form {jQueryObject} 要提交的表单
+ * options {object}
+ *   success {function} 验证成功的回调
+ *   error {function} 验证失败的回调
+ */
+(function() {
+  window.CallFormValidation = function(form, options) {
+    options = $.extend({}, {
+      success: undefined,
+      error: undefined
+    }, options);
+
+    var result = true;
+    var el;
+
+    var valid = function(el) {
+      return (el.dataset.required && !el.value.length) ? false : true;
+    };
+
+    if (result) {
+      $.each(form.find('input'), function(index, item) {
+        if (!valid(item)) {
+          el = item;
+          result = false;
+          return false;
+        };
+      });
+    };
+
+    if (result) {
+      $.each(form.find('textarea'), function(index, item) {
+        if (!valid(item)) {
+          el = item;
+          result = false;
+          return false;
+        };
+      });
+    };
+
+    if (result) {
+      $.each(form.find('select'), function(index, item) {
+        if (!valid(item)) {
+          el = item;
+          result = false;
+          return false;
+        };
+      });
+    };
+
+    if (result === true && typeof options.success === 'function') {
+      options.success(form);
+
+    } else if (result === false) {
+      if (typeof options.error === 'function') {
+        options.error(el);
+
+      } else if (el) {
+        if (typeof el.dataset.msg === 'string' && el.dataset.msg.length) {
+          $.cxDialog({
+            title: '提示',
+            info: el.dataset.msg
+          });
+        } else if ($(el).is(':visible')) {
+          el.focus();
+        };
+      };
+    };
+
+    return result;
   };
 })();
 
