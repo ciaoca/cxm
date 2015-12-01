@@ -1,11 +1,11 @@
 <?
 $result = array();
-$result['state'] = 'success';
-//$result['state'] = 'error';
+$result['status'] = 'success';
+//$result['status'] = 'error';
 $result['message'] = '';
 
-if ($_GET['state']) {
-  $result['state'] = $_GET['state'];
+if ($_GET['status']) {
+  $result['status'] = $_GET['status'];
 };
 
 if ($_GET['message']) {
