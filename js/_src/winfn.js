@@ -39,76 +39,354 @@
 
 /**
  * 表单验证
+ * data: 2015-12-01
  * form {jQueryObject} 要提交的表单
  * options {object}
  *   success {function} 验证成功的回调
  *   error {function} 验证失败的回调
  */
 (function() {
-  window.CallFormValidation = function(form, options) {
-    options = $.extend({}, {
+  var cxValidation = {};
+
+  cxValidation.init = function() {
+    var self = this;
+
+    self.defaults = {
       success: undefined,
       error: undefined
-    }, options);
+    };
 
-    var result = true;
+    self.result = {
+      status: true
+    };
+
+    // 验证方法
+    self.validFun = {
+      _required: function(el) {
+        if (el.type === 'checkbox' || el.type === 'radio') {
+          return el.checked ? true : false;
+        } else {
+          return el.value.length ? true : false;
+        };
+      },
+      _equals: function(el, id) {
+        return el.value == document.getElementById(id).value;
+      },
+      _minSize: function(el, size) {
+        return el.value.length >= size;
+      },
+      _maxSize: function(el, size) {
+        return el.value.length <= size;
+      },
+      _min: function(el, size) {
+        return parseFloat(el.value) >= size;
+      },
+      _max: function(el, size) {
+        return parseFloat(el.value) <= size;
+      },
+      _integer: function(el, id) {
+        return /^[\-\+]?\d+$/.test(el.value);
+      },
+      _number: function(el) {
+        return /^[\-\+]?((([0-9]{1,3})([,][0-9]{3})*)|([0-9]+))?([\.]([0-9]+))?$/.test(el.value);
+      },
+      _onlyNumber: function(el) {
+        return /^[0-9]+$/.test(el.value);
+      },
+      _onlyNumberSp: function(el) {
+        return /^[0-9\ ]+$/.test(el.value);
+      },
+      _onlyLetter: function(el) {
+        return /^[a-zA-Z]/.test(el.value);
+      },
+      _onlyLetterSp: function(el) {
+        return /^[a-zA-Z\ ]/.test(el.value);
+      },
+      _onlyLetterNumber: function(el) {
+        return /^[0-9a-zA-Z]+$/.test(el.value);
+      },
+      _onlyLetterNumberSp: function(el) {
+        return /^[0-9a-zA-Z\ ]+$/.test(el.value);
+      },
+      _email: function(el, id) {
+        return /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i.test(el.value);
+      },
+      _phone: function(el, id) {
+        return /^([\+][0-9]{1,3}[ \.\-])?([\(]{1}[0-9]{2,6}[\)])?([0-9 \.\-\/]{3,20})((x|ext|extension)[ ]?[0-9]{1,4})?$/.test(el.value);
+      },
+      _url: function(el, id) {
+        return /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(el.value);
+      },
+      _chinese: function(el, id) {
+        return /^[\u4E00-\u9FA5]+$/.test(el.value);
+      },
+      _chinaId: function(el, id) {
+        return /^[1-9]\d{5}[1-9]\d{3}(((0[13578]|1[02])(0[1-9]|[12]\d|3[0-1]))|((0[469]|11)(0[1-9]|[12]\d|30))|(02(0[1-9]|[12]\d)))(\d{4}|\d{3}[xX])$/.test(el.value);
+      },
+      _chinaIdLoose: function(el, id) {
+        return /^(\d{18}|\d{15}|\d{17}[xX])$/.test(el.value);
+      },
+      _chinaZip: function(el, id) {
+        return /^\d{6}$/.test(el.value);
+      },
+      _qq: function(el, id) {
+        return /^[1-9]\d{4,10}$/.test(el.value);
+      },
+      _call: function(el, functionName) {
+        var _namespaces;
+        var _scope;
+        var _fun;
+        var _val;
+
+        if (functionName.indexOf('.') >= 0) {
+          _namespaces = functionName.split('.');
+          _scope = window;
+
+          while (_namespaces.length) {
+            _scope = _scope[_namespaces.shift()];
+          };
+          _fun = _scope;
+        } else {
+          _fun = window[functionName]
+        };
+
+        return typeof _fun === 'function' ? _fun(el.value) : true;
+      }
+    };
+  };
+
+  cxValidation.getMessage = function(str, isTrue) {
+    return isTrue ? '' : str;
+  };
+
+  cxValidation.toFocus = function(el) {
+    if ($(el).is(':visible')) {
+      el.focus();
+    };
+  };
+
+  cxValidation.validItem = function(el) {
+    var self = this;
+    var _ruleStr = el.dataset.validation;
+    var _ruleArr = [];
+    var _result = {
+      status: true
+    };
+    var _ruleOpt;
+
+    if (typeof _ruleStr === 'string' && _ruleStr.length) {
+      _ruleArr = _ruleStr.replace(/\s|\[[^\]]*\]/g, '').split(',');
+    };
+
+    for (var i = 0, l = _ruleArr.length; i < l; i++) {
+
+      switch(_ruleArr[i]) {
+        case 'required':
+          _result.status = self.validFun._required(el);
+          break
+        case 'equals':
+          _ruleOpt = _ruleStr.match(/equals\[([^\]]+)\]/)[1];
+          _result.status = self.validFun._equals(el, _ruleOpt);
+          _result.message = self.getMessage('两次输入的不一致', _result.status);
+          break
+        case 'minSize':
+          _ruleOpt = _ruleStr.match(/minSize\[([^\]]+)\]/)[1];
+          _result.status = el.value.length ? self.validFun._minSize(el, _ruleOpt) : true;
+          _result.message = self.getMessage('最少 ' + _ruleOpt + ' 个字符', _result.status);
+          break
+        case 'maxSize':
+          _ruleOpt = _ruleStr.match(/maxSize\[([^\]]+)\]/)[1];
+          _result.status = el.value.length ? self.validFun._maxSize(el, _ruleOpt) : true;
+          _result.message = self.getMessage('最多 ' + _ruleOpt + ' 个字符', _result.status);
+          break
+        case 'min':
+          _ruleOpt = _ruleStr.match(/min\[([^\]]+)\]/)[1];
+          _result.status = el.value.length ? self.validFun._min(el, _ruleOpt) : true;
+          _result.message = self.getMessage('最小值为 ' + _ruleOpt, _result.status);
+          break
+        case 'max':
+          _ruleOpt = _ruleStr.match(/max\[([^\]]+)\]/)[1];
+          _result.status = el.value.length ? self.validFun._max(el, _ruleOpt) : true;
+          _result.message = self.getMessage('最大值为 ' + _ruleOpt, _result.status);
+          break
+        case 'integer':
+          _result.status = el.value.length ? self.validFun._integer(el) : true;
+          _result.message = self.getMessage('无效的整数', _result.status);
+          break
+        case 'number':
+          _result.status = el.value.length ? self.validFun._number(el) : true;
+          _result.message = self.getMessage('无效的数值', _result.status);
+          break
+        case 'onlyNumber':
+          _result.status = el.value.length ? self.validFun._onlyNumber(el) : true;
+          _result.message = self.getMessage('只能填写数字', _result.status);
+          break
+        case 'onlyNumberSp':
+          _result.status = el.value.length ? self.validFun._onlyNumberSp(el) : true;
+          _result.message = self.getMessage('只能填写数字和空格', _result.status);
+          break
+        case 'onlyLetter':
+          _result.status = el.value.length ? self.validFun._onlyLetter(el) : true;
+          _result.message = self.getMessage('只能填写英文字母', _result.status);
+          break
+        case 'onlyLetterSp':
+          _result.status = el.value.length ? self.validFun._onlyLetterSp(el) : true;
+          _result.message = self.getMessage('只能填写英文字母和空格', _result.status);
+          break
+        case 'onlyLetterNumber':
+          _result.status = el.value.length ? self.validFun._onlyLetterNumber(el) : true;
+          _result.message = self.getMessage('只能填写英文字母与数字', _result.status);
+          break
+        case 'onlyLetterNumberSp':
+          _result.status = el.value.length ? self.validFun._onlyLetterNumberSp(el) : true;
+          _result.message = self.getMessage('只能填写英文字母、数字、空格', _result.status);
+          break
+        case 'email':
+          _result.status = el.value.length ? self.validFun._email(el) : true;
+          _result.message = self.getMessage('无效的邮件地址', _result.status);
+          break
+        case 'phone':
+          _result.status = el.value.length ? self.validFun._phone(el) : true;
+          _result.message = self.getMessage('无效的电话号码', _result.status);
+          break
+        case 'url':
+          _result.status = el.value.length ? self.validFun._url(el) : true;
+          _result.message = self.getMessage('无效的网址', _result.status);
+          break
+        case 'chinese':
+          _result.status = el.value.length ? self.validFun._chinese(el) : true;
+          _result.message = self.getMessage('只能填写中文汉字', _result.status);
+          break
+        case 'chinaId':
+          _result.status = el.value.length ? self.validFun._chinaId(el) : true;
+          _result.message = self.getMessage('无效的身份证号码', _result.status);
+          break
+        case 'chinaIdLoose':
+          _result.status = el.value.length ? self.validFun._chinaIdLoose(el) : true;
+          _result.message = self.getMessage('无效的身份证号码', _result.status);
+          break
+        case 'chinaZip':
+          _result.status = el.value.length ? self.validFun._chinaZip(el) : true;
+          _result.message = self.getMessage('无效的邮政编码', _result.status);
+          break
+        case 'qq':
+          _result.status = el.value.length ? self.validFun._qq(el) : true;
+          _result.message = self.getMessage('无效的 QQ 号码', _result.status);
+          break
+
+        // 自定义函数验证：
+        // 只有返回 false 或 returnObject.status 为 false 时，属于不通过；
+        // 返回其他值（包括 undefined、null等）均视为验证通过。
+        case 'call':
+          _ruleOpt = _ruleStr.match(/call\[([^\]]+)\]/)[1];
+          _result = self.validFun._call(el, _ruleOpt);
+          break
+
+        // not default
+      };
+
+      if (!$.isPlainObject(_result)) {
+        _result = {
+          status: _result
+        };
+      };
+
+      if (_result.status === false) {
+        _result.rule = _ruleArr[i];
+        break
+      };
+    };
+
+    return _result;
+  };
+
+  cxValidation.validForm = function(form, options, errorCallback) {
+    var self = this;
+    var result = $.extend({}, self.result);
     var el;
 
-    var valid = function(el) {
-      return (el.dataset.required && !el.value.length) ? false : true;
+    if (typeof options === 'function') {
+      options = {
+        success: options
+      };
     };
 
-    if (result) {
-      $.each(form.find('input'), function(index, item) {
-        if (!valid(item)) {
-          el = item;
-          result = false;
-          return false;
+    options = $.extend({}, self.defaults, options);
+
+    if (typeof errorCallback === 'function') {
+      options.error = errorCallback;
+    };
+
+    var inputs = [];
+    inputs = inputs.concat(form.find('input'), form.find('textarea'), form.find('select'));
+
+    $.each(inputs, function(index, item) {
+      var _result = self.validItem(item);
+
+      if (_result === false || _result.status === false) {
+        el = item;
+        result.status = false;
+
+        if (typeof _result.message === 'string' && _result.message.length) {
+          result.message = _result.message;
         };
-      });
-    };
 
-    if (result) {
-      $.each(form.find('textarea'), function(index, item) {
-        if (!valid(item)) {
-          el = item;
-          result = false;
-          return false;
+        if (typeof _result.rule === 'string' && _result.rule.length) {
+          result.rule = _result.rule;
         };
-      });
-    };
 
-    if (result) {
-      $.each(form.find('select'), function(index, item) {
-        if (!valid(item)) {
-          el = item;
-          result = false;
-          return false;
-        };
-      });
-    };
+        return false;
+      };
+    });
 
-    if (result === true && typeof options.success === 'function') {
+    if (result.status === true && typeof options.success === 'function') {
       options.success(form);
 
-    } else if (result === false) {
+    } else if (result.status === false) {
       if (typeof options.error === 'function') {
-        options.error(el);
+        options.error(el, result);
 
       } else if (el) {
-        if (typeof el.dataset.msg === 'string' && el.dataset.msg.length) {
+        if (typeof result.message !== 'string' || !result.message.length) {
+          // if ($.isPlainObject(options.message)) {
+          //   if (typeof options.message[result.rule] === 'string' && options.message[result.rule].length) {
+          //     result.message = options.message[result.rule];
+          //   };
+          // };
+
+          if (typeof el.dataset.validationMessage === 'string' && el.dataset.validationMessage.length) {
+            try {
+              options.message = JSON.parse(el.dataset.validationMessage);
+
+              if (typeof options.message[result.rule] === 'string' && options.message[result.rule].length) {
+                result.message = options.message[result.rule];
+              };
+            } catch (e) {
+              result.message = el.dataset.validationMessage;
+            };
+          };
+        };
+
+        if (typeof result.message === 'string' && result.message.length) {
           $.cxDialog({
             title: '提示',
-            info: el.dataset.msg
+            info: result.message,
+            ok: function() {
+              self.toFocus(el);
+            }
           });
-        } else if ($(el).is(':visible')) {
-          el.focus();
+        } else {
+          self.toFocus(el);
         };
       };
     };
 
-    return result;
+    return result.status;
   };
+
+  cxValidation.init();
+
+  window.CallFormValidation = cxValidation.validForm.bind(cxValidation);
 })();
 
 
