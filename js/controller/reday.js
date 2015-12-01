@@ -16,10 +16,17 @@
   $('body').on('click', 'a', function(){
     var _rel = this.rel;
     var _rev = this.rev;
+    var _opt = {};
 
     // 显示二维码
     if (_rel === 'call_qrcode') {
-      window.CallQrcode.show(_rev);
+      try {
+        _opt = JSON.parse(this.dataset.option);
+      } catch (e) {
+        _opt = {};
+      };
+
+      window.CallQrcode.show(_rev, _opt);
       return false;
 
     // 发送短信验证码
