@@ -59,11 +59,6 @@
         <div class="item" style="background-image:url(http://placehold.it/640x360)"></div>
       </li>
     </ul>
-    <div id="home_slide_btns" class="btns">
-      <i></i>
-      <i></i>
-      <i></i>
-    </div>
   </div>
 
   <div class="home_main">
@@ -86,21 +81,33 @@
 <script>
 (function() {
   var start = 0;
-  var slideBtns = $('#home_slide_btns');
+  var slideBox = $('#home_slide');
+  var slideBtns = $('<div></div>', {class: 'btns'});
+  var slideSum = slideBox.find('li').length;
+  var _html = '';
+
+  for (var i = slideSum - 1; i >= 0; i--) {
+    _html += '<i></i>';
+  };
+
+  slideBtns.append(_html).appendTo(slideBox);
 
   var toggleBtn = function(n){
-    if (this.slideSum === 2 && n > 1) {
+    if (slideSum === 2 && n > 1) {
       n -= 2;
     };
 
     slideBtns.find('i').removeClass('n').eq(n).addClass('n');
   };
 
-  var mySwipe = new Swipe(document.getElementById('home_slide'), {
+  var mySwipe = new Swipe(slideBox[0], {
     speed: 600,
     auto: 5000,
-    callback: function(index){
+    callback: function(index) {
       toggleBtn(index);
+    },
+    transitionEnd: function(index) {
+      console.log(index);
     }
   });
 
