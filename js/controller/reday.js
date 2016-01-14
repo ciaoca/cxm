@@ -16,16 +16,16 @@
   $('body').on('click', 'a', function(){
     var _rel = this.rel;
     var _rev = this.rev;
-    var _opt = {};
+    var _opt;
+
+    try {
+      _opt = JSON.parse(this.dataset.option);
+    } catch (e) {
+      _opt = {};
+    };
 
     // 显示二维码
     if (_rel === 'call_qrcode') {
-      try {
-        _opt = JSON.parse(this.dataset.option);
-      } catch (e) {
-        _opt = {};
-      };
-
       window.CallQrcode.show(_rev, _opt);
       return false;
 
@@ -34,6 +34,7 @@
       window.CallSms.send(this);
       return false;
 
+    // 显示微信分享提示
     } else if (_rel === 'call_wechat_share') {
       window.CallWechatTip.show(_rev);
       return false;
@@ -57,11 +58,10 @@
 // 解决 iOS 输入框获取焦点时 fixed 错位
 (function(){
   if ('addEventListener' in document && /(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase())) {
-
     var docbody = document.body;
 
     var hasFix = function(e) {
-      var _types = ['checkbox', 'radio', 'file', 'button', 'submit','reset', 'image', 'range'];
+      var _types = ['checkbox', 'radio', 'file', 'button', 'submit', 'reset', 'image', 'range'];
       var _nodeName = e.target.nodeName.toLowerCase();
 
       if (_nodeName === 'textarea' || _nodeName === 'select') {
