@@ -17,11 +17,8 @@
 <script src="../js/zepto.min.js"></script>
 <script src="../js/plugins.js"></script>
 <script src="../js/controller/init.js"></script>
-<style>
-html,.wrap{background:#f3f3f3;}
-</style>
 </head>
-<body>
+<body class="gray">
 <div class="wrap">
   <div id="header" class="header">
     <header>
@@ -32,7 +29,7 @@ html,.wrap{background:#f3f3f3;}
 
   <form action="ajax/default.php?nextUrl=reload" method="get" id="test_form" class="form">
     <div class="mbox">
-      <h2>required</h2>
+      <h2>Required</h2>
     </div>
     <div class="row_group">
       <dl class="row">
@@ -53,23 +50,27 @@ html,.wrap{background:#f3f3f3;}
       </dl> 
     </div>
 
-    <div class="note">Checkbox</div>
+    <div class="mbox">
+      <h3>Checkbox</h3>
+    </div>
     <div class="row">
-      <input type="checkbox" id="checkbox_1" class="checkbox" checked data-validation="required" data-msg="多选项1为必选">
+      <input type="checkbox" name="_checkbox" id="checkbox_1" class="checkbox" checked data-validation="required" data-validation-message="多选项1为必选">
       <label for="checkbox_1">多选项1（必选）</label>
-      <input type="checkbox" id="checkbox_2" class="checkbox">
+      <input type="checkbox" name="_checkbox" id="checkbox_2" class="checkbox">
       <label for="checkbox_2">多选项2</label>
-      <input type="checkbox" id="checkbox_3" class="checkbox">
+      <input type="checkbox" name="_checkbox" id="checkbox_3" class="checkbox">
       <label for="checkbox_3">多选项3</label>
     </div>
 
-    <div class="note">Radio</div>
+    <div class="mbox">
+      <h3>Radio</h3>
+    </div>
     <div class="row">
-      <input type="radio" id="radio_1" class="radio" checked data-validation="required" data-msg="单选项1为必选">
+      <input type="radio" name="_radio" id="radio_1" class="radio" checked data-validation="required" data-validation-message="单选项1为必选">
       <label for="radio_1">单选项1（必选）</label>
-      <input type="radio" id="radio_2" class="radio">
+      <input type="radio" name="_radio" id="radio_2" class="radio">
       <label for="radio_2">单选项2</label>
-      <input type="radio" id="radio_3" class="radio">
+      <input type="radio" name="_radio" id="radio_3" class="radio">
       <label for="radio_3">单选项3</label>
     </div>
 
@@ -81,7 +82,7 @@ html,.wrap{background:#f3f3f3;}
         <input type="text" class="input full" placeholder="最少3个字符" data-validation="minSize[3]">
       </div>
       <div class="row">
-        <input type="password" class="input full" placeholder="最多10个字符" data-validation="maxSize[10]">
+        <input type="text" class="input full" placeholder="最多10个字符" data-validation="maxSize[10]">
       </div>
     </div>
 
@@ -94,7 +95,7 @@ html,.wrap{background:#f3f3f3;}
         <input type="text" class="input full" placeholder="最小值为3" data-validation="min[3]">
       </div>
       <div class="row">
-        <input type="password" class="input full" placeholder="最大值为10" data-validation="max[10]">
+        <input type="text" class="input full" placeholder="最大值为10" data-validation="max[10]">
       </div>
     </div>
 
@@ -181,11 +182,14 @@ html,.wrap{background:#f3f3f3;}
       </div>
     </div>
 
-    <div class="btns">
+    <div class="btns mbox">
       <button type="submit" class="button full blue">验证表单</button>
     </div>
   </form>
 </div>
+
+<footer class="footer"></footer>
+
 <script src="../js/controller/reday.js"></script>
 <script>
 var vaildUserName = function(value) {

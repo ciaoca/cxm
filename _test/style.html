@@ -17,15 +17,8 @@
 <script src="../js/zepto.min.js"></script>
 <script src="../js/plugins.js"></script>
 <script src="../js/controller/init.js"></script>
-<style>
-html,.wrap{background:#f3f3f3;}
-
-@media screen and (min-width:641px){
-html{background:#fff;}
-}
-</style>
 </head>
-<body>
+<body class="gray">
 <div class="wrap">
   <div id="header" class="header">
     <header>
@@ -342,121 +335,99 @@ html{background:#fff;}
       <h3>Small</h3>
       <div class="demo">
         <p><input type="text" class="input small"></p>
-        <p><input type="text" class="input small" size="20"></p>
-        <p><input type="text" class="input small" size="30"></p>
+        <p><input type="text" class="input small" placeholder="Placeholder"></p>
+        <p><input type="text" class="input small" value="Readonly" readonly></p>
+        <p><input type="text" class="input small" value="Disabled" disabled></p>
+        <p><input type="text" class="input small" size="24" placeholder="set 'size' for width"></p>
+        <p><input type="text" class="input small full" placeholder="full width"></p>
+        <p><input type="text" class="input small full border" placeholder="border"></p>
       </div>
 
       <h3>Default</h3>
       <div class="demo">
         <p><input type="text" class="input"></p>
-        <p><input type="text" class="input" size="20"></p>
-        <p><input type="text" class="input" size="30"></p>
-      </div>
-
-      <h3>Full</h3>
-      <div class="demo">
-        <p><input type="text" class="input full"></p>
-      </div>
-
-      <h3>Border</h3>
-      <div class="demo">
-        <p><input type="text" class="input small border" size="30"></p>
-        <p><input type="text" class="input border" size="30"></p>
-        <p><input type="text" class="input full border"></p>
-      </div>
-
-      <h3>Status</h3>
-      <div class="demo">
+        <p><input type="text" class="input" placeholder="Placeholder"></p>
         <p><input type="text" class="input" value="Readonly" readonly></p>
         <p><input type="text" class="input" value="Disabled" disabled></p>
-        <p><input type="text" class="input border" value="Readonly" readonly></p>
-        <p><input type="text" class="input border" value="Disabled" disabled></p>
+        <p><input type="text" class="input" size="24" placeholder="set 'size' for width"></p>
+        <p><input type="text" class="input full" placeholder="full width"></p>
+        <p><input type="text" class="input full border" placeholder="border"></p>
       </div>
 
       <h2>Textarea</h2>
       <div class="demo">
         <p><textarea class="input"></textarea></p>
-        <p><textarea class="input" cols="20"></textarea></p>
-        <p><textarea class="input" cols="30"></textarea></p>
-      </div>
-
-      <h3>Full</h3>
-      <div class="demo">
-        <p><textarea class="input full"></textarea></p>
-      </div>
-
-      <h3>Border</h3>
-      <div class="demo">
-        <p><textarea class="input border"></textarea></p>
-        <p><textarea class="input border" cols="30"></textarea></p>
-        <p><textarea class="input full border"></textarea></p>
-      </div>
-
-      <h3>Status</h3>
-      <div class="demo">
+        <p><textarea class="input" placeholder="Placeholder"></textarea></p>
         <p><textarea class="input" readonly>Readonly</textarea></p>
         <p><textarea class="input" disabled>Disabled</textarea></p>
-        <p><textarea class="input border" readonly>Readonly</textarea></p>
-        <p><textarea class="input border" disabled>Disabled</textarea></p>
+        <p><textarea class="input" size="24" placeholder="set 'cols' for width"></textarea></p>
+        <p><textarea class="input full" placeholder="full width"></textarea></p>
+        <p><textarea class="input full border" placeholder="border"></textarea></p>
       </div>
 
       <h2>Radio</h2>
       <div class="demo">
         <p>
-          <input type="radio" name="test_radio" id="test_radio_1" class="radio"><label for="test_radio_1">Radio A</label>
-          <input type="radio" name="test_radio" id="test_radio_2" class="radio"><label for="test_radio_2">Radio B</label>
-          <input type="radio" name="test_radio" id="test_radio_3" class="radio onright"><label for="test_radio_3">选项一</label>
-          <input type="radio" name="test_radio" id="test_radio_4" class="radio onright"><label for="test_radio_4">选项二</label>
+          <input type="radio" name="_radio" id="test_radio_1" class="radio"><label for="test_radio_1">Radio 1</label>
+          <input type="radio" name="_radio" id="test_radio_2" class="radio"><label for="test_radio_2">Radio 2</label>
+          <input type="radio" name="_radio" id="test_radio_3" class="radio" disabled checked><label for="test_radio_3">Radio 3 Disabled</label>
+          <input type="radio" name="_radio" id="test_radio_4" class="radio" disabled><label for="test_radio_4">Radio 4 Disabled</label>
+          <input type="radio" name="_radio" id="test_radio_5" class="radio onright"><label for="test_radio_5">Radio 5</label>
+          <input type="radio" name="_radio" id="test_radio_6" class="radio onright"><label for="test_radio_6">Radio 6</label>
+          <input type="radio" name="_radio" id="test_radio_7" class="radio onright" disabled><label for="test_radio_7">Radio 7 Disabled</label>
+          <input type="radio" name="_radio" id="test_radio_8" class="radio onright" disabled><label for="test_radio_8">Radio 8 Disabled</label>
         </p>
       </div>
 
-      <h3>Status</h3>
+      <h3>Group</h3>
       <div class="demo">
-        <p>
-          <input type="radio" name="test_radio_a" id="test_radio_a_1" class="radio" disabled><label for="test_radio_a_1">Disabled A</label>
-          <input type="radio" name="test_radio_a" id="test_radio_a_2" class="radio" checked disabled><label for="test_radio_a_2">Disabled B</label>
-          <input type="radio" name="test_radio_b" id="test_radio_b_1" class="radio onright" disabled><label for="test_radio_b_1">Disabled C</label>
-          <input type="radio" name="test_radio_b" id="test_radio_b_2" class="radio onright" checked disabled><label for="test_radio_b_2">Disabled D</label>
+        <p class="radio_group">
+          <input type="radio" name="_radio" id="test_radio_9" class="radio"><label for="test_radio_9">Radio 9</label>
+          <input type="radio" name="_radio" id="test_radio_10" class="radio"><label for="test_radio_10">Radio 10</label>
         </p>
       </div>
 
       <h2>Checkbox</h2>
       <div class="demo">
         <p>
-          <input type="checkbox" name="test_checkbox" id="test_checkbox_1" class="checkbox"><label for="test_checkbox_1">Checkbox A</label>
-          <input type="checkbox" name="test_checkbox" id="test_checkbox_2" class="checkbox"><label for="test_checkbox_2">Checkbox B</label>
-          <input type="checkbox" name="test_checkbox" id="test_checkbox_3" class="checkbox onright"><label for="test_checkbox_3">选项一</label>
-          <input type="checkbox" name="test_checkbox" id="test_checkbox_4" class="checkbox onright"><label for="test_checkbox_4">选项二</label>
+          <input type="checkbox" name="_checkbox" id="test_checkbox_1" class="checkbox"><label for="test_checkbox_1">Checkbox 1</label>
+          <input type="checkbox" name="_checkbox" id="test_checkbox_2" class="checkbox"><label for="test_checkbox_2">Checkbox 2</label>
+          <input type="checkbox" name="_checkbox" id="test_checkbox_3" class="checkbox" disabled checked><label for="test_checkbox_3">Checkbox 3 Disabled</label>
+          <input type="checkbox" name="_checkbox" id="test_checkbox_4" class="checkbox" disabled><label for="test_checkbox_4">Checkbox 4 Disabled</label>
+          <input type="checkbox" name="_checkbox" id="test_checkbox_5" class="checkbox onright"><label for="test_checkbox_5">Checkbox 5</label>
+          <input type="checkbox" name="_checkbox" id="test_checkbox_6" class="checkbox onright"><label for="test_checkbox_6">Checkbox 6</label>
+          <input type="checkbox" name="_checkbox" id="test_checkbox_7" class="checkbox onright" disabled checked><label for="test_checkbox_7">Checkbox 7 Disabled</label>
+          <input type="checkbox" name="_checkbox" id="test_checkbox_8" class="checkbox onright" disabled><label for="test_checkbox_8">Checkbox 8 Disabled</label>
         </p>
       </div>
 
-      <h3>Status</h3>
+      <h3>Group</h3>
       <div class="demo">
-        <p>
-          <input type="checkbox" name="test_checkbox" id="test_checkbox_5" class="checkbox" disabled><label for="test_checkbox_5">Disabled A</label>
-          <input type="checkbox" name="test_checkbox" id="test_checkbox_6" class="checkbox" checked disabled><label for="test_checkbox_6">Disabled B</label>
-          <input type="checkbox" name="test_checkbox" id="test_checkbox_7" class="checkbox onright" disabled><label for="test_checkbox_7">Disabled C</label>
-          <input type="checkbox" name="test_checkbox" id="test_checkbox_8" class="checkbox onright" checked disabled><label for="test_checkbox_8">Disabled D</label>
+        <p class="checkbox_group">
+          <input type="checkbox" name="_checkbox" id="test_checkbox_9" class="checkbox"><label for="test_checkbox_9">Checkbox 9</label>
+          <input type="checkbox" name="_checkbox" id="test_checkbox_10" class="checkbox"><label for="test_checkbox_10">Checkbox 10</label>
         </p>
       </div>
 
       <h2>CheckSwitch</h2>
       <div class="demo">
         <p>
-          <input type="checkbox" name="test_checkswitch" id="test_checkswitch_1" class="checkswitch"><label for="test_checkswitch_1">Checkbox A</label>
-          <input type="checkbox" name="test_checkswitch" id="test_checkswitch_2" class="checkswitch"><label for="test_checkswitch_2">Checkbox B</label>
-          <input type="checkbox" name="test_checkswitch" id="test_checkswitch_3" class="checkswitch onright"><label for="test_checkswitch_3">选项一</label>
-          <input type="checkbox" name="test_checkswitch" id="test_checkswitch_4" class="checkswitch onright"><label for="test_checkswitch_4">选项二</label>
+          <input type="checkbox" name="_checkbox" id="test_checkswitch_1" class="checkswitch"><label for="test_checkswitch_1">Checkbox 1</label>
+          <input type="checkbox" name="_checkbox" id="test_checkswitch_2" class="checkswitch"><label for="test_checkswitch_2">Checkbox 2</label>
+          <input type="checkbox" name="_checkbox" id="test_checkswitch_3" class="checkswitch" disabled checked><label for="test_checkswitch_3">Checkbox 3 Disabled</label>
+          <input type="checkbox" name="_checkbox" id="test_checkswitch_4" class="checkswitch" disabled><label for="test_checkswitch_4">Checkbox 4 Disabled</label>
+          <input type="checkbox" name="_checkbox" id="test_checkswitch_5" class="checkswitch onright"><label for="test_checkswitch_5">Checkbox 5</label>
+          <input type="checkbox" name="_checkbox" id="test_checkswitch_6" class="checkswitch onright"><label for="test_checkswitch_6">Checkbox 6</label>
+          <input type="checkbox" name="_checkbox" id="test_checkswitch_7" class="checkswitch onright" disabled checked><label for="test_checkswitch_7">Checkbox 7 Disabled</label>
+          <input type="checkbox" name="_checkbox" id="test_checkswitch_8" class="checkswitch onright" disabled><label for="test_checkswitch_8">Checkbox 8 Disabled</label>
         </p>
       </div>
 
-      <h3>Status</h3>
+      <h3>Group</h3>
       <div class="demo">
-        <p>
-          <input type="checkbox" name="test_checkswitch" id="test_checkswitch_5" class="checkswitch" disabled><label for="test_checkswitch_5">Disabled A</label>
-          <input type="checkbox" name="test_checkswitch" id="test_checkswitch_6" class="checkswitch" checked disabled><label for="test_checkswitch_6">Disabled B</label>
-          <input type="checkbox" name="test_checkswitch" id="test_checkswitch_7" class="checkswitch onright" disabled><label for="test_checkswitch_7">Disabled C</label>
-          <input type="checkbox" name="test_checkswitch" id="test_checkswitch_8" class="checkswitch onright" checked disabled><label for="test_checkswitch_8">Disabled D</label>
+        <p class="checkswitch_group">
+          <input type="checkbox" name="_checkbox" id="test_checkswitch_9" class="checkswitch"><label for="test_checkswitch_9">Checkbox</label>
+          <input type="checkbox" name="_checkbox" id="test_checkswitch_10" class="checkswitch"><label for="test_checkswitch_10">Checkbox</label>
         </p>
       </div>
 
@@ -468,15 +439,73 @@ html{background:#fff;}
       <div class="demo">
         <p>
           <select class="select small">
-            <option>Option Master</option>
+            <option>Select</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
               <option>Option 3</option>
             </optgroup>
           </select>
-          <select class="select small">
-            <option>Option Sub</option>
+          <select class="select small" disabled>
+            <option>Select Disabled</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p>
+          <select class="select small border">
+            <option>Select</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select small border" disabled>
+            <option>Select Disabled</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p>
+          <select class="select small full">
+            <option>Select Full Width</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p>
+          <select class="select small full" Disabled>
+            <option>Select Full Width Disabled</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p>
+          <select class="select small full border">
+            <option>Select Full Width</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p>
+          <select class="select small full border" Disabled>
+            <option>Select Full Width Disabled</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -490,15 +519,15 @@ html{background:#fff;}
       <div class="demo">
         <p>
           <select class="select">
-            <option>Option Master</option>
+            <option>Select</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
               <option>Option 3</option>
             </optgroup>
           </select>
-          <select class="select">
-            <option>Option Sub</option>
+          <select class="select" disabled>
+            <option>Select Disabled</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -506,13 +535,17 @@ html{background:#fff;}
             </optgroup>
           </select>
         </p>
-      </div>
-
-      <h3>Full</h3>
-      <div class="demo">
         <p>
-          <select class="select full small">
-            <option>Option Master</option>
+          <select class="select border">
+            <option>Select</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select border" disabled>
+            <option>Select Disabled</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -522,29 +555,7 @@ html{background:#fff;}
         </p>
         <p>
           <select class="select full">
-            <option>Option Master</option>
-            <optgroup label="optgroup">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </optgroup>
-          </select>
-        </p>
-      </div>
-
-      <h3>Border</h3>
-      <div class="demo">
-        <p>
-          <select class="select small border">
-            <option>Option Master</option>
-            <optgroup label="optgroup">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </optgroup>
-          </select>
-          <select class="select small border">
-            <option>Option Sub</option>
+            <option>Select Full Width</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -553,26 +564,8 @@ html{background:#fff;}
           </select>
         </p>
         <p>
-          <select class="select border">
-            <option>Option Master</option>
-            <optgroup label="optgroup">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </optgroup>
-          </select>
-          <select class="select border">
-            <option>Option Sub</option>
-            <optgroup label="optgroup">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </optgroup>
-          </select>
-        </p>
-        <p>
-          <select class="select full small border">
-            <option>Option Master</option>
+          <select class="select full" Disabled>
+            <option>Select Full Width Disabled</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -582,7 +575,17 @@ html{background:#fff;}
         </p>
         <p>
           <select class="select full border">
-            <option>Option Master</option>
+            <option>Select Full Width</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p>
+          <select class="select full border" Disabled>
+            <option>Select Full Width Disabled</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -596,7 +599,7 @@ html{background:#fff;}
       <div class="demo">
         <p class="select_box">
           <select class="select small">
-            <option>Option Master</option>
+            <option>Select Master</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -604,25 +607,7 @@ html{background:#fff;}
             </optgroup>
           </select>
           <select class="select small">
-            <option>Option Sub</option>
-            <optgroup label="optgroup">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </optgroup>
-          </select>
-        </p>
-        <p class="select_box">
-          <select class="select">
-            <option>Option Master</option>
-            <optgroup label="optgroup">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </optgroup>
-          </select>
-          <select class="select">
-            <option>Option Sub</option>
+            <option>Select Sub</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -632,7 +617,7 @@ html{background:#fff;}
         </p>
         <p class="select_box">
           <select class="select small border">
-            <option>Option Master</option>
+            <option>Select Master</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -640,7 +625,25 @@ html{background:#fff;}
             </optgroup>
           </select>
           <select class="select small border">
-            <option>Option Sub</option>
+            <option>Select Sub</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p class="select_box">
+          <select class="select">
+            <option>Select Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select">
+            <option>Select Sub</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -650,7 +653,7 @@ html{background:#fff;}
         </p>
         <p class="select_box">
           <select class="select border">
-            <option>Option Master</option>
+            <option>Select Master</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -658,7 +661,7 @@ html{background:#fff;}
             </optgroup>
           </select>
           <select class="select border">
-            <option>Option Sub</option>
+            <option>Select Sub</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -672,7 +675,7 @@ html{background:#fff;}
       <div class="demo">
         <p class="select_group">
           <select class="select small">
-            <option>Option Master</option>
+            <option>Select Master</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -680,25 +683,7 @@ html{background:#fff;}
             </optgroup>
           </select>
           <select class="select small">
-            <option>Option Sub</option>
-            <optgroup label="optgroup">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </optgroup>
-          </select>
-        </p>
-        <p class="select_group">
-          <select class="select">
-            <option>Option Master</option>
-            <optgroup label="optgroup">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </optgroup>
-          </select>
-          <select class="select">
-            <option>Option Sub</option>
+            <option>Select Sub</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -708,7 +693,7 @@ html{background:#fff;}
         </p>
         <p class="select_group">
           <select class="select small border">
-            <option>Option Master</option>
+            <option>Select Master</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -716,7 +701,25 @@ html{background:#fff;}
             </optgroup>
           </select>
           <select class="select small border">
-            <option>Option Sub</option>
+            <option>Select Sub</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p class="select_group">
+          <select class="select">
+            <option>Select Master</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select">
+            <option>Select Sub</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -726,7 +729,7 @@ html{background:#fff;}
         </p>
         <p class="select_group">
           <select class="select border">
-            <option>Option Master</option>
+            <option>Select Master</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -734,31 +737,7 @@ html{background:#fff;}
             </optgroup>
           </select>
           <select class="select border">
-            <option>Option Sub</option>
-            <optgroup label="optgroup">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </optgroup>
-          </select>
-        </p>
-      </div>
-
-      <h3>Status</h3>
-      <div class="demo">
-        <p>
-          <select class="select full" disabled>
-            <option>Option Master</option>
-            <optgroup label="optgroup">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </optgroup>
-          </select>
-        </p>
-        <p>
-          <select class="select full border" disabled>
-            <option>Option Master</option>
+            <option>Select Sub</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>

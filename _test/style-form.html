@@ -17,11 +17,8 @@
 <script src="../js/zepto.min.js"></script>
 <script src="../js/plugins.js"></script>
 <script src="../js/controller/init.js"></script>
-<style>
-html,.wrap{background:#f3f3f3;}
-</style>
 </head>
-<body>
+<body class="gray">
 <div class="wrap">
   <div id="header" class="header">
     <header>
@@ -35,30 +32,37 @@ html,.wrap{background:#f3f3f3;}
   </div>
 
   <form action="?" method="get" class="form">
-    <div class="row_group">
-      <dl class="row">
-        <dt><label for="login_name">用户名</label></dt>
-        <dd><input type="text" id="login_name" class="input full"></dd>
-      </dl>
-      <dl class="row">
-        <dt><label for="login_pwd">密码</label></dt>
-        <dd><input type="password" id="login_pwd" class="input full"></dd>
-      </dl>
-    </div>
+    <dl class="row">
+      <dt class="note">Email</dt>
+      <dd class="note">a***z@gmail.com</dd>
+    </dl>
+    <dl class="row">
+      <dt><label for="login_name">用户名</label></dt>
+      <dd><input type="text" id="login_name" class="input full"></dd>
+    </dl>
+    <dl class="row">
+      <dt><label for="login_pwd">密码</label></dt>
+      <dd><input type="password" id="login_pwd" class="input full"></dd>
+    </dl>
 
     <div class="mbox">
       <h3>Placeholder</h3>
     </div>
-
-    <div class="row_group">
-      <div class="row">
-        <input type="text" class="input full" placeholder="用户名">
-      </div>
-      <div class="row">
-        <input type="password" class="input full" placeholder="密码">
-      </div>
+    <div class="row">
+      <input type="text" class="input full" placeholder="用户名">
     </div>
-    <div class="btns">
+    <div class="row">
+      <input type="password" class="input full" placeholder="密码">
+    </div>
+
+    <div class="note">Note</div>
+
+    <div class="row note">Note</div>
+    <div class="row">
+      <div class="note">Note</div>
+    </div>
+
+    <div class="btns mbox">
       <button type="submit" class="button full blue">登录</button>
     </div>
   </form>

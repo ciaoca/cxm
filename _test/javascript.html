@@ -30,16 +30,32 @@
   <div class="mbox">
     <h2>展示二维码</h2>
     <div class="demo">
-      <a class="button small" href="javascript://" rel="call_qrcode" rev="http://ciaoca.com/">链接</a>
-      <a class="button small" href="javascript://" rel="call_qrcode" rev="自定义内容">自定义内容</a>
       <a class="button small" href="javascript://" rel="call_qrcode" rev='{"name":"string","age":18}'>JSON</a>
-    </div>
+      <a class="button small" href="javascript://" rel="call_qrcode" rev="http://ciaoca.com/">链接</a>
+      <a class="button small" href="javascript://" rel="call_qrcode" rev="自定义内容" data-option='{"before":"<div style=\"color:#d00;\">标题</div>","after":"说明，支持 HTML"}'>自定义内容</a>
+<pre><code>data-option 参数
+  size        二维码图片尺寸（正方形）
+  baseclass   添加 class
+  before      头部内容（支持 HTML）
+  after       底部内容（支持 HTML）
+  colorDark   暗色
+  colorLight  亮色
+  quality     校正标准（L, M, Q, H）
 
+&lt;a rel="call_qrcode" rev='二维码内容' data-option='参数'&gt;二维码&lt;/a&gt;
+</code></pre>
+    </div>
+  </div>
+
+  <div class="mbox">
     <h2>微信分享提示</h2>
     <div class="demo">
       <a class="button small green" href="javascript://" rel="call_wechat_share" rev="demo">分享到朋友圈</a>
+      <pre><code>&lt;a rel="call_wechat_share" rev='添加 class'&gt;分享到朋友圈&lt;/a&gt;</code></pre>
     </div>
+  </div>
 
+  <div class="mbox">
     <h2>发送短信</h2>
     <div class="demo">
       <h3>发送按钮设置</h3>
@@ -63,7 +79,7 @@
           <dd><input type="tel" name="phone" id="sms_phone_1" class="input full"></dd>
         </dl>
         <dl class="row">
-          <dt><label for="sms_code_1">短信验证码</label></dt>
+          <dt><label for="sms_code_1">验证码</label></dt>
           <dd class="in_sms">
             <input type="tel" id="sms_code_1" name="" class="input full">
             <a class="button small blue" href="ajax/success.json" rel="call_sms" data-input="sms_phone_1">发送验证码</a>
