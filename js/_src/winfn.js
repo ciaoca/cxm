@@ -39,17 +39,21 @@
 
 /**
  * 表单验证
- * data: 2015-12-01
+ * data: 2015-12-29
  * form {jQueryObject} 要提交的表单
  * options {object}
  *   success {function} 验证成功的回调
  *   error {function} 验证失败的回调
  */
 (function() {
-  var cxValidation = {};
+  var cxValidation = {
+    dom: {}
+  };
 
   cxValidation.init = function() {
     var self = this;
+
+    self.dom.tip = $('<div></div>', {class: 'cxvalidation_tip'});
 
     self.defaults = {
       success: undefined,
@@ -97,10 +101,10 @@
         return /^[0-9\ ]+$/.test(el.value);
       },
       _onlyLetter: function(el) {
-        return /^[a-zA-Z]/.test(el.value);
+        return /^[a-zA-Z]+$/.test(el.value);
       },
       _onlyLetterSp: function(el) {
-        return /^[a-zA-Z\ ]/.test(el.value);
+        return /^[a-zA-Z\ ]+$/.test(el.value);
       },
       _onlyLetterNumber: function(el) {
         return /^[0-9a-zA-Z]+$/.test(el.value);
@@ -305,6 +309,11 @@
     var result = $.extend({}, self.result);
     var el;
 
+    if (typeof self.closeTipWait === 'undefined') {
+      clearTimeout(self.closeTipWait);
+    };
+    self.dom.tip.appendTo('body');
+
     if (typeof options === 'function') {
       options = {
         success: options
@@ -347,23 +356,15 @@
         options.error(el, result);
 
       } else if (el) {
-        if (typeof result.message !== 'string' || !result.message.length) {
-          // if ($.isPlainObject(options.message)) {
-          //   if (typeof options.message[result.rule] === 'string' && options.message[result.rule].length) {
-          //     result.message = options.message[result.rule];
-          //   };
-          // };
+        if (typeof el.dataset.validationMessage === 'string' && el.dataset.validationMessage.length) {
+          try {
+            options.message = JSON.parse(el.dataset.validationMessage);
 
-          if (typeof el.dataset.validationMessage === 'string' && el.dataset.validationMessage.length) {
-            try {
-              options.message = JSON.parse(el.dataset.validationMessage);
-
-              if (typeof options.message[result.rule] === 'string' && options.message[result.rule].length) {
-                result.message = options.message[result.rule];
-              };
-            } catch (e) {
-              result.message = el.dataset.validationMessage;
+            if (typeof options.message[result.rule] === 'string' && options.message[result.rule].length) {
+              result.message = options.message[result.rule];
             };
+          } catch (e) {
+            result.message = el.dataset.validationMessage;
           };
         };
 
@@ -375,6 +376,13 @@
               self.toFocus(el);
             }
           });
+
+          // 在顶部提示，输入框获取焦点时，会被顶起导致看不到提示内容，若不获取焦点又不太明白是哪个输入框的提示
+          // self.toFocus(el);
+          // self.dom.tip.html(result.message).addClass('show');
+          // self.closeTipWait = setTimeout(function() {
+            // self.dom.tip.removeClass('show');
+          // }, 3000);
         } else {
           self.toFocus(el);
         };
@@ -399,20 +407,42 @@
  *   error {function} 提交完成，状态为错误时执行的方法
  */
 (function() {
-  window.CallFormAjax = function(form, options) {
-    options = $.extend({}, {
+  window.CallFormAjax = function(form, options, errorCallback) {
+    var defaults = {
+      url: form.attr('action'), 
+      type: form.attr('method'),
+      data: form.serializeArray(),
+      dataType: 'json',
       complete: undefined,
       success: undefined,
       error: undefined
-    }, options);
+    };
+
+    if (typeof options === 'function') {
+      options = {
+        success: options
+      };
+    };
+
+    options = $.extend({}, defaults, options);
+
+    if (typeof errorCallback === 'function') {
+      options.error = errorCallback;
+    };
+
+    if (Array.isArray(options.addData) && options.addData.length) {
+      options.data = options.data.concat(options.addData);
+    } else if($.isPlainObject(options.addData)) {
+      options.data.push(options.addData);
+    };
 
     form.find('button[type="submit"]').prop('disabled', true);
 
     $.ajax({
-      url: form.attr('action'), 
-      type: form.attr('method'),
-      data: form.serializeArray(),
-      dataType: 'json'
+      url: options.url, 
+      type: options.type,
+      data: options.data,
+      dataType: options.dataType
     }).done(function(data, textStatus, jqXHR){
       form.find('button[type="submit"]').prop('disabled', false);
 
@@ -420,7 +450,7 @@
         options.complete(data);
       };
 
-      if (data.status !== 'success') {
+      if (data.state !== 'success') {
         if (typeof options.error === 'function') {
           options.error(data);
         } else {
