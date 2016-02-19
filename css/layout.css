@@ -1,12 +1,11 @@
 body.gray{background-color:#f6f6f6;}
-body.notheader .wrap{background:none;}
 
 /* 解决 iOS 下输入框获取焦点时错位 */
 body.onfocus .header header,
 body.onfocus .footer_nav nav{position:relative;}
 
 /* 降低 iOS 下头部闪烁 */
-.wrap{
+.headerfix{
 background:-webkit-linear-gradient(top, rgba(80,197,247,1) 0%, rgba(80,197,247,1) 44px, rgba(255,255,255,0) 44px, rgba(255,255,255,0) 100%);
 background:linear-gradient(to bottom, rgba(80,197,247,1) 0%, rgba(80,197,247,1) 44px, rgba(255,255,255,0) 44px, rgba(255,255,255,0) 100%);
 }
