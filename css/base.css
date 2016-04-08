@@ -3,10 +3,10 @@
  * @author:ciaoca(小叉) <ciaoca@gmail.com>
  * @website:http://ciaoca.com
  * ------------------------------ */
-html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,p,table,th,td,form,fieldset,legend,input,textarea,select,button,hr,blockquote,pre{margin:0;padding:0;}
+html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,p,table,th,td,form,fieldset,legend,input,textarea,select,button,hr,blockquote,pre,iframe{margin:0;padding:0;}
 h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:bold;line-height:1.2;}
 ul,ol,dl{list-style-type:none;}
-fieldset,img{border:none;}
+fieldset,img,iframe{border:none;}
 table{border-collapse:collapse;table-layout:fixed;empty-cells:show;}
 caption,th{text-align:left;font-weight:normal;}
 address,caption,cite,code,dfn,th{font-style:normal;font-weight:normal;}
@@ -171,11 +171,9 @@ label + .checkswitch + label{border-top:1px solid #ddd;}
 /* 单选框 */
 .radio + label{padding-left:40px;}
 .radio + label:before{content:'';position:absolute;top:50%;left:10px;width:18px;height:18px;margin-top:-10px;border:1px solid #ccc;border-radius:50%;background:#fff;
--webkit-transition:border-color 0.2s;
 transition:border-color 0.2s;
 }
 .radio + label:after{content:'';position:absolute;top:50%;left:16px;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:transparent;
--webkit-transition:background 0.2s;
 transition:background 0.2s;
 }
 
@@ -194,7 +192,6 @@ transition:background 0.2s;
 .checkbox + label:after{content:'';position:absolute;top:50%;left:10px;width:4px;height:10px;margin-top:-8px;border-bottom:2px solid transparent;border-right:2px solid transparent;
 -webkit-transform:rotate(45deg);
 transform:rotate(45deg);
--webkit-transition:border-color 0.2s;
 transition:border-color 0.2s;
 }
 
@@ -208,11 +205,9 @@ transition:border-color 0.2s;
 /* 开关 */
 .checkswitch + label{padding-left:70px;}
 .checkswitch + label:before{content:'';position:absolute;top:50%;left:10px;width:44px;height:28px;margin-top:-15px;border:1px solid #eee;border-radius:15px;background-color:#fff;
--webkit-transition:border-color 0.2s,background-color 0.2s;
 transition:border-color 0.2s,background-color 0.2s;
 ;}
 .checkswitch + label:after{content:'';position:absolute;top:50%;left:11px;width:28px;height:28px;margin-top:-14px;border-radius:50%;background-color:#fff;box-shadow:0 0 1px rgba(0,0,0,0.5);
--webkit-transition:left 0.2s;
 transition:left 0.2s;
 }
 
@@ -224,7 +219,6 @@ transition:left 0.2s;
 .checkswitch.onright + label{padding-left:0;padding-right:70px;padding-left:0.5em;}
 .checkswitch.onright + label:before{left:auto;right:10px;}
 .checkswitch.onright + label:after{left:auto;right:31px;
--webkit-transition:right 0.2s;
 transition:right 0.2s;
 }
 .checkswitch.onright:checked + label:after{right:11px;}
@@ -237,6 +231,7 @@ transition:right 0.2s;
 .checkswitch_box,
 .checkswitch_group{
 display:-webkit-box;
+display:box;
 display:-webkit-flex;
 display:flex;
 }
@@ -247,6 +242,7 @@ display:flex;
 .checkswitch_box .checkswitch + label,
 .checkswitch_group .checkswitch + label{display:block;border-top:none;
 -webkit-box-flex:1;
+box-flex:1;
 -webkit-flex:1 1 50%;
 flex:1 1 50%;
 }
@@ -271,12 +267,14 @@ background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAFCAYAA
 .select_box,
 .select_group{
 display:-webkit-box;
+display:box;
 display:-webkit-flex;
 display:flex;
 }
 .select_box .select,
 .select_group .select{display:block;
 -webkit-box-flex:1;
+box-flex:1;
 -webkit-flex:1 1 50%;
 flex:1 1 50%;
 }
@@ -350,6 +348,7 @@ transform:none;
 .button_box,
 .button_group{text-align:center;
 display:-webkit-box;
+display:box;
 display:-webkit-flex;
 display:flex;
 }
@@ -357,6 +356,7 @@ display:flex;
 .button_box .button,
 .button_group .button{display:block;padding:0;
 -webkit-box-flex:1;
+box-flex:1;
 -webkit-flex:1 1 50%;
 flex:1 1 50%;
 }
@@ -407,6 +407,7 @@ flex:1 1 50%;
 
 .pages.full{
 display:-webkit-box;
+display:box;
 display:-webkit-flex;
 display:flex;
 }
@@ -414,6 +415,7 @@ display:flex;
 .pages.full span,
 .pages.full strong{display:block;margin:0 0 0 10px;padding:0;
 -webkit-box-flex:1;
+box-flex:1;
 -webkit-flex:1 1 50%;
 flex:1 1 50%;
 }
@@ -463,18 +465,17 @@ animation:loadingB 2s infinite ease-out;
 51%{z-index:1;}
 100%{left:0;z-index:1;}
 }
-@-webkit-keyframes loadingB{
-0%{left:100%;z-index:1;}
-50%{left:0%;z-index:1;}
-51%{z-index:2;}
-100%{left:100%;z-index:2;}
-}
-
 @keyframes loadingA{
 0%{left:0;z-index:2;}
 50%{left:100%;z-index:2;}
 51%{z-index:1;}
 100%{left:0;z-index:1;}
+}
+@-webkit-keyframes loadingB{
+0%{left:100%;z-index:1;}
+50%{left:0%;z-index:1;}
+51%{z-index:2;}
+100%{left:100%;z-index:2;}
 }
 @keyframes loadingB{
 0%{left:100%;z-index:1;}
@@ -496,13 +497,12 @@ animation:loadingRotate 1s infinite linear;
 #full_loading:after{content:attr(title);position:absolute;top:41%;left:0;width:100%;color:#eee;font-size:1.4rem;text-align:center;}
 
 @-webkit-keyframes loadingRotate{
-0%{-webkit-transform:rotate(0);}
-100%{-webkit-transform:rotate(360deg);}
+0%{-webkit-transform:rotate(0);transform:rotate(0);}
+100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);}
 }
-
 @keyframes loadingRotate{
-0%{transform:rotate(0);}
-100%{transform:rotate(360deg);}
+0%{-webkit-transform:rotate(0);transform:rotate(0);}
+100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);}
 }
 
 
@@ -511,6 +511,7 @@ animation:loadingRotate 1s infinite linear;
  * 当前页二维码
  * ------------------------------ */
 .this_qrcode{display:none;position:absolute;top:60px;left:50%;margin-left:330px;padding:14px;border:1px solid #d9dadc;background:#fff;color:#777;font-size:1.4rem;line-height:1.6rem;text-align:center;}
+.this_qrcode img{margin:0 auto;}
 .this_qrcode p{margin-top:8px;}
 
 
@@ -519,10 +520,12 @@ animation:loadingRotate 1s infinite linear;
  * 展示二维码
  * ------------------------------ */
 #full_qrcode{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);z-index:999;}
-#full_qrcode .box{box-sizing:border-box;position:absolute;top:10%;left:10%;width:80%;padding:20px;background-color:#fff;}
+#full_qrcode .box{box-sizing:border-box;position:absolute;top:10%;left:10%;width:80%;background-color:#fff;}
+#full_qrcode .hd{padding:0.5em 1em;background-color:#555;color:#fff;font-size:1.6rem;text-align:center;}
+#full_qrcode .ft{padding:1em;border-top:1px solid #ddd;color:#555;font-size:1.4rem;text-align:center;}
+#full_qrcode .bd{padding:20px;}
+#full_qrcode .bd:only-child{padding:20px;}
 #full_qrcode .qrcode{margin:0 auto;}
-#full_qrcode .before{margin-bottom:10px;}
-#full_qrcode .after{margin-top:10px;}
 
 
 
@@ -556,22 +559,21 @@ animation:loadingRotate 1s infinite linear;
 
 /* iOS Theme */
 @-webkit-keyframes cxDialogIosIn{
-0%{top:35%;opacity:0;-webkit-transform:scale(1.1);}
-100%{top:35%;opacity:1;-webkit-transform:scale(1);}
+0%{top:35%;opacity:0;-webkit-transform:scale(1.1);transform:scale(1.1);}
+100%{top:35%;opacity:1;-webkit-transform:scale(1);transform:scale(1);}
 }
 @keyframes cxDialogIosIn{
-0%{top:35%;opacity:0;transform:scale(1.1);}
-100%{top:35%;opacity:1;transform:scale(1);}
+0%{top:35%;opacity:0;-webkit-transform:scale(1.1);transform:scale(1.1);}
+100%{top:35%;opacity:1;-webkit-transform:scale(1);transform:scale(1);}
 }
-
 @-webkit-keyframes cxDialogIosOut{
-0%{top:35%;opacity:1;-webkit-transform:scale(1);}
-99%{top:35%;opacity:0;-webkit-transform:scale(0.9);}
+0%{top:35%;opacity:1;-webkit-transform:scale(1);transform:scale(1);}
+99%{top:35%;opacity:0;-webkit-transform:scale(0.9);transform:scale(0.9);}
 100%{top:-100%;opacity:0;}
 }
 @keyframes cxDialogIosOut{
-0%{top:35%;opacity:1;transform:scale(1);}
-99%{top:35%;opacity:0;transform:scale(0.9);}
+0%{top:35%;opacity:1;-webkit-transform:scale(1);transform:scale(1);}
+99%{top:35%;opacity:0;-webkit-transform:scale(0.9);transform:scale(0.9);}
 100%{top:-100%;opacity:0;}
 }
 
@@ -642,8 +644,9 @@ background:linear-gradient(to bottom,rgba(194,194,194,1) 0%,rgba(150,150,150,1) 
 .cxvalidation_tip{box-sizing:border-box;position:fixed;top:0;left:0;width:100%;padding:0.5em 1em;background-color:rgba(100,0,0,0.8);color:#fff;z-index:999;
 -webkit-transform:translate(0,-100%);
 transform:translate(0,-100%);
--webkit-transition:-webkit-transform 0.2s;
+transition:-webkit-transform 0.2s;
 transition:transform 0.2s;
+transition:transform 0.2s,-webkit-transform 0.2s;
 }
 .cxvalidation_tip.show{
 -webkit-transform:translate(0,0);

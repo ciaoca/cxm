@@ -1,58 +1,56 @@
-(function(){
-  // FastClick Only iOS
-  // 在 Android 低端机下，效果不理想
-  if ('addEventListener' in document && /(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase())) {
-    document.addEventListener('DOMContentLoaded', function() {
-      FastClick.attach(document.body);
-    }, false);
+// FastClick Only iOS
+// 在 Android 低端机下，效果不理想，不使用
+if ('addEventListener' in document && /(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase())) {
+  document.addEventListener('DOMContentLoaded', function() {
+    FastClick.attach(document.body);
+  }, false);
+};
+
+// cxDialog 默认设置
+$.cxDialog.defaults.baseClass = 'ios';
+$.cxDialog.defaults.background = 'rgba(0,0,0,0.4)';
+$.cxDialog.defaults.ok = function(){};
+
+// 全局操作
+$('body').on('click', 'a', function(){
+  var _rel = this.rel;
+  var _rev = this.rev;
+  var _opt;
+
+  try {
+    _opt = JSON.parse(this.dataset.option);
+  } catch (e) {
+    _opt = {};
   };
 
-  // cxDialog 默认设置
-  $.cxDialog.defaults.baseClass = 'ios';
-  $.cxDialog.defaults.background = 'rgba(0,0,0,0.4)';
-  $.cxDialog.defaults.ok = function(){};
+  // 显示二维码
+  if (_rel === 'call_qrcode') {
+    window.CallQrcode.show(_rev, _opt);
+    return false;
 
-  // 全局操作
-  $('body').on('click', 'a', function(){
-    var _rel = this.rel;
-    var _rev = this.rev;
-    var _opt;
+  // 发送短信验证码
+  } else if (_rel === 'call_sms') {
+    window.CallSms.send(this);
+    return false;
 
-    try {
-      _opt = JSON.parse(this.dataset.option);
-    } catch (e) {
-      _opt = {};
-    };
+  // 显示微信分享提示
+  } else if (_rel === 'call_wechat_share') {
+    window.CallWechatTip.show(_rev);
+    return false;
+  };
+});
 
-    // 显示二维码
-    if (_rel === 'call_qrcode') {
-      window.CallQrcode.show(_rev, _opt);
-      return false;
-
-    // 发送短信验证码
-    } else if (_rel === 'call_sms') {
-      window.CallSms.send(this);
-      return false;
-
-    // 显示微信分享提示
-    } else if (_rel === 'call_wechat_share') {
-      window.CallWechatTip.show(_rev);
-      return false;
-    };
-  });
-
-  // 顶部操作
-  $('#header').on('click', 'dt', function() {
-    var _dl = $(this).closest('dl');
-    if (_dl.hasClass('menu')) {
-      _dl.toggleClass('open');
-    } else {
-      setTimeout(function() {
-        _dl.removeClass('open');
-      }, 200);
-    };
-  });
-})();
+// 顶部操作
+$('#header').on('click', 'dt', function() {
+  var _dl = $(this).closest('dl');
+  if (_dl.hasClass('menu')) {
+    _dl.toggleClass('open');
+  } else {
+    setTimeout(function() {
+      _dl.removeClass('open');
+    }, 200);
+  };
+});
 
 
 // 解决 iOS 输入框获取焦点时 fixed 错位
@@ -104,4 +102,24 @@
   });
 
   box.prepend(pic).append('<p>微信扫一扫<br>获得更多内容</p>').appendTo('body');
+})();
+
+
+// 底部导航自适应兼容
+(function() {
+  var footerNav = document.getElementById('footer_nav');
+
+  if (!footerNav || /(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase())) {
+    return;
+  };
+
+  // 如果支持 flex 则不需要 fix
+  if (!!((window.CSS && window.CSS.supports))) {
+    if (CSS.supports('display', 'flex')) {
+      return;
+    };
+  };
+
+  footerNav.classList.add('flex');
+  footerNav.classList.add('flex_' + footerNav.querySelectorAll('a').length);
 })();

@@ -54,11 +54,11 @@
       <h3>Checkbox</h3>
     </div>
     <div class="row">
-      <input type="checkbox" name="_checkbox" id="checkbox_1" class="checkbox" checked data-validation="required" data-validation-message="多选项1为必选">
-      <label for="checkbox_1">多选项1（必选）</label>
-      <input type="checkbox" name="_checkbox" id="checkbox_2" class="checkbox">
+      <input type="checkbox" name="_checkbox" id="checkbox_1" class="checkbox" data-validation="groupRequired[check1][2]" data-validation-message="Checkbox 至少选择 2 项">
+      <label for="checkbox_1">多选项1</label>
+      <input type="checkbox" name="_checkbox" id="checkbox_2" class="checkbox" data-validation="groupRequired[check1][2]">
       <label for="checkbox_2">多选项2</label>
-      <input type="checkbox" name="_checkbox" id="checkbox_3" class="checkbox">
+      <input type="checkbox" name="_checkbox" id="checkbox_3" class="checkbox" data-validation="groupRequired[check1][2]">
       <label for="checkbox_3">多选项3</label>
     </div>
 
@@ -66,11 +66,11 @@
       <h3>Radio</h3>
     </div>
     <div class="row">
-      <input type="radio" name="_radio" id="radio_1" class="radio" checked data-validation="required" data-validation-message="单选项1为必选">
-      <label for="radio_1">单选项1（必选）</label>
-      <input type="radio" name="_radio" id="radio_2" class="radio">
+      <input type="radio" name="_radio" id="radio_1" class="radio" data-validation="groupRequired[radio1]" data-validation-message="Radio 至少选择一项">
+      <label for="radio_1">单选项1</label>
+      <input type="radio" name="_radio" id="radio_2" class="radio" data-validation="groupRequired[radio1]">
       <label for="radio_2">单选项2</label>
-      <input type="radio" name="_radio" id="radio_3" class="radio">
+      <input type="radio" name="_radio" id="radio_3" class="radio" data-validation="groupRequired[radio1]">
       <label for="radio_3">单选项3</label>
     </div>
 
@@ -190,6 +190,7 @@
 
 <footer class="footer"></footer>
 
+<script src="../js/cxvalidation.min.js"></script>
 <script src="../js/controller/reday.js"></script>
 <script>
 var vaildUserName = function(value) {
@@ -221,14 +222,11 @@ var vaildUserName = function(value) {
 (function() {
   var form = $('#test_form');
 
-  form.on('submit', function() {
-    window.CallFormValidation(form, {
-      success: function() {
-        console.log('验证通过');
-        // window.CallFormAjax(form);
-      }
-    });
-    return false
+  cxValidation.attach(form, {
+    success: function() {
+      console.log('验证通过');
+      // window.CallFormAjax(form);
+    }
   });
 })();
 </script>
