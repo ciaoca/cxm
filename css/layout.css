@@ -168,8 +168,8 @@ flex:1 1 50%;
 /* 圆角版 */
 .tab_nav_radius{position:relative;height:32px;margin:9px 10px;}
 .tab_nav_radius nav{overflow:hidden;height:30px;border:1px solid #4a89dc;border-radius:16px;background-color:#fff;font-size:1.4rem;line-height:30px;text-align:center;
--webkit-box-flex:0;
-box-flex:0;
+display:-webkit-box;
+display:box;
 display:-webkit-flex;
 display:flex;
 }

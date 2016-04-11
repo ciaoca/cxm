@@ -125,7 +125,7 @@
         options.complete(data);
       };
 
-      if (data.state !== 'success') {
+      if (data.status !== 'success') {
         if (typeof options.error === 'function') {
           options.error(data);
           return;
