@@ -105,6 +105,11 @@
 
     options = $.extend({}, defaults, options);
 
+    if (options.urlData) {
+      options.url += (options.url.indexOf('?') >= 0) ? '&' : '?';
+      options.url += $.param(options.urlData);
+    };
+
     if (Array.isArray(options.addData) && options.addData.length) {
       options.data = options.data.concat(options.addData);
     } else if($.isPlainObject(options.addData)) {
