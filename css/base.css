@@ -66,11 +66,13 @@ a.nound,a.nound:hover{text-decoration:none;}
 /**
  * 表单
  * ------------------------------ */
-.form .row_group{position:relative;padding-left:10px;background-color:#fff;}
+.form{position:relative;}
+.form .row_group{position:relative;background-color:#fff;}
 .form .row_group + .row_group{margin-top:10px;}
-.form .row{position:relative;background-color:#fff;}
-.form .row + .row{border-top:1px solid #ddd;}
-.form dl.row{overflow:hidden;font-size:1.4rem;}
+.form .row{position:relative;background-color:#fff;font-size:1.4rem;}
+.form .row + .row{padding-top:1px;}
+.form .row + .row:before{content:'';position:absolute;top:0;left:0.5em;right:0;height:1px;background-color:#ddd;}
+.form dl.row{overflow:hidden;}
 .form .row > dt{float:left;width:5em;line-height:44px;text-indent:0.5em;}
 .form .row > dt > label{display:block;}
 .form .row > dd{overflow:hidden;position:relative;}
