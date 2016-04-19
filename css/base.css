@@ -172,7 +172,7 @@ label + .checkswitch + label{border-top:1px solid #ddd;}
 
 /* 单选框 */
 .radio + label{padding-left:40px;}
-.radio + label:before{content:'';position:absolute;top:50%;left:10px;width:18px;height:18px;margin-top:-10px;border:1px solid #ccc;border-radius:50%;background:#fff;
+.radio + label:before{content:'';position:absolute;top:50%;left:10px;width:18px;height:18px;margin-top:-10px;border:1px solid #ddd;border-radius:50%;background:#fff;
 transition:border-color 0.2s;
 }
 .radio + label:after{content:'';position:absolute;top:50%;left:16px;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:transparent;
@@ -182,8 +182,8 @@ transition:background 0.2s;
 .radio:checked + label:before{border-color:#007aff;}
 .radio:checked + label:after{background:#007aff;}
 .radio:disabled + label{color:#aaa;}
-.radio:disabled + label:before{border-color:#ccc;}
-.radio:checked:disabled + label:after{background:#ccc;}
+.radio:checked:disabled + label:before{border-color:#aaa;}
+.radio:checked:disabled + label:after{background:#aaa;}
 
 .radio.onright + label{padding-left:0;padding-right:40px;padding-left:0.5em;}
 .radio.onright + label:before{left:auto;right:10px;}
@@ -191,7 +191,7 @@ transition:background 0.2s;
 
 /* 复选框 */
 .checkbox + label{padding-left:30px;}
-.checkbox + label:after{content:'';position:absolute;top:50%;left:10px;width:4px;height:10px;margin-top:-8px;border-bottom:2px solid transparent;border-right:2px solid transparent;
+.checkbox + label:after{content:'';position:absolute;top:50%;left:10px;width:4px;height:10px;margin-top:-8px;border-bottom:2px solid #ddd;border-right:2px solid #ddd;
 -webkit-transform:rotate(45deg);
 transform:rotate(45deg);
 transition:border-color 0.2s;
@@ -199,7 +199,7 @@ transition:border-color 0.2s;
 
 .checkbox:checked + label:after{border-color:#007aff;}
 .checkbox:disabled + label{color:#aaa;}
-.checkbox:checked:disabled + label:after{border-color:#ccc;}
+.checkbox:checked:disabled + label:after{border-color:#aaa;}
 
 .checkbox.onright + label{padding-left:0;padding-right:30px;padding-left:0.5em;}
 .checkbox.onright + label:after{left:auto;right:10px;}
