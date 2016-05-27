@@ -27,7 +27,7 @@
     </header>
   </div>
 
-  <div id="hd_nav" class="tab_nav">
+  <div id="hd_nav" class="tab_nav fixed">
     <nav>
       <a href="javascript://" rel="tab" rev="link">Link &amp; Page</a>
       <a href="javascript://" rel="tab" rev="button">Button</a>
@@ -88,6 +88,13 @@
           <a href="#">上一页</a>
           <a href="#">下一页</a>
         </div>
+        <div class="pages small">
+          <a href="#">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <span>...</span>
+          <a href="#">99</a>
+        </div>
       </div>
 
       <h3>Default</h3>
@@ -104,6 +111,13 @@
           <a href="#">上一页</a>
           <a href="#">下一页</a>
         </div>
+        <div class="pages">
+          <a href="#">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <span>...</span>
+          <a href="#">99</a>
+        </div>
       </div>
 
       <h3>Full</h3>
@@ -114,7 +128,21 @@
           <a href="#">下一页</a>
           <a href="#">末页</a>
         </div>
+        <div class="pages small full">
+          <span>共 99 页</span>
+          <span>第 15 页</span>
+          <a href="#">上一页</a>
+          <a href="#">下一页</a>
+        </div>
+        <div class="pages small full">
+          <a href="#">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <span>...</span>
+          <a href="#">99</a>
+        </div>
         <div class="pages full">
+
           <a href="#">首页</a>
           <a href="#">上一页</a>
           <a href="#">下一页</a>
@@ -125,6 +153,13 @@
           <span>第 15 页</span>
           <a href="#">上一页</a>
           <a href="#">下一页</a>
+        </div>
+        <div class="pages full">
+          <a href="#">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <span>...</span>
+          <a href="#">99</a>
         </div>
       </div>
 
@@ -181,52 +216,55 @@
         <p>
           <button type="button" class="button small full">Button Full</button>
           <button type="button" class="button small full red">Red</button>
-          <button type="button" class="button small full border blue">Blue</button>
+          <button type="button" class="button small full radius blue">Blue</button>
+          <button type="button" class="button small full border green">Green</button>
+          <button type="button" class="button small full border radius purple">Purple</button>
         </p>
 
         <h4>Box</h4>
         <div class="button_box">
-          <button type="button" class="button small">Button</button>
-          <button type="button" class="button small">Box</button>
+          <button type="button" class="button small">Button Box</button>
         </div>
 
         <div class="button_box">
           <button type="button" class="button small red">Red</button>
           <button type="button" class="button small yellow">Yellow</button>
-          <button type="button" class="button small blue">Blue</button>
         </div>
 
         <div class="button_box">
-          <button type="button" class="button small gray">Gray</button>
-          <button type="button" class="button small lightgray">Light</button>
-          <button type="button" class="button small mediumgray">Medium</button>
-          <button type="button" class="button small darkgray">Dark</button>
+          <button type="button" class="button small border blue">Blue</button>
+          <button type="button" class="button small border green">Green</button>
+          <button type="button" class="button small border purple">Purple</button>
         </div>
 
         <div class="button_box">
-          <button type="button" class="button small border gray">Gray</button>
-          <button type="button" class="button small border lightgray">Light</button>
-          <button type="button" class="button small border mediumgray">Medium</button>
-          <button type="button" class="button small border darkgray">Dark</button>
+          <button type="button" class="button small border radius gray">Gray</button>
+          <button type="button" class="button small border radius lightgray">Light</button>
+          <button type="button" class="button small border radius mediumgray">Medium</button>
+          <button type="button" class="button small border radius darkgray">Dark</button>
         </div>
 
         <h4>Group</h4>
         <div class="button_group">
-          <button type="button" class="button small">Button</button>
-          <button type="button" class="button small">Group</button>
+          <button type="button" class="button small">Button Group</button>
         </div>
 
         <div class="button_group">
           <button type="button" class="button small red">Red</button>
           <button type="button" class="button small yellow">Yellow</button>
-          <button type="button" class="button small blue">Blue</button>
         </div>
 
         <div class="button_group">
-          <button type="button" class="button small gray">Gray</button>
-          <button type="button" class="button small lightgray">Light</button>
-          <button type="button" class="button small mediumgray">Medium</button>
-          <button type="button" class="button small darkgray">Dark</button>
+          <button type="button" class="button small border blue">Blue</button>
+          <button type="button" class="button small border green">Green</button>
+          <button type="button" class="button small border purple">Purple</button>
+        </div>
+
+        <div class="button_group">
+          <button type="button" class="button small border radius gray">Gray</button>
+          <button type="button" class="button small border radius lightgray">Light</button>
+          <button type="button" class="button small border radius mediumgray">Medium</button>
+          <button type="button" class="button small border radius darkgray">Dark</button>
         </div>
       </div>
 
@@ -279,52 +317,55 @@
         <p>
           <button type="button" class="button full">Button Full</button>
           <button type="button" class="button full red">Red</button>
-          <button type="button" class="button full border blue">Blue</button>
+          <button type="button" class="button full radius blue">Blue</button>
+          <button type="button" class="button full border green">Green</button>
+          <button type="button" class="button full border radius purple">Purple</button>
         </p>
 
         <h4>Box</h4>
         <div class="button_box">
-          <button type="button" class="button">Button</button>
-          <button type="button" class="button">Box</button>
+          <button type="button" class="button">Button Box</button>
         </div>
 
         <div class="button_box">
           <button type="button" class="button red">Red</button>
           <button type="button" class="button yellow">Yellow</button>
-          <button type="button" class="button blue">Blue</button>
         </div>
 
         <div class="button_box">
-          <button type="button" class="button gray">Gray</button>
-          <button type="button" class="button lightgray">Light</button>
-          <button type="button" class="button mediumgray">Medium</button>
-          <button type="button" class="button darkgray">Dark</button>
+          <button type="button" class="button border blue">Blue</button>
+          <button type="button" class="button border green">Green</button>
+          <button type="button" class="button border purple">Purple</button>
         </div>
 
         <div class="button_box">
-          <button type="button" class="button border gray">Gray</button>
-          <button type="button" class="button border lightgray">Light</button>
-          <button type="button" class="button border mediumgray">Medium</button>
-          <button type="button" class="button border darkgray">Dark</button>
+          <button type="button" class="button border radius gray">Gray</button>
+          <button type="button" class="button border radius lightgray">Light</button>
+          <button type="button" class="button border radius mediumgray">Medium</button>
+          <button type="button" class="button border radius darkgray">Dark</button>
         </div>
 
         <h4>Group</h4>
         <div class="button_group">
-          <button type="button" class="button">Button</button>
-          <button type="button" class="button">Group</button>
+          <button type="button" class="button">Button Group</button>
         </div>
 
         <div class="button_group">
           <button type="button" class="button red">Red</button>
           <button type="button" class="button yellow">Yellow</button>
-          <button type="button" class="button blue">Blue</button>
         </div>
 
         <div class="button_group">
-          <button type="button" class="button gray">Gray</button>
-          <button type="button" class="button lightgray">Light</button>
-          <button type="button" class="button mediumgray">Medium</button>
-          <button type="button" class="button darkgray">Dark</button>
+          <button type="button" class="button border blue">Blue</button>
+          <button type="button" class="button border green">Green</button>
+          <button type="button" class="button border purple">Purple</button>
+        </div>
+
+        <div class="button_group">
+          <button type="button" class="button border radius gray">Gray</button>
+          <button type="button" class="button border radius lightgray">Light</button>
+          <button type="button" class="button border radius mediumgray">Medium</button>
+          <button type="button" class="button border radius darkgray">Dark</button>
         </div>
       </div>
 
@@ -338,9 +379,9 @@
         <p><input type="text" class="input small" placeholder="Placeholder"></p>
         <p><input type="text" class="input small" value="Readonly" readonly></p>
         <p><input type="text" class="input small" value="Disabled" disabled></p>
-        <p><input type="text" class="input small" size="24" placeholder="set 'size' for width"></p>
-        <p><input type="text" class="input small full" placeholder="full width"></p>
-        <p><input type="text" class="input small full border" placeholder="border"></p>
+        <p><input type="text" class="input small" size="24" placeholder="Set 'size' For Width"></p>
+        <p><input type="text" class="input small full" placeholder="Full Width"></p>
+        <p><input type="text" class="input small full border" placeholder="Border"></p>
       </div>
 
       <h3>Default</h3>
@@ -349,9 +390,9 @@
         <p><input type="text" class="input" placeholder="Placeholder"></p>
         <p><input type="text" class="input" value="Readonly" readonly></p>
         <p><input type="text" class="input" value="Disabled" disabled></p>
-        <p><input type="text" class="input" size="24" placeholder="set 'size' for width"></p>
-        <p><input type="text" class="input full" placeholder="full width"></p>
-        <p><input type="text" class="input full border" placeholder="border"></p>
+        <p><input type="text" class="input" size="24" placeholder="Set 'size' For Width"></p>
+        <p><input type="text" class="input full" placeholder="Full Width"></p>
+        <p><input type="text" class="input full border" placeholder="Border"></p>
       </div>
 
       <h2>Textarea</h2>
@@ -360,9 +401,9 @@
         <p><textarea class="input" placeholder="Placeholder"></textarea></p>
         <p><textarea class="input" readonly>Readonly</textarea></p>
         <p><textarea class="input" disabled>Disabled</textarea></p>
-        <p><textarea class="input" size="24" placeholder="set 'cols' for width"></textarea></p>
-        <p><textarea class="input full" placeholder="full width"></textarea></p>
-        <p><textarea class="input full border" placeholder="border"></textarea></p>
+        <p><textarea class="input" size="24" placeholder="Set 'cols' For Width"></textarea></p>
+        <p><textarea class="input full" placeholder="Full Width"></textarea></p>
+        <p><textarea class="input full border" placeholder="Border"></textarea></p>
       </div>
 
       <h2>Radio</h2>
@@ -455,6 +496,8 @@
             </optgroup>
           </select>
         </p>
+
+        <h4>Border</h4>
         <p>
           <select class="select small border">
             <option>Select</option>
@@ -465,7 +508,7 @@
             </optgroup>
           </select>
           <select class="select small border" disabled>
-            <option>Select Disabled</option>
+            <option>Select Border Disabled</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -473,6 +516,8 @@
             </optgroup>
           </select>
         </p>
+
+        <h4>Full</h4>
         <p>
           <select class="select small full">
             <option>Select Full Width</option>
@@ -495,7 +540,7 @@
         </p>
         <p>
           <select class="select small full border">
-            <option>Select Full Width</option>
+            <option>Select Border Full Width</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -505,7 +550,119 @@
         </p>
         <p>
           <select class="select small full border" Disabled>
-            <option>Select Full Width Disabled</option>
+            <option>Select Border Full Width Disabled</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+
+        <h4>Box</h4>
+        <p class="select_box">
+          <select class="select small">
+            <option>Select</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p class="select_box">
+          <select class="select small">
+            <option>Select</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select small">
+            <option>Select</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p class="select_box">
+          <select class="select small border">
+            <option>Select</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select small border">
+            <option>Select</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select small border">
+            <option>Select</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+
+        <h4>Group</h4>
+        <p class="select_group">
+          <select class="select small">
+            <option>Select</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p class="select_group">
+          <select class="select small">
+            <option>Select</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select small">
+            <option>Select</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </p>
+        <p class="select_group">
+          <select class="select small border">
+            <option>Select</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select small border">
+            <option>Select</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select small border">
+            <option>Select</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -535,6 +692,8 @@
             </optgroup>
           </select>
         </p>
+
+        <h4>Border</h4>
         <p>
           <select class="select border">
             <option>Select</option>
@@ -545,7 +704,7 @@
             </optgroup>
           </select>
           <select class="select border" disabled>
-            <option>Select Disabled</option>
+            <option>Select Border Disabled</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -553,6 +712,8 @@
             </optgroup>
           </select>
         </p>
+
+        <h4>Full</h4>
         <p>
           <select class="select full">
             <option>Select Full Width</option>
@@ -575,7 +736,7 @@
         </p>
         <p>
           <select class="select full border">
-            <option>Select Full Width</option>
+            <option>Select Border Full Width</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -585,7 +746,7 @@
         </p>
         <p>
           <select class="select full border" Disabled>
-            <option>Select Full Width Disabled</option>
+            <option>Select Border Full Width Disabled</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -593,39 +754,11 @@
             </optgroup>
           </select>
         </p>
-      </div>
 
-      <h3>Box</h3>
-      <div class="demo">
+        <h4>Box</h4>
         <p class="select_box">
-          <select class="select small">
-            <option>Select Master</option>
-            <optgroup label="optgroup">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </optgroup>
-          </select>
-          <select class="select small">
-            <option>Select Sub</option>
-            <optgroup label="optgroup">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </optgroup>
-          </select>
-        </p>
-        <p class="select_box">
-          <select class="select small border">
-            <option>Select Master</option>
-            <optgroup label="optgroup">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </optgroup>
-          </select>
-          <select class="select small border">
-            <option>Select Sub</option>
+          <select class="select">
+            <option>Select</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -635,7 +768,7 @@
         </p>
         <p class="select_box">
           <select class="select">
-            <option>Select Master</option>
+            <option>Select</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -643,7 +776,7 @@
             </optgroup>
           </select>
           <select class="select">
-            <option>Select Sub</option>
+            <option>Select</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -653,7 +786,7 @@
         </p>
         <p class="select_box">
           <select class="select border">
-            <option>Select Master</option>
+            <option>Select</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -661,7 +794,15 @@
             </optgroup>
           </select>
           <select class="select border">
-            <option>Select Sub</option>
+            <option>Select</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select border">
+            <option>Select</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -669,39 +810,11 @@
             </optgroup>
           </select>
         </p>
-      </div>
 
-      <h3>Group</h3>
-      <div class="demo">
+        <h4>Group</h4>
         <p class="select_group">
-          <select class="select small">
-            <option>Select Master</option>
-            <optgroup label="optgroup">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </optgroup>
-          </select>
-          <select class="select small">
-            <option>Select Sub</option>
-            <optgroup label="optgroup">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </optgroup>
-          </select>
-        </p>
-        <p class="select_group">
-          <select class="select small border">
-            <option>Select Master</option>
-            <optgroup label="optgroup">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </optgroup>
-          </select>
-          <select class="select small border">
-            <option>Select Sub</option>
+          <select class="select">
+            <option>Select</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -711,7 +824,7 @@
         </p>
         <p class="select_group">
           <select class="select">
-            <option>Select Master</option>
+            <option>Select</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -719,7 +832,7 @@
             </optgroup>
           </select>
           <select class="select">
-            <option>Select Sub</option>
+            <option>Select</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -729,7 +842,7 @@
         </p>
         <p class="select_group">
           <select class="select border">
-            <option>Select Master</option>
+            <option>Select</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -737,7 +850,15 @@
             </optgroup>
           </select>
           <select class="select border">
-            <option>Select Sub</option>
+            <option>Select</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <select class="select border">
+            <option>Select</option>
             <optgroup label="optgroup">
               <option>Option 1</option>
               <option>Option 2</option>

@@ -17,7 +17,7 @@ pre code{margin:0;padding:0;border:none;background:none;font-family:Consolas,'Lu
 /**
  * 示例区域
  * ------------------------------ */
-.demo{margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #ccc;}
+.demo{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #ccc;}
 .demo h3{margin-top:10px;}
 .demo p + p{margin-top:10px;}
 .demo_link{font-size:1.4rem;line-height:2;}
