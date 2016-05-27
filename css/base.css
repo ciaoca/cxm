@@ -10,9 +10,8 @@ fieldset,img,iframe{border:none;}
 table{border-collapse:collapse;table-layout:fixed;empty-cells:show;}
 caption,th{text-align:left;font-weight:normal;}
 address,caption,cite,code,dfn,th{font-style:normal;font-weight:normal;}
-input,select,textarea{font-family:Tahoma,'\5fae\8f6f\96c5\9ed1',sans-serif;font-size:100%;vertical-align:baseline;outline:none;}
+input,select,textarea{font-family:inherit;font-size:100%;vertical-align:baseline;outline:none;}
 textarea{vertical-align:top;}
-input[type='button'],input[type='submit'],button{font-family:Arial,'\5fae\8f6f\96c5\9ed1',sans-serif;}
 img{vertical-align:middle;}
 em,i{font-style:normal;}
 ins{text-decoration:underline;}
@@ -20,7 +19,7 @@ del{text-decoration:line-through;}
 q:before,q:after{content:'';}
 hr{margin:4px 0;border:none;border-top:1px solid #ccc;border-bottom:1px solid #fff;}
 html{font-size:10px;}
-body{color:#333;font-family:Arial,'\5fae\8f6f\96c5\9ed1',sans-serif;font-size:1.2rem;line-height:1.6;
+body{color:#333;font-family:arial,'\5fae\8f6f\96c5\9ed1',sans-serif;font-size:1.2rem;line-height:1.6;
 /*-webkit-user-select:none;*/
 }
 
@@ -393,7 +392,7 @@ flex:1 1 50%;
 .mb{margin-bottom:10px;}
 
 /* 分页 */
-.pages{clear:both;padding:15px 0;color:#888;font:1.4rem/42px Tahoma;text-align:center;}
+.pages{clear:both;padding:15px 0;color:#888;font-size:1.4rem;line-height:42px;text-align:center;}
 .pages a,
 .pages span,
 .pages strong{box-sizing:border-box;display:inline-block;min-width:42px;margin:0 4px 0 0;padding:0 1em;border-radius:3px;text-align:center;}
