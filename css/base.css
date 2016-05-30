@@ -338,7 +338,7 @@ transform:none;
 .button.border.white{border-color:#fff;color:#fff;}
 
 .button.radius{border-radius:99px;}
-.button.notradius{border-right:0 !important;}
+.button.notradius{border-radius:0 !important;}
 
 .button.shadow{box-shadow:0 3px 0 rgba(0,0,0,0.2);}
 .button.shadow.small{box-shadow:0 2px 0 rgba(0,0,0,0.2);}
