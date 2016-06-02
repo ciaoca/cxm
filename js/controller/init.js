@@ -1,10 +1,20 @@
+/**
+ * 全局配置
+ * ------------------------------ */
+window.APP = new WebApp({
+  version: '1.0.0',
+  storagePrefix: ''
+});
+
 window.GLOBAL = {
   url: {},
   platform: {},
   wechat: {}
 };
 
-// 保存系统、浏览器信息
+/**
+ * 保存系统、浏览器信息
+ */
 (function() {
   var ua = navigator.userAgent;
   var _versionExp = '\\s?([\\d\\.\\-\\_]+)';
@@ -31,3 +41,19 @@ window.GLOBAL = {
     window.GLOBAL.platform.browser = 'wechat';
   };
 })();
+
+
+/**
+ * artTemplate 模板引擎添加方法
+ */
+template.helper('tfEncodeURIComponent', function(string) {
+  return encodeURIComponent(string);
+});
+
+template.helper('tfReplaceEnter', function(string) {
+  return APP.replaceEnter(string);
+});
+
+template.helper('tfDate', function(format, date) {
+  return cxDate(format, date);
+});

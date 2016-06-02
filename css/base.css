@@ -497,12 +497,12 @@ animation:loadingB 2s infinite ease-out;
 /**
  * 全屏 loading 动画
  * ------------------------------ */
-#full_loading{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);z-index:999;}
-#full_loading:before{content:'';position:absolute;bottom:60%;left:50%;width:24px;height:24px;margin-left:-15px;border:3px solid #eee;border-top-color:transparent;border-bottom-color:transparent;border-radius:50%;
+#app_loading{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);z-index:999;}
+#app_loading:before{content:'';position:absolute;bottom:60%;left:50%;width:24px;height:24px;margin-left:-15px;border:3px solid #eee;border-top-color:transparent;border-bottom-color:transparent;border-radius:50%;
 -webkit-animation:loadingRotate 1s infinite linear;
 animation:loadingRotate 1s infinite linear;
 }
-#full_loading:after{content:attr(title);position:absolute;top:41%;left:0;width:100%;color:#eee;font-size:1.4rem;text-align:center;}
+#app_loading:after{content:attr(title);position:absolute;top:41%;left:0;width:100%;color:#eee;font-size:1.4rem;text-align:center;}
 
 @-webkit-keyframes loadingRotate{
 0%{-webkit-transform:rotate(0);transform:rotate(0);}
@@ -514,33 +514,32 @@ animation:loadingRotate 1s infinite linear;
 }
 
 
+/**
+ * APP 展示二维码
+ * ------------------------------ */
+#app_qrcode{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);z-index:999;}
+#app_qrcode .main{box-sizing:border-box;position:absolute;top:10%;left:10%;width:80%;background-color:#fff;}
+#app_qrcode .hd{padding:0.5em 1em;background-color:#555;color:#fff;font-size:1.6rem;text-align:center;}
+#app_qrcode .ft{padding:1em;border-top:1px solid #ddd;color:#555;font-size:1.4rem;text-align:center;}
+#app_qrcode .bd{padding:20px;}
+#app_qrcode .bd:only-child{padding:20px;}
+#app_qrcode .qrcode{margin:0 auto;}
+
+
+
+/**
+ * APP 提示
+ * ------------------------------ */
+#app_tip{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:999;}
+
+
 
 /**
  * 当前页二维码
  * ------------------------------ */
-.this_qrcode{display:none;position:absolute;top:60px;left:50%;margin-left:330px;padding:14px;border:1px solid #d9dadc;background:#fff;color:#777;font-size:1.4rem;line-height:1.6rem;text-align:center;}
+.this_qrcode{display:none;position:absolute;top:60px;left:50%;margin-left:340px;padding:14px;background:#fff;color:#777;font-size:1.4rem;line-height:1.6rem;text-align:center;}
 .this_qrcode img{margin:0 auto;}
 .this_qrcode p{margin-top:8px;}
-
-
-
-/**
- * 展示二维码
- * ------------------------------ */
-#full_qrcode{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);z-index:999;}
-#full_qrcode .box{box-sizing:border-box;position:absolute;top:10%;left:10%;width:80%;background-color:#fff;}
-#full_qrcode .hd{padding:0.5em 1em;background-color:#555;color:#fff;font-size:1.6rem;text-align:center;}
-#full_qrcode .ft{padding:1em;border-top:1px solid #ddd;color:#555;font-size:1.4rem;text-align:center;}
-#full_qrcode .bd{padding:20px;}
-#full_qrcode .bd:only-child{padding:20px;}
-#full_qrcode .qrcode{margin:0 auto;}
-
-
-
-/**
- * 微信分享提示
- * ------------------------------ */
-#wechat_share_tip{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:999;}
 
 
 

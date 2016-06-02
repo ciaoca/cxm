@@ -13,29 +13,39 @@ $.cxDialog.defaults.ok = function(){};
 
 // 全局操作
 $('body').on('click', 'a', function(){
-  var _rel = this.rel;
-  var _rev = this.rev;
+  var _this = this;
+  var _rel = _this.rel;
+  var _rev = _this.rev;
   var _opt;
 
   try {
-    _opt = JSON.parse(this.dataset.option);
+    _opt = JSON.parse(_this.dataset.option);
   } catch (e) {
     _opt = {};
   };
 
+  // 显示提示
+  if (_rel === 'call_tip') {
+    APP.tipShow(_rev);
+    return false;
+
   // 显示二维码
-  if (_rel === 'call_qrcode') {
-    window.CallQrcode.show(_rev, _opt);
+  } else if (_rel === 'call_qrcode') {
+    _opt = $.extend({}, {
+      info: _rev
+    }, _opt);
+    
+    APP.qrcodeShow(_opt);
     return false;
 
   // 发送短信验证码
   } else if (_rel === 'call_sms') {
-    window.CallSms.send(this);
+    APP.smsSend(_this);
     return false;
 
-  // 显示微信分享提示
-  } else if (_rel === 'call_wechat_share') {
-    window.CallWechatTip.show(_rev);
+  // 显示面板
+  } else if (_rel === 'call_panel') {
+    document.getElementById(_rev).classList.toggle('out');
     return false;
   };
 });
@@ -105,11 +115,10 @@ $('#header').on('click', 'dt', function() {
 })();
 
 
-// 底部导航自适应兼容
+// flex 兼容
 (function() {
-  var footerNav = document.getElementById('footer_nav');
-
-  if (!footerNav || /(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase())) {
+  // iOS 不需要 fix
+  if (/(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase())) {
     return;
   };
 
@@ -120,6 +129,17 @@ $('#header').on('click', 'dt', function() {
     };
   };
 
-  footerNav.classList.add('flex');
-  footerNav.classList.add('flex_' + footerNav.querySelectorAll('a').length);
+  var footerNav = document.getElementById('footer_nav');
+  if (footerNav) {
+    footerNav.classList.add('flex');
+    footerNav.classList.add('flex_' + footerNav.querySelectorAll('a').length);
+  };
+
+  var tabNavArray = document.querySelectorAll('.nav_tab');
+  if (tabNavArray.length) {
+    for (var i = 0, l = tabNavArray.length; i < l; i++) {
+      tabNavArray[i].classList.add('flex');
+      tabNavArray[i].classList.add('flex_' + tabNavArray[i].querySelectorAll('a').length);
+    };
+  };
 })();
