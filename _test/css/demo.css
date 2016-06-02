@@ -9,8 +9,8 @@ code{margin:0 3px;padding:0 5px;border:1px solid #ddd;border-radius:3px;backgrou
 pre{position:relative;overflow:auto;margin:10px 0;padding:14px;border:1px solid #ddd;border-radius:3px;background:#f7f7f7;color:#555;word-wrap:break-word;}
 pre code{margin:0;padding:0;border:none;background:none;font-family:Consolas,'Lucida Console',Monaco,Courier,'Courier New';font-size:1.2rem;}
 
-#wechat_share_tip.demo:before{content:'点击右上角，分享到朋友圈';position:absolute;top:10px;right:10px;color:#fff;font-size:2rem;}
-#wechat_share_tip.demo:after{content:'使用背景图片，定义样式';position:absolute;top:50px;right:10px;color:#aaa;font-size:1.6rem;}
+#app_tip.demo:before{content:'点击右上角，分享到朋友圈';position:absolute;top:10px;right:10px;color:#fff;font-size:2rem;}
+#app_tip.demo:after{content:'使用背景图片，定义样式';position:absolute;top:50px;right:10px;color:#aaa;font-size:1.6rem;}
 
 
 

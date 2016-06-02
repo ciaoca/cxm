@@ -28,30 +28,32 @@
   </div>
 
   <div class="mbox">
+    <h2>全屏提示</h2>
+    <div class="demo">
+      <a class="button small green" href="javascript://" rel="call_tip" rev="demo">分享到朋友圈</a>
+      <pre><code>&lt;a rel="call_tip" rev='添加 class'&gt;分享到朋友圈&lt;/a&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="mbox">
     <h2>展示二维码</h2>
     <div class="demo">
       <a class="button small" href="javascript://" rel="call_qrcode" rev='{"name":"string","age":18}'>JSON</a>
       <a class="button small" href="javascript://" rel="call_qrcode" rev="http://ciaoca.com/">链接</a>
       <a class="button small" href="javascript://" rel="call_qrcode" rev="自定义内容" data-option='{"before":"<div style=\"color:#ddd;\">标题</div>","after":"支持 HTML"}'>自定义内容</a>
 <pre><code>data-option 参数
+  info        二维码内容
   size        二维码图片尺寸（正方形）
-  baseclass   添加 class
-  before      头部内容（支持 HTML）
-  after       底部内容（支持 HTML）
+  baseclass   wrap 添加 class
+  before      二维码图像前面添加内容（支持 HTML）
+  after       二维码图像后面添加内容（支持 HTML）
   colorDark   暗色
   colorLight  亮色
   quality     校正标准（L, M, Q, H）
 
-&lt;a rel="call_qrcode" rev='二维码内容' data-option='参数'&gt;二维码&lt;/a&gt;
+&lt;a rel="call_qrcode" rev='自定义内容' data-option='{"info":"通过参数设置自定义内容"}'&gt;二维码&lt;/a&gt;
 </code></pre>
-    </div>
-  </div>
-
-  <div class="mbox">
-    <h2>微信分享提示</h2>
-    <div class="demo">
-      <a class="button small green" href="javascript://" rel="call_wechat_share" rev="demo">分享到朋友圈</a>
-      <pre><code>&lt;a rel="call_wechat_share" rev='添加 class'&gt;分享到朋友圈&lt;/a&gt;</code></pre>
+      <p>属性<code>data-option</code>中内容使用 JSON 格式，需要修改为使用单引号设置。</p>
     </div>
   </div>
 
@@ -59,7 +61,7 @@
     <h2>发送短信</h2>
     <div class="demo">
       <h3>发送按钮设置</h3>
-<pre><code>data- 参数
+<pre><code>data-* 参数
   url            发送短信的接口地址
   input          手机号码输入框
   captcha        验证码输入框

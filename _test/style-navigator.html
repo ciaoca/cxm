@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>CSS 表单 - cxStyle</title>
+<title>CSS 导航 - cxStyle</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
@@ -28,52 +28,50 @@
   </div>
 
   <div class="mbox">
-    <h2>Form</h2>
+    <h2>Tab 样式</h2>
   </div>
 
-  <form action="?" method="get" class="form">
-    <dl class="row">
-      <dt>Email</dt>
-      <dd class="note">a***z@gmail.com</dd>
-    </dl>
-    <dl class="row">
-      <dt><label for="login_name">用户名</label></dt>
-      <dd><input type="text" id="login_name" class="input full"></dd>
-    </dl>
-    <dl class="row">
-      <dt><label for="login_pwd">密码</label></dt>
-      <dd><input type="password" id="login_pwd" class="input full"></dd>
-    </dl>
+  <div class="nav_tab">
+  <!-- <div class="nav_tab fixed"> -->
+  <!-- <div class="nav_tab radius"> -->
+  <!-- <div class="nav_tab radius fixed"> -->
+    <nav>
+      <a class="n" href="#">分类</a>
+      <a href="#">分类</a>
+      <a href="#">分类</a>
+    </nav>
+  </div>
 
-    <div class="mbox">
-      <h3>Placeholder</h3>
-    </div>
+  <div class="mbox">
+    <h2>Tab 圆角样式</h2>
+  </div>
+  <div class="nav_tab radius">
+    <nav>
+      <a class="n" href="#">分类</a>
+      <a href="#">分类</a>
+      <a href="#">分类</a>
+    </nav>
+  </div>
 
-    <div class="row">
-      <input type="text" class="input full" placeholder="用户名">
-    </div>
-    <div class="row">
-      <input type="password" class="input full" placeholder="密码">
-    </div>
-
-    <div class="note">Note</div>
-
-    <div class="row note">Note</div>
-    <div class="row">
-      <div class="note">Note</div>
-    </div>
-    <dl class="row">
-      <dt class="note">Note</dt>
-      <dd class="note">Note</dd>
-    </dl>
-
-    <div class="btns mbox">
-      <button type="submit" class="button full blue">登录</button>
-    </div>
-  </form>
+  <div class="mbox">
+    <h2>垂直排列样式</h2>
+  </div>
+  <nav class="nav_link">
+    <a href="#">分类</a>
+    <a href="#">分类</a>
+    <a href="#">分类</a>
+  </nav>
 
   <footer class="footer"></footer>
 </div>
 <script src="../js/controller/reday.js"></script>
+<script>
+(function() {
+  $('.nav_tab').on('click', 'a', function() {
+    event.preventDefault();
+    $(this).addClass('n').siblings().removeClass('n');
+  });
+})();
+</script>
 </body>
 </html>

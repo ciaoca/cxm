@@ -13,6 +13,7 @@
 <meta name="format-detection" content="telephone=no">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/demo.css">
 <script src="js/zepto.min.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/controller/init.js"></script>
@@ -22,8 +23,8 @@
   <!-- Header File Start -->
   <div id="header" class="header">
     <header>
-      <h1>标题</h1>
-      <a class="icon back" href="#"></a>
+      <h1 id="header_title">标题</h1>
+      <a id="header_back" class="icon back" href="#"></a>
       <!-- <a class="icon onright go" href="#"></a> -->
       <!--
       <dl class="menu">
@@ -47,6 +48,17 @@
   </div>
   <!-- Header File End -->
 
+  <div class="nav_tab">
+  <!-- <div class="nav_tab fixed"> -->
+  <!-- <div class="nav_tab radius"> -->
+  <!-- <div class="nav_tab radius fixed"> -->
+    <nav>
+      <a class="n" href="#">分类</a>
+      <a href="#">分类</a>
+      <a href="#">分类</a>
+    </nav>
+  </div>
+
   <div id="home_slide" class="slide home_slide">
     <ul class="box">
       <li>
@@ -61,12 +73,30 @@
     </ul>
   </div>
 
-  <div class="home_main">
-    
+  <div class="mbox mt">
+    <div class="detail">
+      <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
+      <h1>标题1</h1>
+      <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
+      <h2>标题2</h2>
+      <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
+      <h3>标题3</h3>
+      <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
+      <h4>标题4</h4>
+      <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
+      <h5>标题5</h5>
+      <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
+      <h6>标题6</h6>
+      <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
+      <p>&nbsp;</p>
+      <p>图片自适应</p>
+      <p><img src="http://placehold.it/640x320"></p>
+      <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
+    </div>
   </div>
 
   <!-- Footer File Start -->
-  <div class="footer_nav">
+  <div id="footer_nav" class="footer_nav">
     <nav>
       <a href="#">导航</a>
       <a href="#">导航</a>
@@ -93,6 +123,7 @@
   slideBtns.append(_html).appendTo(slideBox);
 
   var toggleBtn = function(n){
+    // 只有两个展示项时，序号与预期不符
     if (slideSum === 2 && n > 1) {
       n -= 2;
     };
