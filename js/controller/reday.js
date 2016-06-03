@@ -1,6 +1,6 @@
 // FastClick Only iOS
 // 在 Android 低端机下，效果不理想，不使用
-if ('addEventListener' in document && /(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase())) {
+if ('addEventListener' in document && window.GLOBAL.platform.system === 'ios') {
   document.addEventListener('DOMContentLoaded', function() {
     FastClick.attach(document.body);
   }, false);
@@ -12,7 +12,7 @@ $.cxDialog.defaults.background = 'rgba(0,0,0,0.4)';
 $.cxDialog.defaults.ok = function(){};
 
 // 全局操作
-$('body').on('click', 'a', function(){
+$('body').on('click', 'a', function(event){
   var _this = this;
   var _rel = _this.rel;
   var _rev = _this.rev;
@@ -26,27 +26,27 @@ $('body').on('click', 'a', function(){
 
   // 显示提示
   if (_rel === 'call_tip') {
+    event.preventDefault();
     APP.tipShow(_rev);
-    return false;
 
   // 显示二维码
   } else if (_rel === 'call_qrcode') {
+    event.preventDefault();
     _opt = $.extend({}, {
       info: _rev
     }, _opt);
     
     APP.qrcodeShow(_opt);
-    return false;
 
   // 发送短信验证码
   } else if (_rel === 'call_sms') {
+    event.preventDefault();
     APP.smsSend(_this);
-    return false;
 
-  // 显示面板
+  // 侧面板
   } else if (_rel === 'call_panel') {
+    event.preventDefault();
     document.getElementById(_rev).classList.toggle('out');
-    return false;
   };
 });
 
@@ -99,7 +99,7 @@ $('#header').on('click', 'dt', function() {
 
 // 当前页面二维码
 (function(){
-  var box = $('<div></div>', {class: 'this_qrcode'});
+  var box = document.createElement('div');
   var pic = document.createElement('div');
 
   var qrcode = new QRCode(pic, {
@@ -111,7 +111,10 @@ $('#header').on('click', 'dt', function() {
     correctLevel : QRCode.CorrectLevel.L
   });
 
-  box.prepend(pic).append('<p>微信扫一扫<br>获得更多内容</p>').appendTo('body');
+  box.classList.add('this_qrcode');
+  box.appendChild(pic);
+  box.insertAdjacentHTML('beforeend', '<p>微信扫一扫<br>获得更多内容</p>');
+  document.body.appendChild(box);
 })();
 
 
