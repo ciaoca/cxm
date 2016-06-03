@@ -583,7 +583,7 @@
       colorLight : options.colorLight,
       correctLevel : QRCode.CorrectLevel[options.quality]
     });
-console.log(options)
+
     var _html = '<div class="bd"></div>';
 
     if (typeof options.before === 'string' && options.before.length) {
