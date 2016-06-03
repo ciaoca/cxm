@@ -1,7 +1,7 @@
 // FastClick Only iOS
 // 在 Android 低端机下，效果不理想，不使用
 if ('addEventListener' in document && window.GLOBAL.platform.system === 'ios') {
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function(){
     FastClick.attach(document.body);
   }, false);
 };
@@ -43,7 +43,7 @@ $('body').on('click', 'a', function(event){
     event.preventDefault();
     APP.smsSend(_this);
 
-  // 侧面板
+  // 显示面板
   } else if (_rel === 'call_panel') {
     event.preventDefault();
     document.getElementById(_rev).classList.toggle('out');

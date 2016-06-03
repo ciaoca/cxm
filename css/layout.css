@@ -54,7 +54,7 @@ transform:rotate(45deg);
 
 .header .menu{position:absolute;top:0;left:0;width:44px;height:100%;color:#fff;}
 .header .menu dt{font-size:3rem;height:inherit;line-height:inherit;text-align:center;}
-.header .menu dt:before{content:'+';display:block;color:#fff;
+.header .menu dt:before{content:'+';display:block;
 transition-property:-webkit-transform;
 transition-property:transform;
 transition-property:transform,-webkit-transform;
@@ -67,7 +67,7 @@ transition:opacity 0.4s ease-out;
 .header .menu dd{overflow:hidden;position:absolute;top:100%;left:5px;width:5em;max-height:0;margin-top:8px;padding:0 10px;border-radius:3px;background-color:#4a89dc;font-size:1.4rem;line-height:40px;opacity:0;
 transition:max-height 0.4s ease-out,opacity 0.4s ease-out;
 }
-.header .menu dd a{display:block;position:relative;padding-left:0.5em;color:#fff;}
+.header .menu dd a{display:block;position:relative;padding-left:0.5em;}
 .header .menu dd a + a{border-top:1px solid rgba(255,255,255,0.3);}
 
 .header .menu.onright{left:auto;right:0;}
@@ -91,13 +91,13 @@ transform:rotate(135deg);
  * 底部导航
  * ------------------------------ */
 .footer_nav{position:relative;height:55px;margin-top:10px;z-index:9;}
-.footer_nav nav{overflow:hidden;position:fixed;bottom:0;left:0;width:100%;height:55px;border-top:1px solid #ddd;background-color:rgba(255,255,255,0.9);text-align:center;
+.footer_nav nav{overflow:hidden;position:fixed;bottom:0;left:0;width:100%;height:55px;border-top:1px solid #ddd;background-color:rgba(255,255,255,0.9);line-height:20px;text-align:center;
 display:-webkit-box;
 display:box;
 display:-webkit-flex;
 display:flex;
 }
-.footer_nav nav a{overflow:hidden;position:relative;padding-top:7px;text-indent:100%;white-space:nowrap;color:#999;
+.footer_nav nav a{overflow:hidden;position:relative;padding-top:7px;color:#999;white-space:nowrap;
 -webkit-box-flex:1;
 box-flex:1;
 -webkit-flex:1 1 50%;
@@ -270,6 +270,7 @@ transform:rotate(45deg);
 .upfile_pic li.have a[rel='remove']{display:block;}
 
 
+
 /**
  * 列表
  * ------------------------------ */
@@ -291,6 +292,9 @@ transform:rotate(45deg) translate(-25%,-25%);
 .ajax_list.load + .getmore,
 .ajax_list.empty + .getmore,
 .ajax_list.end + .getmore{display:none;}
+
+
+
 
 
 /**
