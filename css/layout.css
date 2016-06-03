@@ -140,7 +140,7 @@ box-flex:1;
 flex:1 1 50%;
 }
 .nav_tab a.n{color:#4a89dc;}
-.nav_tab a.n:after{content:'';position:absolute;bottom:0;left:20%;width:60%;height:2px;background-color:#4a89dc;}
+.nav_tab a.n:after{content:'';position:absolute;bottom:0;left:20%;width:60%;height:2px;background-color:currentColor;}
 
 
 /* 圆角版 */
