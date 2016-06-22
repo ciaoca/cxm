@@ -16,13 +16,11 @@ $('body').on('click', 'a', function(event){
   var _this = this;
   var _rel = _this.rel;
   var _rev = _this.rev;
-  var _opt;
+  var _opt = _this.dataset.option;
 
   try {
-    _opt = JSON.parse(_this.dataset.option);
-  } catch (e) {
-    _opt = {};
-  };
+    _opt = JSON.parse(_opt);
+  } catch (e) {};
 
   // 显示提示
   if (_rel === 'call_tip') {
@@ -118,7 +116,16 @@ $('#header').on('click', 'dt', function() {
 })();
 
 
-// flex 兼容
+/**
+ * flex 兼容
+ * 需要增加其他兼容在 ready.js 之前设置全局变量：
+ * window.GLOBAL.fixFlexSelectors = [
+ *   {
+ *     name: 'selectorName',
+ *     tag: 'selectorName'
+ *   }
+ * ]
+ */
 (function() {
   // iOS 不需要 fix
   if (/(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase())) {
