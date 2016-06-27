@@ -623,7 +623,7 @@
   app.prototype.formAjax = function(form, options, errorCallback) {
     var self = this;
 
-    if (self.isJquery(form) && !self.isZepto(form)) {
+    if (!self.isJquery(form) && !self.isZepto(form)) {
       if (self.isElement(form)) {
         form = $(form);
       } else {
