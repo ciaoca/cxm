@@ -455,41 +455,41 @@ flex:1 1 50%;
 /**
  * loading 动画
  * ------------------------------ */
-.loading{position:relative;width:20px;height:12px;margin:10px auto;}
+.loading{position:relative;width:12px;height:12px;margin:10px auto;}
 .loading:before,
 .loading:after{content:'';position:absolute;top:0;width:12px;height:12px;border-radius:50%;}
 .loading:before{left:0;background:#f55;
--webkit-animation:loadingA 2s infinite ease-out;
-animation:loadingA 2s infinite ease-out;
+-webkit-animation:AnimeLoadingA 2s infinite ease-out;
+animation:AnimeLoadingA 2s infinite ease-out;
 }
 .loading:after{right:0;background:#09f;
--webkit-animation:loadingB 2s infinite ease-out;
-animation:loadingB 2s infinite ease-out;
+-webkit-animation:AnimeLoadingB 2s infinite ease-out;
+animation:AnimeLoadingB 2s infinite ease-out;
 }
 
-@-webkit-keyframes loadingA{
-0%{left:0;z-index:2;}
-50%{left:100%;z-index:2;}
+@-webkit-keyframes AnimeLoadingA{
+0%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:2;}
+50%{-webkit-transform:translate(200%,0);transform:translate(200%,0);z-index:2;}
 51%{z-index:1;}
-100%{left:0;z-index:1;}
+100%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:1;}
 }
-@keyframes loadingA{
-0%{left:0;z-index:2;}
-50%{left:100%;z-index:2;}
+@keyframes AnimeLoadingA{
+0%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:2;}
+50%{-webkit-transform:translate(200%,0);transform:translate(200%,0);z-index:2;}
 51%{z-index:1;}
-100%{left:0;z-index:1;}
+100%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:1;}
 }
-@-webkit-keyframes loadingB{
-0%{left:100%;z-index:1;}
-50%{left:0%;z-index:1;}
+@-webkit-keyframes AnimeLoadingB{
+0%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:1;}
+50%{-webkit-transform:translate(-200%,0);transform:translate(-200%,0);z-index:1;}
 51%{z-index:2;}
-100%{left:100%;z-index:2;}
+100%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:2;}
 }
-@keyframes loadingB{
-0%{left:100%;z-index:1;}
-50%{left:0%;z-index:1;}
+@keyframes AnimeLoadingB{
+0%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:1;}
+50%{-webkit-transform:translate(-200%,0);transform:translate(-200%,0);z-index:1;}
 51%{z-index:2;}
-100%{left:100%;z-index:2;}
+100%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:2;}
 }
 
 
