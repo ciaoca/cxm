@@ -25,7 +25,12 @@ $('body').on('click', 'a', function(event){
   // 显示提示
   if (_rel === 'call_tip') {
     event.preventDefault();
-    APP.tipShow(_rev);
+    APP.tipToggle(_rev);
+
+  // 显示面板
+  } else if (_rel === 'call_panel') {
+    event.preventDefault();
+    APP.panelToggle(_rev);
 
   // 显示二维码
   } else if (_rel === 'call_qrcode') {
@@ -34,17 +39,12 @@ $('body').on('click', 'a', function(event){
       info: _rev
     }, _opt);
     
-    APP.qrcodeShow(_opt);
+    APP.qrcodeToggle(_opt);
 
   // 发送短信验证码
   } else if (_rel === 'call_sms') {
     event.preventDefault();
     APP.smsSend(_this);
-
-  // 显示面板
-  } else if (_rel === 'call_panel') {
-    event.preventDefault();
-    document.getElementById(_rev).classList.toggle('out');
   };
 });
 
@@ -127,39 +127,20 @@ $('#header').on('click', 'dt', function() {
  * ]
  */
 (function() {
-  // iOS 不需要 fix
-  if (/(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase())) {
-    return;
-  };
-
-  // 如果支持 flex 则不需要 fix
-  if (!!((window.CSS && window.CSS.supports))) {
-    if (CSS.supports('display', 'flex')) {
-      return;
-    };
-  };
-
   var fixSelectors = [
     {
       name: '#footer_nav',
       tag: 'a'
-    }, {
+    },
+    {
       name: '.nav_tab',
       tag: 'a'
     }
   ];
+
   if (Array.isArray(window.GLOBAL.fixFlexSelectors)) {
     fixSelectors = fixSelectors.concat(window.GLOBAL.fixFlexSelectors);
   };
 
-  var theSelector;
-  for (var i = 0, l = fixSelectors.length; i < l; i++) {
-    theSelector = document.querySelectorAll(fixSelectors[i].name);
-    if (theSelector.length) {
-      for (var i = 0, l = theSelector.length; i < l; i++) {
-        theSelector[i].classList.add('flex');
-        theSelector[i].classList.add('flex_' + theSelector[i].querySelectorAll(fixSelectors[i].tag).length);
-      };
-    };
-  };
+  APP.fixFlex(fixSelectors);
 })();

@@ -1,7 +1,7 @@
 /**
  * WebApp
  * @author ciaoca <ciaoca@gmail.com>
- * @date 2016-06-01
+ * @date 2016-06-28
  * --------------------
  * isElement            检测是否是 DOM 元素
  * isJquery             检测是否是 jQuery 对象
@@ -15,6 +15,8 @@
  * isRegExp             检测是否是 RegExp 正则表达式
  * isError              检测是否是 Error 错误
  * isJson               检测是否是 JSON
+ * isVisible            检测元素是否不可见
+ * isHidden             检测元素是否为可见
  * setStorage           保存缓存存储（sessionStorage）
  * getStorage           读取缓存存储（sessionStorage）
  * removeStorage        删除缓存存储（sessionStorage）
@@ -32,11 +34,18 @@
  * scalePic             压缩图片
  * tipShow              显示 Tip
  * tipHide              隐藏 Tip
+ * tipToggle            显示/隐藏 Tip
  * loadingShow          显示 Loading
  * loadingHide          隐藏 Loading
+ * loadingToggle        显示/隐藏 Loading
+ * panelShow            显示面板
+ * panelHide            隐藏面板
+ * panelToggle          显示/隐藏面板
+ * qrcodeToggle         显示/隐藏二维码
  * qrcodeShow           显示二维码
  * qrcodeHide           隐藏二维码
  * formAjax             表单 AJAX 提交
+ * flexFix              兼容 flex
  */
 (function(window, undefined){
   var app = function(){
@@ -150,7 +159,22 @@
       return false;
     };
     return true;
-  }
+  };
+
+  // 检测元素是否不可见
+  app.prototype.isHidden = function(o){
+    if (this.isElement(o)) {
+      var style = window.getComputedStyle(o);
+      return (style.getPropertyValue('display') === 'none' || style.getPropertyValue('visibility') === 'hidden' || style.getPropertyValue('opacity') == 0 || (style.getPropertyValue('width') == 0 && style.getPropertyValue('height') == 0)) ? true : false;
+    } else {
+      return true;
+    };
+  };
+
+  // 检测元素是否可见
+  app.prototype.isVisible = function(o){
+    return !this.isHidden(o);
+  };
 
   // 保存缓存存储（sessionStorage）
   app.prototype.setStorage = function(name,data){
@@ -506,7 +530,21 @@
    * 隐藏提示
    */
   app.prototype.tipHide = function() {
-    this.dom.body.removeChild(this.dom.tip);
+    if (this.dom.body.contains(this.dom.tip)) {
+      this.dom.body.removeChild(this.dom.tip);
+    };
+  };
+
+
+  /**
+   * 显示/隐藏提示
+   */
+  app.prototype.tipToggle = function(opt) {
+    if (this.isVisible(this.dom.tip)) {
+      this.tipHide();
+    } else {
+      this.tipShow(opt);
+    };
   };
 
 
@@ -530,7 +568,71 @@
    * 隐藏 Loading
    */
   app.prototype.loadingHide = function() {
-    this.dom.body.removeChild(this.dom.loading);
+    if (this.dom.body.contains(this.dom.loading)) {
+      this.dom.body.removeChild(this.dom.loading);
+    };
+  };
+
+
+  /**
+   * 显示/隐藏 Loading
+   */
+  app.prototype.loadingToggle = function(opt) {
+    if (this.isVisible(this.dom.loading)) {
+      this.loadingHide();
+    } else {
+      this.loadingShow(opt);
+    };
+  };
+
+
+  /**
+   * 显示面板
+   *   text {{string}} 文字提示
+   */
+  app.prototype.panelShow = function(id) {
+    var el;
+
+    if (this.isElement(document.getElementById(id))) {
+      el = document.getElementById(id);
+      el.classList.remove('out');
+      el.classList.add('in');
+
+      this.dom.body.classList.add('lock');
+    };
+  };
+
+  /**
+   * 隐藏面板
+   */
+  app.prototype.panelHide = function(id) {
+    var el;
+
+    if (this.isElement(document.getElementById(id))) {
+      el = document.getElementById(id);
+      el.classList.remove('in');
+      el.classList.add('out');
+
+      this.dom.body.classList.remove('lock');
+    };
+  };
+
+
+  /**
+   * 显示/隐藏面板
+   */
+  app.prototype.panelToggle = function(id) {
+    var el;
+
+    if (this.isElement(document.getElementById(id))) {
+      el = document.getElementById(id);
+
+      if (el.classList.contains('out')) {
+        this.panelShow(id);
+      } else {
+        this.panelHide(id);
+      };
+    };
   };
 
 
@@ -605,10 +707,27 @@
     self.dom.body.appendChild(self.dom.qrcode);
   };
 
-  // 隐藏二维码
+
+  /**
+   * 隐藏二维码
+   */
   app.prototype.qrcodeHide = function() {
-    this.dom.body.removeChild(this.dom.qrcode);
-    this.dom.qrcode.innerHTML = '';
+    if (this.dom.body.contains(this.dom.qrcode)) {
+      this.dom.body.removeChild(this.dom.qrcode);
+      this.dom.qrcode.innerHTML = '';
+    };
+  };
+
+
+  /**
+   * 显示/隐藏二维码
+   */
+  app.prototype.qrcodeToggle = function(opt) {
+    if (this.isVisible(this.dom.qrcode)) {
+      this.qrcodeHide();
+    } else {
+      this.qrcodeShow(opt);
+    };
   };
 
 
@@ -909,6 +1028,51 @@
       el.innerHTML = text;
       el.dataset.time = 0;
     };
+  };
+
+
+  /**
+   * 兼容 Flex
+   * array  参数
+   *    name 父元素选择符
+   *    tag 子元素选择符
+   *
+   * example:
+   * [
+   *   {
+   *     name: 'selectorName',
+   *     tag: 'selectorName'
+   *   }
+   * ]
+   */
+  app.prototype.fixFlex = function(array) {
+    // iOS 不需要 fix
+    if (/(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase())) {
+      return;
+    };
+
+    // 如果支持 flex 则不需要 fix
+    if (!!((window.CSS && window.CSS.supports))) {
+      if (CSS.supports('display', 'flex')) {
+        return;
+      };
+    };
+
+    if (!Array.isArray(array) || !array.length) {
+      return;
+    };
+
+    var _selector;
+    for (var i = 0, l = array.length; i < l; i++) {
+      _selector = document.querySelectorAll(array[i].name);
+      if (_selector.length) {
+        for (var j = 0, k = _selector.length; j < k; j++) {
+          _selector[j].classList.add('flex');
+          _selector[j].classList.add('flex_' + _selector[j].querySelectorAll(array[i].tag).length);
+        };
+      };
+    };
+
   };
 
   window.WebApp = app;

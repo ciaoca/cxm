@@ -42,13 +42,14 @@
       <p>默认<code>#footer_nav</code>、<code>.nav_tab</code>元素已设置兼容</p>
       <p>如有其他元素需要兼容，可以通过变量<code>window.GLOBAL.fixFlexSelectors</code>设置：</p>
 <pre><code>window.GLOBAL.fixFlexSelectors = [
-{
-  name: '#yourid', // 父元素选择符名称，如：'#id_name', '.class_name', ' element_name' 等
-  tag: 'a' // 子元素选择符名称，根据子元素的数量，再增加 flex_n 的样式名
-}, {
-  name: '.yourclass',
-  tag: 'li'
-}
+  {
+    name: '#yourid', // 父元素选择符名称，如：'#id_name', '.class_name', ' element_name' 等
+    tag: 'a' // 子元素选择符名称，根据子元素的数量，再增加 flex_n 的样式名
+  },
+  {
+    name: '.yourclass',
+    tag: 'li'
+  }
 ]</code></pre>
     </div>
   </div>
