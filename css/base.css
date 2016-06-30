@@ -17,10 +17,16 @@ em,i{font-style:normal;}
 ins{text-decoration:underline;}
 del{text-decoration:line-through;}
 q:before,q:after{content:'';}
-hr{height:1px;margin:4px 0;border:none;border-top:1px solid #ccc;border-bottom:1px solid #fff;}
+hr{height:1px;margin:4px 0;background-color:#fff;border:none;border-top:1px solid #ccc;}
 html{font-size:10px;}
 body{color:#333;font:1.2rem/1.6 arial,'\5fae\8f6f\96c5\9ed1',sans-serif;
 /*-webkit-user-select:none;*/
+}
+
+body.lock{overflow:hidden;}
+body.blur .wrap{
+-webkit-filter:blur(5px);
+filter:blur(5px);
 }
 
 /* 浮动 */

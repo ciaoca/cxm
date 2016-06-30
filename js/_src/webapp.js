@@ -1,7 +1,7 @@
 /**
  * WebApp
  * @author ciaoca <ciaoca@gmail.com>
- * @date 2016-06-28
+ * @date 2016-06-30
  * --------------------
  * isElement            检测是否是 DOM 元素
  * isJquery             检测是否是 jQuery 对象
@@ -15,8 +15,8 @@
  * isRegExp             检测是否是 RegExp 正则表达式
  * isError              检测是否是 Error 错误
  * isJson               检测是否是 JSON
- * isVisible            检测元素是否不可见
- * isHidden             检测元素是否为可见
+ * isHidden             检测元素是否不可见
+ * isVisible            检测元素是否可见
  * setStorage           保存缓存存储（sessionStorage）
  * getStorage           读取缓存存储（sessionStorage）
  * removeStorage        删除缓存存储（sessionStorage）
@@ -31,7 +31,6 @@
  * toFloat              转换浮点数
  * numberFormat         格式化数字
  * arrayUnique          数组去重
- * scalePic             压缩图片
  * tipShow              显示 Tip
  * tipHide              隐藏 Tip
  * tipToggle            显示/隐藏 Tip
@@ -41,11 +40,13 @@
  * panelShow            显示面板
  * panelHide            隐藏面板
  * panelToggle          显示/隐藏面板
- * qrcodeToggle         显示/隐藏二维码
  * qrcodeShow           显示二维码
  * qrcodeHide           隐藏二维码
+ * qrcodeToggle         显示/隐藏二维码
+ * compressPicture      压缩图片
  * formAjax             表单 AJAX 提交
- * flexFix              兼容 flex
+ * smsSend              发送短信
+ * fixFlex              兼容 flex
  */
 (function(window, undefined){
   var app = function(){
@@ -287,8 +288,8 @@
 
   /**
    * 替换引号
-   * @param string {string} 需要调用的函数
-   * @param decode {boolean} 是否进行翻转解码
+   * @param string {string}
+   * @param decode {boolean} 是否解码
    * @return {string}
    */
   app.prototype.replaceQuot = function(string, decode){
@@ -305,7 +306,11 @@
     return string;
   };
   
-  // 替换换行
+  /**
+   * 替换换行
+   * @param string {string}
+   * @return {string}
+   */
   app.prototype.replaceEnter = function(string){
     if (!this.isString(string)){
       return string;
@@ -315,7 +320,11 @@
     return string;
   };
   
-  // 替换 HTML 标签
+  /**
+   * 替换 HTML 标签
+   * @param string {string}
+   * @return {string}
+   */
   app.prototype.replaceHtml = function(string){
     if (!this.isString(string)){
       return string;
@@ -393,13 +402,238 @@
   };
 
   /**
+   * 显示 Tip
+   * @param baseclass {string} 自定义 class
+   */
+  app.prototype.tipShow = function(baseclass) {
+    var self = this;
+
+    if (typeof baseclass === 'string' && baseclass.length) {
+      self.dom.tip.setAttribute('class', baseclass);
+    } else {
+      self.dom.tip.removeAttribute('class');
+    };
+
+    self.dom.body.appendChild(self.dom.tip);
+  };
+
+  /**
+   * 隐藏 Tip
+   */
+  app.prototype.tipHide = function() {
+    if (this.dom.body.contains(this.dom.tip)) {
+      this.dom.body.removeChild(this.dom.tip);
+    };
+  };
+
+
+  /**
+   * 显示/隐藏 Tip
+   * @param baseclass {string} 自定义 class
+   */
+  app.prototype.tipToggle = function(opt) {
+    if (this.isVisible(this.dom.tip)) {
+      this.tipHide();
+    } else {
+      this.tipShow(opt);
+    };
+  };
+
+  /**
+   * 显示 Loading
+   * @param text {string} 文字提示
+   */
+  app.prototype.loadingShow = function(text) {
+    var self = this;
+
+    if (typeof text === 'string' && text.length) {
+      self.dom.loading.setAttribute('title', text);
+    } else {
+      self.dom.loading.removeAttribute('title');
+    };
+
+    self.dom.body.appendChild(self.dom.loading);
+  };
+
+  /**
+   * 隐藏 Loading
+   */
+  app.prototype.loadingHide = function() {
+    if (this.dom.body.contains(this.dom.loading)) {
+      this.dom.body.removeChild(this.dom.loading);
+    };
+  };
+
+  /**
+   * 显示/隐藏 Loading
+   * @param text {string} 文字提示
+   */
+  app.prototype.loadingToggle = function(opt) {
+    if (this.isVisible(this.dom.loading)) {
+      this.loadingHide();
+    } else {
+      this.loadingShow(opt);
+    };
+  };
+
+  /**
+   * 显示面板
+   * @param el {string|element} DOM 元素或 ID
+   * @param options {object} 选项
+   */
+  app.prototype.panelShow = function(el, options) {
+    options = $.extend({
+      lock: true,     // 锁定背景
+      blur: false     // 模糊背景
+    }, options);
+
+    if (typeof el === 'string' && el.length) {
+      el = document.getElementById(el);
+    };
+
+    if (this.isElement(el)) {
+      el.classList.remove('out');
+      el.classList.add('in');
+
+      if (options.lock) {
+        this.dom.body.classList.add('lock');
+      };
+      if (options.blur) {
+        this.dom.body.classList.add('blur');
+      };
+    };
+  };
+
+  /**
+   * 隐藏面板
+   * @param el {string|element} DOM 元素或 ID
+   */
+  app.prototype.panelHide = function(el) {
+    if (typeof el === 'string' && el.length) {
+      el = document.getElementById(el);
+    };
+
+    if (this.isElement(el)) {
+      el.classList.remove('in');
+      el.classList.add('out');
+
+      this.dom.body.classList.remove('lock');
+      this.dom.body.classList.remove('blur');
+    };
+  };
+
+  /**
+   * 显示/隐藏面板
+   * @param el {string|element} DOM 元素或 ID
+   */
+  app.prototype.panelToggle = function(el) {
+    if (typeof el === 'string' && el.length) {
+      el = document.getElementById(el);
+    };
+
+    if (this.isElement(el)) {
+      if (el.classList.contains('out')) {
+        this.panelShow(el);
+      } else {
+        this.panelHide(el);
+      };
+    };
+  };
+
+  /**
+   * 显示二维码
+   * @param options {object} 选项
+   */
+  app.prototype.qrcodeShow = function(options) {
+    var self = this;
+
+    if (typeof options === 'string') {
+      options = {
+        info: options
+      };
+    };
+
+    options = $.extend({
+      info: undefined,        // {string} 二维码内容
+      size: 0,                // {int} 二维码图片尺寸（正方形）
+      baseclass: undefined,   // {string} wrap 添加 class
+      before: undefined,      // {string} 二维码图像前面添加内容（支持 HTML）
+      after: undefined,       // {string} 二维码图像后面添加内容（支持 HTML）
+      colorDark: '#000000',   // {string} 暗色值
+      colorLight: '#ffffff',  // {string} 亮色值
+      quality: 'M'            // {string} 校正标准（L, M, Q, H）
+    }, options);
+
+    if (options.size === 0) {
+      options.size = window.innerHeight > window.innerWidth ? window.innerWidth : window.innerHeight;
+      options.size = Math.floor(options.size * 0.7 / 43) * 43;
+    };
+
+    var pic = document.createElement('div');
+    pic.classList.add('qrcode');
+    pic.style.width = options.size + 'px';
+    pic.style.height = options.size + 'px';
+
+    var qrcode = new QRCode(pic, {
+      text: options.info,
+      width: options.size,
+      height: options.size,
+      colorDark : options.colorDark,
+      colorLight : options.colorLight,
+      correctLevel : QRCode.CorrectLevel[options.quality]
+    });
+
+    var _html = '<div class="bd"></div>';
+
+    if (typeof options.before === 'string' && options.before.length) {
+      _html = '<div class="hd">' + options.before + '</div>' + _html;
+    };
+
+    if (typeof options.after === 'string' && options.after.length) {
+      _html += '<div class="ft">' + options.after + '</div>';
+    };
+
+    _html = '<div class="main">' + _html + '</div>';
+
+    if (typeof options.baseclass === 'string' && options.baseclass.length) {
+      self.dom.qrcode.attr('class', options.baseclass);
+    };
+
+    self.dom.qrcode.innerHTML = _html;
+    self.dom.qrcode.querySelector('.bd').appendChild(pic);
+    self.dom.body.appendChild(self.dom.qrcode);
+  };
+
+  /**
+   * 隐藏二维码
+   */
+  app.prototype.qrcodeHide = function() {
+    if (this.dom.body.contains(this.dom.qrcode)) {
+      this.dom.body.removeChild(this.dom.qrcode);
+      this.dom.qrcode.innerHTML = '';
+    };
+  };
+
+  /**
+   * 显示/隐藏二维码
+   * @param options {object} 选项（与 qrcodeShow 相同）
+   */
+  app.prototype.qrcodeToggle = function(opt) {
+    if (this.isVisible(this.dom.qrcode)) {
+      this.qrcodeHide();
+    } else {
+      this.qrcodeShow(opt);
+    };
+  };
+
+  /**
    * 压缩图片
    * @param img {dom} img 元素或 Canvas 元素
    * @param options {object} 选项
    * @return {array}
    */
   /*
-  app.prototype.scalePic = function(img, options){
+  app.prototype.compressPicture = function(img, options){
     options = $.extend({}, {
       width: 0,               // 宽度
       height: 0,              // 高度
@@ -509,235 +743,90 @@
   };
   */
 
-
   /**
-   * 显示提示
-   *   baseclass {{string}} 自定义 class
+   * 压缩图片
+   * @param file {element|file} img 元素或 file 文件（单个或数组）
+   * @param options {object} 选项
+   * @param callback {function} 压缩完成后的回调函数
+   * @return {array}
    */
-  app.prototype.tipShow = function(baseclass) {
+  app.prototype.compressPicture = function(files, options, callback) {
     var self = this;
+    var _canvas = document.createElement('canvas');
+    var result = [];
 
-    if (typeof baseclass === 'string' && baseclass.length) {
-      self.dom.tip.setAttribute('class', baseclass);
-    } else {
-      self.dom.tip.removeAttribute('class');
-    };
-
-    self.dom.body.appendChild(self.dom.tip);
-  };
-
-  /**
-   * 隐藏提示
-   */
-  app.prototype.tipHide = function() {
-    if (this.dom.body.contains(this.dom.tip)) {
-      this.dom.body.removeChild(this.dom.tip);
-    };
-  };
-
-
-  /**
-   * 显示/隐藏提示
-   */
-  app.prototype.tipToggle = function(opt) {
-    if (this.isVisible(this.dom.tip)) {
-      this.tipHide();
-    } else {
-      this.tipShow(opt);
-    };
-  };
-
-
-  /**
-   * 显示 Loading
-   *   text {{string}} 文字提示
-   */
-  app.prototype.loadingShow = function(text) {
-    var self = this;
-
-    if (typeof text === 'string' && text.length) {
-      self.dom.loading.setAttribute('title', text);
-    } else {
-      self.dom.loading.removeAttribute('title');
-    };
-
-    self.dom.body.appendChild(self.dom.loading);
-  };
-
-  /**
-   * 隐藏 Loading
-   */
-  app.prototype.loadingHide = function() {
-    if (this.dom.body.contains(this.dom.loading)) {
-      this.dom.body.removeChild(this.dom.loading);
-    };
-  };
-
-
-  /**
-   * 显示/隐藏 Loading
-   */
-  app.prototype.loadingToggle = function(opt) {
-    if (this.isVisible(this.dom.loading)) {
-      this.loadingHide();
-    } else {
-      this.loadingShow(opt);
-    };
-  };
-
-
-  /**
-   * 显示面板
-   *   text {{string}} 文字提示
-   */
-  app.prototype.panelShow = function(id) {
-    var el;
-
-    if (this.isElement(document.getElementById(id))) {
-      el = document.getElementById(id);
-      el.classList.remove('out');
-      el.classList.add('in');
-
-      this.dom.body.classList.add('lock');
-    };
-  };
-
-  /**
-   * 隐藏面板
-   */
-  app.prototype.panelHide = function(id) {
-    var el;
-
-    if (this.isElement(document.getElementById(id))) {
-      el = document.getElementById(id);
-      el.classList.remove('in');
-      el.classList.add('out');
-
-      this.dom.body.classList.remove('lock');
-    };
-  };
-
-
-  /**
-   * 显示/隐藏面板
-   */
-  app.prototype.panelToggle = function(id) {
-    var el;
-
-    if (this.isElement(document.getElementById(id))) {
-      el = document.getElementById(id);
-
-      if (el.classList.contains('out')) {
-        this.panelShow(id);
-      } else {
-        this.panelHide(id);
-      };
-    };
-  };
-
-
-  /**
-   * 显示二维码
-   * options  参数
-   *    info        二维码内容
-   *    size        二维码图片尺寸（正方形）
-   *    baseclass   wrap 添加 class
-   *    before      二维码图像前面添加内容（支持 HTML）
-   *    after       二维码图像后面添加内容（支持 HTML）
-   *    colorDark   暗色
-   *    colorLight  亮色
-   *    quality     校正标准（L, M, Q, H）
-   */
-  app.prototype.qrcodeShow = function(options) {
-    var self = this;
-
-    if (typeof options === 'string') {
-      options = {
-        info: options
-      };
+    if ((Object.prototype.toString.call(files) !== '[object FileList]' && !Array.isArray(files)) || !files.length) {
+      files = Array(files);
     };
 
     options = $.extend({
-      size: 0,
-      baseclass: null,
-      before: null,
-      after: null,
-      colorDark: '#000000',
-      colorLight: '#ffffff',
-      quality: 'M'
+      fileType: 'image/jpeg',   // 文件格式
+      maxWidth: 0,              // 最大宽度
+      maxHeight: 0,             // 最大高度
+      quality: 0.8              // 图片质量
     }, options);
 
-    if (options.size === 0) {
-      options.size = window.innerHeight > window.innerWidth ? window.innerWidth : window.innerHeight;
-      options.size = Math.floor(options.size * 0.7 / 43) * 43;
+    if (!options.maxWidth && !options.maxHeight) {return};
+
+    var compress = function(index) {
+      index = (index >= 0) ? index : 0;
+
+      var _file = files[index];
+
+      EXIF.getData(_file, function(){
+        var _orientation = EXIF.getTag(this, 'Orientation');
+        var _rotate = 0;
+
+        switch(_orientation) {
+          case 3:
+            _rotate = 180;
+            break
+          case 6:
+            _rotate = 90;
+            break
+          case 8:
+            _rotate = 270;
+            break
+          default:
+            _rotate = 0;
+        };
+
+        var _fileImg = new MegaPixImage(_file);
+
+        _fileImg.render(_canvas, {
+          maxWidth: options.maxWidth,
+          maxHeight: options.maxHeight,
+          orientation: _orientation
+        });
+
+        // 压缩需要时间，延迟处理
+        setTimeout(function() {
+          result.push(_canvas.toDataURL(options.fileType, options.quality));
+
+          index++;
+
+          if (index < files.length) {
+            compress(index);
+          } else {
+            complete();
+          };
+        }, 200);
+      });
     };
 
-    var pic = document.createElement('div');
-    pic.classList.add('qrcode');
-    pic.style.width = options.size + 'px';
-    pic.style.height = options.size + 'px';
-
-    var qrcode = new QRCode(pic, {
-      text: options.info,
-      width: options.size,
-      height: options.size,
-      colorDark : options.colorDark,
-      colorLight : options.colorLight,
-      correctLevel : QRCode.CorrectLevel[options.quality]
-    });
-
-    var _html = '<div class="bd"></div>';
-
-    if (typeof options.before === 'string' && options.before.length) {
-      _html = '<div class="hd">' + options.before + '</div>' + _html;
+    var complete = function() {
+      if (typeof callback === 'function') {
+        callback(result);
+      };
     };
 
-    if (typeof options.after === 'string' && options.after.length) {
-      _html += '<div class="ft">' + options.after + '</div>';
-    };
-
-    _html = '<div class="main">' + _html + '</div>';
-
-    if (typeof options.baseclass === 'string' && options.baseclass.length) {
-      self.dom.qrcode.attr('class', options.baseclass);
-    };
-
-    self.dom.qrcode.innerHTML = _html;
-    self.dom.qrcode.querySelector('.bd').appendChild(pic);
-    self.dom.body.appendChild(self.dom.qrcode);
+    compress();
   };
-
-
-  /**
-   * 隐藏二维码
-   */
-  app.prototype.qrcodeHide = function() {
-    if (this.dom.body.contains(this.dom.qrcode)) {
-      this.dom.body.removeChild(this.dom.qrcode);
-      this.dom.qrcode.innerHTML = '';
-    };
-  };
-
-
-  /**
-   * 显示/隐藏二维码
-   */
-  app.prototype.qrcodeToggle = function(opt) {
-    if (this.isVisible(this.dom.qrcode)) {
-      this.qrcodeHide();
-    } else {
-      this.qrcodeShow(opt);
-    };
-  };
-
 
   /**
    * 表单 Ajax 提交
-   * form {jQueryObject} 要提交的表单
-   * options {object}
-   *   complete {function} 提交完成后执行的方法
-   *   success {function} 提交完成，状态为成功时执行的方法
-   *   error {function} 提交完成，状态为错误时执行的方法
+   * @param form {element} 表单元素
+   * @param options {object|function} 选项
    */
   app.prototype.formAjax = function(form, options, errorCallback) {
     var self = this;
@@ -751,13 +840,15 @@
     };
 
     var defaults = {
-      url: form.attr('action'), 
-      type: form.attr('method'),
-      data: form.serializeArray(),
-      dataType: 'json',
-      complete: undefined,
-      success: undefined,
-      error: undefined
+      url: form.attr('action'),       // {string} 表单提交 URL
+      type: form.attr('method'),      // {string} 提交类型（get|post）
+      data: form.serializeArray(),    // {array} 提交数据
+      dataType: 'json',               // {string} 返回类型
+      urlData: undefined,             // {object} URL 增加提交的数据（get 类型）
+      addData: undefined,             // {array} data 之外增加提交的数据
+      complete: undefined,            // {function} 提交完成后的回调方法
+      success: undefined,             // {function} 提交完成，状态为成功时的回调方法
+      error: undefined                // {function} 提交完成，状态为错误时的回调方法
     };
 
     if (typeof options === 'function') {
@@ -855,11 +946,11 @@
     };
   };
 
-
   /**
    * 发送短信
-   * el {element} 发送按钮
-   *   data- 参数
+   * @param el {element} 按钮元素（不限于 a 及 button）
+   *
+   * 按钮 data- 参数
    *   url            发送短信的接口地址
    *   input          手机号码输入框
    *   captcha        验证码输入框
@@ -1030,10 +1121,9 @@
     };
   };
 
-
   /**
    * 兼容 Flex
-   * array  参数
+   * @param array {array} 参数
    *    name 父元素选择符
    *    tag 子元素选择符
    *
@@ -1072,7 +1162,6 @@
         };
       };
     };
-
   };
 
   window.WebApp = app;
