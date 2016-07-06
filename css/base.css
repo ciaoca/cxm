@@ -2,6 +2,11 @@
  * CSS Reset 全局样式
  * @author:ciaoca(小叉) <ciaoca@gmail.com>
  * @website:http://ciaoca.com
+ *
+ * z-index 规范:
+ * 0-9      模块内部
+ * 10-99    全局置顶
+ * 100-999  全局浮层
  * ------------------------------ */
 html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,p,table,th,td,form,fieldset,legend,input,textarea,select,button,hr,blockquote,pre,iframe{margin:0;padding:0;}
 h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:bold;line-height:1.2;}
@@ -312,6 +317,7 @@ flex:1 1 50%;
 }
 .button:hover{color:#fff;}
 
+.button.mini{height:24px;padding:0 0.5em;font-size:1.2rem;line-height:24px;}
 .button.small{height:32px;padding:0 1em;font-size:1.4rem;line-height:32px;}
 .button.full{display:block;width:100%;padding:0;}
 
@@ -328,24 +334,25 @@ flex:1 1 50%;
 .button.darkgray{background-color:#555;}
 .button.white{background-color:#fff;color:#555;}
 
-.button.border{border:1px solid #888;background:none;box-shadow:none;color:#555;line-height:42px;
+.button.border{border:1px solid currentColor;background:none;box-shadow:none;color:#555;line-height:42px;
 -webkit-transform:none;
 transform:none;
 }
+.button.border.mini{line-height:22px;}
 .button.border.small{line-height:30px;}
 
-.button.border.blue{border-color:#4a89dc;color:#4a89dc;}
-.button.border.green{border-color:#8cc152;color:#8cc152;}
-.button.border.red{border-color:#da4453;color:#da4453;}
-.button.border.orange{border-color:#e9573f;color:#e9573f;}
-.button.border.yellow{border-color:#f6bb42;color:#f6bb42;}
-.button.border.purple{border-color:#967adc;color:#967adc;}
-.button.border.pink{border-color:#d770ad;color:#d770ad;}
-.button.border.gray{border-color:#aaa;color:#aaa;}
-.button.border.lightgray{border-color:#ccc;color:#ccc;}
-.button.border.mediumgray{border-color:#888;color:#888;}
-.button.border.darkgray{border-color:#555;color:#555;}
-.button.border.white{border-color:#fff;color:#fff;}
+.button.border.blue{color:#4a89dc;}
+.button.border.green{color:#8cc152;}
+.button.border.red{color:#da4453;}
+.button.border.orange{color:#e9573f;}
+.button.border.yellow{color:#f6bb42;}
+.button.border.purple{color:#967adc;}
+.button.border.pink{color:#d770ad;}
+.button.border.gray{color:#aaa;}
+.button.border.lightgray{color:#ccc;}
+.button.border.mediumgray{color:#888;}
+.button.border.darkgray{color:#555;}
+.button.border.white{color:#fff;}
 
 .button.radius{border-radius:99px;}
 
@@ -464,11 +471,11 @@ flex:1 1 50%;
 .loading{position:relative;width:12px;height:12px;margin:10px auto;}
 .loading:before,
 .loading:after{content:'';position:absolute;top:0;width:12px;height:12px;border-radius:50%;}
-.loading:before{left:0;background:#f55;
+.loading:before{left:-100%;background-color:#f55;
 -webkit-animation:AnimeLoadingA 2s infinite ease-out;
 animation:AnimeLoadingA 2s infinite ease-out;
 }
-.loading:after{right:0;background:#09f;
+.loading:after{right:-100%;background-color:#09f;
 -webkit-animation:AnimeLoadingB 2s infinite ease-out;
 animation:AnimeLoadingB 2s infinite ease-out;
 }

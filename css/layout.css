@@ -16,7 +16,7 @@ background-repeat:no-repeat;
 /**
  * 头部
  * ------------------------------ */
-.header{position:relative;height:44px;line-height:44px;z-index:9;}
+.header{position:relative;height:44px;line-height:44px;z-index:99;}
 .header header{position:fixed;top:0;left:0;width:100%;height:inherit;background-color:#4a89dc;color:#fff;}
 .header.shadow header{box-shadow:0 1px 1px rgba(0,0,0,0.6);}
 
@@ -91,7 +91,7 @@ transform:rotate(135deg);
 /**
  * 底部导航
  * ------------------------------ */
-.footer_nav{position:relative;height:55px;margin-top:10px;z-index:9;}
+.footer_nav{position:relative;height:55px;margin-top:10px;z-index:99;}
 .footer_nav nav{overflow:hidden;position:fixed;bottom:0;left:0;width:100%;height:55px;border-top:1px solid #ddd;background-color:rgba(255,255,255,0.9);line-height:20px;text-align:center;
 display:-webkit-box;
 display:box;
@@ -126,7 +126,7 @@ flex:none;
 /**
  * 选项卡导航
  * ------------------------------ */
-.nav_tab{position:relative;height:36px;font-size:1.4rem;line-height:36px;text-align:center;z-index:8;}
+.nav_tab{position:relative;height:36px;font-size:1.4rem;line-height:36px;text-align:center;z-index:98;}
 .nav_tab nav{box-sizing:border-box;position:relative;background-color:#fff;
 display:-webkit-box;
 display:box;
@@ -215,7 +215,7 @@ transition:background-color 0.2s ease-in-out;
 /**
  * 侧面板
  * ------------------------------ */
-.panel_page{position:fixed;overflow-y:auto;width:100%;height:100%;z-index:10;background-color:#fff;
+.panel_page{position:fixed;overflow-y:auto;width:100%;height:100%;z-index:100;background-color:#fff;
 transition-property:-webkit-transform;
 transition-property:transform;
 transition-property:transform, -webkit-transform;
