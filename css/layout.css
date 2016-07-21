@@ -126,7 +126,7 @@ flex:none;
 /**
  * 选项卡导航
  * ------------------------------ */
-.nav_tab{position:relative;height:36px;font-size:1.4rem;line-height:36px;text-align:center;z-index:98;}
+.nav_tab{position:relative;height:36px;font-size:1.4rem;line-height:36px;text-align:center;}
 .nav_tab nav{box-sizing:border-box;position:relative;background-color:#fff;
 display:-webkit-box;
 display:box;
@@ -157,6 +157,7 @@ transition-duration:0.4s;
 .nav_tab.radius a + a{border-left:none;}
 .nav_tab.radius a.n{background-color:#4a89dc;color:#fff;}
 
+.nav_tab.fixed{z-index:98;}
 .nav_tab.fixed nav{position:fixed;top:0;left:0;width:100%;}
 
 .nav_tab.flex nav{overflow:hidden;}
