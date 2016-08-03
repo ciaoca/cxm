@@ -30,7 +30,7 @@ $('body').on('click', 'a', function(event){
   // 显示面板
   } else if (_rel === 'call_panel') {
     event.preventDefault();
-    APP.panelToggle(_rev);
+    APP.panelToggle(_rev, _opt);
 
   // 显示二维码
   } else if (_rel === 'call_qrcode') {
