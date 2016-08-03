@@ -431,11 +431,11 @@
    * 显示/隐藏 Tip
    * @param baseclass {string} 自定义 class
    */
-  app.prototype.tipToggle = function(opt) {
+  app.prototype.tipToggle = function(baseclass) {
     if (this.isVisible(this.dom.tip)) {
       this.tipHide();
     } else {
-      this.tipShow(opt);
+      this.tipShow(baseclass);
     };
   };
 
@@ -468,11 +468,11 @@
    * 显示/隐藏 Loading
    * @param text {string} 文字提示
    */
-  app.prototype.loadingToggle = function(opt) {
+  app.prototype.loadingToggle = function(text) {
     if (this.isVisible(this.dom.loading)) {
       this.loadingHide();
     } else {
-      this.loadingShow(opt);
+      this.loadingShow(text);
     };
   };
 
@@ -526,14 +526,14 @@
    * 显示/隐藏面板
    * @param el {string|element} DOM 元素或 ID
    */
-  app.prototype.panelToggle = function(el) {
+  app.prototype.panelToggle = function(el, options) {
     if (typeof el === 'string' && el.length) {
       el = document.getElementById(el);
     };
 
     if (this.isElement(el)) {
       if (el.classList.contains('out')) {
-        this.panelShow(el);
+        this.panelShow(el, options);
       } else {
         this.panelHide(el);
       };
@@ -618,11 +618,11 @@
    * 显示/隐藏二维码
    * @param options {object} 选项（与 qrcodeShow 相同）
    */
-  app.prototype.qrcodeToggle = function(opt) {
+  app.prototype.qrcodeToggle = function(options) {
     if (this.isVisible(this.dom.qrcode)) {
       this.qrcodeHide();
     } else {
-      this.qrcodeShow(opt);
+      this.qrcodeShow(options);
     };
   };
 
