@@ -16,6 +16,10 @@ if ($_GET['nextUrl']) {
   $result['nextUrl'] = $_GET['nextUrl'];
 };
 
+if ($_GET['data']) {
+  $result['data'] = json_decode(stripslashes($_GET['data']));
+};
+
 echo json_encode($result);
 exit;
 ?>
