@@ -464,13 +464,20 @@ flex:1 1 50%;
 .face{border-radius:50%;background-repeat:no-repeat;background-position:center;background-size:cover;}
 
 
+/**
+ * 上拉加载更多
+ * ------------------------------ */
+.pull_more{display:block;padding:10px;color:#666;line-height:20px;text-align:center;}
+.pull_more:after{content:'上拉加载更多..';}
+
+
 
 /**
  * loading 动画
  * ------------------------------ */
-.loading{position:relative;width:12px;height:12px;margin:10px auto;}
+.loading{position:relative;width:12px;height:40px;margin:0 auto;}
 .loading:before,
-.loading:after{content:'';position:absolute;top:0;width:12px;height:12px;border-radius:50%;}
+.loading:after{content:'';position:absolute;top:14px;width:12px;height:12px;border-radius:50%;}
 .loading:before{left:-100%;background-color:#f55;
 -webkit-animation:AnimeLoadingA 2s infinite ease-out;
 animation:AnimeLoadingA 2s infinite ease-out;
