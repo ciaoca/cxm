@@ -1,7 +1,7 @@
 /**
  * WebApp
  * @author ciaoca <ciaoca@gmail.com>
- * @date 2016-06-30
+ * @date 2016-08-19
  * --------------------
  * isElement            检测是否是 DOM 元素
  * isJquery             检测是否是 jQuery 对象
@@ -25,6 +25,8 @@
  * getLocalStorage      读取缓存存储（localStorage）
  * removeLocalStorage   删除缓存存储（localStorage）
  * clearLocalStorage    清空缓存存储（localStorage）
+ * getRandomNumber      生成随机数
+ * getRandomString      生成随机字符串
  * replaceQuot          替换引号
  * replaceEnter         替换换行
  * replaceHtml          替换 HTML 标签
@@ -287,6 +289,40 @@
   };
 
   /**
+   * 生成随机数
+   * @param string {string}
+   * @param min {boolean} 最小值
+   * @param min {boolean} 最大值
+   * @return {number}
+   */
+  app.prototype.getRandomNumber = function(min, max){
+    min = isFinite(min) ? parseInt(min, 10) : 0;
+    max = isFinite(max) ? parseInt(max, 10) : 0;
+
+    if (max < min) {
+      max = min;
+    };
+
+    return Math.round(Math.random() * (max - min) + min);
+  };
+
+  /**
+   * 生成随机字符串
+   * @param string {string}
+   * @param length {boolean} 字符串长度
+   * @return {number}
+   */
+  app.prototype.getRandomString = function(length){
+    length = isFinite(length) ? parseInt(length, 10) : 0;
+
+    var string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    return Array.apply(0, Array(length)).map(function () {
+      return string.charAt(Math.floor(Math.random() * string.length));
+    }).join('');
+  };
+
+  /**
    * 替换引号
    * @param string {string}
    * @param decode {boolean} 是否解码
@@ -513,12 +549,12 @@
       el = document.getElementById(el);
     };
 
+    this.dom.body.classList.remove('lock');
+    this.dom.body.classList.remove('blur');
+
     if (this.isElement(el)) {
       el.classList.remove('in');
       el.classList.add('out');
-
-      this.dom.body.classList.remove('lock');
-      this.dom.body.classList.remove('blur');
     };
   };
 
