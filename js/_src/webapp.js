@@ -308,14 +308,14 @@
 
   /**
    * 生成随机字符串
-   * @param string {string}
    * @param length {boolean} 字符串长度
-   * @return {number}
+   * @param string {string} 字符范围
+   * @return {string}
    */
-  app.prototype.getRandomString = function(length){
+  app.prototype.getRandomString = function(length, string){
     length = isFinite(length) ? parseInt(length, 10) : 0;
 
-    var string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var string = (typeof string === 'string' && string.length) ? string : 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
     return Array.apply(0, Array(length)).map(function () {
       return string.charAt(Math.floor(Math.random() * string.length));
