@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Flex 兼容 - cxStyle</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1, user-scalable=no" media="(device-height:568px)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="css/demo.css">
+<script src="../js/zepto.min.js"></script>
+<script src="../js/plugins.js"></script>
+<script src="../js/controller/init.js"></script>
+</head>
+<body class="gray">
+<div class="wrap">
+  <div id="header" class="header">
+    <header>
+      <h1>cxStyle</h1>
+      <a class="icon back" href="index.html"></a>
+    </header>
+  </div>
+
+  <div class="mbox">
+    <h2>Flex 兼容</h2>
+    <div class="detail">
+      <p>当浏览器不支持 CSS 的 flex 属性时，会在相应元素上的 class 属性中增加名为<code>flex</code>的样式名。并根据设定的子元素数量再增加一个名为<code>flex_n</code>（n 为数字）的样式名。</p>
+      <p>该功能仅仅只是增加了一个样式名，具体兼容还需要在 CSS 文件中设置。</p>
+      <p>CSS 参考设置：</p>
+      <pre><code>.footer_nav.flex_1 nav a{width:100%;}
+.footer_nav.flex_2 nav a{width:50%;}
+.footer_nav.flex_3 nav a{width:33%;}
+.footer_nav.flex_4 nav a{width:25%;}
+.footer_nav.flex_5 nav a{width:20%;}</code></pre>
+
+      <p>默认<code>#footer_nav</code>、<code>.nav_tab</code>元素已设置兼容</p>
+      <p>如有其他元素需要兼容，可以通过变量<code>window.GLOBAL.fixFlexSelectors</code>设置：</p>
+<pre><code>window.GLOBAL.fixFlexSelectors = [
+  {
+    name: '#yourid', // 父元素选择符名称，如：'#id_name', '.class_name', ' element_name' 等
+    tag: 'a' // 子元素选择符名称，根据子元素的数量，再增加 flex_n 的样式名
+  },
+  {
+    name: '.yourclass',
+    tag: 'li'
+  }
+]</code></pre>
+    </div>
+  </div>
+
+  <div class="nav_tab">
+  <!-- <div class="nav_tab fixed"> -->
+  <!-- <div class="nav_tab radius"> -->
+  <!-- <div class="nav_tab radius fixed"> -->
+    <nav>
+      <a class="n" href="#">分类</a>
+      <a href="#">分类</a>
+      <a href="#">分类</a>
+    </nav>
+  </div>
+
+  <div class="mbox">
+    <h2>Tab 圆角样式</h2>
+  </div>
+  <div class="nav_tab radius">
+    <nav>
+      <a class="n" href="#">分类</a>
+      <a href="#">分类</a>
+      <a href="#">分类</a>
+    </nav>
+  </div>
+
+  <div id="footer_nav" class="footer_nav">
+    <nav>
+      <a href="#">导航</a>
+      <a href="#">导航</a>
+      <a href="#">导航</a>
+      <a href="#">导航</a>
+    </nav>
+  </div>
+
+</div>
+<script src="../js/controller/ready.js"></script>
+<script>
+(function() {
+  $('.nav_tab').on('click', 'a', function() {
+    event.preventDefault();
+    $(this).addClass('n').siblings().removeClass('n');
+  });
+})();
+</script>
+</body>
+</html>
