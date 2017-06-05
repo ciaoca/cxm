@@ -937,7 +937,7 @@ input.input.small{height:36px;}
 @media (min-width:641px){
 .wrap{width:640px;min-height:500px;margin:0 auto;border-radius:0 0 3px 3px;box-shadow:0 0 2px #aaa;}
 #app_tip,
-.panel_page{position:absolute;}
+.panel_page{width:640px;left:50%;right:auto;margin-left:-320px;}
 .panel_page .header.unfixed header{left:0;right:0;width:auto;margin:auto;}
 }
 
