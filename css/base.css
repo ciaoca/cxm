@@ -466,55 +466,6 @@ flex:1 1 50%;
 .face{border-radius:50%;background-repeat:no-repeat;background-position:center;background-size:cover;}
 
 
-/**
- * 上拉加载更多
- * ------------------------------ */
-.pull_more{display:block;padding:10px;color:#666;line-height:20px;text-align:center;}
-.pull_more:after{content:'上拉加载更多..';}
-
-
-
-/**
- * loading 动画
- * ------------------------------ */
-.loading{position:relative;width:12px;height:40px;margin:0 auto;}
-.loading:before,
-.loading:after{content:'';position:absolute;top:14px;width:12px;height:12px;border-radius:50%;}
-.loading:before{left:-100%;background-color:#f55;
--webkit-animation:AnimeLoadingA 2s infinite ease-out;
-animation:AnimeLoadingA 2s infinite ease-out;
-}
-.loading:after{right:-100%;background-color:#09f;
--webkit-animation:AnimeLoadingB 2s infinite ease-out;
-animation:AnimeLoadingB 2s infinite ease-out;
-}
-
-@-webkit-keyframes AnimeLoadingA{
-0%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:2;}
-50%{-webkit-transform:translate(200%,0);transform:translate(200%,0);z-index:2;}
-51%{z-index:1;}
-100%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:1;}
-}
-@keyframes AnimeLoadingA{
-0%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:2;}
-50%{-webkit-transform:translate(200%,0);transform:translate(200%,0);z-index:2;}
-51%{z-index:1;}
-100%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:1;}
-}
-@-webkit-keyframes AnimeLoadingB{
-0%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:1;}
-50%{-webkit-transform:translate(-200%,0);transform:translate(-200%,0);z-index:1;}
-51%{z-index:2;}
-100%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:2;}
-}
-@keyframes AnimeLoadingB{
-0%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:1;}
-50%{-webkit-transform:translate(-200%,0);transform:translate(-200%,0);z-index:1;}
-51%{z-index:2;}
-100%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:2;}
-}
-
-
 
 /**
  * APP 全屏 loading 动画
@@ -560,7 +511,7 @@ animation:loadingRotate 1s infinite linear;
 /**
  * 当前页二维码
  * ------------------------------ */
-.this_qrcode{display:none;position:absolute;top:60px;left:50%;margin-left:340px;padding:14px;border:1px solid #ddd;background:#fff;color:#777;font-size:1.4rem;line-height:1.6rem;text-align:center;}
+.this_qrcode{display:none;position:fixed;top:60px;left:50%;margin-left:340px;padding:14px;border:1px solid #ddd;background:#fff;color:#777;font-size:1.4rem;line-height:1.6rem;text-align:center;}
 .this_qrcode img{margin:0 auto;}
 .this_qrcode p{margin-top:8px;}
 
@@ -754,12 +705,51 @@ transform:rotate(45deg);
 
 
 /**
+ * loading 动画
+ * ------------------------------ */
+.loading{position:relative;width:12px;height:40px;margin:0 auto;}
+.loading:before,
+.loading:after{content:'';position:absolute;top:14px;width:12px;height:12px;border-radius:50%;}
+.loading:before{left:-100%;background-color:#f55;
+-webkit-animation:AnimeLoadingA 2s infinite ease-out;
+animation:AnimeLoadingA 2s infinite ease-out;
+}
+.loading:after{right:-100%;background-color:#09f;
+-webkit-animation:AnimeLoadingB 2s infinite ease-out;
+animation:AnimeLoadingB 2s infinite ease-out;
+}
+
+@-webkit-keyframes AnimeLoadingA{
+0%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:2;}
+50%{-webkit-transform:translate(200%,0);transform:translate(200%,0);z-index:2;}
+51%{z-index:1;}
+100%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:1;}
+}
+@keyframes AnimeLoadingA{
+0%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:2;}
+50%{-webkit-transform:translate(200%,0);transform:translate(200%,0);z-index:2;}
+51%{z-index:1;}
+100%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:1;}
+}
+@-webkit-keyframes AnimeLoadingB{
+0%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:1;}
+50%{-webkit-transform:translate(-200%,0);transform:translate(-200%,0);z-index:1;}
+51%{z-index:2;}
+100%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:2;}
+}
+@keyframes AnimeLoadingB{
+0%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:1;}
+50%{-webkit-transform:translate(-200%,0);transform:translate(-200%,0);z-index:1;}
+51%{z-index:2;}
+100%{-webkit-transform:translate(0,0);transform:translate(0,0);z-index:2;}
+}
+
+
+/**
  * 列表
  * ------------------------------ */
-.ajax_list.load:after,
 .ajax_list.empty:after,
-.ajax_list.end:after{content:'';display:block;padding:10px;color:#888;font-size:1.4rem;text-align:center;}
-.ajax_list.load:after{width:16px;height:16px;margin-left:auto;margin-right:auto;background:url(../img/loading.gif) no-repeat;}
+.ajax_list.end:after{content:'';display:block;clear:both;padding:10px;color:#888;font-size:1.4rem;text-align:center;}
 .ajax_list.empty:after{content:attr(data-empty-tip);}
 .ajax_list.end:after{content:attr(data-end-tip);}
 
@@ -770,10 +760,13 @@ transform:rotate(45deg);
 transform:rotate(45deg) translate(-25%,-25%);
 }
 
-.ajax_list + .getmore{display:block;margin:10px;padding:10px;background-color:#fff;color:#888;font-size:1.4rem;text-align:center;}
-.ajax_list.load + .getmore,
-.ajax_list.empty + .getmore,
-.ajax_list.end + .getmore{display:none;}
+.ajax_list ~ .pull{display:none;padding:10px;color:#666;line-height:20px;text-align:center;}
+.ajax_list ~ .pull:after{content:'上拉加载更多..';}
+
+.ajax_list ~ .loading,
+.ajax_list.load ~ .pull{display:none;}
+.ajax_list.ready ~ .pull,
+.ajax_list.load ~ .loading{display:block;}
 
 
 
@@ -945,6 +938,7 @@ input.input.small{height:36px;}
 .wrap{width:640px;min-height:500px;margin:0 auto;border-radius:0 0 3px 3px;box-shadow:0 0 2px #aaa;}
 #app_tip,
 .panel_page{position:absolute;}
+.panel_page .header.unfixed header{left:0;right:0;width:auto;margin:auto;}
 }
 
 @media (min-width:900px){

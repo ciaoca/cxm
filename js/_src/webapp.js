@@ -528,6 +528,10 @@
     };
 
     if (this.isElement(el)) {
+      if (window.getComputedStyle(el, null).getPropertyValue('position') === 'absolute') {
+        el.style.height = window.innerHeight + 'px';
+      };
+
       el.classList.remove('out');
       el.classList.add('in');
 
@@ -553,6 +557,7 @@
     this.dom.body.classList.remove('blur');
 
     if (this.isElement(el)) {
+      el.style.height = '';
       el.classList.remove('in');
       el.classList.add('out');
     };
