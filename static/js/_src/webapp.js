@@ -1,7 +1,7 @@
 /**
  * WebApp
  * @author ciaoca <ciaoca@gmail.com>
- * @date 2016-08-19
+ * @date 2017-06-30
  * --------------------
  * isElement            检测是否是 DOM 元素
  * isJquery             检测是否是 jQuery 对象
@@ -15,6 +15,7 @@
  * isRegExp             检测是否是 RegExp 正则表达式
  * isError              检测是否是 Error 错误
  * isJson               检测是否是 JSON
+ * isLeapYear           检测是否是闰年
  * isHidden             检测元素是否不可见
  * isVisible            检测元素是否可见
  * setStorage           保存缓存存储（sessionStorage）
@@ -162,6 +163,11 @@
       return false;
     };
     return true;
+  };
+
+  // 判断是否为闰年
+  app.prototype.isLeapYear = function(year){
+    return !(year % (year % 100 ? 4 : 400));
   };
 
   // 检测元素是否不可见
@@ -632,7 +638,7 @@
     _html = '<div class="main">' + _html + '</div>';
 
     if (typeof options.baseclass === 'string' && options.baseclass.length) {
-      self.dom.qrcode.attr('class', options.baseclass);
+      self.dom.qrcode.setAttribute('class', options.baseclass);
     };
 
     self.dom.qrcode.innerHTML = _html;
@@ -924,17 +930,12 @@
         options.complete(data);
       };
 
-      if (data.status !== 'success') {
-        if (typeof options.error === 'function') {
-          options.error(data);
-          return;
-        };
-
-        formAjaxFinish(data);
+      if (!data) {
         return;
-      };
-
-      if (typeof options.success === 'function') {
+      } else if (data.state !== 'success' && typeof options.error === 'function') {
+        options.error(data);
+        return;
+      } else if (typeof options.success === 'function') {
         options.success(data);
         return;
       };
@@ -953,32 +954,28 @@
 
   // formAjax 完成后的处理方式
   var formAjaxFinish = function(data) {
-    if (typeof data.nextUrl === 'string' && data.nextUrl.length) {
-      if (typeof data.message === 'string' && data.message.length) {
-        $.cxDialog({
-          title: '提示',
-          info: data.message,
-          ok: function() {
+    if (typeof data.message === 'string' && data.message.length) {
+      $.cxDialog({
+        title: '提示',
+        info: data.message,
+        ok: function() {
+          if (typeof data.nextUrl === 'string' && data.nextUrl.length) {
             if (data.nextUrl === 'reload') {
               location.reload();
             } else {
               location.href = data.nextUrl;
             };
-          }
-        });
-      } else {
+          };
+        }
+      });
+    } else {
+      if (typeof data.nextUrl === 'string' && data.nextUrl.length) {
         if (data.nextUrl === 'reload') {
           location.reload();
         } else {
           location.href = data.nextUrl;
         };
       };
-
-    } else if (typeof data.message === 'string' && data.message.length) {
-      $.cxDialog({
-        title: '提示',
-        info: data.message
-      });
     };
   };
 

@@ -33,6 +33,22 @@
 
   <form action="?" method="get" class="form">
     <div class="row_group">
+      <dl class="row note">
+        <dt>Email</dt>
+        <dd>a***z@gmail.com</dd>
+      </dl>
+      <dl class="row">
+        <dt><label for="login_name">用户名</label></dt>
+        <dd><input type="text" id="login_name" class="input full" placeholder="Email / 手机号码"></dd>
+      </dl>
+      <dl class="row">
+        <dt><label for="login_pwd">密码</label></dt>
+        <dd><input type="password" id="login_pwd" class="input full" placeholder="密码由数字、字母组成"></dd>
+      </dl>
+    </div>
+
+    <div class="note">Placeholder</div>
+    <div class="row_group">
       <div class="row">
         <input type="text" class="input full" placeholder="用户名">
       </div>
@@ -41,54 +57,31 @@
       </div>
     </div>
 
-    <div class="row_group">
-      <dl class="row">
-        <dt>Email</dt>
-        <dd class="note">a***z@gmail.com</dd>
-      </dl>
-      <dl class="row">
-        <dt><label for="login_name">用户名</label></dt>
-        <dd><input type="text" id="login_name" class="input full"></dd>
-      </dl>
-      <dl class="row">
-        <dt><label for="login_pwd">密码</label></dt>
-        <dd><input type="password" id="login_pwd" class="input full"></dd>
-      </dl>
-    </div>
-
-    <div class="row_group">
-      <dl class="row">
-        <dt>Column</dt>
-        <dd>
-          <div class="col_group">
-            <dl class="col">
-              <dt>手机号码</dt>
-              <dd><input type="tel" id="login_name" class="input full small border"></dd>
-            </dl>
-            <dl class="col">
-              <dt>电话号码</dt>
-              <dd><input type="tel" id="login_name" class="input full small border"></dd>
-            </dl>
-            <dl class="col">
-              <dt>传真号码</dt>
-              <dd><input type="tel" id="login_name" class="input full small border"></dd>
-            </dl>
-          </div>
-        </dd>
-      </dl>
-    </div>
-
     <div class="note">Note</div>
-
-    <div class="row note">Note Row</div>
-    <div class="row">
-      <div class="note">Note</div>
-    </div>
-    <dl class="row">
-      <dt class="note">Note</dt>
-      <dd class="note">Note</dd>
+    <dl class="row note">
+      <dt>Note</dt>
+      <dd>Note</dd>
     </dl>
 
+    <!-- 
+    <div class="note">Column</div>
+    <div class="col_group">
+      <div class="col note">a***z@gmail.com</div>
+      <div class="col">
+        <input type="tel" class="input full small border">
+      </div>
+    </div>
+    <div class="col_group">
+      <dl class="col note">
+        <dt>Email</dt>
+        <dd>a***z@gmail.com</dd>
+      </dl>
+      <dl class="col">
+        <dt>手机号码</dt>
+        <dd><input type="tel" class="input full small border"></dd>
+      </dl>
+    </div>
+     -->
     <div class="btns mbox">
       <button type="submit" class="button full blue">提交</button>
     </div>
