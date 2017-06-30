@@ -932,10 +932,10 @@
 
       if (!data) {
         return;
-      } else if (data.state !== 'success' && typeof options.error === 'function') {
+      } else if (data.status !== 'success' && typeof options.error === 'function') {
         options.error(data);
         return;
-      } else if (typeof options.success === 'function') {
+      } else if (data.status === 'success' && typeof options.success === 'function') {
         options.success(data);
         return;
       };
