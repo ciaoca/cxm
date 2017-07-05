@@ -146,7 +146,6 @@ flex:1 1 50%;
 
 
 
-
 /**
  * 表单控件
  * ------------------------------ */
@@ -1058,8 +1057,8 @@ transform:translate(0,0);
 @media (min-width:375px){
 html{font-size:11px;}
 
-.form .row{line-height:22px;}
-.form .row > dt{line-height:46px;}
+.form .row,
+.form .row > dt{line-height:22px;}
 
 input.input{height:46px;line-height:26px;}
 input.input.border{line-height:24px;}
@@ -1136,4 +1135,17 @@ body.w1200 #app_tip,
 body.w1200 .panel_page{width:1200px;right:auto;margin-left:-600px;}
 
 body.w1000 .this_qrcode{margin-left:620px;}
+}
+
+
+/* Wechat for OtherPhone: 360x640; */
+@media (min-height:570px){
+}
+
+/* Wechat for iPhone6 */
+@media (min-height:600px){
+}
+
+/* Wechat for iPhone7 */
+@media (min-height:660px){
 }

@@ -1,7 +1,7 @@
 /**
  * WebApp
  * @author ciaoca <ciaoca@gmail.com>
- * @date 2017-06-30
+ * @date 2017-07-05
  * --------------------
  * isElement            检测是否是 DOM 元素
  * isJquery             检测是否是 jQuery 对象
@@ -28,8 +28,8 @@
  * clearLocalStorage    清空缓存存储（localStorage）
  * getRandomNumber      生成随机数
  * getRandomString      生成随机字符串
- * replaceQuot          替换引号
  * replaceEnter         替换换行
+ * replaceQuot          替换引号
  * replaceHtml          替换 HTML 标签
  * toFloat              转换浮点数
  * numberFormat         格式化数字
@@ -327,6 +327,22 @@
       return string.charAt(Math.floor(Math.random() * string.length));
     }).join('');
   };
+  
+  /**
+   * 替换换行
+   * @param string {string}
+   * @return {string}
+   */
+  app.prototype.replaceEnter = function(string){
+    if (!this.isString(string)){
+      return string;
+    };
+
+    string = string.replace(/\r\n/g, '<br>');
+    string = string.replace(/\r|\n/g, '<br>');
+
+    return string;
+  };
 
   /**
    * 替换引号
@@ -338,6 +354,7 @@
     if (!this.isString(string)){
       return string;
     };
+
     if (decode === true) {
       string = string.replace(/&#34;/g, '"');
       string = string.replace(/&#39;/g, '\'');
@@ -345,36 +362,33 @@
       string = string.replace(/"/g, '&#34;');
       string = string.replace(/'/g, '&#39;');
     };
-    return string;
-  };
-  
-  /**
-   * 替换换行
-   * @param string {string}
-   * @return {string}
-   */
-  app.prototype.replaceEnter = function(string){
-    if (!this.isString(string)){
-      return string;
-    };
-    string = string.replace(/\r\n/g, '<br>');
-    string = string.replace(/\r|\n/g, '<br>');
+
     return string;
   };
   
   /**
    * 替换 HTML 标签
    * @param string {string}
+   * @param decode {boolean} 是否解码
    * @return {string}
    */
-  app.prototype.replaceHtml = function(string){
+  app.prototype.replaceHtml = function(string, decode){
     if (!this.isString(string)){
       return string;
     };
+
     string = this.trim(string);
-    string = string.replace(/"/g, '&#34;');
-    string = string.replace(/'/g, '&#39;');
-    string = string.replace(/</g, '&#60;');
+
+    if (decode === true) {
+      string = string.replace(/&#34;/g, '"');
+      string = string.replace(/&#39;/g, '\'');
+      string = string.replace(/&#60;/g, '<');
+    } else {
+      string = string.replace(/"/g, '&#34;');
+      string = string.replace(/'/g, '&#39;');
+      string = string.replace(/</g, '&#60;');
+    };
+
     return string;
   };
 
@@ -962,6 +976,8 @@
           if (typeof data.nextUrl === 'string' && data.nextUrl.length) {
             if (data.nextUrl === 'reload') {
               location.reload();
+            } else if (data.nextUrl === 'close') {
+              window.close();
             } else {
               location.href = data.nextUrl;
             };
@@ -972,6 +988,8 @@
       if (typeof data.nextUrl === 'string' && data.nextUrl.length) {
         if (data.nextUrl === 'reload') {
           location.reload();
+        } else if (data.nextUrl === 'close') {
+          window.close();
         } else {
           location.href = data.nextUrl;
         };

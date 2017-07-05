@@ -54,6 +54,14 @@ template.helper('tfReplaceEnter', function(string) {
   return APP.replaceEnter(string);
 });
 
-template.helper('tfDate', function(format, date) {
-  return cxDate(format, date);
+template.helper('tfDate', function() {
+  return cxDate.apply(APP, arguments);
+});
+
+template.helper('tfNumber', function() {
+  return APP.numberFormat.apply(APP, arguments);
+});
+
+template.helper('tfRandomNumber', function(min, max) {
+  return APP.getRandomNumber.apply(APP, arguments);
 });
