@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="css/demo.css">
 <script src="../static/js/zepto.min.js"></script>
 <script src="../static/js/plugins.js"></script>
+<script src="../static/js/_src/webapp.js"></script>
 <script src="../static/js/controller/init.js"></script>
 </head>
 <body>
@@ -62,11 +63,16 @@
     <div class="demo">
       <h3>发送按钮设置</h3>
 <pre><code>data-* 参数
+  second         发送间隔时间（秒）
   url            发送短信的接口地址
+  type           传输方式（get/post）
   input          手机号码输入框
   captcha        验证码输入框
   phone-name     URL 中手机号码的参数名称
   captcha-name   URL 中验证码的参数名称
+  tip-text       正在发送的提示文字
+  loop-text      倒计时按钮显示的文字
+  end-text       倒计时结束后显示的文字
 
 &lt;div data-url="your-api.php" data-input="user-phone"&gt;发送短信&lt;/div&gt;
 &lt;a href="your-api.php" data-input="user-phone"&gt;发送短信&lt;/div&gt;

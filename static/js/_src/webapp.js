@@ -1,7 +1,7 @@
 /**
  * WebApp
  * @author ciaoca <ciaoca@gmail.com>
- * @date 2017-07-05
+ * @date 2017-07-11
  * --------------------
  * isElement            检测是否是 DOM 元素
  * isJquery             检测是否是 jQuery 对象
@@ -1002,57 +1002,76 @@
    * @param el {element} 按钮元素（不限于 a 及 button）
    *
    * 按钮 data- 参数
+   *   second         发送间隔时间（秒）
    *   url            发送短信的接口地址
+   *   type           传输方式（get/post）
    *   input          手机号码输入框
    *   captcha        验证码输入框
    *   phone-name     URL 中手机号码的参数名称
    *   captcha-name   URL 中验证码的参数名称
-   *   second         发送间隔时间（秒）
-   *   tip            正在发送的提示文字
-   *   loopTip        倒计时按钮显示的文字
-   *   endTip         倒计时结束后显示的文字
+   *   tip-text       正在发送的提示文字
+   *   loop-text      倒计时按钮显示的文字
+   *   end-text       倒计时结束后显示的文字
    *
    *   例：
    *   <div data-url="your-api.php" data-input="user-phone" data-phone-name="phone">发送短信</div>
    *   <a href="your-api.php" data-input="user-phone" data-phone-name="phone">发送短信</a>
    */
-  app.prototype.smsSend = function(el) {
+  app.prototype.smsSend = function(options, success, error) {
     var self = this;
-    var text;
+    var nowTime = new Date().getTime();
+    var inputPhone, inputCaptcha, phoneValue;
+    var query = {};
 
-    if (!self.isElement(el)) {return};
-
-    if (el.dataset.time > 0) {
-      text = el.dataset.tip;
-      if (typeof text !== 'string' || !text.length) {
-        text = '短信正在发送中，请稍等。';
+    if (self.isJquery(options) || self.isZepto(options) || self.isElement(options)) {
+      options = {
+        el: options
       };
+    } else {
+      options: {}
+    };
 
-      $.cxDialog({
-        title: '提示',
-        info: text
-      });
+    if (typeof success === 'function') {
+      options.success = success;
+    };
+
+    if (typeof error === 'function') {
+      options.error = error;
+    };
+
+    options = $.extend({
+      second: 60,
+      type: 'get',
+      tipText: '短信正在发送中，请稍等。',
+      loopText: '正在发送({{time}})',
+      endText: '重新发送'
+    }, options);
+
+    if (self.isJquery(options.el) || self.isZepto(options.el)) {
+      options.el = options.el[0];
+    } else if (!self.isElement(options.el)) {
       return;
     };
 
-    var options = {
-      time: 60,
-      type: 'get'
-    };
-
-    var inputPhone, inputCaptcha;
-    var url;
-    var phoneValue;
-    var query = {};
+    $.extend(options, {
+      second: options.el.dataset.second,
+      url: options.el.dataset.url,
+      type: options.el.dataset.type,
+      input: options.el.dataset.input,
+      captcha: options.el.dataset.captcha,
+      phoneName: options.el.dataset.phoneName,
+      captchaName: options.el.dataset.captchaName,
+      tipText: options.el.dataset.tipText,
+      loopText: options.el.dataset.loopText,
+      endText: options.el.dataset.endText
+    });
 
     // 获取发送接口
-    if (typeof el.dataset.url === 'string' && el.dataset.url.length) {
-      url = el.dataset.url;
-    } else if (el.tagName.toLowerCase() === 'a') {
-      url = el.getAttribute('href');
+    if (!options.url && options.el.tagName.toLowerCase() === 'a') {
+      options.url = options.el.getAttribute('href');
     };
 
-    if (!url) {
+    if (!options.url) {
       $.cxDialog({
         title: '提示',
         info: '未定义接口'
@@ -1060,9 +1079,18 @@
       return;
     };
 
+    // 已发送提示
+    if (options.el.dataset.time > nowTime) {
+      $.cxDialog({
+        title: '提示',
+        info: options.tipText
+      });
+      return;
+    };
+
     // 如果设置了手机号码输入框，需要输入手机号码
-    if (typeof el.dataset.input === 'string' && el.dataset.input.length) {
-      if (!document.getElementById(el.dataset.input)) {
+    if (typeof options.input === 'string' && options.input.length) {
+      if (!document.getElementById(options.input)) {
         $.cxDialog({
           title: '提示',
           info: '缺少手机号码输入框'
@@ -1070,24 +1098,24 @@
         return;
       };
 
-      inputPhone = document.getElementById(el.dataset.input);
+      inputPhone = document.getElementById(options.input);
       phoneValue = inputPhone.value;
 
-      if (!phoneValue.length || phoneValue.slice(0, 1) != 1 || !/^\d{11}$/.test(phoneValue)) {
+      if (!phoneValue.length || !/^1\d{10}$/.test(phoneValue)) {
         inputPhone.focus();
         return;
       };
 
-      if (typeof el.dataset.phoneName === 'string' && el.dataset.phoneName.length) {
-        query[el.dataset.phoneName] = phoneValue;
+      if (typeof options.phoneName === 'string' && options.phoneName.length) {
+        query[options.phoneName] = phoneValue;
       } else {
         query[inputPhone.name] = phoneValue;
       };
     };
 
     // 如果设置了验证码输入框，需要输入验证码
-    if (typeof el.dataset.captcha === 'string' && el.dataset.captcha.length) {
-      if (!document.getElementById(el.dataset.input)) {
+    if (typeof options.captcha === 'string' && options.captcha.length) {
+      if (!document.getElementById(options.input)) {
         $.cxDialog({
           title: '提示',
           info: '缺少验证码输入框'
@@ -1095,7 +1123,7 @@
         return;
       };
 
-      inputCaptcha = document.getElementById(el.dataset.captcha);
+      inputCaptcha = document.getElementById(options.captcha);
       captchaValue = inputCaptcha.value;
 
       if (!captchaValue.length) {
@@ -1103,72 +1131,64 @@
         return;
       };
 
-      if (typeof el.dataset.captchaName === 'string' && el.dataset.captchaName.length) {
-        query[el.dataset.captchaName] = captchaValue;
+      if (typeof options.captchaName === 'string' && options.captchaName.length) {
+        query[options.captchaName] = captchaValue;
       } else {
         query[inputCaptcha.name] = captchaValue;
       };
     };
 
-    var countdown = parseInt(el.dataset.second, 10);
-
-    el.dataset.time = (isFinite(countdown) && countdown > 0) ? countdown : options.time;
-    smsSendloop(el);
+    options.el.dataset.time = nowTime + (options.second * 1000);
+    sendLoop(options);
 
     $.ajax({
-      url: url,
+      url: options.url,
       type: options.type,
       data: query,
       dataType: 'json'
     }).done(function(data, textStatus, jqXHR){
-      if (data.status !== 'success') {
-        el.dataset.time = 0;
-        smsSendloop(el);
-
-        $.cxDialog({
-          title: '提示',
-          info: data.message
-        });
-        return;
-      };
+      sendComplete(options, data);
 
     }).fail(function(jqXHR, textStatus, errorThrown){
-      el.dataset.time = 0;
-      smsSendloop(el);
-
-      $.cxDialog({
-        title: '错误',
-        info: errorThrown
+      sendComplete(options, {
+        message: errorThrown
       });
     });
   };
 
-  // 发送短信倒计时
-  var smsSendloop = function(el) {
-    var countdown = parseInt(el.dataset.time, 10);
-    var text;
+  var sendComplete = function(options, data) {
+    if (data.status !== 'success') {
+      options.el.dataset.time = 0;
+      sendLoop(options);
 
-    if (countdown > 1) {
-      countdown -= 1;
-      text = el.dataset.loopTip;
-      if (typeof text !== 'string' || !text.length) {
-        text = '正在发送({{time}})';
+      if (typeof options.error === 'function') {
+        options.error.call(options.el);
+      } else {
+        $.cxDialog({
+          title: '提示',
+          info: data.message
+        });
       };
-      text = text.replace('{{time}}', countdown);
+      return;
+    };
 
-      el.innerHTML = text;
-      el.dataset.time = countdown;
+    if (typeof options.success === 'function') {
+      options.success.call(options.el);
+    };
+  };
 
-      setTimeout(smsSendloop.bind(this, el), 1000);
+  // 发送短信倒计时
+  var sendLoop = function(options) {
+    var nowTime = new Date().getTime();
+    var diffTime = parseInt(options.el.dataset.time, 10) - nowTime;
+
+    if (diffTime > 0) {
+      options.el.innerHTML = options.loopText.replace('{{time}}', Math.round(diffTime / 1000));
+      setTimeout(sendLoop.bind(this, options), 1000);
 
     } else {
-      text = el.dataset.endTip;
-      if (typeof text !== 'string' || !text.length) {
-        text = '重新发送';
-      };
-
-      el.innerHTML = text;
-      el.dataset.time = 0;
+      options.el.dataset.time = 0;
+      options.el.innerHTML = options.endText;
     };
   };
 
