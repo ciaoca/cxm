@@ -9,36 +9,62 @@ window.APP = new WebApp({
 window.GLOBAL = {
   url: {},
   platform: {},
-  wechat: {}
+  wechat: {},
+  template: {}
 };
 
+
 /**
- * 保存系统、浏览器信息
+ * 保存系统信息
+ * system           系统
+ * version          系统版本
+ * browser          浏览器
+ * browserVersion   浏览器版本
  */
 (function() {
-  var ua = navigator.userAgent;
-  var _versionExp = '\\s?([\\d\\.\\-\\_]+)';
+  var ua = navigator.userAgent.toLowerCase();
   var _version;
 
   if(/(iPhone|iPad|iPod|iOS)/i.test(ua)){
-    _versionExp = '(OS)' + _versionExp;
-    _version = ua.match(/OS\s?([\d\.]+)/);
-    window.GLOBAL.platform.system = 'ios';
+    _version = ua.match(/os\s([\d\.\_]+)/i);
+    GLOBAL.platform.system = 'ios';
 
-  } else if(/android/i.test(ua)){
-    _versionExp = '(Android)' + _versionExp;
-    _version = ua.match(/(Android)\s?([\d\.]+)/);
-    window.GLOBAL.platform.system = 'android';
+  } else if(/Android/i.test(ua)){
+    _version = ua.match(/android\s([\d\.]+)/i);
+    GLOBAL.platform.system = 'android';
+
+  } else if(/Windows NT/i.test(ua)){
+    _version = ua.match(/Windows NT\s([\d\.]+)/i);
+    GLOBAL.platform.system = 'windows';
   };
 
-  _version = ua.match(new RegExp(_versionExp));
-
-  if (Array.isArray(_version) && _version.length > 2) {
-    window.GLOBAL.platform.version = parseFloat(_version[2].replace(/[\-\_]/g, '.'));;
+  if (Array.isArray(_version) && _version.length > 1) {
+    GLOBAL.platform.version = parseFloat(_version[1].replace(/[\-\_]/g, '.'));
   };
 
   if(/MicroMessenger/i.test(ua)){
-    window.GLOBAL.platform.browser = 'wechat';
+    GLOBAL.platform.browser = 'wechat';
+    _version = ua.match(/MicroMessenger\/([\d\.]+)/i);
+
+  } else if (/MSIE/i.test(ua)) {
+    GLOBAL.platform.browser = 'ie';
+    _version = ua.match(/MSIE\s([\d\.]+)/i);
+
+  } else if (/Trident/i.test(ua)) {
+    GLOBAL.platform.browser = 'ie';
+    _version = ua.match(/rv:([\d\.]+)/);
+
+  } else if (/Chrome/i.test(ua)) {
+    GLOBAL.platform.browser = 'chrome';
+    _version = ua.match(/Chrome\/([\d\.]+)/i);
+
+  } else if (/Safari/i.test(ua)) {
+    _version = ua.match(/Version\/([\d\.]+)/i);
+    GLOBAL.platform.browser = 'safari';
+  };
+
+  if (Array.isArray(_version) && _version.length > 1) {
+    GLOBAL.platform.browserVersion = parseFloat(_version[1].replace(/[\-\_]/g, '.'));
   };
 })();
 

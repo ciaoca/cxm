@@ -1,7 +1,7 @@
 /**
  * WebApp
  * @author ciaoca <ciaoca@gmail.com>
- * @date 2017-07-11
+ * @date 2017-07-31
  * --------------------
  * isElement            检测是否是 DOM 元素
  * isJquery             检测是否是 jQuery 对象
@@ -320,8 +320,7 @@
    */
   app.prototype.getRandomString = function(length, string){
     length = isFinite(length) ? parseInt(length, 10) : 0;
-
-    var string = (typeof string === 'string' && string.length) ? string : 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    string = (typeof string === 'string' && string.length) ? string : 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
     return Array.apply(0, Array(length)).map(function () {
       return string.charAt(Math.floor(Math.random() * string.length));
@@ -422,7 +421,7 @@
     value = this.toFloat(value, decimals);
     value = value.toFixed(decimals);
     value = value.replace(/(\d{1,3})(?=(\d{3})+(?:$|\.))/g, ('$1,'));
-    value = value.replace(/[\.\,]/g, function(key, index, val, d){
+    value = value.replace(/[\.\,]/g, function(key, index, val){
       if (key === '.') {
         return decimalpoint;
 
@@ -630,7 +629,7 @@
     pic.style.width = options.size + 'px';
     pic.style.height = options.size + 'px';
 
-    var qrcode = new QRCode(pic, {
+    var _qrcode = new QRCode(pic, {
       text: options.info,
       width: options.size,
       height: options.size,
@@ -807,7 +806,6 @@
    * @return {array}
    */
   app.prototype.compressPicture = function(files, options, callback) {
-    var self = this;
     var _canvas = document.createElement('canvas');
     var result = [];
 
@@ -831,21 +829,21 @@
 
       EXIF.getData(_file, function(){
         var _orientation = EXIF.getTag(this, 'Orientation');
-        var _rotate = 0;
+        // var _rotate = 0;
 
-        switch(_orientation) {
-          case 3:
-            _rotate = 180;
-            break
-          case 6:
-            _rotate = 90;
-            break
-          case 8:
-            _rotate = 270;
-            break
-          default:
-            _rotate = 0;
-        };
+        // switch(_orientation) {
+        //   case 3:
+        //     _rotate = 180;
+        //     break
+        //   case 6:
+        //     _rotate = 90;
+        //     break
+        //   case 8:
+        //     _rotate = 270;
+        //     break
+        //   default:
+        //     _rotate = 0;
+        // };
 
         var _fileImg = new MegaPixImage(_file);
 
@@ -1020,7 +1018,7 @@
   app.prototype.smsSend = function(options, success, error) {
     var self = this;
     var nowTime = new Date().getTime();
-    var inputPhone, inputCaptcha, phoneValue;
+    var inputPhone, inputCaptcha, phoneValue, captchaValue;
     var query = {};
 
     if (self.isJquery(options) || self.isZepto(options) || self.isElement(options)) {
