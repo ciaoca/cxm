@@ -12,12 +12,10 @@
 <meta name="apple-touch-fullscreen" content="yes">
 <meta name="format-detection" content="telephone=no">
 <link rel="stylesheet" href="../static/css/base.css">
-<link rel="stylesheet" href="../static/css/layout.css">
 <link rel="stylesheet" href="css/demo.css">
 <script src="../static/js/zepto.min.js"></script>
 <script src="../static/js/plugins.js"></script>
-<script src="../static/js/_src/webapp.js"></script>
-<script src="../static/js/controller/init.js"></script>
+<script src="../static/js/init.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -32,7 +30,9 @@
     <h2>全屏提示</h2>
     <div class="demo">
       <a class="button small green" href="javascript://" rel="call_tip" rev="demo">分享到朋友圈</a>
-      <pre><code>&lt;a rel="call_tip" rev='添加 class'&gt;分享到朋友圈&lt;/a&gt;</code></pre>
+      <div class="detail">
+        <pre><code>&lt;a rel="call_tip" rev='添加 class'&gt;分享到朋友圈&lt;/a&gt;</code></pre>
+      </div>
     </div>
   </div>
 
@@ -42,6 +42,7 @@
       <a class="button small" href="javascript://" rel="call_qrcode" rev='{"name":"string","age":18}'>JSON</a>
       <a class="button small" href="javascript://" rel="call_qrcode" rev="http://ciaoca.com/">链接</a>
       <a class="button small" href="javascript://" rel="call_qrcode" rev="自定义内容" data-option='{"before":"<div style=\"color:#ddd;\">标题</div>","after":"支持 HTML"}'>自定义内容</a>
+      <div class="detail">
 <pre><code>data-option 参数
   info        二维码内容
   size        二维码图片尺寸（正方形）
@@ -54,7 +55,8 @@
 
 &lt;a rel="call_qrcode" rev='自定义内容' data-option='{"info":"通过参数设置自定义内容"}'&gt;二维码&lt;/a&gt;
 </code></pre>
-      <p>属性<code>data-option</code>中内容使用 JSON 格式，需要修改为使用单引号设置。</p>
+        <p>属性<code>data-option</code>中内容使用 JSON 格式，需要修改为使用单引号设置。</p>
+      </div>
     </div>
   </div>
 
@@ -62,6 +64,7 @@
     <h2>发送短信</h2>
     <div class="demo">
       <h3>发送按钮设置</h3>
+      <div class="detail">
 <pre><code>data-* 参数
   second         发送间隔时间（秒）
   url            发送短信的接口地址
@@ -77,6 +80,7 @@
 &lt;div data-url="your-api.php" data-input="user-phone"&gt;发送短信&lt;/div&gt;
 &lt;a href="your-api.php" data-input="user-phone"&gt;发送短信&lt;/div&gt;
 </code></pre>
+      </div>
     </div>
 
     <h3>需要输入手机号码</h3>
@@ -133,6 +137,6 @@
 
   <footer class="footer"></footer>
 </div>
-<script src="../static/js/controller/ready.js"></script>
+<script src="../static/js/ready.js"></script>
 </body>
 </html>
