@@ -1,18 +1,22 @@
 /**
  * 全局配置
  * ------------------------------ */
-window.APP = new WebApp({
-  version: '1.0.0',
-  storagePrefix: ''
-});
-
 window.GLOBAL = {
-  url: {},
+  version: '1.0.0',
   platform: {},
+  url: {
+    base: ''
+  },
   wechat: {},
   template: {}
 };
 
+GLOBAL.platform.isHttps = ('https:' === document.location.protocol);
+
+window.APP = new WebApp({
+  version: GLOBAL.version,
+  storagePrefix: ''
+});
 
 /**
  * 保存系统信息
@@ -25,41 +29,45 @@ window.GLOBAL = {
   var ua = navigator.userAgent.toLowerCase();
   var _version;
 
-  if(/(iPhone|iPad|iPod|iOS)/i.test(ua)){
+  if(/(iphone|ipad|ipod|ios)/i.test(ua)){
     _version = ua.match(/os\s([\d\.\_]+)/i);
     GLOBAL.platform.system = 'ios';
 
-  } else if(/Android/i.test(ua)){
+  } else if(/android/i.test(ua)){
     _version = ua.match(/android\s([\d\.]+)/i);
     GLOBAL.platform.system = 'android';
 
-  } else if(/Windows NT/i.test(ua)){
-    _version = ua.match(/Windows NT\s([\d\.]+)/i);
+  } else if(/windows nt/i.test(ua)){
+    _version = ua.match(/windows nt\s([\d\.]+)/i);
     GLOBAL.platform.system = 'windows';
+
+  } else if(/mac os x/i.test(ua)){
+    _version = ua.match(/mac os x\s([\d\.]+)/i);
+    GLOBAL.platform.system = 'mac';
   };
 
   if (Array.isArray(_version) && _version.length > 1) {
     GLOBAL.platform.version = parseFloat(_version[1].replace(/[\-\_]/g, '.'));
   };
 
-  if(/MicroMessenger/i.test(ua)){
+  if(/micromessenger/i.test(ua)){
     GLOBAL.platform.browser = 'wechat';
-    _version = ua.match(/MicroMessenger\/([\d\.]+)/i);
+    _version = ua.match(/micromessenger\/([\d\.]+)/i);
 
-  } else if (/MSIE/i.test(ua)) {
+  } else if (/msie/i.test(ua)) {
     GLOBAL.platform.browser = 'ie';
-    _version = ua.match(/MSIE\s([\d\.]+)/i);
+    _version = ua.match(/msie\s([\d\.]+)/i);
 
-  } else if (/Trident/i.test(ua)) {
+  } else if (/trident/i.test(ua)) {
     GLOBAL.platform.browser = 'ie';
     _version = ua.match(/rv:([\d\.]+)/);
 
-  } else if (/Chrome/i.test(ua)) {
+  } else if (/chrome/i.test(ua)) {
     GLOBAL.platform.browser = 'chrome';
-    _version = ua.match(/Chrome\/([\d\.]+)/i);
+    _version = ua.match(/chrome\/([\d\.]+)/i);
 
-  } else if (/Safari/i.test(ua)) {
-    _version = ua.match(/Version\/([\d\.]+)/i);
+  } else if (/safari/i.test(ua)) {
+    _version = ua.match(/version\/([\d\.]+)/i);
     GLOBAL.platform.browser = 'safari';
   };
 
@@ -72,22 +80,22 @@ window.GLOBAL = {
 /**
  * artTemplate 模板引擎添加方法
  */
-template.helper('tfEncodeURIComponent', function(string) {
+template.defaults.imports.tfEncodeURIComponent = function(string) {
   return encodeURIComponent(string);
-});
+};
 
-template.helper('tfReplaceEnter', function(string) {
-  return APP.replaceEnter(string);
-});
+template.defaults.imports.tfReplace = function(string, regexp, replacement) {
+  return string.replace(regexp, replacement);
+};
 
-template.helper('tfDate', function() {
-  return cxDate.apply(APP, arguments);
-});
+template.defaults.imports.tfReplaceEnter = function(string, code) {
+  return APP.replaceEnter(string, code);
+};
 
-template.helper('tfNumber', function() {
-  return APP.numberFormat.apply(APP, arguments);
-});
+template.defaults.imports.tfNumberFormat = function(value, decimals, decimalpoint, separator) {
+  return APP.numberFormat(value, decimals, decimalpoint, separator);
+};
 
-template.helper('tfRandomNumber', function(min, max) {
-  return APP.getRandomNumber.apply(APP, arguments);
-});
+template.defaults.imports.tfDate = function(time, style) {
+  return cxDate(style, time);
+};

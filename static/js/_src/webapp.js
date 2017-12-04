@@ -1,7 +1,7 @@
 /**
  * WebApp
  * @author ciaoca <ciaoca@gmail.com>
- * @date 2017-07-31
+ * @date 2017-12-04
  * --------------------
  * isElement            检测是否是 DOM 元素
  * isJquery             检测是否是 jQuery 对象
@@ -47,7 +47,9 @@
  * qrcodeHide           隐藏二维码
  * qrcodeToggle         显示/隐藏二维码
  * compressPicture      压缩图片
+ * getFormData          获取表单提交的数据
  * formAjax             表单 AJAX 提交
+ * createUrlHash        创建 Hash URL
  * smsSend              发送短信
  * fixFlex              兼容 flex
  */
@@ -80,8 +82,22 @@
     self.dom.qrcode.setAttribute('id', 'app_qrcode');
     self.dom.qrcode.addEventListener('click', self.qrcodeHide.bind(self));
 
+    self.panelCount = 0;
+    self.scrollTop = 0;
+    self.dom.scroll = null;
+
+    if (document.scrollingElement) {
+      self.dom.scroll = document.scrollingElement;
+      document.scrollingElement.scrollTop = 100
+    } else {
+
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
       self.dom.body = document.body;
+      // if (self.isElement(document.getElementById('wrap'))) {
+        self.dom.wrap = document.getElementById('wrap');
+      // };
     });
   };
 
@@ -89,6 +105,44 @@
   app.prototype.debug = function(o){
     if (this.option.debug && window.console && window.console.log) {
       return console.log.apply(console, arguments);
+    };
+  };
+
+  // 保存滚动位置
+  app.prototype.saveScrollTop = function() {
+    var self = this;
+    var top = 0;
+
+    if (self.dom.scroll) {
+      top = self.dom.scroll.scrollTop;
+
+    // } else if (document.scrollingElement && document.scrollingElement.scrollTop) {
+    //   top = document.scrollingElement.scrollTop;
+    //   self.dom.scroll = document.scrollingElement;
+
+    } else if (document.documentElement.scrollTop) {
+      top = document.documentElement.scrollTop;
+      self.dom.scroll = document.documentElement;
+
+    } else if (document.body.scrollTop) {
+      top = document.body.scrollTop;
+      self.dom.scroll = document.body;
+    };
+
+    self.scrollTop = top;
+
+    if (self.isElement(self.dom.wrap)) {
+      self.dom.wrap.style.top = '-' + top + 'px';
+    };
+  };
+
+  // 还原滚动位置
+  app.prototype.restoreScrollTop = function() {
+    var self = this;
+    self.dom.scroll.scrollTop = self.scrollTop;
+
+    if (self.isElement(self.dom.wrap)) {
+      self.dom.wrap.style.top = '';
     };
   };
 
@@ -376,7 +430,7 @@
       return string;
     };
 
-    string = this.trim(string);
+    string = string.trim();
 
     if (decode === true) {
       string = string.replace(/&#34;/g, '"');
@@ -537,6 +591,8 @@
    * @param options {object} 选项
    */
   app.prototype.panelShow = function(el, options) {
+    var self = this;
+
     options = $.extend({
       lock: true,     // 锁定背景
       blur: false     // 模糊背景
@@ -546,16 +602,19 @@
       el = document.getElementById(el);
     };
 
-    if (this.isElement(el)) {
+    if (self.isElement(el)) {
+      // self.saveScrollTop();
       el.classList.remove('out');
       el.classList.add('in');
 
       if (options.lock) {
-        this.dom.body.classList.add('lock');
+        self.dom.body.classList.add('lock');
       };
       if (options.blur) {
-        this.dom.body.classList.add('blur');
+        self.dom.body.classList.add('blur');
       };
+
+      self.panelCount++;
     };
   };
 
@@ -564,16 +623,25 @@
    * @param el {string|element} DOM 元素或 ID
    */
   app.prototype.panelHide = function(el) {
+    var self = this;
+
     if (typeof el === 'string' && el.length) {
       el = document.getElementById(el);
     };
 
-    this.dom.body.classList.remove('lock');
-    this.dom.body.classList.remove('blur');
-
     if (this.isElement(el)) {
       el.classList.remove('in');
       el.classList.add('out');
+    };
+
+    self.panelCount--;
+
+    if (!self.panelCount) {
+      self.dom.body.classList.remove('lock');
+      self.dom.body.classList.remove('blur');
+      // setTimeout(function(){
+        // self.restoreScrollTop();
+      // }, 100)
     };
   };
 
@@ -814,7 +882,7 @@
     };
 
     options = $.extend({
-      fileType: 'image/jpeg',   // 文件格式
+      fileType: '',             // 文件格式
       maxWidth: 0,              // 最大宽度
       maxHeight: 0,             // 最大高度
       quality: 0.8              // 图片质量
@@ -826,6 +894,11 @@
       index = (index >= 0) ? index : 0;
 
       var _file = files[index];
+      var _type = options.fileType ? options.fileType : _file.type;
+
+      if (!_type) {
+        _type = 'image/jpeg';
+      };
 
       EXIF.getData(_file, function(){
         var _orientation = EXIF.getTag(this, 'Orientation');
@@ -855,7 +928,7 @@
 
         // 压缩需要时间，延迟处理
         setTimeout(function() {
-          result.push(_canvas.toDataURL(options.fileType, options.quality));
+          result.push(_canvas.toDataURL(_type, options.quality));
 
           index++;
 
@@ -875,6 +948,42 @@
     };
 
     compress();
+  };
+
+  /**
+   * 获取表单提交的数据
+   * @param form {element} 表单元素
+   */
+  app.prototype.getFormData = function(form) {
+    var self = this;
+
+    if (!self.isJquery(form) && !self.isZepto(form)) {
+      if (self.isElement(form)) {
+        form = $(form);
+      } else {
+        return;
+      };
+    };
+
+    var dataArray = form.serializeArray();
+    var dataObject = {};
+    var _tempValue;
+
+    for (var i = 0, l = dataArray.length; i < l; i++) {
+      if (dataArray[i].name in dataObject) {
+        if (!Array.isArray(dataObject[dataArray[i].name])) {
+          _tempValue = dataObject[dataArray[i].name];
+          dataObject[dataArray[i].name] = [];
+          dataObject[dataArray[i].name].push(_tempValue);
+        };
+        dataObject[dataArray[i].name].push(dataArray[i].value);
+
+      } else {
+        dataObject[dataArray[i].name] = dataArray[i].value;
+      };
+    };
+
+    return dataObject;
   };
 
   /**
@@ -938,10 +1047,6 @@
     }).done(function(data, textStatus, jqXHR){
       form.find('button[type="submit"]').prop('disabled', false);
 
-      if (typeof options.complete === 'function') {
-        options.complete(data);
-      };
-
       if (!data) {
         return;
       } else if (data.status !== 'success' && typeof options.error === 'function') {
@@ -961,6 +1066,11 @@
         title: '错误',
         info: errorThrown
       });
+
+    }).always(function() {
+      if (typeof options.complete === 'function') {
+        options.complete();
+      };
     });
   };
 
@@ -993,6 +1103,28 @@
         };
       };
     };
+  };
+
+  // 创建 Hash URL
+  app.prototype.createUrlHash = function(querys, keys) {
+    var data = {};
+    var values = [];
+    var hash = '#';
+
+    if (Array.isArray(keys) && keys.length) {
+      for (var x in querys) {
+        if (keys.indexOf(x) >= 0 && querys[x]) {
+          data[x] = querys[x];
+          values.push(x + '=' + querys[x]);
+        };
+      };
+    };
+
+    if (values.length) {
+      hash += '!' + values.join('&');
+    };
+
+    history.replaceState(data, document.title, hash);
   };
 
   /**

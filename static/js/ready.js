@@ -60,6 +60,67 @@ $('#header').on('click', 'dt', function() {
   };
 });
 
+// 筛选工具
+(function() {
+  if (!APP.isElement(document.getElementById('filter_tool'))) {return};
+  var filterTool = $('#filter_tool');
+  var filterForm;
+
+  if (filterTool.data('form') && filterTool.data('form').length && APP.isElement(document.getElementById(filterTool.data('form')))) {
+    filterForm = $('#'+filterTool.data('form'));
+  };
+
+  filterTool.on('click', 'a', function(event) {
+    event.preventDefault();
+    var _this = this;
+    var _rel = _this.rel;
+    var _rev = _this.rev;
+    var _a = $(_this);
+
+    if (_rel === 'close') {
+      filterTool.removeClass('hover');
+      filterTool.find('dl.col').removeClass('hover');
+    } else if (_rel) {
+      var _title = _this.dataset.title;
+
+      if (!_rev || typeof _title !== 'string' || !_title.length) {
+        _title = _a.closest('dl.col').children('dt').data('title');
+      };
+
+      _a.closest('dl.col').children('dt').html(_title);
+
+      // _a.addClass('n').siblings().removeClass('n');
+      _a.closest('dl.col').find('a').removeClass('n');
+      _this.classList.add('n');
+
+      filterTool.removeClass('hover');
+      filterTool.find('dl.col').removeClass('hover');
+
+      var _input = document.getElementById(_rel);
+
+      if (APP.isElement(_input)) {
+        _input.value = _rev;
+      };
+
+      if (filterForm) {
+        filterForm.trigger('submit');
+      };
+    };
+  });
+
+  filterTool.on('click', 'dt', function() {
+    var _dl = $(this).closest('dl');
+
+    if (_dl.hasClass('hover')) {
+      filterTool.removeClass('hover');
+    } else {
+      filterTool.addClass('hover');
+    };
+
+    _dl.toggleClass('hover').siblings('dl').removeClass('hover');
+  });
+})();
+
 
 // 解决 iOS 输入框获取焦点时 fixed 错位
 (function(){
@@ -101,7 +162,7 @@ $('#header').on('click', 'dt', function() {
   var pic = document.createElement('div');
 
   var qrcode = new QRCode(pic, {
-    text: location.href,
+    text: encodeURI(location.href),
     width: 88,
     height: 88,
     colorDark : "#000000",
@@ -111,7 +172,7 @@ $('#header').on('click', 'dt', function() {
 
   box.classList.add('this_qrcode');
   box.appendChild(pic);
-  box.insertAdjacentHTML('beforeend', '<p>微信扫一扫<br>获得更多内容</p>');
+  box.insertAdjacentHTML('beforeend', '<p>微信扫一扫<br>在手机上浏览</p>');
   document.body.appendChild(box);
 })();
 
