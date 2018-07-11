@@ -201,7 +201,6 @@ flex:1 1 50%;
 .form dl.col.note{padding:0;}
 
 
-
 /**
  * 表单控件
  * ------------------------------ */
@@ -268,9 +267,6 @@ flex:1 1 50%;
 .input.border{border:1px solid #ccc;}
 .input.radius{border-radius:99px;}
 
-/*.input[readonly]{color:#888;}*/
-.input:disabled{color:#aaa;}
-
 input.input{height:44px;line-height:24px;}
 input.input.border{line-height:22px;}
 input.input.small{height:36px;padding-top:6px;padding-bottom:6px;}
@@ -336,7 +332,6 @@ transition:color 0.2s;
 
 .radio:checked + label:before,
 .radio:checked + label:after{color:#007aff;}
-.radio:disabled + label{color:#aaa;}
 .radio:checked:disabled + label:before,
 .radio:checked:disabled + label:after{color:#aaa;}
 
@@ -352,7 +347,6 @@ transition:color 0.2s;
 }
 
 .checkbox:checked + label:after{color:#007aff;}
-.checkbox:disabled + label{color:#aaa;}
 .checkbox:checked:disabled + label:after{color:#aaa;}
 
 .checkbox.onright + label{padding-left:0;padding-right:30px;padding-left:0.5em;}
@@ -370,7 +364,6 @@ transition:left 0.2s;
 
 .checkswitch:checked + label:before{border-color:#4bd763;color:#4bd763;}
 .checkswitch:checked + label:after{left:31px;}
-.checkswitch:disabled + label{color:#aaa;}
 .checkswitch:checked:disabled + label:before{border-color:#ccc;color:#ddd;}
 
 .checkswitch.onright + label{padding-left:0;padding-right:70px;padding-left:0.5em;}
@@ -383,7 +376,6 @@ transition:right 0.2s;
 .radio.small + label,
 .checkbox.small + label,
 .checkswitch.small + label{height:36px;line-height:36px;}
-
 
 /* 群组 */
 .input_box .radio + label,
@@ -400,7 +392,7 @@ transition:right 0.2s;
 /**
  * 下拉框
  * ------------------------------ */
-.select{box-sizing:border-box;height:44px;padding:0 20px 0 10px;border:none;border-radius:3px;background-color:#fff;background-repeat:no-repeat;background-position:right 10px center;background-origin:border-box;font-size:1.4rem;outline:none;vertical-align:top;
+.select{box-sizing:border-box;display:inline-block;position:relative;height:44px;padding:0 20px 0 10px;border:none;border-radius:3px;background-color:#fff;background-repeat:no-repeat;background-position:right 10px center;background-origin:border-box;font-size:1.4rem;outline:none;vertical-align:top;
 background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAAACXU8ZrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RjZENEEzNDgyM0NDMTFFNkJGNzlERURDQzlGQUE2NUQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RjZENEEzNDkyM0NDMTFFNkJGNzlERURDQzlGQUE2NUQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGNkQ0QTM0NjIzQ0MxMUU2QkY3OURFRENDOUZBQTY1RCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpGNkQ0QTM0NzIzQ0MxMUU2QkY3OURFRENDOUZBQTY1RCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PlP2IVAAAAAwSURBVHjaYuno6PjPQAAwlZeXM+JTAJJngjFwKQCbhC6Alf///38UDHIjuhhAgAEA4DslhcbS5kEAAAAASUVORK5CYII=);
 -webkit-appearance:none;
 }
@@ -422,14 +414,11 @@ background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAA
 .input_group .select:last-child{border-top-right-radius:3px;border-bottom-right-radius:3px;}
 .input_group .select.border + .select.border{border-left:none;}
 
-.select:disabled{color:#aaa;}
-
-
 
 /**
  * 按钮
  * ------------------------------ */
-.button{box-sizing:border-box;display:inline-block;position:relative;min-width:44px;height:44px;padding:0 1.5em;border:none;border-radius:3px;background-color:#555;color:#fff;font-size:1.6rem;line-height:44px;text-align:center;text-decoration:none;cursor:pointer;vertical-align:top;
+.button{box-sizing:border-box;display:inline-block;position:relative;min-width:44px;height:44px;padding:0 1.5em;border:none;border-radius:3px;background-color:#555;color:#fff;font-size:1.6rem;line-height:44px;text-align:center;text-decoration:none;vertical-align:top;cursor:pointer;
 -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 .button:hover{color:#fff;}
@@ -500,6 +489,34 @@ transform:none;
 
 
 /**
+ * 状态
+ * ------------------------------ */
+.input[readonly]{color:#888;}
+
+.input[disabled],
+.select[disabled],
+.button[disabled],
+.radio[disabled] + label,
+.checkbox[disabled] + label,
+.input:disabled,
+.select:disabled,
+.button:disabled,
+.radio:disabled + label,
+.checkbox:disabled + label,
+.checkswitch:disabled + label{cursor:no-drop;}
+
+.input[disabled],
+.select[disabled],
+.radio[disabled] + label,
+.checkbox[disabled] + label,
+.input:disabled,
+.select:disabled,
+.radio:disabled + label,
+.checkbox:disabled + label,
+.checkswitch:disabled + label{color:#aaa;}
+
+
+/**
  * 详情
  * ------------------------------ */
 .detail{font-size:1.4rem;}
@@ -516,9 +533,12 @@ transform:none;
 .detail h5{font-size:1.6rem;}
 .detail h6{font-size:1.4rem;}
 .detail img{max-width:100%;}
-.detail p + p{margin:0.5em 0;}
+.detail img[width],
+.detail img[height]{max-width:none;}
+.detail p{margin:0.5em 0;}
 .detail em,
 .detail strong{font-weight:bold;}
+.detail a:hover{text-decoration:underline;}
 .detail li{position:relative;margin:0.5em 0;line-height:1.6;}
 .detail li{padding-left:1em;}
 .detail ol{counter-reset:item;}
@@ -808,7 +828,7 @@ animation:loadingRotate 1s infinite linear;
 -webkit-transform:rotate(45deg) translate(-25%,-25%);
 transform:rotate(45deg) translate(-25%,-25%);
 }
-.nav_link a + a{border-top:1px solid rgba(0,0,0,0.2);}}
+.nav_link a + a{border-top:1px solid rgba(0,0,0,0.2);}
 .nav_link .group + .group{margin-top:10px;}
 
 
@@ -966,10 +986,10 @@ transform:translate(0,0);
  * ------------------------------ */
 .ajax_list.ready:after,
 .ajax_list.empty:after,
-.ajax_list.end:after{display:block;clear:both;padding:10px;color:#888;font-size:1.4rem;text-align:center;}
+.ajax_list.end:after{content:'';display:block;clear:both;padding:10px;color:#888;font-size:1.4rem;text-align:center;}
 .ajax_list.ready:empty:after{content:attr(data-ready-tip);}
-.ajax_list.empty[data-empty-tip]:after{content:attr(data-empty-tip);}
-.ajax_list.end[data-end-tip]:after{content:attr(data-end-tip);}
+.ajax_list.empty:after{content:attr(data-empty-tip);}
+.ajax_list.end:after{content:attr(data-end-tip);}
 
 .ajax_list li{position:relative;}
 .ajax_list li .go{position:absolute;top:0;left:0;width:100%;height:100%;}
@@ -983,7 +1003,7 @@ transform:rotate(45deg) translate(-25%,-25%);
 
 .ajax_list ~ .loading,
 .ajax_list.load ~ .pull,
-.ajax_list.load ~ .pull{display:none;}
+.ajax_list.ready:empty ~ .pull{display:none;}
 .ajax_list.ready ~ .pull,
 .ajax_list.load ~ .loading{display:block;}
 
@@ -1239,7 +1259,7 @@ background:linear-gradient(to bottom,rgba(194,194,194,1) 0%,rgba(150,150,150,1) 
 /**
  * cxValidation
  * ------------------------------ */
-.cxvalidation_tip{box-sizing:border-box;position:fixed;top:0;left:0;width:100%;padding:0.5em 1em;background-color:rgba(100,0,0,0.8);color:#fff;z-index:999;
+/*.cxvalidation_tip{box-sizing:border-box;position:fixed;top:0;left:0;width:100%;padding:0.5em 1em;background-color:rgba(100,0,0,0.8);color:#fff;z-index:999;
 -webkit-transform:translate(0,-100%);
 transform:translate(0,-100%);
 transition:-webkit-transform 0.2s;
@@ -1249,7 +1269,7 @@ transition:transform 0.2s,-webkit-transform 0.2s;
 .cxvalidation_tip.show{
 -webkit-transform:translate(0,0);
 transform:translate(0,0);
-}
+}*/
 
 
 
