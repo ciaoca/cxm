@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-touch-fullscreen" content="yes">
 <meta name="format-detection" content="telephone=no">
-<link rel="stylesheet" href="../static/css/base.css">
+<link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/demo.css">
 <script src="../static/js/zepto.min.js"></script>
 <script src="../static/js/plugins.js"></script>
@@ -26,114 +26,16 @@
     </header>
   </div>
 
-  <div class="mbox">
+  <div class="mbox mt mb">
+    <div class="input_group">
+      <a class="button small gray" href="javascript://" rel="size" rev="small">Small</a>
+      <a class="button small gray" href="javascript://" rel="size" rev="">Default</a>
+      <!-- <a class="button small gray" href="javascript://" rel="size" rev="large">Large</a> -->
+    </div>
+  </div>
+
+  <div id="demo" class="mbox">
     <h2>Button</h2>
-    <div class="detail">
-      <p><code>.button</code>样式用于 a 元素测试</p>
-    </div>
-
-    <h3>Small</h3>
-    <div class="demo">
-      <p>
-        <a href="#" class="button small">Default</a>
-        <a href="#" class="button small white">White</a>
-      </p>
-      <p>
-        <a href="#" class="button small red">Red</a>
-        <a href="#" class="button small orange">Orange</a>
-        <a href="#" class="button small yellow">Yellow</a>
-      </p>
-      <p>
-        <a href="#" class="button small green">Green</a>
-        <a href="#" class="button small blue">Blue</a>
-        <a href="#" class="button small purple">Purple</a>
-        <a href="#" class="button small pink">Pink</a>
-      </p>
-      <p>
-        <a href="#" class="button small gray">Gray</a>
-        <a href="#" class="button small lightgray">Light</a>
-        <a href="#" class="button small mediumgray">Medium</a>
-        <a href="#" class="button small darkgray">Dark</a>
-      </p>
-
-      <h4>Radius</h4>
-      <p>
-        <a href="#" class="button small radius">Default</a>
-        <a href="#" class="button small radius red">Red</a>
-        <a href="#" class="button small radius blue">Blue</a>
-      </p>
-
-      <h4>Border</h4>
-      <p>
-        <a href="#" class="button small border">Default</a>
-        <a href="#" class="button small border red">Red</a>
-        <a href="#" class="button small border blue">Blue</a>
-      </p>
-
-      <h4>Radius &amp; Border</h4>
-      <p>
-        <a href="#" class="button small radius border">Default</a>
-        <a href="#" class="button small radius border red">Red</a>
-        <a href="#" class="button small radius border blue">Blue</a>
-      </p>
-
-      <h4>Full</h4>
-      <p>
-        <a href="#" class="button small full">Button Full</a>
-        <a href="#" class="button small full red">Red</a>
-        <a href="#" class="button small full radius blue">Blue</a>
-        <a href="#" class="button small full border green">Green</a>
-        <a href="#" class="button small full border radius purple">Purple</a>
-      </p>
-
-      <h4>Box</h4>
-      <div class="button_box">
-        <a href="#" class="button small">Button Box</a>
-      </div>
-
-      <div class="button_box">
-        <a href="#" class="button small red">Red</a>
-        <a href="#" class="button small yellow">Yellow</a>
-      </div>
-
-      <div class="button_box">
-        <a href="#" class="button small border blue">Blue</a>
-        <a href="#" class="button small border green">Green</a>
-        <a href="#" class="button small border purple">Purple</a>
-      </div>
-
-      <div class="button_box">
-        <a href="#" class="button small border radius gray">Gray</a>
-        <a href="#" class="button small border radius lightgray">Light</a>
-        <a href="#" class="button small border radius mediumgray">Medium</a>
-        <a href="#" class="button small border radius darkgray">Dark</a>
-      </div>
-
-      <h4>Group</h4>
-      <div class="button_group">
-        <a href="#" class="button small">Button Group</a>
-      </div>
-
-      <div class="button_group">
-        <a href="#" class="button small red">Red</a>
-        <a href="#" class="button small yellow">Yellow</a>
-      </div>
-
-      <div class="button_group">
-        <a href="#" class="button small border blue">Blue</a>
-        <a href="#" class="button small border green">Green</a>
-        <a href="#" class="button small border purple">Purple</a>
-      </div>
-
-      <div class="button_group">
-        <a href="#" class="button small border radius gray">Gray</a>
-        <a href="#" class="button small border radius lightgray">Light</a>
-        <a href="#" class="button small border radius mediumgray">Medium</a>
-        <a href="#" class="button small border radius darkgray">Dark</a>
-      </div>
-    </div>
-
-    <h3>Default</h3>
     <div class="demo">
       <p>
         <a href="#" class="button">Default</a>
@@ -147,12 +49,16 @@
       <p>
         <a href="#" class="button green">Green</a>
         <a href="#" class="button blue">Blue</a>
+      </p>
+      <p>
         <a href="#" class="button purple">Purple</a>
         <a href="#" class="button pink">Pink</a>
       </p>
       <p>
         <a href="#" class="button gray">Gray</a>
         <a href="#" class="button lightgray">Light</a>
+      </p>
+      <p>
         <a href="#" class="button mediumgray">Medium</a>
         <a href="#" class="button darkgray">Dark</a>
       </p>
@@ -181,29 +87,28 @@
       <h4>Full</h4>
       <p>
         <a href="#" class="button full">Button Full</a>
-        <a href="#" class="button full red">Red</a>
-        <a href="#" class="button full radius blue">Blue</a>
-        <a href="#" class="button full border green">Green</a>
-        <a href="#" class="button full border radius purple">Purple</a>
+        <a href="#" class="button full radius red">Red</a>
+        <a href="#" class="button full border blue">Blue</a>
+        <a href="#" class="button full border radius green">Green</a>
       </p>
 
       <h4>Box</h4>
-      <div class="button_box">
+      <div class="input_box">
         <a href="#" class="button">Button Box</a>
       </div>
 
-      <div class="button_box">
+      <div class="input_box">
         <a href="#" class="button red">Red</a>
         <a href="#" class="button yellow">Yellow</a>
       </div>
 
-      <div class="button_box">
+      <div class="input_box">
         <a href="#" class="button border blue">Blue</a>
         <a href="#" class="button border green">Green</a>
         <a href="#" class="button border purple">Purple</a>
       </div>
 
-      <div class="button_box">
+      <div class="input_box">
         <a href="#" class="button border radius gray">Gray</a>
         <a href="#" class="button border radius lightgray">Light</a>
         <a href="#" class="button border radius mediumgray">Medium</a>
@@ -211,22 +116,22 @@
       </div>
 
       <h4>Group</h4>
-      <div class="button_group">
+      <div class="input_group">
         <a href="#" class="button">Button Group</a>
       </div>
 
-      <div class="button_group">
+      <div class="input_group">
         <a href="#" class="button red">Red</a>
         <a href="#" class="button yellow">Yellow</a>
       </div>
 
-      <div class="button_group">
+      <div class="input_group">
         <a href="#" class="button border blue">Blue</a>
         <a href="#" class="button border green">Green</a>
         <a href="#" class="button border purple">Purple</a>
       </div>
 
-      <div class="button_group">
+      <div class="input_group">
         <a href="#" class="button border radius gray">Gray</a>
         <a href="#" class="button border radius lightgray">Light</a>
         <a href="#" class="button border radius mediumgray">Medium</a>
@@ -238,5 +143,6 @@
   <footer class="footer"></footer>
 </div>
 <script src="../static/js/ready.js"></script>
+<script src="js/demo.js"></script>
 </body>
 </html>
