@@ -1,0 +1,48 @@
+body.onfocus .hd_nav nav{position:relative;top:0;}
+
+h2,h3,h4{margin:0.5em 0;}
+h2{font-size:1.8rem;}
+h3{color:#888;font-size:1.6rem;}
+h4{color:#888;font-size:1.4rem;}
+
+#app_tip.demo:before{content:'点击右上角，分享到朋友圈';position:absolute;top:10px;right:10px;color:#fff;font-size:2rem;}
+#app_tip.demo:after{content:'使用背景图片，定义样式';position:absolute;top:50px;right:10px;color:#aaa;font-size:1.6rem;}
+
+
+
+/**
+ * 示例区域
+ * ------------------------------ */
+.demo{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #ccc;}
+.demo h3{margin-top:10px;}
+.demo p + p{margin-top:10px;}
+.demo_link{font-size:1.4rem;line-height:2;}
+.demo_link a{margin-right:10px;}
+
+
+.form .in_sms{padding-right:150px;}
+.form .in_sms img,
+.form .in_sms a{position:absolute;top:50%;right:10px;margin-top:-16px;}
+.form .in_sms a{width:8em;}
+
+
+.style_tab .item{display:none;}
+.style_tab.to_link .for_link,
+.style_tab.to_button .for_button,
+.style_tab.to_input .for_input,
+.style_tab.to_select .for_select{display:block;}
+
+
+
+/**
+ * 响应式处理
+ * ------------------------------ */
+@media (min-width:480px){
+}
+
+@media (min-width:568px){
+}
+
+@media (min-width:641px){
+.hd_nav nav{position:relative;top:0;}
+}

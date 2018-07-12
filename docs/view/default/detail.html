@@ -11,67 +11,22 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-touch-fullscreen" content="yes">
 <meta name="format-detection" content="telephone=no">
-<link rel="stylesheet" href="static/css/base.css">
-<link rel="stylesheet" href="static/css/layout.css">
-<script src="static/js/zepto.min.js"></script>
-<script src="static/js/plugins.js"></script>
-<script src="static/js/init.js"></script>
+<link rel="stylesheet" href="../../static/css/base.css">
+<link rel="stylesheet" href="../../static/default/css/layout.css">
+<script src="../../static/js/zepto.min.js"></script>
+<script src="../../static/default/js/plugins.js"></script>
+<script src="../../static/default/js/init.js"></script>
 </head>
 <body>
 <div class="wrap">
   <!-- Header File Start -->
   <div id="header" class="header">
     <header>
-      <h1 id="header_title">首页</h1>
-      <!-- <a class="icon onright go" href="#"></a> -->
-      <!--
-      <dl class="menu">
-        <dt></dt>
-        <dd>
-          <a href="#">菜单</a>
-          <a href="#">菜单</a>
-          <a href="#">菜单</a>
-        </dd>
-      </dl>
-      -->
-      <dl class="menu onright">
-        <dt></dt>
-        <dd>
-          <a href="#">菜单</a>
-          <a href="#">菜单</a>
-          <a href="#">菜单</a>
-        </dd>
-      </dl>
+      <h1 id="header_title">文章</h1>
+      <a id="header_back" class="icon back" href="index.html"></a>
     </header>
   </div>
   <!-- Header File End -->
-
-  <div class="nav_tab">
-  <!-- <div class="nav_tab fixed"> -->
-  <!-- <div class="nav_tab radius"> -->
-  <!-- <div class="nav_tab radius fixed"> -->
-    <nav>
-      <a class="n" href="#">导航</a>
-      <a href="#">导航</a>
-      <a href="#">导航</a>
-      <a href="#">导航</a>
-      <a href="#">导航</a>
-    </nav>
-  </div>
-
-  <div id="home_slide" class="slide home_slide">
-    <ul class="box">
-      <li>
-        <div class="item" style="background-image:url(http://placehold.it/640x360)"></div>
-      </li>
-      <li>
-        <div class="item" style="background-image:url(http://placehold.it/640x360)"></div>
-      </li>
-      <li>
-        <div class="item" style="background-image:url(http://placehold.it/640x360)"></div>
-      </li>
-    </ul>
-  </div>
 
   <div class="mbox mt">
     <div class="detail">
@@ -88,10 +43,96 @@
       <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
       <h6>标题6</h6>
       <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
+
       <p>&nbsp;</p>
-      <p>图片自适应</p>
+      <h6>图片自适应</h6>
       <p><img src="http://placehold.it/640x320"></p>
       <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
+
+      <p>&nbsp;</p>
+      <h6>头像默认为圆形</h6>
+      <p><div class="face" style="background-image:url(http://placehold.it/100x100);width:60px;height:60px;"></div></p>
+
+      <p>&nbsp;</p>
+      <h6>ul 列表</h6>
+      <ul>
+        <li>项目</li>
+        <li>项目</li>
+        <li>项目</li>
+      </ul>
+
+      <h6>ol 列表</h6>
+      <ol>
+        <li>项目</li>
+        <li>项目</li>
+        <li>项目</li>
+      </ol>
+
+      <table>
+        <caption>table 表格</caption>
+        <thead>
+          <tr>
+            <th>表头</th>
+            <th>表头</th>
+            <th>表头</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <td>表注</td>
+            <td>表注</td>
+            <td>表注</td>
+          </tr>
+        </tfoot>
+        <tbody>
+          <tr>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+          </tr>
+          <tr>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table width="100%">
+        <caption>按行排版</caption>
+        <thead>
+          <tr>
+            <th>表头</th>
+            <th>表头</th>
+            <th>表头</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>标题</th>
+            <td>内容</td>
+            <td>内容</td>
+          </tr>
+          <tr>
+            <th>标题</th>
+            <td>内容</td>
+            <td>内容</td>
+          </tr>
+          <tr>
+            <th>标题</th>
+            <td>内容</td>
+            <td>内容</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <blockquote>blockquote</blockquote>
+
+      <p>在文中穿插<code class="html">code inline</code>代码</p>
+      <pre>pre</pre>
+      <pre><code>pre > codepre
+var self = this;
+longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong</code></pre>
     </div>
   </div>
 
@@ -99,51 +140,14 @@
   <div id="footer_nav" class="footer_nav">
     <nav>
       <a href="index.html">首页</a>
-      <a href="docs/style-content.html">文章</a>
-      <a href="docs/index.html">示例</a>
+      <a href="detail.html">文章</a>
+      <a href="../demo/index.html">示例</a>
       <a href="https://github.com/ciaoca/cxBase">Github</a>
     </nav>
   </div>
   <!-- Footer File End -->
 </div>
 
-<script src="static/js/ready.js"></script>
-<script>
-(function() {
-  var start = 0;
-  var slideBox = $('#home_slide');
-  var slideBtns = $('<div></div>', {class: 'btns'});
-  var slideSum = slideBox.find('li').length;
-  var _html = '';
-
-  for (var i = slideSum - 1; i >= 0; i--) {
-    _html += '<i></i>';
-  };
-
-  slideBtns.append(_html).appendTo(slideBox);
-
-  var toggleBtn = function(n){
-    // 只有两个展示项时，序号与预期不符
-    if (slideSum === 2 && n > 1) {
-      n -= 2;
-    };
-
-    slideBtns.find('i').removeClass('n').eq(n).addClass('n');
-  };
-
-  var mySwipe = new Swipe(slideBox[0], {
-    speed: 600,
-    auto: 5000,
-    callback: function(index) {
-      toggleBtn(index);
-    },
-    transitionEnd: function(index) {
-      // console.log(index);
-    }
-  });
-
-  toggleBtn(start);
-})();
-</script>
+<script src="../../static/default/js/ready.js"></script>
 </body>
 </html>
