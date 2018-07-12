@@ -23,7 +23,7 @@ em,i{font-style:normal;}
 ins{text-decoration:underline;}
 del{text-decoration:line-through;}
 q:before,q:after{content:'';}
-hr{height:1px;margin:1.5em 0;background-color:#ccc;border:none;}
+hr{height:1px;margin:1em 0;background-color:#ccc;border:none;}
 html{font-size:10px;
 -webkit-text-size-adjust:100%;
 }
@@ -125,8 +125,8 @@ a.notund,a.notund:hover{text-decoration:none;}
 .pages a,
 .pages span,
 .pages strong{box-sizing:border-box;display:inline-block;min-width:44px;margin:0 10px 0 0;padding:0 1em;border:1px solid transparent;border-radius:3px;font-size:1.4rem;text-align:center;vertical-align:top;}
-.pages a{border:1px solid #ccc;background:#fff;color:#888;text-decoration:none;}
-.pages strong{border-color:#a00;background:#a00;color:#fff;}
+.pages a{border:1px solid #ccc;background-color:#fff;color:#888;text-decoration:none;}
+.pages strong{border-color:#a00;background-color:#a00;color:#fff;}
 .pages span{padding:0;}
 
 .pages.small{line-height:34px;}
@@ -187,8 +187,6 @@ flex:1 1 50%;
 
 .form .row_group{position:relative;background-color:#fff;}
 .form .row_group + .row_group{margin-top:10px;}
-
-.form .btns{margin-top:20px;}
 
 .form .note{padding:10px;line-height:20px;}
 .form .note + .note{margin-top:0;}
@@ -271,6 +269,10 @@ input.input{height:44px;line-height:24px;}
 input.input.border{line-height:22px;}
 input.input.small{height:36px;padding-top:6px;padding-bottom:6px;}
 textarea.input{resize:none;}
+
+/* 跟随单位 */
+.input_unit{display:inline-block;padding:10px 0;line-height:24px;vertical-align:top;}
+.input.small + .input_unit{line-height:16px}
 
 
 /* 群组 */
@@ -423,8 +425,8 @@ background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAA
 }
 .button:hover{color:#fff;}
 
-.button.mini{height:24px;padding:0 0.5em;font-size:1.2rem;line-height:24px;}
-.button.small{height:32px;padding:0 1em;font-size:1.4rem;line-height:32px;}
+.button.mini{height:24px;padding:0 1em;font-size:1.2rem;line-height:24px;}
+.button.small{height:36px;font-size:1.4rem;line-height:36px;}
 .button.full{display:block;width:100%;padding:0;}
 
 .button.blue{background-color:#4a89dc;}
@@ -1284,29 +1286,22 @@ transform:translate(0,0);
 
 input.input{height:46px;line-height:26px;}
 input.input.border{line-height:24px;}
-input.input.small{height:36px;}
 
 .select{height:46px;}
-.select.small{height:36px;}
 
 .radio + label,
 .checkbox + label,
 .checkswitch + label{height:46px;line-height:46px;}
 
+.input_unit{line-height:26px;}
+
 .button{height:46px;line-height:46px;}
-.button.small{height:36px;line-height:36px;}
 .button.border{line-height:44px;}
-.button.border.small{line-height:34px;}
 
 .pages{line-height:44px;}
 .pages a,
 .pages span,
 .pages strong{min-width:46px;}
-
-.pages.small{line-height:34px;}
-.pages.small a,
-.pages.small span,
-.pages.small strong{min-width:36px;}
 
 .header{height:46px;line-height:46px;}
 .header .icon,
