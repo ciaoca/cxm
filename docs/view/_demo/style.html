@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-touch-fullscreen" content="yes">
 <meta name="format-detection" content="telephone=no">
-<link rel="stylesheet" href="../../static/css/base.css">
+<link rel="stylesheet" href="../../static/css/cxm.css">
 <link rel="stylesheet" href="../../static/_demo/css/layout.css">
 <script src="../../static/js/zepto.min.js"></script>
 <script src="../../static/default/js/plugins.js"></script>
@@ -50,6 +50,14 @@
         <h2>Link</h2>
         <div class="demo demo_link">
           <a class="link" href="#">Default</a>
+          <a class="link primary" href="#">Primary</a>
+          <a class="link success" href="#">Success</a>
+          <a class="link info" href="#">Info</a>
+          <a class="link warn" href="#">Warn</a>
+        </div>
+
+        <h3>Colors</h3>
+        <div class="demo demo_link">
           <a class="link red" href="#">Red</a>
           <a class="link orange" href="#">Orange</a>
           <a class="link yellow" href="#">Yellow</a>
@@ -67,18 +75,10 @@
         <h3>Underline</h3>
         <div class="demo demo_link">
           <a class="link und" href="#">Default</a>
-          <a class="link und red" href="#">Red</a>
-          <a class="link und orange" href="#">Orange</a>
-          <a class="link und yellow" href="#">Yellow</a>
-          <a class="link und green" href="#">Green</a>
-          <a class="link und blue" href="#">Blue</a>
-          <a class="link und purple" href="#">Purple</a>
-          <a class="link und pink" href="#">Pink</a>
-          <a class="link und gray" href="#">Gray</a>
-          <a class="link und lightgray" href="#">Light Gray</a>
-          <a class="link und mediumgray" href="#">Medium Gray</a>
-          <a class="link und darkgray" href="#">Dark Gray</a>
-          <a class="link und white" href="#">White</a>
+          <a class="link und primary" href="#">Primary</a>
+          <a class="link und success" href="#">Success</a>
+          <a class="link und info" href="#">Info</a>
+          <a class="link und warn" href="#">Warn</a>
         </div>
 
         <h2>Pages</h2>
@@ -150,7 +150,7 @@
           </div>
         </div>
 
-        <h3>Full Group</h3>
+        <h3>Full &amp; Group</h3>
         <div class="demo">
           <div class="pages full group">
             <a href="#">首页</a>
@@ -177,111 +177,124 @@
       <div class="item for_button">
 
         <h2>Button</h2>
-        <div class="demo">
-          <p>
-            <button type="button" class="button"></button>
-            <button type="button" class="button">Default</button>
-            <button type="button" class="button white">White</button>
-          </p>
-          <p>
-            <button type="button" class="button red">Red</button>
-            <button type="button" class="button orange">Orange</button>
-            <button type="button" class="button yellow">Yellow</button>
-          </p>
-          <p>
-            <button type="button" class="button green">Green</button>
-            <button type="button" class="button blue">Blue</button>
-          </p>
-          <p>
-            <button type="button" class="button purple">Purple</button>
-            <button type="button" class="button pink">Pink</button>
-          </p>
-          <p>
-            <button type="button" class="button gray">Gray</button>
-            <button type="button" class="button lightgray">Light</button>
-          </p>
-          <p>
-            <button type="button" class="button mediumgray">Medium</button>
-            <button type="button" class="button darkgray">Dark</button>
-          </p>
-
-          <h4>Radius</h4>
-          <p>
-            <button type="button" class="button radius"></button>
-            <button type="button" class="button radius">Default</button>
-            <button type="button" class="button radius red">Red</button>
-          </p>
-
-          <h4>Border</h4>
-          <p>
-            <button type="button" class="button border"></button>
-            <button type="button" class="button border">Default</button>
-            <button type="button" class="button border red">Red</button>
-          </p>
-
-          <h4>Radius &amp; Border</h4>
-          <p>
-            <button type="button" class="button radius border"></button>
-            <button type="button" class="button radius border">Default</button>
-            <button type="button" class="button radius border red">Red</button>
-          </p>
-
-          <h4>Full</h4>
-          <p>
-            <button type="button" class="button full">Button Full</button>
-            <button type="button" class="button full radius red">Red</button>
-            <button type="button" class="button full border blue">Blue</button>
-            <button type="button" class="button full border radius green">Green</button>
-          </p>
-
-          <h4>Box</h4>
-          <div class="input_box">
-            <button type="button" class="button">Button Box</button>
-          </div>
-
-          <div class="input_box">
-            <button type="button" class="button red">Red</button>
-            <button type="button" class="button yellow">Yellow</button>
-          </div>
-
-          <div class="input_box">
-            <button type="button" class="button border blue">Blue</button>
-            <button type="button" class="button border green">Green</button>
-            <button type="button" class="button border purple">Purple</button>
-          </div>
-
-          <div class="input_box">
-            <button type="button" class="button border radius gray">Gray</button>
-            <button type="button" class="button border radius lightgray">Light</button>
-            <button type="button" class="button border radius mediumgray">Medium</button>
-            <button type="button" class="button border radius darkgray">Dark</button>
-          </div>
-
-          <h4>Group</h4>
-          <div class="input_group">
-            <button type="button" class="button">Button Group</button>
-          </div>
-
-          <div class="input_group">
-            <button type="button" class="button red">Red</button>
-            <button type="button" class="button yellow">Yellow</button>
-          </div>
-
-          <div class="input_group">
-            <button type="button" class="button border blue">Blue</button>
-            <button type="button" class="button border green">Green</button>
-            <button type="button" class="button border purple">Purple</button>
-          </div>
-
-          <div class="input_group">
-            <button type="button" class="button border radius gray">Gray</button>
-            <button type="button" class="button border radius lightgray">Light</button>
-            <button type="button" class="button border radius mediumgray">Medium</button>
-            <button type="button" class="button border radius darkgray">Dark</button>
-          </div>
+        <div class="demo demo_btns">
+          <button type="button" class="button"></button>
+          <button type="button" class="button">Default</button>
+          <button type="button" class="button primary">Primary</button>
+          <button type="button" class="button success">Success</button>
+          <button type="button" class="button info">Info</button>
+          <button type="button" class="button warn">Warn</button>
+          <button type="button" class="button danger">Danger</button>
         </div>
 
-        <p><code>.button</code>样式也可以用于 a 元素或其他标签：<a class="link blue" href="style-button-a.html">[Demo]</a></p>
+        <h3>Colors</h3>
+        <div class="demo demo_btns">
+          <button type="button" class="button red">Red</button>
+          <button type="button" class="button orange">Orange</button>
+          <button type="button" class="button yellow">Yellow</button>
+          <button type="button" class="button green">Green</button>
+          <button type="button" class="button blue">Blue</button>
+          <button type="button" class="button purple">Purple</button>
+          <button type="button" class="button pink">Pink</button>
+          <button type="button" class="button white">White</button>
+          <button type="button" class="button gray">Gray</button>
+          <button type="button" class="button lightgray">Light</button>
+          <button type="button" class="button mediumgray">Medium</button>
+          <button type="button" class="button darkgray">Dark</button>
+        </div>
+
+        <h3>Link</h3>
+        <div class="demo demo_btns">
+          <button type="button" class="button link">Link</button>
+          <button type="button" class="button link primary">Primary</button>
+          <button type="button" class="button link success">Success</button>
+          <button type="button" class="button link info">Info</button>
+          <button type="button" class="button link warn">Warn</button>
+          <button type="button" class="button link danger">Danger</button>
+        </div>
+
+        <h3>Border</h3>
+        <div class="demo demo_btns">
+          <button type="button" class="button border"></button>
+          <button type="button" class="button border">Default</button>
+          <button type="button" class="button border primary">Primary</button>
+          <button type="button" class="button border success">Success</button>
+          <button type="button" class="button border info">Info</button>
+          <button type="button" class="button border warn">Warn</button>
+          <button type="button" class="button border danger">Danger</button>
+        </div>
+
+        <h3>Radius</h3>
+        <div class="demo">
+          <button type="button" class="button radius"></button>
+          <button type="button" class="button radius">Default</button>
+          <button type="button" class="button radius primary">Primary</button>
+        </div>
+
+        <h3>Radius &amp; Border</h3>
+        <div class="demo">
+          <button type="button" class="button radius border"></button>
+          <button type="button" class="button radius border">Default</button>
+          <button type="button" class="button radius border primary">Primary</button>
+        </div>
+
+        <h3>Full</h3>
+        <div class="demo">
+          <button type="button" class="button full">Button Full</button>
+          <button type="button" class="button full radius">Radio</button>
+          <button type="button" class="button full border">Border</button>
+          <button type="button" class="button full border radius">Radio &amp; Border</button>
+        </div>
+
+        <h3>Box</h3>
+        <div class="input_box">
+          <button type="button" class="button">Button Box</button>
+        </div>
+
+        <div class="input_box">
+          <button type="button" class="button info">Info</button>
+          <button type="button" class="button primary">Primary</button>
+        </div>
+
+        <div class="input_box">
+          <button type="button" class="button border warn">Warn</button>
+          <button type="button" class="button border success">Success</button>
+          <button type="button" class="button border primary">Primary</button>
+        </div>
+
+        <div class="input_box">
+          <button type="button" class="button border radius gray">Gray</button>
+          <button type="button" class="button border radius lightgray">Light</button>
+          <button type="button" class="button border radius mediumgray">Medium</button>
+          <button type="button" class="button border radius darkgray">Dark</button>
+        </div>
+
+        <h3>Group</h3>
+        <div class="input_group">
+          <button type="button" class="button">Button Group</button>
+        </div>
+
+        <div class="input_group">
+          <button type="button" class="button primary">Primary</button>
+          <button type="button" class="button primary">Primary</button>
+        </div>
+
+        <div class="input_group">
+          <button type="button" class="button border success">Success</button>
+          <button type="button" class="button border success">Success</button>
+          <button type="button" class="button border success">Success</button>
+        </div>
+
+        <div class="input_group">
+          <button type="button" class="button border radius gray">Gray</button>
+          <button type="button" class="button border radius gray">Gray</button>
+          <button type="button" class="button border radius gray">Gray</button>
+          <button type="button" class="button border radius gray">Gray</button>
+        </div>
+
+        <div class="mt">
+          <code>.button</code>样式也可以用于 a 元素或其他标签：<a class="link blue" href="style-button-a.html">[Demo]</a>
+        </div>
 
       </div>
       <div class="item for_input">

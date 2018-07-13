@@ -19,6 +19,8 @@ h4{color:#888;font-size:1.4rem;}
 .demo_link{font-size:1.4rem;line-height:2;}
 .demo_link a{margin-right:10px;}
 
+.demo_btns .button{margin-bottom:10px;margin-right:10px;margin-left:0;}
+
 
 .form .in_sms{padding-right:150px;}
 .form .in_sms img,
