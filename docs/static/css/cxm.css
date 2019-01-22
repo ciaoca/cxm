@@ -374,6 +374,7 @@ transition:left 0.2s;
 
 .checkswitch:checked + label:before{border-color:#4bd763;color:#4bd763;}
 .checkswitch:checked + label:after{left:31px;}
+.checkswitch:disabled + label:before,
 .checkswitch:checked:disabled + label:before{border-color:#ccc;color:#ddd;}
 
 .checkswitch.onright + label{padding-left:0;padding-right:70px;padding-left:0.5em;}
