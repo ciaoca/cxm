@@ -86,12 +86,13 @@
     self.scrollTop = 0;
     self.dom.scroll = null;
 
-    if (document.scrollingElement) {
+    if (document.scrollingElement && typeof document.scrollingElement.scrollTop === 'number') {
       self.dom.scroll = document.scrollingElement;
-      document.scrollingElement.scrollTop = 100
-    } else {
-
-    }
+    } else if (document.documentElement && typeof document.documentElement.scrollTop === 'number') {
+      self.dom.scroll = document.documentElement;
+    } else if (document.body && typeof document.body.scrollTop === 'number') {
+      self.dom.scroll = document.body;
+    };
 
     document.addEventListener('DOMContentLoaded', function() {
       self.dom.body = document.body;
@@ -108,6 +109,33 @@
     };
   };
 
+  // 滚动到位置
+  app.prototype.scrollTo = function(pos, time) {
+    var self = this;
+    var top = 0;
+    var num = typeof time === 'number' ? Math.round(time/20) : 0;
+
+    if (!self.dom.scroll) {
+      return;
+    };
+
+    if (typeof pos === 'number') {
+      top = parseInt(pos, 10);
+    } else if (self.isElement(pos)) {
+      top = pos.getBoundingClientRect().top;
+    };
+
+    var loop = function(top, n, max) {
+      if (n > 0) {
+        n -= 1;
+        self.dom.scroll.scrollTop = Math.round(self.dom.scroll.scrollTop * n / max) + top;
+        setTimeout(loop.bind(this, top, n, max), 20);
+      };
+    };
+
+    loop(top, num, num);
+  };
+
   // 保存滚动位置
   app.prototype.saveScrollTop = function() {
     var self = this;
@@ -115,18 +143,6 @@
 
     if (self.dom.scroll) {
       top = self.dom.scroll.scrollTop;
-
-    // } else if (document.scrollingElement && document.scrollingElement.scrollTop) {
-    //   top = document.scrollingElement.scrollTop;
-    //   self.dom.scroll = document.scrollingElement;
-
-    } else if (document.documentElement.scrollTop) {
-      top = document.documentElement.scrollTop;
-      self.dom.scroll = document.documentElement;
-
-    } else if (document.body.scrollTop) {
-      top = document.body.scrollTop;
-      self.dom.scroll = document.body;
     };
 
     self.scrollTop = top;
@@ -316,7 +332,11 @@
       return null;
     };
 
-    return JSON.parse(localStorage.getItem(name));
+    try {
+      return JSON.parse(localStorage.getItem(name));
+    } catch(e) {
+      return null;
+    };
   };
 
   // 删除本地存储（localStorage）
@@ -636,7 +656,11 @@
 
     self.panelCount--;
 
-    if (!self.panelCount) {
+    if (self.panelCount < 0) {
+      self.panelCount = 0;
+    };
+
+    if (self.panelCount <= 0) {
       self.dom.body.classList.remove('lock');
       self.dom.body.classList.remove('blur');
       // setTimeout(function(){
@@ -1044,6 +1068,10 @@
       type: options.type,
       data: options.data,
       dataType: options.dataType
+    }).always(function() {
+      if (typeof options.complete === 'function') {
+        options.complete();
+      };
     }).done(function(data, textStatus, jqXHR){
       form.find('button[type="submit"]').prop('disabled', false);
 
@@ -1067,10 +1095,6 @@
         info: errorThrown
       });
 
-    }).always(function() {
-      if (typeof options.complete === 'function') {
-        options.complete();
-      };
     });
   };
 

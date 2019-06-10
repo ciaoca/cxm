@@ -637,8 +637,6 @@ background-repeat:no-repeat;
 .header .toleft,
 .header .toright{position:absolute;top:0;left:0;padding:0 10px;font-size:1.6rem;}
 .header .toright{left:auto;right:0;}
-.header .toleft.group,
-.header .toright.group{padding:0;}
 
 .header .toleft.arrow{padding-left:20px;}
 .header .toright.arrow{padding-right:20px;}
@@ -677,6 +675,10 @@ transform:rotate(-135deg);
 -webkit-transform:rotate(45deg);
 transform:rotate(45deg);
 }
+
+.header .group{position:absolute;top:0;bottom:0;left:0;}
+.header .group .icon{float:left;position:relative;left:auto;right:auto;height:100%;}
+.header .group.onright{left:auto;right:0;}
 
 .header .menu{position:absolute;top:0;left:0;width:44px;height:100%;color:#fff;}
 .header .menu dt{font-size:3rem;height:inherit;line-height:inherit;text-align:center;}
