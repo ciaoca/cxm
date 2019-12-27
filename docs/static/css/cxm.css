@@ -140,8 +140,10 @@ a.link.darkgray:hover{color:#555;}
 a.link.white,
 a.link.white:hover{color:#fff;}
 
-a.und,a.und:hover{text-decoration:underline;}
-a.notund,a.notund:hover{text-decoration:none;}
+a.und,
+a.und:hover{text-decoration:underline;}
+a.notund,
+a.notund:hover{text-decoration:none;}
 
 
 /**
