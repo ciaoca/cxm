@@ -23,17 +23,7 @@
     <header>
       <h1 id="header_title">首页</h1>
       <!-- <a class="icon onright go" href="#"></a> -->
-      <!--
       <dl class="menu">
-        <dt></dt>
-        <dd>
-          <a href="#">菜单</a>
-          <a href="#">菜单</a>
-          <a href="#">菜单</a>
-        </dd>
-      </dl>
-      -->
-      <dl class="menu onright">
         <dt></dt>
         <dd>
           <a href="#">菜单</a>
@@ -57,16 +47,16 @@
     </nav>
   </div>
 
-  <div id="home_slide" class="slide home_slide">
+  <div id="home_slide" class="home_slide slide load">
     <ul class="box">
       <li>
-        <div class="item" style="background-image:url(http://placehold.it/640x360)"></div>
+        <div class="item" style="background-image:url(http://placehold.it/640x360);"></div>
       </li>
       <li>
-        <div class="item" style="background-image:url(http://placehold.it/640x360)"></div>
+        <div class="item" style="background-image:url(http://placehold.it/640x360);"></div>
       </li>
       <li>
-        <div class="item" style="background-image:url(http://placehold.it/640x360)"></div>
+        <div class="item" style="background-image:url(http://placehold.it/640x360);"></div>
       </li>
     </ul>
   </div>
@@ -75,30 +65,161 @@
     <div class="detail">
       <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
       <h1>标题1</h1>
-      <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
       <h2>标题2</h2>
-      <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
       <h3>标题3</h3>
-      <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
       <h4>标题4</h4>
-      <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
       <h5>标题5</h5>
-      <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
       <h6>标题6</h6>
-      <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
-      <p>&nbsp;</p>
-      <p>图片自适应</p>
+
+      <hr>
+
+      <h6>图片自适应</h6>
       <p><img src="http://placehold.it/640x320"></p>
+      <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
+      <h6>头像默认为圆形</h6>
+      <p><div class="face" style="background-image:url(http://placehold.it/100x100);width:60px;height:60px;"></div></p>
+
+      <hr>
+
+      <h6>ul 列表</h6>
+      <ul>
+        <li>项目</li>
+        <li>项目</li>
+        <li>项目</li>
+      </ul>
+
+      <h6>ol 列表</h6>
+      <ol>
+        <li>项目</li>
+        <li>项目</li>
+        <li>项目</li>
+        <li>项目</li>
+        <li>项目</li>
+        <li>项目</li>
+        <li>项目</li>
+        <li>项目</li>
+        <li>项目</li>
+        <li>项目</li>
+      </ol>
+
+      <hr>
+
+      <table>
+        <caption>table 表格</caption>
+        <thead>
+          <tr>
+            <th>表头</th>
+            <th>表头</th>
+            <th>表头</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <td>表注</td>
+            <td>表注</td>
+            <td>表注</td>
+          </tr>
+        </tfoot>
+        <tbody>
+          <tr>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+          </tr>
+          <tr>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table>
+        <caption>按行排版</caption>
+        <thead>
+          <tr>
+            <th>表头</th>
+            <th>表头</th>
+            <th>表头</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>标题</th>
+            <td>内容</td>
+            <td>内容</td>
+          </tr>
+          <tr>
+            <th>标题</th>
+            <td>内容</td>
+            <td>内容</td>
+          </tr>
+          <tr>
+            <th>标题</th>
+            <td>内容</td>
+            <td>内容</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="notborder">
+        <caption>无边框</caption>
+        <thead>
+          <tr>
+            <th>表头</th>
+            <th>表头</th>
+            <th>表头</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>标题</th>
+            <td>内容</td>
+            <td>内容</td>
+          </tr>
+          <tr>
+            <th>标题</th>
+            <td>内容</td>
+            <td>内容</td>
+          </tr>
+          <tr>
+            <th>标题</th>
+            <td>内容</td>
+            <td>内容</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <blockquote>blockquote</blockquote>
+      <pre>pre</pre>
+      <pre><code>pre > code
+var self = this;
+longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong</code></pre>
+      <p>在文中插入<code class="html">code</code>代码</p>
+
+      <hr>
+
       <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
     </div>
   </div>
 
   <div id="footer_nav" class="footer_nav">
     <nav>
-      <a href="index.html">首页</a>
-      <a href="detail.html">文章</a>
-      <a href="../_demo/index.html">示例</a>
-      <a href="https://github.com/ciaoca/cxBase">Github</a>
+      <a class="col" href="../default/index.html">Home</a>
+      <a class="col" href="https://github.com/ciaoca/cxBase">Github</a>
+      <a class="col" href="../_demo/index.html">Demo</a>
+      <div class="col more">More
+        <a class="go" href="javascript://" rel="sub"></a>
+        <ul>
+          <li>Base<a class="go" href="../_demo/style.html"></a></li>
+          <li>Navigation<a class="go" href="../_demo/style-navigator.html"></a></li>
+          <li>Filter Tool<a class="go" href="../_demo/style-filter.html"></a></li>
+          <li>Ajax List<a class="go" href="../_demo/style-ajax-list.html"></a></li>
+          <li>Form<a class="go" href="../_demo/style-form.html"></a></li>
+        </ul>
+      </div>
     </nav>
   </div>
 </div>
@@ -106,40 +227,58 @@
 <script src="../../static/default/js/ready.js"></script>
 <script>
 (function() {
-  var start = 0;
-  var slideBox = $('#home_slide');
-  var slideBtns = $('<div></div>', {class: 'btns'});
-  var slideSum = slideBox.find('li').length;
-  var _html = '';
-
-  for (var i = slideSum - 1; i >= 0; i--) {
-    _html += '<i></i>';
+  var thePage = {
+    dom: {}
   };
 
-  slideBtns.append(_html).appendTo(slideBox);
+  thePage.init = function() {
+    var self = this;
 
-  var toggleBtn = function(n){
-    // 只有两个展示项时，序号与预期不符
-    if (slideSum === 2 && n > 1) {
-      n -= 2;
+    self.buildSlide();
+  };
+
+  thePage.buildSlide = function() {
+    var self = this;
+
+    self.dom.slideBox = $('#home_slide');
+    self.dom.slideBox.removeClass('load');
+
+    var start = 0;
+    var slideBtns = $('<div></div>', {class: 'btns'});
+    var slideSum = self.dom.slideBox.find('li').length;
+    var _html = '';
+
+    for (var i = slideSum - 1; i >= 0; i--) {
+      _html += '<i></i>';
     };
 
-    slideBtns.find('i').removeClass('n').eq(n).addClass('n');
+    slideBtns.append(_html).appendTo(self.dom.slideBox);
+
+    var toggleBtn = function(n){
+      // 只有两个展示项时，序号与预期不符
+      if (slideSum === 2 && n > 1) {
+        n -= 2;
+      };
+      slideBtns.find('i').removeClass('n').eq(n).addClass('n');
+    };
+
+    var mySwipe = new Swipe(self.dom.slideBox[0], {
+      speed: 600,
+      auto: 5000,
+      callback: function(index) {
+        toggleBtn(index);
+      },
+      // transitionEnd: function(index) {
+      //   console.log(index);
+      // }
+    });
+
+    toggleBtn(start);
   };
 
-  var mySwipe = new Swipe(slideBox[0], {
-    speed: 600,
-    auto: 5000,
-    callback: function(index) {
-      toggleBtn(index);
-    },
-    transitionEnd: function(index) {
-      // console.log(index);
-    }
-  });
-
-  toggleBtn(start);
+  thePage.init();
 })();
+
 </script>
 </body>
 </html>

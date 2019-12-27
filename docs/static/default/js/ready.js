@@ -1,6 +1,6 @@
 // FastClick Only iOS
 // 在 Android 低端机下，效果不理想，不使用
-if ('addEventListener' in document && window.GLOBAL.platform && window.GLOBAL.platform.system === 'ios') {
+if ('addEventListener' in document && GLOBAL.platform && GLOBAL.platform.system === 'ios') {
   document.addEventListener('DOMContentLoaded', function(){
     FastClick.attach(document.body);
   }, false);
@@ -11,42 +11,44 @@ $.cxDialog.defaults.baseClass = 'ios';
 $.cxDialog.defaults.background = 'rgba(0,0,0,0.4)';
 $.cxDialog.defaults.ok = function(){};
 
-// 全局操作
-$('body').on('click', 'a', function(event){
-  var _this = this;
-  var _rel = _this.rel;
-  var _rev = _this.rev;
-  var _opt = _this.dataset.option;
+(function() {
+  // 全局操作
+  $('body').on('click', 'a', function(event){
+    var _this = this;
+    var _rel = _this.rel;
+    var _rev = _this.rev;
+    var _opt = _this.dataset.option;
 
-  try {
-    _opt = JSON.parse(_opt);
-  } catch (e) {};
+    try {
+      _opt = JSON.parse(_opt);
+    } catch (e) {};
 
-  // 显示提示
-  if (_rel === 'call_tip') {
-    event.preventDefault();
-    APP.tipToggle(_rev);
+    // 显示提示
+    if (_rel === 'call_tip') {
+      event.preventDefault();
+      APP.tipToggle(_rev);
 
-  // 显示面板
-  } else if (_rel === 'call_panel') {
-    event.preventDefault();
-    APP.panelToggle(_rev, _opt);
+    // 显示面板
+    } else if (_rel === 'call_panel') {
+      event.preventDefault();
+      APP.panelToggle(_rev, _opt);
 
-  // 显示二维码
-  } else if (_rel === 'call_qrcode') {
-    event.preventDefault();
-    _opt = $.extend({}, {
-      info: _rev
-    }, _opt);
-    
-    APP.qrcodeToggle(_opt);
+    // 显示二维码
+    } else if (_rel === 'call_qrcode') {
+      event.preventDefault();
+      _opt = $.extend({}, {
+        info: _rev
+      }, _opt);
+      
+      APP.qrcodeToggle(_opt);
 
-  // 发送短信验证码
-  } else if (_rel === 'call_sms') {
-    event.preventDefault();
-    APP.smsSend(_this);
-  };
-});
+    // 发送短信验证码
+    } else if (_rel === 'call_sms') {
+      event.preventDefault();
+      APP.smsSend(_this);
+    };
+  });
+})();
 
 // 顶部操作
 $('#header').on('click', 'dt', function() {
@@ -60,6 +62,29 @@ $('#header').on('click', 'dt', function() {
   };
 });
 
+// 底部操作
+(function() {
+  if (!APP.isElement(document.getElementById('footer_nav'))) {return};
+
+  $('#footer_nav').on('click', 'a', function(event) {
+    var _this = this;
+    var _rel = _this.rel;
+    var _rev = _this.rev;
+    var _box;
+
+    // 显示提示
+    if (_rel === 'sub') {
+      event.preventDefault();
+      _box = _this.parentNode;
+      if (_box.classList.contains('hover')) {
+        _box.classList.remove('hover');
+      } else {
+        _box.classList.add('hover');
+      }
+    };
+  });
+})();
+
 // 筛选工具
 (function() {
   if (!APP.isElement(document.getElementById('filter_tool'))) {return};
@@ -71,11 +96,14 @@ $('#header').on('click', 'dt', function() {
   };
 
   filterTool.on('click', 'a', function(event) {
-    event.preventDefault();
     var _this = this;
     var _rel = _this.rel;
     var _rev = _this.rev;
     var _a = $(_this);
+
+    if (_rel) {
+      event.preventDefault();
+    };
 
     if (_rel === 'close') {
       filterTool.removeClass('hover');
@@ -172,7 +200,7 @@ $('#header').on('click', 'dt', function() {
 
   box.classList.add('this_qrcode');
   box.appendChild(pic);
-  box.insertAdjacentHTML('beforeend', '<p>微信扫一扫<br>在手机上浏览</p>');
+  box.insertAdjacentHTML('beforeend', '<p>在手机上浏览</p>');
   document.body.appendChild(box);
 })();
 
@@ -180,7 +208,7 @@ $('#header').on('click', 'dt', function() {
 /**
  * flex 兼容
  * 需要增加其他兼容在 ready.js 之前设置全局变量：
- * window.GLOBAL.fixFlexSelectors = [
+ * GLOBAL.fixFlexSelectors = [
  *   {
  *     name: 'selectorName',
  *     tag: 'selectorName'
@@ -191,7 +219,7 @@ $('#header').on('click', 'dt', function() {
   var fixSelectors = [
     {
       name: '#footer_nav',
-      tag: 'a'
+      tag: '.col'
     },
     {
       name: '.nav_tab',
@@ -199,8 +227,8 @@ $('#header').on('click', 'dt', function() {
     }
   ];
 
-  if (Array.isArray(window.GLOBAL.fixFlexSelectors)) {
-    fixSelectors = fixSelectors.concat(window.GLOBAL.fixFlexSelectors);
+  if (Array.isArray(GLOBAL.fixFlexSelectors)) {
+    fixSelectors = fixSelectors.concat(GLOBAL.fixFlexSelectors);
   };
 
   APP.fixFlex(fixSelectors);

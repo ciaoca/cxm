@@ -3,15 +3,15 @@
  * ------------------------------ */
 window.GLOBAL = {
   version: '1.0.0',
-  platform: {},
+  platform: {
+    isHttps: !!('https:' === document.location.protocol)
+  },
   url: {
     base: ''
   },
-  wechat: {},
-  template: {}
+  template: {},
+  wechat: {}
 };
-
-GLOBAL.platform.isHttps = ('https:' === document.location.protocol);
 
 window.APP = new WebApp({
   version: GLOBAL.version,

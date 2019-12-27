@@ -21,21 +21,19 @@
 <div class="wrap">
   <div id="header" class="header">
     <header>
-      <h1>cxStyle</h1>
+      <h1>列表加载</h1>
       <a class="icon back" href="index.html"></a>
     </header>
   </div>
 
   <div class="form">
+    <input type="radio" name="_state" id="state_load" class="radio" value="load" checked><label for="state_load">加载中</label>
     <input type="radio" name="_state" id="state_empty" class="radio" value="empty"><label for="state_empty">无数据</label>
-    <input type="radio" name="_state" id="state_load" class="radio" value="load"><label for="state_load">加载中</label>
     <input type="radio" name="_state" id="state_ready" class="radio" value="ready"><label for="state_ready">上拉加载</label>
     <input type="radio" name="_state" id="state_end" class="radio" value="end"><label for="state_end">已到尾页</label>
   </div>
 
-  <div id="ajax_list" class="ajax_list" data-empty-tip="暂无数据" data-end-tip="已显示全部"></div>
-  <div class="loading"></div>
-  <div class="pull"></div>
+  <ul id="ajax_list" class="ajax_list load" data-empty-tip="暂无数据" data-end-tip="已显示全部"></ul>
 
   <footer class="footer"></footer>
 </div>
@@ -43,28 +41,59 @@
 <script src="../../static/default/js/ready.js"></script>
 <script>
 (function() {
-  var changeStaty = function(name) {
+  var thePage = {
+    dom: {}
+  };
+
+  thePage.init = function() {
+    var self = this;
+
+    self.dom.list = $('#ajax_list');
+    self.dom.pull = $('<div></div>');
+
+    self.dom.pull.attr('class', 'loading').insertAfter(self.dom.list);
+
+    $('body').on('change', 'input', function(event) {
+      var _this = this;
+      var _type = _this.type;
+      var _name = _this.name;
+      var _value = _this.value;
+
+      if (_type && _this.checked && _name === '_state') {
+        self.changeStaty(_value);
+      };
+    });
+  };
+
+  thePage.changeStaty = function(name) {
+    var self = this;
     var _class = ['empty', 'load', 'ready', 'end'];
+
+    switch (name) {
+      case 'empty':
+        self.dom.list.empty();
+        break;
+
+      case 'load':
+        self.dom.pull.attr('class', 'loading');
+        break;
+
+      case 'ready':
+        self.dom.list.html('<li>1</li><li>2</li><li>3</li>');
+        self.dom.pull.attr('class', 'pull');
+        break;
+
+      // not default
+    };
 
     if (_class.indexOf(name)) {
       _class.splice(_class.indexOf(name), 1);
     };
 
-    $('#ajax_list').removeClass(_class.join(' ')).addClass(name);
+    self.dom.list.removeClass(_class.join(' ')).addClass(name);
   };
 
-  $('body').on('change', 'input', function(event) {
-    var _this = this;
-    var _type = _this.type;
-    var _name = _this.name;
-    var _value = _this.value;
-
-    if (_type && _this.checked && _name === '_state') {
-      changeStaty(_value);
-    };
-  });
-
-  changeStaty();
+  thePage.init();
 })();
 </script>
 </body>
