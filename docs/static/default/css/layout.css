@@ -1,6 +1,8 @@
 /**
  * Layout
  * ------------------------------ */
+.footer_nav .col:before,
+.footer_nav .more li:before{border-radius:3px;background-color:#ddd;}
 
 
 

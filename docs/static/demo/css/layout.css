@@ -5,6 +5,9 @@ h2{font-size:1.8rem;}
 h3{color:#888;font-size:1.6rem;}
 h4{color:#888;font-size:1.4rem;}
 
+.footer_nav .col:before,
+.footer_nav .more li:before{border-radius:3px;background-color:#ddd;}
+
 #app_tip.demo:before{content:'点击右上角，分享到朋友圈';position:absolute;top:10px;right:10px;color:#fff;font-size:2rem;}
 #app_tip.demo:after{content:'使用背景图片，定义样式';position:absolute;top:50px;right:10px;color:#aaa;font-size:1.6rem;}
 
