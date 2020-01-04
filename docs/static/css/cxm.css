@@ -353,9 +353,11 @@ label + .checkswitch + label{border-top:1px solid #ddd;}
 .radio + label,
 .checkbox + label{padding-left:40px;}
 .radio + label:before{content:'';position:absolute;top:50%;left:10px;width:18px;height:18px;margin-top:-10px;border:1px solid currentColor;border-radius:50%;background:#fff;color:#ddd;
+-webkit-transition:color 0.2s;
 transition:color 0.2s;
 }
 .radio + label:after{content:'';position:absolute;top:50%;left:16px;width:8px;height:8px;margin-top:-4px;border-radius:50%;background-color:currentColor;color:transparent;
+-webkit-transition:color 0.2s;
 transition:color 0.2s;
 }
 
@@ -372,6 +374,7 @@ transition:color 0.2s;
 .checkbox + label:after{content:'';position:absolute;top:50%;left:16px;width:4px;height:10px;margin-top:-8px;border-bottom:2px solid currentColor;border-right:2px solid currentColor;color:#ddd;
 -webkit-transform:rotate(45deg);
 transform:rotate(45deg);
+-webkit-transition:color 0.2s;
 transition:color 0.2s;
 }
 
@@ -384,10 +387,13 @@ transition:color 0.2s;
 /* 开关 */
 .checkswitch + label{padding-left:70px;}
 .checkswitch + label:before{content:'';position:absolute;top:50%;left:10px;width:44px;height:24px;margin-top:-13px;border:1px solid #eee;border-radius:13px;background-color:currentColor;color:#fff;
+-webkit-transition-property:border-color,color;
 transition-property:border-color,color;
+-webkit-transition-duration:0.2s;
 transition-duration:0.2s;
 ;}
 .checkswitch + label:after{content:'';position:absolute;top:50%;left:11px;width:24px;height:24px;margin-top:-12px;border-radius:50%;background-color:#fff;box-shadow:0 0 1px rgba(0,0,0,0.5);
+-webkit-transition:left 0.2s;
 transition:left 0.2s;
 }
 
@@ -399,6 +405,7 @@ transition:left 0.2s;
 .checkswitch.onright + label{padding-left:0;padding-right:70px;padding-left:0.5em;}
 .checkswitch.onright + label:before{left:auto;right:10px;}
 .checkswitch.onright + label:after{left:auto;right:31px;
+-webkit-transition:right 0.2s;
 transition:right 0.2s;
 }
 .checkswitch.onright:checked + label:after{right:11px;}
@@ -701,22 +708,13 @@ transform:rotate(45deg);
 .header .menu{position:absolute;top:0;left:0;width:44px;height:100%;color:#fff;}
 .header .menu dt{font-size:3rem;height:inherit;line-height:inherit;text-align:center;}
 .header .menu dt:before{content:'+';display:block;
--webkit-transition-property:-webkit-transform;
-transition-property:-webkit-transform;
-transition-property:transform;
-transition-property:transform,-webkit-transform;
--webkit-transition-duration:0.4s;
-transition-duration:0.4s;
--webkit-transition-timing-function:ease-out;
-transition-timing-function:ease-out;
+-webkit-transition:-webkit-transform 0.4s ease-out;
+transition:-webkit-transform 0.4s ease-out;transition:transform 0.4s ease-out;
+transition:transform 0.4s ease-out, -webkit-transform 0.4s ease-out;
 }
 .header .menu dd{overflow:hidden;position:absolute;top:100%;left:0;width:5em;max-height:0;padding:0 10px;border-radius:0 0 5px 0;background-color:#2f65ad;font-size:1.4rem;line-height:40px;
--webkit-transition-property:max-height;
-transition-property:max-height;
--webkit-transition-timing-function:ease-in;
-transition-timing-function:ease-in;
--webkit-transition-duration:0.4s;
-transition-duration:0.4s;
+-webkit-transition:max-height 0.4s ease-in;
+transition:max-height 0.4s ease-in;
 }
 .header .menu dd a{display:block;position:relative;padding-left:0.5em;}
 .header .menu dd a + a{border-top:1px solid rgba(255,255,255,0.1);}
@@ -767,8 +765,8 @@ flex:1 1 50%;
 .footer_nav .more dt a{position:absolute;top:0;bottom:0;left:0;right:0;}
 .footer_nav .more dt a{padding-top:32px;}
 .footer_nav .more dd{overflow:hidden;position:absolute;bottom:100%;right:0;max-height:0;border-top-left-radius:3px;background-color:rgba(255,255,255,0.9);font-size:1.4rem;line-height:44px;text-align:left;
-transition-property:max-height;
-transition-duration:0.4s;
+-webkit-transition:max-height 0.4s;
+transition:max-height 0.4s;
 }
 .footer_nav .more dd:before{content:'';position:absolute;top:0;bottom:0;left:0;right:0;border-left:1px solid #ddd;border-top:1px solid #ddd;border-top-left-radius:3px;}
 .footer_nav .more dd a{display:block;position:relative;padding:0 10px 0 44px;}
@@ -933,7 +931,9 @@ flex:1 1 50%;
 .nav_tab.radius{height:50px;line-height:30px;}
 .nav_tab.radius nav{padding:9px 10px;}
 .nav_tab.radius a{border:1px solid #4a89dc;background-color:transparent;
+-webkit-transition-property:background-color,color;
 transition-property:background-color,color;
+-webkit-transition-duration:0.4s;
 transition-duration:0.4s;
 }
 .nav_tab.radius a:after{display:none;}
@@ -968,10 +968,8 @@ flex:none;
  * ------------------------------ */
 .filter_tool{position:relative;z-index:197;height:36px;font-size:1.4rem;line-height:36px;}
 .filter_tool .bgclose{position:fixed;top:-100%;left:0;overflow:hidden;width:100%;height:100%;padding:0;background-color:rgba(0,0,0,0);
--webkit-transition-property:background-color;
-transition-property:background-color;
--webkit-transition-duration:0.4s;
-transition-duration:0.4s;
+-webkit-transition:background-color 0.4s;
+transition:background-color 0.4s;
 }
 
 .filter_tool .main{position:relative;height:36px;background-color:#fff;}
@@ -995,7 +993,7 @@ opacity:0.6;
 }
 .filter_tool dl.col > dd{overflow:auto;position:absolute;top:100%;left:0;right:0;max-height:30em;background-color:#f6f6f6;box-shadow:0 2px 1px rgba(0,0,0,0.2);
 will-change:transform;
--webkit-transform:translate(0,-110%);
+-webkit-transform:translate(0,-200%);
 transform:translate(0,-200%);
 -webkit-transition:-webkit-transform 0.4s;
 transition:-webkit-transform 0.4s;
@@ -1092,16 +1090,19 @@ transform:rotate(45deg) translate(-25%,-25%);
 -webkit-overflow-scrolling:touch;
 }
 .panel_page:before{content:'';position:absolute;top:0;bottom:0;left:0;right:0;background-color:#fff;opacity:1;
+-webkit-transition:opacity 0.2s;
 transition:opacity 0.2s;
 }
 .panel_page.out{
 -webkit-transform:translate(-200%,0);
 transform:translate(-200%,0);
+-webkit-transition:-webkit-transform 0s 0.6s;
 transition:-webkit-transform 0s 0.6s;
 transition:transform 0s 0.6s;
-transition:transform 0s 0.6s,-webkit-transform 0s 0.6s;
+transition:transform 0s 0.6s, -webkit-transform 0s 0.6s;
 }
 .panel_page.out:before{opacity:0;
+-webkit-transition:opacity 0.4s 0.2s;
 transition:opacity 0.4s 0.2s;
 }
 
@@ -1117,8 +1118,8 @@ transition:opacity 0.4s 0.2s;
 .panel_page > .inwrap.halfblack{background-color:rgba(0,0,0,0.7);}
 
 .panel_page > .inwrap{box-sizing:border-box;position:absolute;overflow-x:hidden;width:100%;height:100%;overflow-y:auto;opacity:1;
-transition-property:opacity;
-transition-duration:0.4s;
+-webkit-transition:opacity 0.4s;
+transition:opacity 0.4s;
 }
 .panel_page.out > .inwrap{opacity:0;}
 
@@ -1126,9 +1127,11 @@ transition-duration:0.4s;
 .panel_page.onright > .inwrap,
 .panel_page.ontop > .inwrap,
 .panel_page.onbottom > .inwrap{top:0;bottom:0;left:0;right:0;opacity:1;
+-webkit-transition-property:-webkit-transform;
 transition-property:-webkit-transform;
 transition-property:transform;
-transition-property:transform,-webkit-transform;
+transition-property:transform, -webkit-transform;
+-webkit-transition-delay:0.1s;
 transition-delay:0.1s;
 }
 
@@ -1271,7 +1274,8 @@ transition:background-color 0.2s ease-in-out;
 .cxdialog.ios .cxdialog_btns a.btn_no:only-child{float:none;width:100%;}
 .cxdialog.ios .cxdialog_btns a + a{border-top:1px solid #d4d4d4;}
 .cxdialog.ios + .cxdialog_overlay{background:rgba(0,0,0,0.4);opacity:0;
-transition:top 0s,opacity 0.2s;
+-webkit-transition:top 0s, opacity 0.2s;
+transition:top 0s, opacity 0.2s;
 }
 
 .cxdialog.ios.in{
@@ -1284,6 +1288,7 @@ animation:cxDialogIosOut 0.2s both;
 }
 .cxdialog.ios.in + .cxdialog_overlay{top:0;opacity:1;}
 .cxdialog.ios.out + .cxdialog_overlay{
+-webkit-transition:top 0s 0.2s,opacity 0.2s;
 transition:top 0s 0.2s,opacity 0.2s;
 }
 
@@ -1322,9 +1327,10 @@ background:linear-gradient(to bottom,rgba(194,194,194,1) 0%,rgba(150,150,150,1) 
 /*.cxvalidation_tip{box-sizing:border-box;position:fixed;top:0;left:0;width:100%;padding:0.5em 1em;background-color:rgba(100,0,0,0.8);color:#fff;z-index:999;
 -webkit-transform:translate(0,-100%);
 transform:translate(0,-100%);
+-webkit-transition:-webkit-transform 0.2s;
 transition:-webkit-transform 0.2s;
 transition:transform 0.2s;
-transition:transform 0.2s,-webkit-transform 0.2s;
+transition:transform 0.2s, -webkit-transform 0.2s;
 }
 .cxvalidation_tip.show{
 -webkit-transform:translate(0,0);
@@ -1383,6 +1389,7 @@ html{font-size:11px;}
 @media (min-width:640px){
 .link,
 .button{
+-webkit-transition:opacity 0.2s;
 transition:opacity 0.2s;
 }
 .link:hover,
