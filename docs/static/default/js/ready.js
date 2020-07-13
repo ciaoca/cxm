@@ -9,6 +9,7 @@ if ('addEventListener' in document && GLOBAL.platform && GLOBAL.platform.system 
 // cxDialog 默认设置
 $.cxDialog.defaults.baseClass = 'ios';
 $.cxDialog.defaults.background = 'rgba(0,0,0,0.4)';
+$.cxDialog.defaults.title = '提示';
 $.cxDialog.defaults.ok = function(){};
 
 (function() {
@@ -17,11 +18,13 @@ $.cxDialog.defaults.ok = function(){};
     var _this = this;
     var _rel = _this.rel;
     var _rev = _this.rev;
-    var _opt = _this.dataset.option;
+    var _opt;
 
     try {
-      _opt = JSON.parse(_opt);
-    } catch (e) {};
+      _opt = JSON.parse(_this.dataset.option);
+    } catch (e) {
+      _opt = {};
+    };
 
     // 显示提示
     if (_rel === 'call_tip') {
@@ -36,10 +39,10 @@ $.cxDialog.defaults.ok = function(){};
     // 显示二维码
     } else if (_rel === 'call_qrcode') {
       event.preventDefault();
-      _opt = $.extend({}, {
+      _opt = $.extend({
         info: _rev
       }, _opt);
-      
+
       APP.qrcodeToggle(_opt);
 
     // 发送短信验证码
@@ -215,21 +218,21 @@ $('#header').on('click', 'dt', function() {
  *   }
  * ]
  */
-(function() {
-  var fixSelectors = [
-    {
-      name: '#footer_nav',
-      tag: '.col'
-    },
-    {
-      name: '.nav_tab',
-      tag: 'a'
-    }
-  ];
+// (function() {
+//   var fixSelectors = [
+//     {
+//       name: '#footer_nav',
+//       tag: '.col'
+//     },
+//     {
+//       name: '.nav_tab',
+//       tag: 'a'
+//     }
+//   ];
 
-  if (Array.isArray(GLOBAL.fixFlexSelectors)) {
-    fixSelectors = fixSelectors.concat(GLOBAL.fixFlexSelectors);
-  };
+//   if (Array.isArray(GLOBAL.fixFlexSelectors)) {
+//     fixSelectors = fixSelectors.concat(GLOBAL.fixFlexSelectors);
+//   };
 
-  APP.fixFlex(fixSelectors);
-})();
+//   APP.fixFlex(fixSelectors);
+// })();

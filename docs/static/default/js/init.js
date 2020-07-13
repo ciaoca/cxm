@@ -3,19 +3,20 @@
  * ------------------------------ */
 window.GLOBAL = {
   version: '1.0.0',
+  prefix: '',
   platform: {
     isHttps: !!('https:' === document.location.protocol)
   },
+  timestamp: new Date().getTime(),
+  template: {},
   url: {
     base: ''
   },
-  template: {},
   wechat: {}
 };
 
 window.APP = new WebApp({
-  version: GLOBAL.version,
-  storagePrefix: ''
+  storagePrefix: window.GLOBAL.prefix
 });
 
 /**
@@ -85,15 +86,18 @@ template.defaults.imports.tfEncodeURIComponent = function(string) {
 };
 
 template.defaults.imports.tfReplace = function(string, regexp, replacement) {
-  return string.replace(regexp, replacement);
+  if (typeof string === 'string' && string.length) {
+    string = string.replace(new RegExp(regexp, 'gi'), replacement);
+  };
+  return string;
 };
 
-template.defaults.imports.tfReplaceEnter = function(string, code) {
-  return APP.replaceEnter(string, code);
+template.defaults.imports.tfReplaceEnter = function() {
+  return APP.replaceEnter.apply(APP, arguments);
 };
 
-template.defaults.imports.tfNumberFormat = function(value, decimals, decimalpoint, separator) {
-  return APP.numberFormat(value, decimals, decimalpoint, separator);
+template.defaults.imports.tfNumberFormat = function() {
+  return APP.numberFormat.apply(APP, arguments);
 };
 
 template.defaults.imports.tfDate = function(time, style) {

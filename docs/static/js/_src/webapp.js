@@ -1,7 +1,6 @@
 /**
  * WebApp
  * @author ciaoca <ciaoca@gmail.com>
- * @date 2017-12-04
  * --------------------
  * isElement            检测是否是 DOM 元素
  * isJquery             检测是否是 jQuery 对象
@@ -570,15 +569,32 @@
 
   /**
    * 显示 Loading
-   * @param text {string} 文字提示
+   * @param options {object} 选项
    */
-  app.prototype.loadingShow = function(text) {
+  app.prototype.loadingShow = function(options) {
     var self = this;
 
-    if (typeof text === 'string' && text.length) {
-      self.dom.loading.setAttribute('title', text);
+    if (typeof options === 'string' && options.length) {
+      options = {
+        text: options
+      };
+    };
+
+    options = $.extend({
+      text: '',     // 提示文字
+      mask: true   // 背景遮罩
+    }, options);
+
+    if (typeof options.text === 'string' && options.text.length) {
+      self.dom.loading.setAttribute('title', options.text);
     } else {
       self.dom.loading.removeAttribute('title');
+    };
+
+    if (options.mask === false) {
+      self.dom.loading.classList.add('notmask');
+    } else {
+      self.dom.loading.classList.remove('notmask');
     };
 
     self.dom.body.appendChild(self.dom.loading);
@@ -1129,8 +1145,13 @@
     };
   };
 
-  // 创建 Hash URL
-  app.prototype.createUrlHash = function(querys, keys) {
+  /**
+   * 创建 Hash URL
+   * @param querys {object} 提交参数
+   * @param keys {array} 参数范围
+   * @param isPush {boolean} 是否插入新历史记录
+   */
+  app.prototype.createUrlHash = function(querys, keys, isPush) {
     var data = {};
     var values = [];
     var hash = '#';
@@ -1148,7 +1169,11 @@
       hash += '!' + values.join('&');
     };
 
-    history.replaceState(data, document.title, hash);
+    if (isPush === true) {
+      history.pushState(data, document.title, hash);
+    } else {
+      history.replaceState(data, document.title, hash);
+    };
   };
 
   /**
