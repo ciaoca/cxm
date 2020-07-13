@@ -1,9 +1,9 @@
 body.onfocus .hd_nav nav{position:relative;top:0;}
 
-h2,h3,h4{margin:0.5em 0;}
-h2{font-size:1.8rem;}
-h3{color:#888;font-size:1.6rem;}
-h4{color:#888;font-size:1.4rem;}
+.demo_title{margin:0.5em 0;}
+h2.demo_title{font-size:1.8rem;}
+h3.demo_title{color:#888;font-size:1.6rem;}
+h4.demo_title{color:#888;font-size:1.4rem;}
 
 .footer_nav .col:before,
 .footer_nav .more dd a:before{border-radius:3px;background-color:#ddd;}

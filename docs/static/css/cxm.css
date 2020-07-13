@@ -708,9 +708,9 @@ transform:rotate(45deg);
 .header .menu{position:absolute;top:0;left:0;width:44px;height:100%;color:#fff;}
 .header .menu dt{font-size:3rem;height:inherit;line-height:inherit;text-align:center;}
 .header .menu dt:before{content:'+';display:block;
--webkit-transition:-webkit-transform 0.4s ease-out;
-transition:-webkit-transform 0.4s ease-out;transition:transform 0.4s ease-out;
-transition:transform 0.4s ease-out, -webkit-transform 0.4s ease-out;
+transition-property:transform;
+transition-duration:0.4s;
+transition-timing-function:ease-out;
 }
 .header .menu dd{overflow:hidden;position:absolute;top:100%;left:0;width:5em;max-height:0;padding:0 10px;border-radius:0 0 5px 0;background-color:#2f65ad;font-size:1.4rem;line-height:40px;
 -webkit-transition:max-height 0.4s ease-in;
@@ -852,11 +852,14 @@ animation:AnimeLoadingB 2s infinite ease-out;
  * APP 全屏 loading 动画
  * ------------------------------ */
 #app_loading{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);z-index:999;}
-#app_loading:before{content:'';position:absolute;bottom:60%;left:50%;width:24px;height:24px;margin-left:-15px;border:3px solid #eee;border-top-color:transparent;border-bottom-color:transparent;border-radius:50%;
+#app_loading:before{content:'';position:absolute;bottom:60%;left:50%;width:24px;height:24px;margin-left:-15px;border:3px solid rgba(255,255,255,0.4);border-top-color:transparent;border-bottom-color:transparent;border-radius:50%;
 -webkit-animation:loadingRotate 1s infinite linear;
 animation:loadingRotate 1s infinite linear;
 }
 #app_loading:after{content:attr(title);position:absolute;top:41%;left:0;width:100%;color:#eee;font-size:1.4rem;text-align:center;}
+
+#app_loading.notmask{background-color:transparent;}
+#app_loading.notmask:before{border-left-color:rgba(0,0,0,0.2);border-right-color:rgba(0,0,0,0.2);}
 
 @-webkit-keyframes loadingRotate{
 0%{-webkit-transform:rotate(0);transform:rotate(0);}
@@ -1088,22 +1091,20 @@ transform:rotate(45deg) translate(-25%,-25%);
  * ------------------------------ */
 .panel_page{display:block;position:fixed;top:0;bottom:0;left:0;right:0;overflow-x:hidden;overflow-y:auto;z-index:999;
 -webkit-overflow-scrolling:touch;
+transition-property:transform;
 }
 .panel_page:before{content:'';position:absolute;top:0;bottom:0;left:0;right:0;background-color:#fff;opacity:1;
--webkit-transition:opacity 0.2s;
-transition:opacity 0.2s;
+transition-property:opacity;
+transition-duration:0.2s;
 }
 .panel_page.out{
--webkit-transform:translate(-200%,0);
 transform:translate(-200%,0);
--webkit-transition:-webkit-transform 0s 0.6s;
-transition:-webkit-transform 0s 0.6s;
-transition:transform 0s 0.6s;
-transition:transform 0s 0.6s, -webkit-transform 0s 0.6s;
+transition-duration:0s;
+transition-delay:0.6s;
 }
 .panel_page.out:before{opacity:0;
--webkit-transition:opacity 0.4s 0.2s;
-transition:opacity 0.4s 0.2s;
+transition-duration:0.4s;
+transition-delay:0.2s;
 }
 
 .panel_page.notbg:before{display:none;}
@@ -1118,8 +1119,8 @@ transition:opacity 0.4s 0.2s;
 .panel_page > .inwrap.halfblack{background-color:rgba(0,0,0,0.7);}
 
 .panel_page > .inwrap{box-sizing:border-box;position:absolute;overflow-x:hidden;width:100%;height:100%;overflow-y:auto;opacity:1;
--webkit-transition:opacity 0.4s;
-transition:opacity 0.4s;
+transition-property:opacity;
+transition-duration:0.4s;
 }
 .panel_page.out > .inwrap{opacity:0;}
 
@@ -1127,12 +1128,8 @@ transition:opacity 0.4s;
 .panel_page.onright > .inwrap,
 .panel_page.ontop > .inwrap,
 .panel_page.onbottom > .inwrap{top:0;bottom:0;left:0;right:0;opacity:1;
--webkit-transition-property:-webkit-transform;
-transition-property:-webkit-transform;
 transition-property:transform;
-transition-property:transform, -webkit-transform;
--webkit-transition-delay:0.1s;
-transition-delay:0.1s;
+transition-delay:0.2s;
 }
 
 .panel_page.onleft > .inwrap{left:0;right:auto;}
@@ -1288,8 +1285,8 @@ animation:cxDialogIosOut 0.2s both;
 }
 .cxdialog.ios.in + .cxdialog_overlay{top:0;opacity:1;}
 .cxdialog.ios.out + .cxdialog_overlay{
--webkit-transition:top 0s 0.2s,opacity 0.2s;
-transition:top 0s 0.2s,opacity 0.2s;
+-webkit-transition:top 0s 0.2s, opacity 0.2s;
+transition:top 0s 0.2s, opacity 0.2s;
 }
 
 /* Black Theme */
@@ -1382,9 +1379,11 @@ input.input.border{line-height:24px;}
 .header + .nav_tab.radius.fixed + .filter_tool.fixed .main{top:96px;}
 }
 
+
 @media (min-width:414px){
 html{font-size:11px;}
 }
+
 
 @media (min-width:640px){
 .link,
@@ -1401,13 +1400,13 @@ transition:opacity 0.2s;
 body{background-color:#111 !important;}
 body.gray .wrap{background-color:#f6f6f6;}
 
-.wrap{width:640px;min-height:100vh;margin:0 auto;background-color:#fff;}
+.wrap{width:640px;margin:0 auto;background-color:#fff;}
 .mbox{margin-left:20px;margin-right:20px;}
 
 .footer a:hover{color:#555;}
 
 .onlyformobile{display:none;}
-.onlyforpc{display:initial;}
+.onlyforpc{display:inherit;}
 
 .header header,
 .footer_nav nav,
@@ -1421,6 +1420,7 @@ body.gray .wrap{background-color:#f6f6f6;}
 
 #app_qrcode .main{left:50%;right:auto;width:600px;margin-left:-300px;}
 }
+
 
 @media (min-width:1000px){
 .this_qrcode{display:block;}
@@ -1459,17 +1459,20 @@ body.w1200 .this_qrcode{margin-left:620px;}
 @media (min-height:570px){
 }
 
+
 /* Wechat for iPhone6 */
 @media (min-height:600px){
 }
+
 
 /* Wechat for iPhone7 */
 @media (min-height:660px){
 }
 
-/* iPhone X */
-@media only screen and (device-width:375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3){
-.header{padding-top:44px;}
+
+/* iPhone X ~ 11 */
+@media (device-width:375px) and (device-height:812px), (device-width:414px) and (device-height:896px){
+/*.header{padding-top:44px;}
 .header:before{content:'';display:block;position:fixed;top:0;left:0;width:100%;height:44px;background-color:#4a89dc;}
 .header header{top:44px;}
 
@@ -1482,7 +1485,7 @@ body.w1200 .this_qrcode{margin-left:620px;}
 .header + .nav_tab.fixed nav,
 .header + .filter_tool.fixed .main{top:90px;}
 .header + .nav_tab.fixed + .filter_tool.fixed .main{top:130px;}
-.header + .nav_tab.radius.fixed + .filter_tool.fixed .main{top:140px;}
+.header + .nav_tab.radius.fixed + .filter_tool.fixed .main{top:140px;}*/
 
 .footer_nav{height:90px;}
 .footer_nav nav{bottom:0;height:90px;}
