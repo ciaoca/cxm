@@ -632,7 +632,8 @@ background-repeat:no-repeat;
 .header.transparent header{background:none;}
 .header.textlight header,
 .header.textlight a{color:#eee;}
-.header.shadow header{box-shadow:0 1px 1px rgba(0,0,0,0.6);}
+.header.shadow header{box-shadow:0 1px 2px rgba(0,0,0,0.3);}
+.header.notsize{position:fixed;top:0;left:0;right:0;}
 .header.unfixed header{position:relative;top:auto;left:auto;}
 
 .header a{color:#eee;}
