@@ -64,7 +64,7 @@
       debug: false,
       timeout: 10000,       // Ajax 请求等待最大时间
       version: '',          // 版本号
-      storagePrefix: ''     // 本地缓存命名前缀
+      prefix: ''     // 本地缓存命名前缀
     };
     self.option = $.extend({}, defaults, options);
 
@@ -260,7 +260,7 @@
       return;
     };
 
-    name = this.option.storagePrefix + name;
+    name = this.option.prefix + name;
     sessionStorage.setItem(name, JSON.stringify(data));
   };
 
@@ -270,7 +270,7 @@
       return null;
     };
 
-    name = this.option.storagePrefix + name;
+    name = this.option.prefix + name;
 
     if (!sessionStorage.getItem(name)) {
       return null;
@@ -285,7 +285,7 @@
       return;
     };
 
-    name = this.option.storagePrefix + name;
+    name = this.option.prefix + name;
 
     if (!sessionStorage.getItem(name)) {
       return;
@@ -297,10 +297,10 @@
   // 清空本地存储（sessionStorage）
   app.prototype.clearStorage = function(){
     var storage = sessionStorage;
-    var _prelength = this.option.storagePrefix.length;
+    var _prelength = this.option.prefix.length;
 
     for (var i = 0, j = 0, l = storage.length; i < l; i++) {
-      if (storage.key(j).slice(0,_prelength) === this.option.storagePrefix) {
+      if (storage.key(j).slice(0,_prelength) === this.option.prefix) {
         storage.removeItem(storage.key(j));
       } else {
         j++;
@@ -314,7 +314,7 @@
       return;
     };
 
-    name = this.option.storagePrefix + name;
+    name = this.option.prefix + name;
     
     localStorage.setItem(name, JSON.stringify(data));
   };
@@ -325,7 +325,7 @@
       return null;
     };
 
-    name = this.option.storagePrefix + name;
+    name = this.option.prefix + name;
 
     if (!localStorage.getItem(name)) {
       return null;
@@ -344,7 +344,7 @@
       return;
     };
 
-    name = this.option.storagePrefix + name;
+    name = this.option.prefix + name;
 
     if (!localStorage.getItem(name)) {
       return;
@@ -356,10 +356,10 @@
   // 清空本地存储（localStorage）
   app.prototype.clearLocalStorage = function(){
     var storage = localStorage;
-    var _prelength = this.option.storagePrefix.length;
+    var _prelength = this.option.prefix.length;
 
     for (var i = 0, j = 0, l = storage.length; i < l; i++) {
-      if (storage.key(j).slice(0,_prelength) === this.option.storagePrefix) {
+      if (storage.key(j).slice(0,_prelength) === this.option.prefix) {
         storage.removeItem(storage.key(j));
       } else {
         j++;
@@ -641,7 +641,11 @@
     if (self.isElement(el)) {
       // self.saveScrollTop();
       el.classList.remove('out');
-      el.classList.add('in');
+
+      if (!el.classList.contains('in')) {
+        self.panelCount++;
+        el.classList.add('in');
+      };
 
       if (options.lock) {
         self.dom.body.classList.add('lock');
@@ -649,8 +653,6 @@
       if (options.blur) {
         self.dom.body.classList.add('blur');
       };
-
-      self.panelCount++;
     };
   };
 
@@ -667,10 +669,12 @@
 
     if (this.isElement(el)) {
       el.classList.remove('in');
-      el.classList.add('out');
-    };
 
-    self.panelCount--;
+      if (!el.classList.contains('out')) {
+        self.panelCount--;
+        el.classList.add('out');
+      };
+    };
 
     if (self.panelCount < 0) {
       self.panelCount = 0;
