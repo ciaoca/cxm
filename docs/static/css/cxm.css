@@ -220,7 +220,7 @@ flex:1 1 50%;
 /**
  * 表单控件
  * ------------------------------ */
-.input{box-sizing:border-box;padding:10px;border:none;border-radius:3px;background-color:#fff;font-size:1.4rem;line-height:2rem;outline:none;vertical-align:top;
+.input{box-sizing:border-box;padding:12px 10px;border:none;border-radius:3px;background-color:#fff;font-size:1.4rem;line-height:20px;outline:none;vertical-align:top;
 -webkit-appearance:none;
 -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
@@ -283,14 +283,14 @@ flex:1 1 50%;
 .input.border{border:1px solid #ccc;}
 .input.radius{border-radius:99px;}
 
-input.input{height:44px;line-height:24px;}
-input.input.border{line-height:22px;}
-input.input.small{height:36px;padding-top:6px;padding-bottom:6px;}
+input.input{height:44px;}
+input.input.border{padding-top:11px;padding-bottom:11px;}
+input.input.small{height:36px;padding-top:8px;padding-bottom:8px;}
 textarea.input{resize:none;}
 
 /* 跟随单位 */
-.input_unit{display:inline-block;padding:10px 0;line-height:24px;vertical-align:top;}
-.input.small + .input_unit{line-height:16px;}
+.input_unit{display:inline-block;padding:12px 0;line-height:20px;vertical-align:top;}
+.input.small + .input_unit{padding-top:8px;padding-bottom:8px;}
 
 /* 群组 */
 .input_box,
@@ -633,8 +633,9 @@ background-repeat:no-repeat;
 .header.textlight header,
 .header.textlight a{color:#eee;}
 .header.shadow header{box-shadow:0 1px 2px rgba(0,0,0,0.3);}
-.header.notsize{position:fixed;top:0;left:0;right:0;}
 .header.unfixed header{position:relative;top:auto;left:auto;}
+.header.notsize{height:0;}
+.header.notsize header{height:44px;background:none;}
 
 .header a{color:#eee;}
 .header h1{overflow:hidden;margin:0 54px;font-weight:normal;font-size:2rem;line-height:inherit;text-align:center;text-overflow:ellipsis;white-space:nowrap;}
@@ -1242,10 +1243,10 @@ transform:translate(0,0);
 .form .row,
 .form .row > dt{line-height:22px;}
 
-input.input{height:46px;line-height:26px;}
-input.input.border{line-height:24px;}
+input.input{height:46px;line-height:22px;}
+input.input.small{height:38px;}
 
-.input_unit{line-height:26px;}
+.input_unit{line-height:22px;}
 
 .select{height:46px;}
 

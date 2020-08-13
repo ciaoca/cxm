@@ -16,7 +16,7 @@ window.GLOBAL = {
 };
 
 window.APP = new WebApp({
-  storagePrefix: window.GLOBAL.prefix
+  prefix: GLOBAL.prefix
 });
 
 /**
