@@ -86,9 +86,14 @@ template.defaults.imports.tfEncodeURIComponent = function(string) {
 };
 
 template.defaults.imports.tfReplace = function(string, regexp, replacement) {
-  if (typeof string === 'string' && string.length) {
+  if (typeof string !== 'string') {
+    string = String(string);
+  };
+
+  if (string.length) {
     string = string.replace(new RegExp(regexp, 'gi'), replacement);
   };
+
   return string;
 };
 

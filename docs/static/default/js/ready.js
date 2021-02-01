@@ -18,13 +18,11 @@ $.cxDialog.defaults.ok = function(){};
     var _this = this;
     var _rel = _this.rel;
     var _rev = _this.rev;
-    var _opt;
+    var _opt = _this.dataset.option;
 
     try {
-      _opt = JSON.parse(_this.dataset.option);
-    } catch (e) {
-      _opt = {};
-    };
+      _opt = JSON.parse(_opt);
+    } catch (e) {};
 
     // 显示提示
     if (_rel === 'call_tip') {
@@ -159,17 +157,21 @@ $('#header').on('click', 'dt', function() {
     var docbody = document.body;
 
     var hasFix = function(e) {
-      var _types = ['checkbox', 'radio', 'file', 'button', 'submit', 'reset', 'image', 'range'];
-      var _nodeName = e.target.nodeName.toLowerCase();
+      var tags = ['input', 'textarea', 'select'];
+      var types = ['checkbox', 'radio', 'file', 'button', 'submit', 'reset', 'image', 'range'];
+      var tagName = e.target.nodeName.toLowerCase();
+      var result = false;
 
-      if (_nodeName === 'textarea' || _nodeName === 'select') {
-        return true;
-      } else if (_nodeName === 'input') {
-        if (_types.indexOf(e.target.type) <= -1) {
-          return true;
+      if (tags.indexOf(tagName) >= 0 && !e.target.readOnly && !e.target.disabled) {
+        if (tagName === 'input') {
+          if (types.indexOf(e.target.type) <= -1) {
+            result = true;
+          };
+        } else if (tagName === 'textarea' || tagName === 'select') {
+          result = true;
         };
       };
-      return false;
+      return result;
     };
 
     docbody.addEventListener('focus', function(e) {

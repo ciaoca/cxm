@@ -39,7 +39,7 @@
     <div class="row_group">
       <dl class="row">
         <dt>用户名</dt>
-        <dd><input type="text" class="input full" data-validation="required"></dd>
+        <dd><input type="text" class="input full" data-validation="required" data-validation-title="用户名"></dd>
         <!-- <dd><input type="text" class="input full" data-validation="required,call[vaildUserName]"></dd> -->
         <!-- <dd><input type="text" class="input full" data-validation="required,call[vaildUserName]" data-validation-message='用户名不符合规范'></dd> -->
         <!-- <dd><input type="text" class="input full" data-validation="required,call[vaildUserName]" data-validation-message='{"required":"该项为必填"}'></dd> -->
@@ -47,23 +47,23 @@
       </dl>
       <dl class="row">
         <dt>密码</dt>
-        <dd><input type="password" id="pwd" class="input full" data-validation="required"></dd>
+        <dd><input type="password" id="pwd" class="input full" data-validation="required" data-validation-title="密码"></dd>
       </dl>
       <dl class="row">
         <dt>再次输入</dt>
-        <dd><input type="password" class="input full" data-validation="required,equals[pwd]"></dd>
-      </dl> 
+        <dd><input type="password" class="input full" data-validation="equals[pwd]" data-validation-title="密码"></dd>
+      </dl>
     </div>
 
     <div class="mbox">
       <h3 class="demo_title">Checkbox</h3>
     </div>
     <div class="row">
-      <input type="checkbox" name="_checkbox" id="checkbox_1" class="checkbox" data-validation="groupRequired[check1][2]" data-validation-message="Checkbox 至少选择 2 项">
+      <input type="checkbox" name="_checkbox" id="checkbox_1" class="checkbox" data-validation="groupRequired[check1][2]" data-validation-title="Checkbox">
       <label for="checkbox_1">多选项1</label>
-      <input type="checkbox" name="_checkbox" id="checkbox_2" class="checkbox" data-validation="groupRequired[check1][2]">
+      <input type="checkbox" name="_checkbox" id="checkbox_2" class="checkbox" data-validation="groupRequired[check1][2]" data-validation-title="Checkbox">
       <label for="checkbox_2">多选项2</label>
-      <input type="checkbox" name="_checkbox" id="checkbox_3" class="checkbox" data-validation="groupRequired[check1][2]">
+      <input type="checkbox" name="_checkbox" id="checkbox_3" class="checkbox" data-validation="groupRequired[check1][2]" data-validation-title="Checkbox">
       <label for="checkbox_3">多选项3</label>
     </div>
 
@@ -71,11 +71,11 @@
       <h3 class="demo_title">Radio</h3>
     </div>
     <div class="row">
-      <input type="radio" name="_radio" id="radio_1" class="radio" data-validation="groupRequired[radio1]" data-validation-message="Radio 至少选择一项">
+      <input type="radio" name="_radio" id="radio_1" class="radio" data-validation="groupRequired[radio1]" data-validation-title="radio">
       <label for="radio_1">单选项1</label>
-      <input type="radio" name="_radio" id="radio_2" class="radio" data-validation="groupRequired[radio1]">
+      <input type="radio" name="_radio" id="radio_2" class="radio" data-validation="groupRequired[radio1]" data-validation-title="radio">
       <label for="radio_2">单选项2</label>
-      <input type="radio" name="_radio" id="radio_3" class="radio" data-validation="groupRequired[radio1]">
+      <input type="radio" name="_radio" id="radio_3" class="radio" data-validation="groupRequired[radio1]" data-validation-title="radio">
       <label for="radio_3">单选项3</label>
     </div>
 
@@ -84,10 +84,10 @@
     </div>
     <div class="row_group">
       <div class="row">
-        <input type="text" class="input full" placeholder="最少3个字符" data-validation="minSize[3]">
+        <input type="text" class="input full" placeholder="最少3个字符" data-validation="minSize[3]" data-validation-title="minSize">
       </div>
       <div class="row">
-        <input type="text" class="input full" placeholder="最多10个字符" data-validation="maxSize[10]">
+        <input type="text" class="input full" placeholder="最多10个字符" data-validation="maxSize[10]" data-validation-title="maxSize">
       </div>
     </div>
 
@@ -97,10 +97,10 @@
     </div>
     <div class="row_group">
       <div class="row">
-        <input type="text" class="input full" placeholder="最小值为3" data-validation="min[3]">
+        <input type="text" class="input full" placeholder="最小值为3" data-validation="min[3]" data-validation-title="min">
       </div>
       <div class="row">
-        <input type="text" class="input full" placeholder="最大值为10" data-validation="max[10]">
+        <input type="text" class="input full" placeholder="最大值为10" data-validation="max[10]" data-validation-title="max">
       </div>
     </div>
 
@@ -110,10 +110,10 @@
     </div>
     <div class="row_group">
       <div class="row">
-        <input type="text" class="input full" placeholder="输入整数" data-validation="integer">
+        <input type="text" class="input full" placeholder="输入整数" data-validation="integer" data-validation-title="integer">
       </div>
       <div class="row">
-        <input type="text" class="input full" placeholder="输入数值" data-validation="number">
+        <input type="text" class="input full" placeholder="输入数值" data-validation="number" data-validation-title="number">
       </div>
     </div>
 
@@ -123,22 +123,22 @@
     </div>
     <div class="row_group">
       <div class="row">
-        <input type="text" class="input full" placeholder="只能输入数字（0-9）" data-validation="onlyNumber">
+        <input type="text" class="input full" placeholder="只能输入数字（0-9）" data-validation="onlyNumber" data-validation-title="onlyNumber">
       </div>
       <div class="row">
-        <input type="text" class="input full" placeholder="只能输入数字和空格" data-validation="onlyNumberSp">
+        <input type="text" class="input full" placeholder="只能输入数字和空格" data-validation="onlyNumberSp" data-validation-title="onlyNumberSp">
       </div>
       <div class="row">
-        <input type="text" class="input full" placeholder="只能输入英文字母" data-validation="onlyLetter">
+        <input type="text" class="input full" placeholder="只能输入英文字母" data-validation="onlyLetter" data-validation-title="onlyLetter">
       </div>
       <div class="row">
-        <input type="text" class="input full" placeholder="只能输入英文字母和空格" data-validation="onlyLetterSp">
+        <input type="text" class="input full" placeholder="只能输入英文字母和空格" data-validation="onlyLetterSp" data-validation-title="onlyLetterSp">
       </div>
       <div class="row">
-        <input type="text" class="input full" placeholder="只能输入英文字母和数字" data-validation="onlyLetterNumber">
+        <input type="text" class="input full" placeholder="只能输入英文字母和数字" data-validation="onlyLetterNumber" data-validation-title="onlyLetterNumber">
       </div>
       <div class="row">
-        <input type="text" class="input full" placeholder="只能输入英文字母、数字、空格" data-validation="onlyLetterNumberSp">
+        <input type="text" class="input full" placeholder="只能输入英文字母、数字、空格" data-validation="onlyLetterNumberSp" data-validation-title="onlyLetterNumberSp">
       </div>
     </div>
 
@@ -148,13 +148,13 @@
     </div>
     <div class="row_group">
       <div class="row">
-        <input type="text" class="input full" placeholder="输入电子邮件" data-validation="email">
+        <input type="text" class="input full" placeholder="输入电子邮件" data-validation="email" data-validation-title="email">
       </div>
       <div class="row">
-        <input type="text" class="input full" placeholder="输入电话号码" data-validation="phone">
+        <input type="text" class="input full" placeholder="输入电话号码" data-validation="phone" data-validation-title="phone">
       </div>
       <div class="row">
-        <input type="text" class="input full" placeholder="输入网址" data-validation="url">
+        <input type="text" class="input full" placeholder="输入网址" data-validation="url" data-validation-title="url">
       </div>
     </div>
 
@@ -164,13 +164,13 @@
     </div>
     <div class="row_group">
       <div class="row">
-        <input type="text" class="input full" placeholder="输入中文" data-validation="chinese">
+        <input type="text" class="input full" placeholder="输入中文" data-validation="chinese" data-validation-title="chinese">
       </div>
       <div class="row">
-        <input type="text" class="input full" placeholder="输入身份证号码" data-validation="chinaId">
+        <input type="text" class="input full" placeholder="输入身份证号码" data-validation="chinaId" data-validation-title="chinaId">
       </div>
       <div class="row">
-        <input type="text" class="input full" placeholder="输入身份证号码（兼容旧15位）" data-validation="chinaIdLoose">
+        <input type="text" class="input full" placeholder="输入身份证号码（兼容旧15位）" data-validation="chinaIdLoose" data-validation-title="chinaIdLoose">
       </div>
     </div>
 
@@ -180,10 +180,10 @@
     </div>
     <div class="row_group">
       <div class="row">
-        <input type="text" class="input full" placeholder="输入邮政编码" data-validation="chinaZip">
+        <input type="text" class="input full" placeholder="输入邮政编码" data-validation="chinaZip" data-validation-title="chinaZip">
       </div>
       <div class="row">
-        <input type="text" class="input full" placeholder="输入QQ号码" data-validation="qq">
+        <input type="text" class="input full" placeholder="输入QQ号码" data-validation="qq" data-validation-title="qq">
       </div>
     </div>
 
@@ -198,15 +198,13 @@
 <script src="../../static/js/cxvalidation.min.js"></script>
 <script src="../../static/default/js/ready.js"></script>
 <script>
+/**
+ * 自定义验证方法
+ * return
+ * status: 验证结果（必须包含）
+ * message: 错误提示信息，可根据不同条件返回不同提示语
+**/
 var vaildUserName = function(value) {
-  // 方法一：直接返回 boolean 类型的值
-  // return value === 'hello' ? true : false;
-
-  /*
-   * 方法二：返回一个对象
-   * status: 验证结果（必须包含）
-   * message: 错误提示信息，可根据不同条件返回不同提示语
-   */
   if (/^\d+/.test(value)) {
     return {
       status: false,
@@ -218,10 +216,7 @@ var vaildUserName = function(value) {
       status: false,
       message: '用户名最少2个字符'
     };
-  }
-
-  // 只有返回 false 或 returnObject.status 为 false 时，属于不通过；
-  // 返回其他值（包括 undefined、null等）均视为验证通过。
+  };
 };
 
 (function() {
@@ -230,7 +225,6 @@ var vaildUserName = function(value) {
   cxValidation.attach(form, {
     success: function() {
       console.log('验证通过');
-      // window.CallFormAjax(form);
     }
   });
 })();

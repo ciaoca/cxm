@@ -10,9 +10,12 @@
  * isBoolean            检测是否是 Boolean 布尔值
  * isCallback           检测是否是 Function 函数
  * isArray              检测是否是 Array 数组
- * isDate               检测是否是 Date 日期
+ * isNull               检测是否是 Null
+ * isUndefined          检测是否是 Undefined
+ * isObject             检测是否是 Object 对象
+ * isDate               检测是否是 Date 日期对象
  * isRegExp             检测是否是 RegExp 正则表达式
- * isError              检测是否是 Error 错误
+ * isError              检测是否是 Error 对象
  * isJson               检测是否是 JSON
  * isLeapYear           检测是否是闰年
  * isHidden             检测元素是否不可见
@@ -52,19 +55,19 @@
  * smsSend              发送短信
  * fixFlex              兼容 flex
  */
-(function(window, undefined){
-  var app = function(){
+(function(window, undefined) {
+  var app = function() {
     return this.init.apply(this,arguments);
   };
 
   // 初始化
-  app.prototype.init = function(options){
+  app.prototype.init = function(options) {
     var self = this;
     var defaults = {
       debug: false,
       timeout: 10000,       // Ajax 请求等待最大时间
       version: '',          // 版本号
-      prefix: ''     // 本地缓存命名前缀
+      prefix: ''            // 本地缓存命名前缀
     };
     self.option = $.extend({}, defaults, options);
 
@@ -102,7 +105,7 @@
   };
 
   // 调试
-  app.prototype.debug = function(o){
+  app.prototype.debug = function(o) {
     if (this.option.debug && window.console && window.console.log) {
       return console.log.apply(console, arguments);
     };
@@ -162,7 +165,7 @@
   };
 
   // 检测是否是 DOM 元素
-  app.prototype.isElement = function(o){
+  app.prototype.isElement = function(o) {
     if (o && (typeof HTMLElement === 'function' || typeof HTMLElement === 'object') && o instanceof HTMLElement) {
       return true;
     } else {
@@ -171,61 +174,85 @@
   };
 
   // 检测是否是 jQuery 对象
-  app.prototype.isJquery = function(o){
+  app.prototype.isJquery = function(o) {
     return (o && o.length && (typeof jQuery === 'function' || typeof jQuery === 'object') && o instanceof jQuery) ? true : false;
   };
 
   // 检测是否是 Zepto 对象
-  app.prototype.isZepto = function(o){
+  app.prototype.isZepto = function(o) {
     return (o && o.length && (typeof Zepto === 'function' || typeof Zepto === 'object') && Zepto.zepto.isZ(o)) ? true : false;
   };
   
   // 检测是否是 String 字符串
-  app.prototype.isString = function(value){
-    return typeof value === "string";
+  app.prototype.isString = function(value) {
+    return typeof value === 'string';
   };
   
   // 检测是否是 Number 数字
-  app.prototype.isNumber = function(value){
-    return (typeof value === "number" && isFinite(value)) ? true : false;
+  app.prototype.isNumber = function(value) {
+    return (typeof value === 'number' && isFinite(value)) ? true : false;
   };
   
   // 检测是否是 Boolean 布尔值
-  app.prototype.isBoolean = function(value){
-    return typeof value === "boolean";
+  app.prototype.isBoolean = function(value) {
+    return typeof value === 'boolean';
   };
   
   // 检测是否是 Function 函数
-  app.prototype.isCallback = function(value){
-    return typeof value === "function";
+  app.prototype.isCallback = function(value) {
+    return typeof value === 'function';
   };
   
   // 检测是否是 Array 数组
-  app.prototype.isArray = function(value){
-    if (typeof Array.isArray === "function") { 
-      return Array.isArray(value); 
+  app.prototype.isArray = function(value) {
+    if (typeof Array.isArray === 'function') { 
+      return Array.isArray(value);
     } else { 
-      return Object.prototype.toString.call(value) === "[object Array]"; 
-    } 
+      return Object.prototype.toString.call(value) === '[object Array]';
+    };
   };
-  
+
+  // 检测是否是 Null
+  app.prototype.isNull = function(value) {
+    return Object.prototype.toString.call(value) === '[object Null]';
+  };
+
+  // 检测是否是 Undefined
+  app.prototype.isUndefined = function(value) {
+    return Object.prototype.toString.call(value) === '[object Undefined]';
+  };
+
+  // 检测是否是 Object
+  app.prototype.isObject = function(value) {
+    if (typeof value !== 'object' || value.nodeType || value !== null && value !== undefined && value === value.window) {
+      return false;
+    };
+
+    if (value.constructor &&
+      !Object.prototype.hasOwnProperty.call(value.constructor.prototype, 'isPrototypeOf')) {
+      return false;
+    };
+
+    return true;
+  };
+
   // 检测是否是 Date 日期
-  app.prototype.isDate = function(value){
-    return value instanceof Date;
+  app.prototype.isDate = function(value) {
+    return value instanceof Date || Object.prototype.toString.call(value) === '[object Date]';
   };
-  
+
   // 检测是否是 RegExp 正则表达式
-  app.prototype.isRegExp = function(value){
-    return value instanceof RegExp;
+  app.prototype.isRegExp = function(value) {
+    return value instanceof RegExp || Object.prototype.toString.call(value) === '[object RegExp]';
   };
-  
+
   // 检测是否是 Error 错误
-  app.prototype.isError = function(value){
+  app.prototype.isError = function(value) {
     return value instanceof Error;
   };
-  
+
   // 检测是否是 JSON
-  app.prototype.isJson = function(value){
+  app.prototype.isJson = function(value) {
     try {
       JSON.parse(value);
     } catch (e) {
@@ -235,12 +262,12 @@
   };
 
   // 判断是否为闰年
-  app.prototype.isLeapYear = function(year){
+  app.prototype.isLeapYear = function(year) {
     return !(year % (year % 100 ? 4 : 400));
   };
 
   // 检测元素是否不可见
-  app.prototype.isHidden = function(o){
+  app.prototype.isHidden = function(o) {
     if (this.isElement(o)) {
       var style = window.getComputedStyle(o);
       return (style.getPropertyValue('display') === 'none' || style.getPropertyValue('visibility') === 'hidden' || style.getPropertyValue('opacity') == 0 || (style.getPropertyValue('width') == 0 && style.getPropertyValue('height') == 0)) ? true : false;
@@ -250,12 +277,12 @@
   };
 
   // 检测元素是否可见
-  app.prototype.isVisible = function(o){
+  app.prototype.isVisible = function(o) {
     return !this.isHidden(o);
   };
 
   // 保存缓存存储（sessionStorage）
-  app.prototype.setStorage = function(name,data){
+  app.prototype.setStorage = function(name,data) {
     if (!name || !name.length) {
       return;
     };
@@ -265,7 +292,7 @@
   };
 
   // 读取本地存储（sessionStorage）
-  app.prototype.getStorage = function(name){
+  app.prototype.getStorage = function(name) {
     if (!name || !name.length) {
       return null;
     };
@@ -280,7 +307,7 @@
   };
 
   // 删除本地存储（sessionStorage）
-  app.prototype.removeStorage = function(name){
+  app.prototype.removeStorage = function(name) {
     if (!name || !name.length) {
       return;
     };
@@ -295,7 +322,7 @@
   };
 
   // 清空本地存储（sessionStorage）
-  app.prototype.clearStorage = function(){
+  app.prototype.clearStorage = function() {
     var storage = sessionStorage;
     var _prelength = this.option.prefix.length;
 
@@ -309,7 +336,7 @@
   };
 
   // 保存缓存存储（localStorage）
-  app.prototype.setLocalStorage = function(name,data){
+  app.prototype.setLocalStorage = function(name,data) {
     if (!name || !name.length) {
       return;
     };
@@ -320,7 +347,7 @@
   };
 
   // 读取本地存储（localStorage）
-  app.prototype.getLocalStorage = function(name){
+  app.prototype.getLocalStorage = function(name) {
     if (!name || !name.length) {
       return null;
     };
@@ -339,7 +366,7 @@
   };
 
   // 删除本地存储（localStorage）
-  app.prototype.removeLocalStorage = function(name){
+  app.prototype.removeLocalStorage = function(name) {
     if (!name || !name.length) {
       return;
     };
@@ -354,7 +381,7 @@
   };
 
   // 清空本地存储（localStorage）
-  app.prototype.clearLocalStorage = function(){
+  app.prototype.clearLocalStorage = function() {
     var storage = localStorage;
     var _prelength = this.option.prefix.length;
 
@@ -374,7 +401,7 @@
    * @param min {boolean} 最大值
    * @return {number}
    */
-  app.prototype.getRandomNumber = function(min, max){
+  app.prototype.getRandomNumber = function(min, max) {
     min = isFinite(min) ? parseInt(min, 10) : 0;
     max = isFinite(max) ? parseInt(max, 10) : 0;
 
@@ -391,7 +418,7 @@
    * @param string {string} 字符范围
    * @return {string}
    */
-  app.prototype.getRandomString = function(length, string){
+  app.prototype.getRandomString = function(length, string) {
     length = isFinite(length) ? parseInt(length, 10) : 0;
     string = (typeof string === 'string' && string.length) ? string : 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -405,8 +432,8 @@
    * @param string {string}
    * @return {string}
    */
-  app.prototype.replaceEnter = function(string){
-    if (!this.isString(string)){
+  app.prototype.replaceEnter = function(string) {
+    if (!this.isString(string)) {
       return string;
     };
 
@@ -422,8 +449,8 @@
    * @param decode {boolean} 是否解码
    * @return {string}
    */
-  app.prototype.replaceQuot = function(string, decode){
-    if (!this.isString(string)){
+  app.prototype.replaceQuot = function(string, decode) {
+    if (!this.isString(string)) {
       return string;
     };
 
@@ -444,8 +471,8 @@
    * @param decode {boolean} 是否解码
    * @return {string}
    */
-  app.prototype.replaceHtml = function(string, decode){
-    if (!this.isString(string)){
+  app.prototype.replaceHtml = function(string, decode) {
+    if (!this.isString(string)) {
       return string;
     };
 
@@ -470,8 +497,8 @@
    * @param decimals {int} 保留小数点位数
    * @return {number}
    */
-  app.prototype.toFloat = function(value, decimals){
-    if (!this.isNumber(decimals)){
+  app.prototype.toFloat = function(value, decimals) {
+    if (!this.isNumber(decimals)) {
       decimals = 0;
     };
 
@@ -486,15 +513,28 @@
    * @param separator {string} 千位分隔符的字符串
    * @return {string}
    */
-  app.prototype.numberFormat = function(value, decimals, decimalpoint, separator){
-    if (!this.isNumber(decimals)){decimals = 0};
-    if (!this.isString(decimalpoint)){decimalpoint = '.'};
-    if (!this.isString(separator)){separator = ','};
+  app.prototype.numberFormat = function(value, decimals, mustKeepZero, decimalpoint, separator) {
+    if (!this.isNumber(decimals)) {decimals = 0};
+    if (mustKeepZero !== true) {mustKeepZero = false};
+    if (!this.isString(decimalpoint)) {decimalpoint = '.'};
+    if (!this.isString(separator)) {separator = ','};
 
     value = this.toFloat(value, decimals);
     value = value.toFixed(decimals);
-    value = value.replace(/(\d{1,3})(?=(\d{3})+(?:$|\.))/g, ('$1,'));
-    value = value.replace(/[\.\,]/g, function(key, index, val){
+
+    if (decimals > 0) {
+      var sp = value.split('.');
+      var a = sp[0];
+      var b = sp[1];
+
+      sp[0] = sp[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+      value = sp.join('.');
+
+    } else {
+      value = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    };
+
+    value = value.replace(/[\.\,]/g, function(key, index, val) {
       if (key === '.') {
         return decimalpoint;
 
@@ -502,6 +542,11 @@
         return separator;
       };
     });
+
+    if (!mustKeepZero) {
+      value = value.replace(/(\.[1-9]+)0+$/, '$1');
+      value = value.replace(/\.0+$/, '');
+    };
 
     return value;
   };
@@ -511,8 +556,8 @@
    * @param array {array}
    * @return {array}
    */
-  app.prototype.arrayUnique = function(array){
-    if (!this.isArray(array)){
+  app.prototype.arrayUnique = function(array) {
+    if (!this.isArray(array)) {
       return array;
     };
 
@@ -683,7 +728,7 @@
     if (self.panelCount <= 0) {
       self.dom.body.classList.remove('lock');
       self.dom.body.classList.remove('blur');
-      // setTimeout(function(){
+      // setTimeout(function() {
         // self.restoreScrollTop();
       // }, 100)
     };
@@ -800,7 +845,7 @@
    * @return {array}
    */
   /*
-  app.prototype.compressPicture = function(img, options){
+  app.prototype.compressPicture = function(img, options) {
     options = $.extend({}, {
       width: 0,               // 宽度
       height: 0,              // 高度
@@ -944,7 +989,7 @@
         _type = 'image/jpeg';
       };
 
-      EXIF.getData(_file, function(){
+      EXIF.getData(_file, function() {
         var _orientation = EXIF.getTag(this, 'Orientation');
         // var _rotate = 0;
 
@@ -1092,7 +1137,7 @@
       if (typeof options.complete === 'function') {
         options.complete();
       };
-    }).done(function(data, textStatus, jqXHR){
+    }).done(function(data, textStatus, jqXHR) {
       form.find('button[type="submit"]').prop('disabled', false);
 
       if (!data) {
@@ -1107,7 +1152,7 @@
 
       formAjaxFinish(data);
 
-    }).fail(function(jqXHR, textStatus, errorThrown){
+    }).fail(function(jqXHR, textStatus, errorThrown) {
       form.find('button[type="submit"]').prop('disabled', false);
 
       $.cxDialog({
@@ -1329,10 +1374,10 @@
       type: options.type,
       data: query,
       dataType: 'json'
-    }).done(function(data, textStatus, jqXHR){
+    }).done(function(data, textStatus, jqXHR) {
       sendComplete(options, data);
 
-    }).fail(function(jqXHR, textStatus, errorThrown){
+    }).fail(function(jqXHR, textStatus, errorThrown) {
       sendComplete(options, {
         message: errorThrown
       });
