@@ -1,0 +1,87 @@
+/**
+ * iOS Status Bar 覆盖页面 (适用于打包的 APP)
+ * ------------------------------ */
+/* iPhone 5 */
+@media (device-width:320px) and (device-height:568px){
+.header{height:66px;}
+.header header{height:46px;padding-top:20px;}
+.header .toleft,
+.header .toright,
+.header > .icon{top:20px;}
+
+.header + .panel_body,
+.header + .tabnav.fixed nav,
+.header + .filter_tool.fixed nav{top:66px;}
+
+.header + .tabnav + .panel_body,
+.header + .tabnav.fixed + .filter_tool.fixed nav,
+.header + .filter_tool + .panel_body,
+.header + .filter_tool.fixed + .tabnav.fixed nav{top:106px;}
+
+.header + .tabnav.radius + .panel_body,
+.header + .tabnav.radius.fixed + .filter_tool.fixed nav{top:116px;}
+
+.header + .tabnav + .filter_tool + .panel_body,
+.header + .filter_tool + .tabnav + .panel_body{top:146px;}
+
+.header + .tabnav.radius + .filter_tool + .panel_body,
+.header + .filter_tool + .tabnav.radius + .panel_body{top:156px;}
+}
+
+
+/* iPhone 6 ~ 8 */
+@media (device-width:375px) and (device-height:667px), (device-width:414px) and (device-height:736px){
+.header{height:66px;}
+.header header{height:46px;padding-top:20px;}
+.header .toleft,
+.header .toright,
+.header > .icon{top:20px;}
+
+.header + .panel_body,
+.header + .tabnav.fixed nav,
+.header + .filter_tool.fixed nav{top:66px;}
+
+.header + .tabnav + .panel_body,
+.header + .tabnav.fixed + .filter_tool.fixed nav,
+.header + .filter_tool + .panel_body,
+.header + .filter_tool.fixed + .tabnav.fixed nav{top:106px;}
+
+.header + .tabnav.radius + .panel_body,
+.header + .tabnav.radius.fixed + .filter_tool.fixed nav{top:116px;}
+
+.header + .tabnav + .filter_tool + .panel_body,
+.header + .filter_tool + .tabnav + .panel_body{top:146px;}
+
+.header + .tabnav.radius + .filter_tool + .panel_body,
+.header + .filter_tool + .tabnav.radius + .panel_body{top:156px;}
+}
+
+
+/* iPhone X ~ 12 */
+@media (device-width:375px) and (device-height:812px), (device-width:414px) and (device-height:896px), (device-width:390px) and (device-height:844px), (device-width:428px) and (device-height:926px){
+.header{height:90px;}
+.header header{height:46px;padding-top:44px;line-height:46px;}
+.header .icon,
+.header .menu{width:46px;}
+.header .toleft,
+.header .toright,
+.header header > .icon{top:46px;}
+
+.header + .panel_body,
+.header + .tabnav.fixed nav,
+.header + .filter_tool.fixed nav{top:90px;}
+
+.header + .tabnav + .panel_body,
+.header + .tabnav.fixed + .filter_tool.fixed nav,
+.header + .filter_tool + .panel_body,
+.header + .filter_tool.fixed + .tabnav.fixed nav{top:130px;}
+
+.header + .tabnav.radius + .panel_body,
+.header + .tabnav.radius.fixed + .filter_tool.fixed nav{top:140px;}
+
+.header + .tabnav + .filter_tool + .panel_body,
+.header + .filter_tool + .tabnav + .panel_body{top:170px;}
+
+.header + .tabnav.radius + .filter_tool + .panel_body,
+.header + .filter_tool + .tabnav.radius + .panel_body{top:180px;}
+}

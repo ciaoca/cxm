@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CXM - 表单</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../../../static/css/cxm.css">
+<link rel="stylesheet" href="../../static/css/layout.css">
+<link rel="stylesheet" href="../../static/plugins/prism/prism.css">
+<script src="../../../static/plugins/zepto/zepto.min.js"></script>
+<script src="../../../static/js/plugins.js"></script>
+<script src="../../static/plugins/prism/prism.js"></script>
+<script src="../../../static/js/init.js"></script>
+</head>
+<body class="gray">
+<div id="wrap" class="wrap">
+  <div id="header" class="header">
+    <header>
+      <h1>表单</h1>
+      <div class="group toleft">
+        <a class="icon back" href="index.html"></a>
+      </div>
+      <div class="group toright">
+        <a class="txt bg" href="javascript://" rel="body_bg"></a>
+      </div>
+    </header>
+  </div>
+
+  <div class="tabnav fixed">
+    <nav>
+      <a href="javascript://" rel="size" rev="mini">Mini</a>
+      <a href="javascript://" rel="size" rev="small">Small</a>
+      <a class="n" href="javascript://" rel="size" rev="">Default</a>
+      <a href="javascript://" rel="size" rev="large">Large</a>
+    </nav>
+  </div>
+
+  <div class="demo_intro">
+    <div class="detail">
+<pre class="language-html"><code class="html">&lt;div class="form"&gt;
+  &lt;dl class="row"&gt;
+    &lt;dt&gt;Label&lt;/dt&gt;
+    &lt;dd&gt;&lt;input&gt&lt;/dd&gt;
+  &lt;/dl&gt;
+  &lt;dl class="row note"&gt;
+    &lt;dt&gt;Label&lt;/dt&gt;
+    &lt;dd&gt;Text&lt;/dd&gt;
+  &lt;/dl&gt;
+  &lt;div class="row"&gt;&lt;input&gt;&lt;/div&gt;
+  &lt;div class="row note"&gt;Text&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="form mt">
+    <dl class="row">
+      <dt><label for="login_name">用户名</label></dt>
+      <dd><input type="text" id="login_name" class="input full" placeholder="Email / 手机号码"></dd>
+    </dl>
+    <dl class="row">
+      <dt><label for="login_pwd">密码</label></dt>
+      <dd><input type="password" id="login_pwd" class="input full" placeholder="密码由数字、字母组成"></dd>
+    </dl>
+  </div>
+
+  <div class="form">
+    <div class="note">无标题样式</div>
+    <div class="row">
+      <input type="text" class="input full" placeholder="用户名">
+    </div>
+    <div class="row">
+      <input type="password" class="input full" placeholder="密码">
+    </div>
+  </div>
+
+  <div class="form">
+    <div class="note">描述性内容、不可修改内容</div>
+    <dl class="row note">
+      <dt>Email</dt>
+      <dd>a***z@gmail.com</dd>
+    </dl>
+    <dl class="row">
+      <dt>Email</dt>
+      <dd>
+        <input type="text" class="input full" value="a***z@gmail.com" readonly>
+      </dd>
+    </dl>
+    <dl class="row">
+      <dt>Email</dt>
+      <dd>
+        <input type="text" class="input full" value="a***z@gmail.com" disabled>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="form">
+    <div class="note">分组</div>
+    <div class="row_group">
+      <dl class="row">
+        <dt>所在地</dt>
+        <dd>
+          <div class="input_group">
+            <select class="select full">
+              <option>省</option>
+            </select>
+            <select class="select full">
+              <option>市</option>
+            </select>
+            <select class="select full">
+              <option>区</option>
+            </select>
+          </div>
+        </dd>
+      </dl>
+    </div>
+
+    <div class="row_group">
+      <dl class="row">
+        <dt>联系地址</dt>
+        <dd>
+          <textarea class="input full"  rows="3" placeholder="请填写"></textarea>
+        </dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="mbox mt2">
+    <button type="submit" class="button full primary">提交</button>
+  </div>
+
+  <footer id="tabbar" class="tabbar" data-target="module"></footer>
+</div>
+<script src="../../../static/js/ready.js"></script>
+<script src="../../static/js/main.js"></script>
+<script>
+(function() {
+  $('body').on('click', 'a', function() {
+    var _this = this;
+    var _rel = _this.rel;
+    var _rev = _this.rev;
+
+    if (_rel === 'size') {
+      event.preventDefault();
+      $(_this).addClass('n').siblings().removeClass('n');
+      $('.form, .input, .select').removeClass('mini small large').addClass(_rev);
+      return;
+    };
+  });
+})();
+</script>
+</body>
+</html>

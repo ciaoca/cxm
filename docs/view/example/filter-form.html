@@ -1,0 +1,262 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CXM - 筛选栏关联表单</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../../../static/css/cxm.css">
+<link rel="stylesheet" href="../../static/css/layout.css">
+<link rel="stylesheet" href="../../static/plugins/prism/prism.css">
+<script src="../../../static/plugins/zepto/zepto.min.js"></script>
+<script src="../../../static/js/plugins.js"></script>
+<script src="../../static/plugins/prism/prism.js"></script>
+<script src="../../../static/js/init.js"></script>
+</head>
+<body class="gray">
+<div id="wrap" class="wrap">
+  <div id="header" class="header">
+    <header>
+      <h1>筛选栏关联表单</h1>
+      <div class="group toleft">
+        <a class="icon back" href="index.html"></a>
+      </div>
+      <div class="group toright">
+        <a class="txt bg" href="javascript://" rel="body_bg"></a>
+      </div>
+    </header>
+  </div>
+
+  <div id="filter_tool" class="filter_tool fixed"></div>
+
+  <form id="search_form" action="javascript://" method="post">
+    <div class="form">
+      <div class="note">预览</div>
+      <dl class="row">
+        <dt>Year</dt>
+        <dd>
+          <input type="text" id="search_year" name="year" class="input full" readonly>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt>Color</dt>
+        <dd>
+          <input type="text" id="search_color" name="color" class="input full" readonly>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt>Number</dt>
+        <dd>
+          <input type="text" id="search_number" name="number" class="input full" readonly>
+        </dd>
+      </dl>
+    </div>
+    <div class="mbox mt">
+      <a class="button full green" href="javascript://" rel="reset_filter">重置</a>
+    </div>
+  </form>
+
+  <footer id="tabbar" class="tabbar" data-target="example"></footer>
+</div>
+
+<script src="../../../static/js/ready.js"></script>
+<script src="../../static/js/main.js"></script>
+<script>
+(function() {
+  var thePage = {
+    dom: {},
+    filterData: {
+      year: {
+        title: '年代',
+        sub: [
+          {title: '不限', value: ''},
+          {title: '80后', value: '', sub: [
+            {title: '1980年', value: '1980'},
+            {title: '1981年', value: '1981'},
+            {title: '1982年', value: '1982'},
+            {title: '1983年', value: '1983'},
+            {title: '1984年', value: '1984'},
+            {title: '1985年', value: '1985'},
+            {title: '1986年', value: '1986'},
+            {title: '1987年', value: '1987'},
+            {title: '1988年', value: '1988'},
+            {title: '1989年', value: '1989'},
+          ]},
+          {title: '90后', sub: [
+            {title: '1990年', value: '1990'},
+            {title: '1991年', value: '1991'},
+            {title: '1992年', value: '1992'},
+            {title: '1993年', value: '1993'},
+            {title: '1994年', value: '1994'},
+            {title: '1995年', value: '1995'},
+            {title: '1996年', value: '1996'},
+            {title: '1997年', value: '1997'},
+            {title: '1998年', value: '1998'},
+            {title: '1999年', value: '1999'},
+          ]},
+          {title: '00后', sub: [
+            {title: '2000年', value: '2000'},
+            {title: '2001年', value: '2001'},
+            {title: '2002年', value: '2002'},
+            {title: '2003年', value: '2003'},
+            {title: '2004年', value: '2004'},
+            {title: '2005年', value: '2005'},
+            {title: '2006年', value: '2006'},
+            {title: '2007年', value: '2007'},
+            {title: '2008年', value: '2008'},
+            {title: '2009年', value: '2009'},
+          ]},
+          {title: '10后', sub: [
+            {title: '2010年', value: '2010'},
+            {title: '2011年', value: '2011'},
+            {title: '2012年', value: '2012'},
+            {title: '2013年', value: '2013'},
+            {title: '2014年', value: '2014'},
+            {title: '2015年', value: '2015'},
+            {title: '2016年', value: '2016'},
+            {title: '2017年', value: '2017'},
+            {title: '2018年', value: '2018'},
+            {title: '2019年', value: '2019'},
+          ]},
+        ]
+      },
+      color: {
+        title: '颜色',
+        cols: 2,
+        list: [
+          {title: '不限', value: ''},
+          {title: '赤', value: 'red'},
+          {title: '橙', value: 'orange'},
+          {title: '黄', value: 'yellow'},
+          {title: '绿', value: 'green'},
+          {title: '青', value: 'cyan'},
+          {title: '蓝', value: 'blue'},
+          {title: '紫', value: 'purple'},
+        ],
+      },
+      number: {
+        title: '数字',
+        list: [
+          {title: '不限', value: ''},
+          {title: '一', value: 1},
+          {title: '二', value: 2},
+          {title: '三', value: 3},
+          {title: '四', value: 4},
+          {title: '五', value: 5},
+        ],
+      }
+    }
+  };
+
+  thePage.init = function() {
+    var self = this;
+
+    self.dom.filterTool = $('#filter_tool');
+    self.dom.searchForm = $('#search_form');
+
+    self.initSearchForm();
+
+    APP.initFilterTool(self.dom.filterTool, self.filterData);
+
+    self.dom.searchForm.on('submit', function(event) {
+      var formData = APP.getFormData(self.dom.searchForm);
+
+      // 创建 URL 参数
+      APP.createUrlHash(formData);
+    });
+
+    $('body').on('click', 'a', function(event) {
+      var _this = this;
+      var _rel = _this.rel;
+      var _rev = _this.rev;
+
+      if (_rel && _rel.slice(0,7) === 'filter_') {
+        event.preventDefault();
+        var _id = 'search_' + _rel.slice(7);
+
+        if (document.getElementById(_id)) {
+          document.getElementById(_id).value = _rev;
+          self.dom.searchForm.trigger('submit');
+        };
+
+      } else if (_rel === 'reset_filter') {
+        self.resetFilter();
+        self.dom.searchForm[0].reset();
+        self.dom.searchForm.trigger('submit');
+
+      };
+    });
+  };
+
+  // 获取 URL 参数填充表单、设置筛选默认值
+  thePage.initSearchForm = function() {
+    var self = this;
+    var urlQuery = GLOBAL.purl.fparam();
+
+    for (var x in urlQuery) {
+      if (typeof urlQuery[x] !== 'string' || !urlQuery[x].length) {
+        continue;
+      };
+
+      if (['year','color','number'].indexOf(x) >= 0) {
+        self.filterData[x].default = {
+          value: urlQuery[x]
+        };
+
+        if (Array.isArray(self.filterData[x].list)) {
+          for (var i = 0, l = self.filterData[x].list.length; i < l; i++) {
+            if (self.filterData[x].list[i].value == urlQuery[x]) {
+              self.filterData[x].default.title = self.filterData[x].list[i].title;
+              break;
+            };
+          };
+
+        } else if (Array.isArray(self.filterData[x].sub)) {
+          loopkey:
+          for (var i = 0, l = self.filterData[x].sub.length; i < l; i++) {
+            if (self.filterData[x].sub[i].value == urlQuery[x]) {
+              self.filterData[x].default.title = self.filterData[x].sub[i].title;
+              break;
+            };
+
+            if (Array.isArray(self.filterData[x].sub[i].sub)) {
+              for (var j = 0, k = self.filterData[x].sub[i].sub.length; j < k; j++) {
+                if (self.filterData[x].sub[i].sub[j].value == urlQuery[x]) {
+                  self.filterData[x].default.title = self.filterData[x].sub[i].sub[j].title;
+                  break loopkey;
+                };
+              };
+            };
+          };
+        };
+
+        if (document.getElementById('search_' + x)) {
+          document.getElementById('search_' + x).value = urlQuery[x];
+        };
+      };
+    };
+  };
+
+  thePage.resetFilter = function() {
+    var self = this;
+
+    // 重置筛选栏
+    $.each(self.dom.filterTool.find('dt'), function(index, val) {
+      if (val.dataset.title) {
+        val.innerHTML = val.dataset.title;
+      };
+    });
+
+    // 重置搜索表单
+    self.dom.filterTool.find('a').removeClass('n');
+    self.dom.searchForm[0].reset();
+  };
+
+  thePage.init();
+})();
+</script>
+</body>
+</html>

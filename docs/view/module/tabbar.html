@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CXM - 底部导航</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../../../static/css/cxm.css">
+<link rel="stylesheet" href="../../static/css/layout.css">
+<link rel="stylesheet" href="../../static/plugins/prism/prism.css">
+<script src="../../../static/plugins/zepto/zepto.min.js"></script>
+<script src="../../../static/js/plugins.js"></script>
+<script src="../../static/plugins/prism/prism.js"></script>
+<script src="../../../static/js/init.js"></script>
+</head>
+<body class="gray">
+<div id="wrap" class="wrap">
+  <div id="header" class="header">
+    <header>
+      <h1>底部导航</h1>
+      <div class="group toleft">
+        <a class="icon back" href="index.html"></a>
+      </div>
+      <div class="group toright">
+        <a class="txt bg" href="javascript://" rel="body_bg"></a>
+      </div>
+    </header>
+  </div>
+
+  <div class="demo_intro">
+    <div class="detail">
+      <p>配置内容在<code>/static/js/init.js</code></p>
+<pre class="language-js"><code class="js">// 配置示例
+GLOBAL.tabBarConfig = {
+  menu_1: {
+    name: '主菜单名称',
+    link: 'url'
+  },
+  menu_2: {
+    name: '含有子菜单',
+    sub: {
+      menu_3: {
+        name: '子菜单名称',
+        link: 'url'
+      },
+      menu_4: {
+        name: '子菜单名称',
+        link: 'url'
+      }
+    }
+  }
+};</code></pre>
+<p>需要使用 TabBar 的页面，添加以下标签，页面初始化时会自动构建。</p>
+<pre class="language-html"><code class="html">&lt;footer id="tabbar" class="tabbar" data-target="menu_1"&gt;&lt;/footer&gt;</code></pre>
+<p>参数<code>data-target</code>可设置为需要选中的主菜单的键名。</p>
+<p>如需动态更改 TabBar 的内容，可通过以下操作：</p>
+<pre class="language-js"><code class="js">var newConfig = {...};
+APP.buildTabBar('tabbar', newConfig, 'newTarget');</code></pre>
+    </div>
+  </div>
+
+  <footer id="tabbar" class="tabbar" data-target="module"></footer>
+</div>
+<script src="../../../static/js/ready.js"></script>
+<script src="../../static/js/main.js"></script>
+</body>
+</html>

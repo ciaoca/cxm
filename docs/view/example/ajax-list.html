@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CXM - 列表加载</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../../../static/css/cxm.css">
+<link rel="stylesheet" href="../../static/css/layout.css">
+<link rel="stylesheet" href="../../static/plugins/prism/prism.css">
+<script src="../../../static/plugins/zepto/zepto.min.js"></script>
+<script src="../../../static/js/plugins.js"></script>
+<script src="../../static/plugins/prism/prism.js"></script>
+<script src="../../../static/js/init.js"></script>
+</head>
+<body class="gray">
+<div id="wrap" class="wrap">
+  <div id="header" class="header">
+    <header>
+      <h1>列表加载</h1>
+      <div class="group toleft">
+        <a class="icon back" href="index.html"></a>
+      </div>
+      <div class="group toright">
+        <a class="txt bg" href="javascript://" rel="body_bg"></a>
+      </div>
+    </header>
+  </div>
+
+  <ul id="demo_list" class="demo_list ajax_list" data-empty-tip="暂无数据" data-end-tip="已显示全部"></ul>
+
+  <footer id="tabbar" class="tabbar" data-target="example"></footer>
+</div>
+
+<script src="../../../static/js/ready.js"></script>
+<script src="../../static/js/main.js"></script>
+<script>
+(function() {
+  var thePage = {
+    dom: {},
+    queryData: {
+      page: 1
+    }
+  };
+
+  thePage.init = function() {
+    var self = this;
+
+    self.winHeight = window.innerHeight;
+
+    self.dom.body = $('body');
+    self.dom.list = $('#demo_list');
+    self.dom.more = $('<div class="loading"></div>');
+
+    self.dom.more.attr('class', 'loading').insertAfter(self.dom.list);
+
+    // 移动端：上拉加载更多
+    if (GLOBAL.platform.system === 'ios' || GLOBAL.platform.system === 'android') {
+      self.dom.body.on('touchend', function() {
+        self.checkScroll();
+      });
+
+    // PC 端：滚动加载
+    } else {
+      $(window).on('scroll', function() {
+        self.checkScroll();
+      });
+    };
+
+    $('body').on('click', 'a', function() {
+      var _this = this;
+      var _rel = _this.rel;
+      var _rev = _this.rev;
+
+      if (_rel === 'state') {
+        event.preventDefault();
+        $(_this).addClass('n').siblings().removeClass('n');
+        self.changeStaty(_rev);
+      };
+    });
+
+    self.dom.list.empty().addClass('ready');
+    self.getList();
+  };
+
+  thePage.checkScroll = function() {
+    var self = this;
+
+    if (self.dom.list[0].clientHeight + self.dom.list[0].getBoundingClientRect().top <= self.winHeight) {
+      self.getList();
+    };
+  };
+
+  thePage.getList = function() {
+    var self = this;
+
+    if (!self.dom.list.hasClass('ready')) {
+      return;
+    };
+
+    if (self.queryData.page === 1) {
+      self.dom.list.empty();
+    };
+
+    self.dom.list.removeClass('ready empty end').addClass('load');
+    self.dom.more.attr('class', 'loading');
+
+    self.mockList(self.queryData, function(data) {
+      console.log(data);
+
+      self.queryData.page += 1;
+
+      self.dom.list.removeClass('load');
+      self.dom.more.attr('class', 'pull');
+
+      // 无数据
+      if (!Array.isArray(data.list) || !data.list.length) {
+        self.dom.list.addClass('empty');
+        return;
+
+      // 已达到末页
+      } else if (data.pagination.page === data.pagination.pageCount || data.list.length < data.pagination.pageSize) {
+        self.dom.list.addClass('end');
+
+      // 未达到末页
+      } else {
+        self.dom.list.addClass('ready');
+      };
+
+      var html = '';
+
+      for (var i = 0; i < data.list.length; i++) {
+        html += '<li>'+data.list[i]+'</li>';
+      };
+
+      self.dom.list.append(html);
+
+      self.checkScroll();
+    });
+  };
+
+  // 模拟请求
+  thePage.mockList = function(options, callback) {
+    var self = this;
+    var data = {
+      pagination: {
+        page: options.page,
+        pageSize: 20,
+        total: 99
+      },
+      list: []
+    };
+
+    data.pagination.pageCount = Math.ceil(data.pagination.total / data.pagination.pageSize);
+
+    var start = (data.pagination.page - 1) * data.pagination.pageSize;
+    var end = start + data.pagination.pageSize;
+
+    if (end > data.pagination.total) {
+      end = data.pagination.total;
+    };
+
+    for (var i = start; i < end; i++) {
+      data.list.push('Title '+i);
+    };
+
+    setTimeout(function() {
+      callback(data);
+    }, 1000);
+  };
+
+  thePage.init();
+})();
+</script>
+</body>
+</html>

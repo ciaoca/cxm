@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CXM - 轮播图</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../../../static/css/cxm.css">
+<link rel="stylesheet" href="../../static/css/layout.css">
+<link rel="stylesheet" href="../../static/plugins/prism/prism.css">
+<script src="../../../static/plugins/zepto/zepto.min.js"></script>
+<script src="../../../static/js/plugins.js"></script>
+<script src="../../static/plugins/prism/prism.js"></script>
+<script src="../../../static/js/init.js"></script>
+</head>
+<body class="gray">
+<div id="wrap" class="wrap">
+  <div id="header" class="header">
+    <header>
+      <h1>轮播图</h1>
+      <div class="group toleft">
+        <a class="icon back" href="index.html"></a>
+      </div>
+      <div class="group toright">
+        <a class="txt bg" href="javascript://" rel="body_bg"></a>
+      </div>
+    </header>
+  </div>
+
+  <div id="the_slide" class="slide">
+    <ul class="box">
+      <li>
+        <div class="item" style="background-image:url(http://placehold.it/640x360)"></div>
+      </li>
+      <li>
+        <div class="item" style="background-image:url(http://placehold.it/640x360)"></div>
+      </li>
+      <li>
+        <div class="item" style="background-image:url(http://placehold.it/640x360)"></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="demo_intro mt">
+    <div class="detail">
+      <p>通用<code>.slide</code>样式中，<code>.slide .item</code>按比例自适应进行显示，默认16:9。</p>
+      <p>若需变更比例，增加一个自定义的<code>class</code>，再设置所需的比例即可。</p>
+      <p>查看文档：<a target="_blank" class="link primary" href="https://github.com/thebird/Swipe">Swipe</a></p>
+    </div>
+  </div>
+
+  <footer id="tabbar" class="tabbar" data-target="example"></footer>
+</div>
+<script src="../../../static/js/ready.js"></script>
+<script src="../../static/js/main.js"></script>
+<script>
+(function() {
+  var thePage = {
+    dom: {},
+    slideConfig: {
+      start: 0
+    }
+  };
+
+  thePage.init = function() {
+    var self = this;
+
+    self.buildSlide();
+  };
+
+  thePage.buildSlide = function() {
+    var self = this;
+
+    self.dom.slideBox = $('#the_slide');
+    self.dom.slideBtns = $('<div></div>', {class: 'btns'});
+    self.slideConfig.sum = self.dom.slideBox.find('li').length;
+
+    var html = '';
+
+    for (var i = self.slideConfig.sum - 1; i >= 0; i--) {
+      html += '<i></i>';
+    };
+
+    self.dom.slideBtns.append(html).appendTo(self.dom.slideBox);
+
+    self.slideConfig.swipe = new Swipe(self.dom.slideBox[0], {
+      speed: 600,
+      auto: 5000,
+      callback: function(index) {
+        self.toggleSlideButton(index);
+      },
+      // transitionEnd: function(index) {
+      //   console.log(index);
+      // }
+    });
+
+    self.toggleSlideButton(self.slideConfig.start);
+  };
+
+  thePage.toggleSlideButton = function(n) {
+    var self = this;
+
+    // 只有两个展示项时，序号与预期不符
+    if (self.slideConfig.sum === 2 && n > 1) {
+      n -= 2;
+    };
+
+    self.dom.slideBtns.find('i').removeClass('n').eq(n).addClass('n');
+  };
+
+  thePage.init();
+})();
+</script>
+</body>
+</html>

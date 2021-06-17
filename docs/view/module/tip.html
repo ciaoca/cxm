@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CXM - 全屏提示</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../../../static/css/cxm.css">
+<link rel="stylesheet" href="../../static/css/layout.css">
+<link rel="stylesheet" href="../../static/plugins/prism/prism.css">
+<script src="../../../static/plugins/zepto/zepto.min.js"></script>
+<script src="../../../static/js/plugins.js"></script>
+<script src="../../static/plugins/prism/prism.js"></script>
+<script src="../../../static/js/init.js"></script>
+</head>
+<body class="gray">
+<div id="wrap" class="wrap">
+  <div id="header" class="header">
+    <header>
+      <h1>全屏提示</h1>
+      <div class="group toleft">
+        <a class="icon back" href="index.html"></a>
+      </div>
+      <div class="group toright">
+        <a class="txt bg" href="javascript://" rel="body_bg"></a>
+      </div>
+    </header>
+  </div>
+
+  <div class="demo_intro">
+    <div class="detail">
+<pre class="language-html"><code class="html">&lt;a rel="call_tip" rev='className'&gt;&lt;/a&gt;</code></pre>
+<pre class="language-js"><code class="js">APP.tipShow('className');
+APP.tipHide('className');
+APP.tipToggle('className');</code></pre>
+    </div>
+  </div>
+
+  <div class="mbox mt">
+    <a class="button small green" href="javascript://" rel="call_tip" rev="demo">例：分享到朋友圈</a>
+    <div class="detail">
+    </div>
+  </div>
+
+  <footer id="tabbar" class="tabbar" data-target="example"></footer>
+</div>
+<script src="../../../static/js/ready.js"></script>
+<script src="../../static/js/main.js"></script>
+</body>
+</html>

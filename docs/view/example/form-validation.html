@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CXM - 表单验证</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../../../static/css/cxm.css">
+<link rel="stylesheet" href="../../static/css/layout.css">
+<link rel="stylesheet" href="../../static/plugins/prism/prism.css">
+<script src="../../../static/plugins/zepto/zepto.min.js"></script>
+<script src="../../../static/js/plugins.js"></script>
+<script src="../../../static/plugins/cxValidation/cxvalidation.min.js"></script>
+<script src="../../static/plugins/prism/prism.js"></script>
+<script src="../../../static/js/init.js"></script>
+</head>
+<body class="gray">
+<div id="wrap" class="wrap">
+  <div id="header" class="header">
+    <header>
+      <h1>表单验证</h1>
+      <div class="group toleft">
+        <a class="icon back" href="index.html"></a>
+      </div>
+      <div class="group toright">
+        <a class="txt bg" href="javascript://" rel="body_bg"></a>
+      </div>
+    </header>
+  </div>
+
+  <div class="demo_intro">
+    <div class="detail">
+      <p>通过标签的属性<code>data-validation</code>中设置验证规则。</p>
+      <hr>
+      <h5>系统之间的差异</h5>
+      <p>iOS 在验证未通过时，对应的输入控件将获取焦点，自动呼出键盘。</p>
+      <p>Android 获取焦点时不能自动呼出键盘，所以使用对话框提示。</p>
+      <p></p>
+      <hr>
+      <p>查看文档：<a target="_blank" class="link primary" href="https://github.com/ciaoca/cxValidation">cxValidation</a></p>
+    </div>
+  </div>
+
+  <form action="../../../../ajax/default.php?nextUrl=reload" method="get" id="test_form" class="mt">
+    <div class="form">
+      <div class="note">Required</div>
+      <dl class="row">
+        <dt>用户名</dt>
+        <dd><input type="text" class="input full" data-validation="required" data-validation-title="用户名" placeholder="请输入"></dd>
+      </dl>
+      <dl class="row">
+        <dt>密码</dt>
+        <dd><input type="password" id="pwd" class="input full" data-validation="required" data-validation-title="密码" placeholder="请输入"></dd>
+      </dl>
+      <div class="row">
+        <input type="radio" id="radio_0" class="radio" data-validation="required" data-validation-title="单选项(必选)">
+        <label for="radio_0">单选项(必选)</label>
+      </div>
+      <div class="row">
+        <input type="checkbox" id="checkbox_0" class="checkbox" data-validation="required" data-validation-title="多选项(必选)">
+        <label for="checkbox_0">多选项(必选)</label>
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="note">equals</div>
+      <dl class="row">
+        <dt>确认密码</dt>
+        <dd><input type="password" class="input full" data-validation="equals[pwd]" data-validation-title="确认密码" placeholder="需与密码相同"></dd>
+      </dl>
+    </div>
+
+    <div class="form">
+      <div class="note">Checkbox [groupRequired]</div>
+      <div class="row">
+        <input type="checkbox" name="_checkbox" id="checkbox_1" class="checkbox" data-validation="groupRequired[check1][2]" data-validation-title="Checkbox">
+        <label for="checkbox_1">多选项1</label>
+        <input type="checkbox" name="_checkbox" id="checkbox_2" class="checkbox" data-validation="groupRequired[check1][2]" data-validation-title="Checkbox">
+        <label for="checkbox_2">多选项2</label>
+        <input type="checkbox" name="_checkbox" id="checkbox_3" class="checkbox" data-validation="groupRequired[check1][2]" data-validation-title="Checkbox">
+        <label for="checkbox_3">多选项3</label>
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="note">Radio [groupRequired]</div>
+      <div class="row">
+        <input type="radio" name="_radio" id="radio_1" class="radio" data-validation="groupRequired[radio1]" data-validation-title="radio">
+        <label for="radio_1">单选项1</label>
+        <input type="radio" name="_radio" id="radio_2" class="radio" data-validation="groupRequired[radio1]" data-validation-title="radio">
+        <label for="radio_2">单选项2</label>
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="note">minSize[int], maxSize[int]</div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="最少 3 个字符" data-validation="minSize[3]" data-validation-title="minSize">
+      </div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="最多 10 个字符" data-validation="maxSize[10]" data-validation-title="maxSize">
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="note">min[int], max[int]</div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="最小值为 3" data-validation="min[3]" data-validation-title="min">
+      </div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="最大值为 10" data-validation="max[10]" data-validation-title="max">
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="note">integer, number</div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="输入整数" data-validation="integer" data-validation-title="integer">
+      </div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="输入数值" data-validation="number" data-validation-title="number">
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="note">email, phone, url</div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="输入电子邮件" data-validation="email" data-validation-title="email">
+      </div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="输入电话号码" data-validation="phone" data-validation-title="phone">
+      </div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="输入网址" data-validation="url" data-validation-title="url">
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="note">chinese, chinaId</div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="输入中文" data-validation="chinese" data-validation-title="chinese">
+      </div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="输入身份证号码" data-validation="chinaId" data-validation-title="chinaId">
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="note">chinaZip, qq</div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="输入邮政编码" data-validation="chinaZip" data-validation-title="chinaZip">
+      </div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="输入QQ号码" data-validation="qq" data-validation-title="qq">
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="note">only-*</div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="只能包含数字（0-9）" data-validation="onlyNumber" data-validation-title="onlyNumber">
+      </div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="只能包含数字和空格" data-validation="onlyNumberSp" data-validation-title="onlyNumberSp">
+      </div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="只能包含英文字母" data-validation="onlyLetter" data-validation-title="onlyLetter">
+      </div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="只能包含英文字母和空格" data-validation="onlyLetterSp" data-validation-title="onlyLetterSp">
+      </div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="只能包含英文字母和数字" data-validation="onlyLetterNumber" data-validation-title="onlyLetterNumber">
+      </div>
+      <div class="row">
+        <input type="text" class="input full" placeholder="只能包含英文字母、数字、空格" data-validation="onlyLetterNumberSp" data-validation-title="onlyLetterNumberSp">
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="note">Custom Function</div>
+      <dl class="row">
+        <dt>UserName</dt>
+        <dd><input type="text" class="input full" data-validation="required,call[vaildUserName]" data-validation-title="UserName"></dd>
+      </dl>
+    </div>
+
+    <div class="mbox mt2">
+      <button type="submit" class="button full primary">验证表单</button>
+    </div>
+  </form>
+
+  <footer id="tabbar" class="tabbar" data-target="example"></footer>
+</div>
+
+<script src="../../../static/js/ready.js"></script>
+<script src="../../static/js/main.js"></script>
+<script>
+/**
+ * 自定义验证方法
+ * return
+ * status: 验证结果（必须包含）
+ * message: 错误提示信息，可根据不同条件返回不同提示语
+**/
+var vaildUserName = function(el) {
+  var result = {
+    status: true
+  };
+
+  if (/^\d+/.test(el.value)) {
+    result.status = false;
+    result.message = '用户名不能以数字开头';
+
+  } else if (el.value.length < 2) {
+    result.status = false;
+    result.message = '用户名最少2个字符';
+  };
+
+  return result;
+};
+
+(function() {
+  var form = $('#test_form');
+
+  cxValidation.attach(form, {
+    success: function() {
+      console.log('验证通过');
+    }
+  });
+})();
+</script>
+</body>
+</html>

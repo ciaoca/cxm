@@ -1,0 +1,66 @@
+/**
+ * 覆盖 cxm
+ * ------------------------------ */
+.tabbar .col:before,
+.tabbar dl.col dd a:before{border-radius:3px;background-color:#ddd;}
+.tabbar .col.n:before{border-radius:50%;background-color:currentColor;}
+
+#app_tip.demo:before{content:'点击右上角，分享到朋友圈';position:absolute;top:10px;right:10px;color:#fff;font-size:2rem;}
+#app_tip.demo:after{content:'使用背景图片，定义样式';position:absolute;top:50px;right:10px;color:#aaa;font-size:1.6rem;}
+
+.header a.bg:before{content:'更换底色';}
+
+.demo_nav em{position:absolute;top:50%;right:28px;margin-top:-10px;font-size:1.2rem;line-height:20px;color:#aaa;}
+
+/**
+ * 示例区域
+ * ------------------------------ */
+.demo{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #ccc;}
+.demo h3{margin-top:10px;}
+.demo p + p{margin-top:10px;}
+
+.demo_intro{padding:10px;background-color:#fff;font-size:1.4rem;line-height:2;}
+
+.demo_box{position:relative;margin:10px;}
+.demo_box h3{margin-bottom:10px;color:#555;font-size:1.6rem;}
+
+.demo_box .row{
+display:flex;
+}
+.demo_box .col{
+flex:1;
+}
+
+.demo_box + .demo_box{margin-top:20px;}
+.demo_box + .demo_box:before{content:'';position:absolute;top:-10px;left:0;right:0;height:1px;background-color:#ddd;}
+
+
+/**
+ * 链接
+ * ------------------------------ */
+.demo_link{font-size:1.4rem;line-height:2;}
+
+
+/**
+ * 分页、按钮、输入框
+ * ------------------------------ */
+.demo_pages .pages + .pages,
+.demo_button li + li,
+.demo_input p + p,
+.demo_select p + p{margin-top:10px;}
+
+
+/**
+ * 表单
+ * ------------------------------ */
+.demo_sms .in_sms,
+.demo_sms .in_captcha{padding-right:110px;}
+.demo_sms .in_sms .button,
+.demo_sms .in_captcha img{position:absolute;top:50%;right:10px;margin-top:-14px;font-size:1.2rem;}
+.demo_sms .in_sms .button{width:90px;}
+
+.demo_sms .in_captcha img{margin-top:-15px;}
+
+
+.demo_list li{padding:10px;background-color:#fff;}
+.demo_list li + li{border-top:1px solid #ddd;}

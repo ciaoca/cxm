@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CXM - 侧面板</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../../../static/css/cxm.css">
+<link rel="stylesheet" href="../../static/css/layout.css">
+<link rel="stylesheet" href="../../static/plugins/prism/prism.css">
+<script src="../../../static/plugins/zepto/zepto.min.js"></script>
+<script src="../../../static/js/plugins.js"></script>
+<script src="../../static/plugins/prism/prism.js"></script>
+<script src="../../../static/js/init.js"></script>
+</head>
+<body class="gray">
+<div id="wrap" class="wrap">
+  <div id="header" class="header">
+    <header>
+      <h1>侧面板</h1>
+      <div class="group toleft">
+        <a class="icon back" href="index.html"></a>
+      </div>
+      <div class="group toright">
+        <a class="txt bg" href="javascript://" rel="body_bg"></a>
+      </div>
+    </header>
+  </div>
+
+  <div class="demo_intro">
+    <div class="detail">
+<pre class="language-html"><code class="html">&lt;div class="panel_page"&gt;
+  &lt;div class="inwrap"&gt;
+    &lt;!-- Content --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+  </div>
+
+  <form action="javascript://" id="option_form" class="mt">
+    <div class="form">
+      <dl class="row">
+        <dt>Position</dt>
+        <dd>
+          <select name="position" class="select full">
+            <option value="left">Left</option>
+            <option value="right" selected>Right</option>
+            <option value="top">Top</option>
+            <option value="bottom">Bottom</option>
+          </select>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt>Size</dt>
+        <dd>
+          <select name="size" class="select full">
+            <option value="">Full Size</option>
+            <option value="size_half">In CSS</option>
+            <option value="size_auto">Auto</option>
+          </select>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt>Background</dt>
+        <dd>
+          <select name="background" class="select full">
+            <option value="">White</option>
+            <option value="bg_gray">Gray</option>
+            <option value="bg_not">None</option>
+          </select>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt>Mask</dt>
+        <dd>
+          <select name="mask" class="select full">
+            <option value="">White</option>
+            <option value="mask_black">Black</option>
+            <option value="mask_halfwhite">Half White</option>
+            <option value="mask_halfblack" selected>Half Black</option>
+            <option value="mask_not">None</option>
+          </select>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt>Content</dt>
+        <dd>
+          <div class="input_group">
+            <input type="radio" name="content" id="content_much" class="radio" value="much" checked><label for="content_much">Much</label>
+            <input type="radio" name="content" id="content_less" class="radio" value="less"><label for="content_less">Less</label>
+          </div>
+        </dd>
+      </dl>
+    </div>
+  </form>
+
+  <div class="mbox mt">
+    <a class="button success full" href="javascript://" rel="call_panel" rev="demo_panel">打开面板</a>
+  </div>
+
+  <div class="demo_intro mt">
+    <div class="detail">
+<pre class="language-html"><code class="html">&lt;!-- 常用结构 --&gt;
+&lt;div id="panel_id" class="panel_page"&gt;
+  &lt;a class="bgclose" href="javascript://" rel="call_panel" rev="panel_id"&gt;&lt;/a&gt;
+  &lt;div class="inwrap"&gt;
+    &lt;div class="header"&gt;
+      &lt;header&gt;
+        &lt;h1&gt;&lt;/h1&gt;
+        &lt;div class="group toright"&gt;
+          &lt;a class="icon close" href="javascript://" rel="call_panel" rev="panel_id"&gt;&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/header&gt;
+    &lt;/div&gt;
+    &lt;div class="panel_body"&gt;
+      &lt;!-- Content --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      <p><code>.header + .panel_body</code></p>
+      <p>该结构与主界面保持一致，<code>.header</code>位置固定。</p>
+      <hr>
+      <p><code>.bgclose</code></p>
+      <p>用于面板非全屏时，点击遮罩层时可以关闭面板。</p>
+      <hr>
+      <p>实际使用时，在<code>.inwarp</code>中自定义任何内容。</p>
+      <p>通过去除背景、遮罩后，也可以制作出类似对话框的效果。</p>
+      <hr>
+      <p>需要在面板中使用 Tab Navigator 或 Filter Tool，将标签放置在<code>.header</code>与<code>.panel_body</code>之间。</p>
+<pre class="language-html"><code class="html">&lt;div id="panel_id" class="panel_page"&gt;
+  &lt;div class="inwrap"&gt;
+    &lt;div class="header"&gt;...&lt;/div&gt;
+    &lt;div class="tabnav"&gt;...&lt;/div&gt;
+    &lt;div class="filter_tool"&gt;...&lt;/div&gt;
+    &lt;div class="panel_body"&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+      <hr>
+      <h5>调用面板</h5>
+<pre class="language-js"><code class="js">// 参数传递元素 ID 或者元素对象均可
+APP.panelShow('panel_id');
+APP.panelHide(document.getElementById('panel_id'));
+APP.panelToggle($('#panel_id'));</code></pre>
+      <p>页面中通过<code>&lt;a&gt;</code>标签调用面板</p>
+<pre class="language-html"><code class="html">&lt;a rel="call_panel" rev="panel_id"&gt;&lt;/a&gt;</code></pre>
+
+      <hr>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+    </div>
+  </div>
+
+  <footer id="tabbar" class="tabbar" data-target="module"></footer>
+
+  <!-- 侧面板 -->
+  <div id="demo_panel" class="panel_page onright">
+    <a class="bgclose" href="javascript://" rel="call_panel" rev="demo_panel"></a>
+    <div class="inwrap">
+      <div class="header">
+        <header>
+          <h1>侧面板</h1>
+          <div class="group toright">
+            <a class="icon close" href="javascript://" rel="call_panel" rev="demo_panel"></a>
+          </div>
+        </header>
+      </div>
+      <div class="panel_body">
+        <div id="demo_panel_detail" class="detail"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../../static/js/ready.js"></script>
+<script src="../../static/js/main.js"></script>
+<script>
+(function() {
+  var thePage = {
+    dom: {},
+    contentPlaceholder: '<p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>'
+  };
+
+  thePage.init = function() {
+    var self = this;
+
+    self.dom.optionForm = $('#option_form');
+    self.dom.panel = $('#demo_panel');
+    self.dom.panelDetail = document.getElementById('demo_panel_detail');
+
+    self.dom.optionForm.on('change', 'input, select', function(event) {
+      self.dom.optionForm.trigger('submit');
+    });
+
+    self.dom.optionForm.on('submit', function(event) {
+      event.preventDefault();
+      self.buildPanel();
+    });
+
+    self.buildPanel();
+  };
+
+  thePage.buildPanel = function() {
+    var self = this;
+    var formData = APP.getFormData(self.dom.optionForm);
+    var _class = ['panel_page'];
+
+    _class.push('on'+formData.position);
+    _class.push(formData.mask);
+
+    if (formData.background) {
+      _class.push(formData.background);
+    };
+
+    if (formData.size) {
+      _class.push(formData.size);
+    };
+
+    self.dom.panel.attr('class', _class.join(' '));
+
+    var contentLength = formData.content === 'much' ? 50 : 5;
+    var html = '';
+
+    for (var i = 0; i < contentLength; i++) {
+      html += self.contentPlaceholder;
+    };
+
+    self.dom.panelDetail.innerHTML = html;
+  };
+
+  thePage.init();
+})();
+</script>
+</body>
+</html>

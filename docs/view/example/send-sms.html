@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CXM - 获取短信验证码</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../../../static/css/cxm.css">
+<link rel="stylesheet" href="../../static/css/layout.css">
+<link rel="stylesheet" href="../../static/plugins/prism/prism.css">
+<script src="../../../static/plugins/zepto/zepto.min.js"></script>
+<script src="../../../static/js/plugins.js"></script>
+<script src="../../static/plugins/prism/prism.js"></script>
+<script src="../../../static/js/init.js"></script>
+</head>
+<body class="gray">
+<div id="wrap" class="wrap">
+  <div id="header" class="header">
+    <header>
+      <h1>获取短信验证码</h1>
+      <div class="group toleft">
+        <a class="icon back" href="index.html"></a>
+      </div>
+      <div class="group toright">
+        <a class="txt bg" href="javascript://" rel="body_bg"></a>
+      </div>
+    </header>
+  </div>
+
+  <div class="demo_intro">
+    <div class="detail">
+      <h3>按钮设置</h3>
+<pre class="language-html"><code class="html">&lt;!--
+data-* 参数
+  second         发送间隔时间（秒）
+  url            发送短信的接口地址
+  type           传输方式（get/post）
+  input          手机号码输入框 ID
+  captcha        验证码输入框 ID
+  phone-name     URL 中手机号码的参数名称
+  captcha-name   URL 中验证码的参数名称
+  tip-text       正在发送的提示文字
+  loop-text      倒计时按钮显示的文字
+  end-text       倒计时结束后显示的文字
+--&gt;
+
+&lt;a href="your-api.php" data-input="user-phone"&gt;发送短信&lt;/div&gt;
+&lt;div data-url="your-api.php" data-input="user-phone"&gt;发送短信&lt;/div&gt;
+</code></pre>
+      </div>
+    </div>
+
+    <div class="demo_sms form mt">
+      <div class="note">需要输入手机号码</div>
+      <dl class="row">
+        <dt><label for="sms_phone_1">手机号码</label></dt>
+        <dd><input type="tel" name="phone" id="sms_phone_1" class="input full"></dd>
+      </dl>
+      <dl class="row">
+        <dt><label for="sms_code_1">验证码</label></dt>
+        <dd class="in_sms">
+          <input type="tel" id="sms_code_1" class="input full">
+          <a class="button mini primary" href="../../ajax/success.json" rel="call_sms" data-input="sms_phone_1">获取验证码</a>
+        </dd>
+      </dl>
+    </div>
+
+    <div class="demo_sms form mt">
+      <div class="note">需要输入手机号码 + 图片验证码</div>
+      <div class="row">
+        <input type="tel" name="phone" id="sms_phone_2" class="input full" placeholder="手机号码">
+      </div>
+      <div class="row in_captcha">
+        <input type="tel" name="captcha" id="sms_captcha" class="input full" placeholder="图片验证码">
+        <img src="http://placehold.it/90x30">
+      </div>
+      <div class="row in_sms">
+        <input type="tel" class="input full" placeholder="短信验证码">
+        <a class="button mini primary" href="../../ajax/success.json" rel="call_sms" data-input="sms_phone_2" data-phone-name="new_phone" data-captcha="sms_captcha" data-captcha-name="new_captcha">获取验证码</a>
+      </div>
+    </div>
+
+    <div class="demo_sms form mt">
+      <div class="note">不需要输入手机号码，发送到默认手机号码</div>
+      <div class="row in_sms">
+        <input type="tel" class="input full" placeholder="短信验证码">
+        <a class="button mini primary" href="../../ajax/success.json" rel="call_sms">获取验证码</a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer id="tabbar" class="tabbar" data-target="example"></footer>
+</div>
+<script src="../../../static/js/ready.js"></script>
+<script src="../../static/js/main.js"></script>
+</body>
+</html>

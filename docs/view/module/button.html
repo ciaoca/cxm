@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CXM - 按钮</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../../../static/css/cxm.css">
+<link rel="stylesheet" href="../../static/css/layout.css">
+<link rel="stylesheet" href="../../static/plugins/prism/prism.css">
+<script src="../../../static/plugins/zepto/zepto.min.js"></script>
+<script src="../../../static/js/plugins.js"></script>
+<script src="../../static/plugins/prism/prism.js"></script>
+<script src="../../../static/js/init.js"></script>
+</head>
+<body class="gray">
+<div id="wrap" class="wrap">
+  <div id="header" class="header">
+    <header>
+      <h1>按钮</h1>
+      <div class="group toleft">
+        <a class="icon back" href="index.html"></a>
+      </div>
+      <div class="group toright">
+        <a class="txt bg" href="javascript://" rel="body_bg"></a>
+      </div>
+    </header>
+  </div>
+
+  <div class="demo_intro">
+    <div class="detail">
+<pre class="language-html"><code class="html">&lt;a class="button"&gt;&lt;/a&gt;
+&lt;button class="button"&gt;&lt;/button&gt;
+&lt;div class="button"&gt;&lt;/div&gt;</code></pre>
+    </div>
+  </div>
+
+  <div id="option_form" class="form mt">
+    <dl class="row">
+      <dt>Size</dt>
+      <dd>
+        <select name="size" class="select full">
+          <option value="">Default</option>
+          <option value="mini">Mini</option>
+          <option value="small">Small</option>
+          <option value="large">Large</option>
+        </select>
+      </dd>
+    </dl>
+    <dl class="row">
+      <dt>Style</dt>
+      <dd>
+        <div class="input_group">
+          <input type="checkbox" name="style" id="opt_border" class="checkbox" value="border">
+          <label for="opt_border">Border</label>
+          <input type="checkbox" name="style" id="opt_radius" class="checkbox" value="radius">
+          <label for="opt_radius">Radius</label>
+        </div>
+      </dd>
+    </dl>
+  </div>
+
+  <div id="demo">
+    <div class="demo_box demo_button">
+      <h3>Button</h3>
+      <div class="row">
+        <ul class="col">
+          <li><button type="button" class="button"></button></li>
+          <li><button type="button" class="button">Default</button></li>
+          <li><button type="button" class="button primary">Primary</button></li>
+          <li><button type="button" class="button success">Success</button></li>
+          <li><button type="button" class="button info">Info</button></li>
+          <li><button type="button" class="button warn">Warn</button></li>
+          <li><button type="button" class="button danger">Danger</button></li>
+        </ul>
+        <ul class="col">
+          <li><button type="button" class="button red">Red</button></li>
+          <li><button type="button" class="button orange">Orange</button></li>
+          <li><button type="button" class="button yellow">Yellow</button></li>
+          <li><button type="button" class="button green">Green</button></li>
+          <li><button type="button" class="button blue">Blue</button></li>
+          <li><button type="button" class="button purple">Purple</button></li>
+          <li><button type="button" class="button pink">Pink</button></li>
+          <li><button type="button" class="button gray">Gray</button></li>
+          <li><button type="button" class="button lightgray">Light</button></li>
+          <li><button type="button" class="button mediumgray">Medium</button></li>
+          <li><button type="button" class="button darkgray">Dark</button></li>
+          <li><button type="button" class="button white">White</button></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="demo_box demo_button">
+      <h3>Full</h3>
+      <button type="button" class="button full">Full Width</button>
+      <button type="button" class="button full">Full Width</button>
+    </div>
+
+    <div class="demo_box demo_button">
+      <h3>Box</h3>
+      <div class="input_box">
+        <button type="button" class="button">Box</button>
+      </div>
+
+      <div class="input_box">
+        <button type="button" class="button primary">Primary</button>
+        <button type="button" class="button success">Success</button>
+      </div>
+
+      <div class="input_box">
+        <button type="button" class="button info">Info</button>
+        <button type="button" class="button warn">Warn</button>
+        <button type="button" class="button danger">Danger</button>
+      </div>
+
+      <div class="input_box">
+        <button type="button" class="button gray">Gray</button>
+        <button type="button" class="button lightgray">Light</button>
+        <button type="button" class="button mediumgray">Medium</button>
+        <button type="button" class="button darkgray">Dark</button>
+      </div>
+    </div>
+
+    <div class="demo_box demo_button">
+      <h3>Group</h3>
+      <div class="input_group">
+        <button type="button" class="button">Group</button>
+      </div>
+
+      <div class="input_group">
+        <button type="button" class="button primary">Primary</button>
+        <button type="button" class="button primary">Primary</button>
+      </div>
+
+      <div class="input_group">
+        <button type="button" class="button success">Success</button>
+        <button type="button" class="button success">Success</button>
+        <button type="button" class="button success">Success</button>
+      </div>
+
+      <div class="input_group">
+        <button type="button" class="button info">Info</button>
+        <button type="button" class="button info">Info</button>
+        <button type="button" class="button info">Info</button>
+        <button type="button" class="button info">Info</button>
+      </div>
+    </div>
+  </div>
+
+  <footer id="tabbar" class="tabbar" data-target="module"></footer>
+</div>
+<script src="../../../static/js/ready.js"></script>
+<script src="../../static/js/main.js"></script>
+<script>
+(function() {
+  var thePage = {
+    dom: {}
+  };
+
+  thePage.init = function() {
+    var self = this;
+
+    self.dom.optionForm = $('#option_form');
+    self.dom.demo = $('#demo');
+
+    self.dom.optionForm.on('change', 'input, select', function(event) {
+      var _this = this;
+      var _name = _this.name;
+      var _value = _this.value;
+
+      switch (_name) {
+        // 尺寸
+        case 'size':
+          self.dom.demo.find('.button, .input_box, .input_group').removeClass('mini small large').addClass(_value);
+          break;
+
+        // 边框、圆角
+        case 'style':
+          if (_this.checked) {
+            self.dom.demo.find('.button').addClass(_value);
+          } else {
+            self.dom.demo.find('.button').removeClass(_value);
+          };
+          break;
+      };
+    });
+  };
+
+  thePage.init();
+})();
+</script>
+</body>
+</html>

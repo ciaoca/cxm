@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CXM - 输入框</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../../../static/css/cxm.css">
+<link rel="stylesheet" href="../../static/css/layout.css">
+<link rel="stylesheet" href="../../static/plugins/prism/prism.css">
+<script src="../../../static/plugins/zepto/zepto.min.js"></script>
+<script src="../../../static/js/plugins.js"></script>
+<script src="../../static/plugins/prism/prism.js"></script>
+<script src="../../../static/js/init.js"></script>
+</head>
+<body class="gray">
+<div id="wrap" class="wrap">
+  <div id="header" class="header">
+    <header>
+      <h1>输入框</h1>
+      <div class="group toleft">
+        <a class="icon back" href="index.html"></a>
+      </div>
+      <div class="group toright">
+        <a class="txt bg" href="javascript://" rel="body_bg"></a>
+      </div>
+    </header>
+  </div>
+
+  <div class="demo_intro">
+    <div class="detail">
+<pre class="language-html"><code class="html">&lt;input type="text" class="input"&gt;
+&lt;textarea class="input"&gt;&lt;/textarea&gt;</code></pre>
+    </div>
+  </div>
+
+  <div id="option_form" class="form mt">
+    <dl class="row">
+      <dt>Size</dt>
+      <dd>
+        <select name="size" class="select full">
+          <option value="">Default</option>
+          <option value="mini">Mini</option>
+          <option value="small">Small</option>
+          <option value="large">Large</option>
+        </select>
+      </dd>
+    </dl>
+    <dl class="row">
+      <dt>Style</dt>
+      <dd>
+        <input type="checkbox" name="style" id="opt_border" class="checkbox" value="border">
+        <label for="opt_border">Border</label>
+        <input type="checkbox" name="style" id="opt_radius" class="checkbox" value="radius">
+        <label for="opt_radius">Radius</label>
+        <input type="checkbox" name="style" id="opt_notbg" class="checkbox" value="notbg">
+        <label for="opt_notbg">Not Background</label>
+      </dd>
+    </dl>
+  </div>
+
+  <div id="demo">
+    <div class="demo_box demo_input">
+      <h3>Input</h3>
+      <p><input type="text" class="input" placeholder="Placeholder"></p>
+      <p><input type="text" class="input" value="Readonly" readonly></p>
+      <p><input type="text" class="input" value="Disabled" disabled></p>
+      <p>
+        <input type="text" class="input" placeholder="Unit"><span class="input_unit">Unit</span>
+      </p>
+      <p>
+        <label class="input_label">Label</label><input type="text" class="input beforelabel" placeholder="Before Label">
+      </p>
+      <p>
+        <input type="text" class="input afterlabel" placeholder="After Label"><label class="input_label">Label</label>
+      </p>
+      <p>
+        <label class="input_label">Label</label><input type="text" class="input beforelabel afterlabel" placeholder="Before & After Label"><label class="input_label">Label</label>
+      </p>
+      <p><input type="text" class="input" size="24" placeholder="Set 'size' For Width"></p>
+      <p><input type="text" class="input full" placeholder="Full Width"></p>
+    </div>
+
+    <div class="demo_box demo_input">
+      <h3>Box</h3>
+      <div class="input_box">
+        <input type="text" class="input" placeholder="First">
+        <input type="text" class="input" placeholder="Second">
+      </div>
+      <div class="input_box">
+        <label class="input_label">Label</label><input type="text" class="input beforelabel" placeholder="Before Label">
+        <input type="text" class="input afterlabel" placeholder="After Label"><label class="input_label">Label</label>
+      </div>
+    </div>
+
+    <div class="demo_box demo_input">
+      <h3>Group</h3>
+      <div class="input_group">
+        <input type="text" class="input" placeholder="First">
+        <input type="text" class="input" placeholder="Second">
+      </div>
+      <div class="input_group">
+        <input type="text" class="input afterlabel" placeholder="Unit"><span class="input_unit">Unit</span>
+      </div>
+      <div class="input_group">
+        <label class="input_label">Label</label><input type="text" class="input beforelabel" placeholder="Before Label">
+      </div>
+      <div class="input_group">
+        <input type="text" class="input afterlabel" placeholder="After Label"><label class="input_label">Label</label>
+      </div>
+      <div class="input_group">
+        <label class="input_label">Label</label><input type="text" class="input beforelabel afterlabel" placeholder="Before & After Label"><label class="input_label">Label</label>
+      </p>
+      </div>
+    </div>
+
+    <div class="demo_box demo_input">
+      <h3>Textarea</h3>
+      <p><textarea class="input" placeholder="Placeholder"></textarea></p>
+      <p><textarea class="input" readonly>Readonly</textarea></p>
+      <p><textarea class="input" disabled>Disabled</textarea></p>
+      <p><textarea class="input" size="24" placeholder="Set 'cols' For Width"></textarea></p>
+      <p><textarea class="input full" placeholder="Full Width"></textarea></p>
+    </div>
+  </div>
+
+  <footer id="tabbar" class="tabbar" data-target="module"></footer>
+</div>
+<script src="../../../static/js/ready.js"></script>
+<script src="../../static/js/main.js"></script>
+<script>
+(function() {
+  var thePage = {
+    dom: {}
+  };
+
+  thePage.init = function() {
+    var self = this;
+
+    self.dom.optionForm = $('#option_form');
+    self.dom.demo = $('#demo');
+
+    self.dom.optionForm.on('change', 'input, select', function(event) {
+      var _this = this;
+      var _name = _this.name;
+      var _value = _this.value;
+
+      switch (_name) {
+        // 尺寸
+        case 'size':
+          self.dom.demo.find('.input, .input_label, .input_box, .input_group').removeClass('mini small large').addClass(_value);
+          break;
+
+        // 边框
+        case 'style':
+          if (_this.checked) {
+            self.dom.demo.find('.input, .input_label').addClass(_value);
+          } else {
+            self.dom.demo.find('.input, .input_label').removeClass(_value);
+          };
+          break;
+      };
+    });
+  };
+
+  thePage.init();
+})();
+</script>
+</body>
+</html>

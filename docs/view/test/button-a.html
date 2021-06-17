@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CXM - a 标签使用 .button</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../../../static/css/cxm.css">
+<link rel="stylesheet" href="../../static/css/layout.css">
+<script src="../../../static/plugins/zepto/zepto.min.js"></script>
+<script src="../../../static/js/plugins.js"></script>
+<script src="../../../static/js/init.js"></script>
+</head>
+<body class="gray">
+<div id="wrap" class="wrap">
+  <div id="header" class="header">
+    <header>
+      <h1>按钮</h1>
+      <div class="group toleft">
+        <a class="icon back" href="index.html"></a>
+      </div>
+      <div class="group toright">
+        <a class="txt bg" href="javascript://" rel="body_bg"></a>
+      </div>
+    </header>
+  </div>
+
+  <div id="option_form" class="form">
+    <dl class="row">
+      <dt>Size</dt>
+      <dd>
+        <select name="size" class="select full">
+          <option value="">Default</option>
+          <option value="mini">Mini</option>
+          <option value="small">Small</option>
+          <option value="large">Large</option>
+        </select>
+      </dd>
+    </dl>
+    <dl class="row">
+      <dt>Style</dt>
+      <dd>
+        <div class="input_group">
+          <input type="checkbox" name="style" id="opt_border" class="checkbox" value="border">
+          <label for="opt_border">Border</label>
+          <input type="checkbox" name="style" id="opt_radius" class="checkbox" value="radius">
+          <label for="opt_radius">Radius</label>
+        </div>
+      </dd>
+    </dl>
+  </div>
+
+  <div id="demo">
+    <div class="demo_box demo_button">
+      <h3>Button</h3>
+      <div class="row">
+        <ul class="col">
+          <li><a href="javascript://" class="button"></a></li>
+          <li><a href="javascript://" class="button">Default</a></li>
+          <li><a href="javascript://" class="button primary">Primary</a></li>
+          <li><a href="javascript://" class="button success">Success</a></li>
+          <li><a href="javascript://" class="button info">Info</a></li>
+          <li><a href="javascript://" class="button warn">Warn</a></li>
+          <li><a href="javascript://" class="button danger">Danger</a></li>
+        </ul>
+        <ul class="col">
+          <li><a href="javascript://" class="button red">Red</a></li>
+          <li><a href="javascript://" class="button orange">Orange</a></li>
+          <li><a href="javascript://" class="button yellow">Yellow</a></li>
+          <li><a href="javascript://" class="button green">Green</a></li>
+          <li><a href="javascript://" class="button blue">Blue</a></li>
+          <li><a href="javascript://" class="button purple">Purple</a></li>
+          <li><a href="javascript://" class="button pink">Pink</a></li>
+          <li><a href="javascript://" class="button gray">Gray</a></li>
+          <li><a href="javascript://" class="button lightgray">Light</a></li>
+          <li><a href="javascript://" class="button mediumgray">Medium</a></li>
+          <li><a href="javascript://" class="button darkgray">Dark</a></li>
+          <li><a href="javascript://" class="button white">White</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="demo_box demo_button">
+      <h3>Full</h3>
+      <a href="javascript://" class="button full">Full Width</a>
+      <a href="javascript://" class="button full">Full Width</a>
+    </div>
+
+    <div class="demo_box demo_button">
+      <h3>Box</h3>
+      <div class="input_box">
+        <a href="javascript://" class="button">Box</a>
+      </div>
+
+      <div class="input_box">
+        <a href="javascript://" class="button primary">Primary</a>
+        <a href="javascript://" class="button success">Success</a>
+      </div>
+
+      <div class="input_box">
+        <a href="javascript://" class="button info">Info</a>
+        <a href="javascript://" class="button warn">Warn</a>
+        <a href="javascript://" class="button danger">Danger</a>
+      </div>
+
+      <div class="input_box">
+        <a href="javascript://" class="button gray">Gray</a>
+        <a href="javascript://" class="button lightgray">Light</a>
+        <a href="javascript://" class="button mediumgray">Medium</a>
+        <a href="javascript://" class="button darkgray">Dark</a>
+      </div>
+    </div>
+
+    <div class="demo_box demo_button">
+      <h3>Group</h3>
+      <div class="input_group">
+        <a href="javascript://" class="button">Group</a>
+      </div>
+
+      <div class="input_group">
+        <a href="javascript://" class="button primary">Primary</a>
+        <a href="javascript://" class="button primary">Primary</a>
+      </div>
+
+      <div class="input_group">
+        <a href="javascript://" class="button success">Success</a>
+        <a href="javascript://" class="button success">Success</a>
+        <a href="javascript://" class="button success">Success</a>
+      </div>
+
+      <div class="input_group">
+        <a href="javascript://" class="button info">Info</a>
+        <a href="javascript://" class="button info">Info</a>
+        <a href="javascript://" class="button info">Info</a>
+        <a href="javascript://" class="button info">Info</a>
+      </div>
+    </div>
+  </div>
+
+  <footer id="tabbar" class="tabbar" data-target="module"></footer>
+</div>
+<script src="../../../static/js/ready.js"></script>
+<script src="../../static/js/main.js"></script>
+<script>
+(function() {
+  var thePage = {
+    dom: {}
+  };
+
+  thePage.init = function() {
+    var self = this;
+
+    self.dom.optionForm = $('#option_form');
+    self.dom.demo = $('#demo');
+
+    self.dom.optionForm.on('change', 'input, select', function(event) {
+      var _this = this;
+      var _name = _this.name;
+      var _value = _this.value;
+
+      switch (_name) {
+        // 尺寸
+        case 'size':
+          self.dom.demo.find('.button, .input_box, .input_group').removeClass('mini small large').addClass(_value);
+          break;
+
+        // 边框、圆角
+        case 'style':
+          if (_this.checked) {
+            self.dom.demo.find('.button').addClass(_value);
+          } else {
+            self.dom.demo.find('.button').removeClass(_value);
+          };
+          break;
+      };
+    });
+  };
+
+  thePage.init();
+})();
+</script>
+</body>
+</html>

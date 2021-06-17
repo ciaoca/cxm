@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CXM - 头部</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../../../static/css/cxm.css">
+<link rel="stylesheet" href="../../static/css/layout.css">
+<link rel="stylesheet" href="../../static/plugins/prism/prism.css">
+<script src="../../../static/plugins/zepto/zepto.min.js"></script>
+<script src="../../../static/js/plugins.js"></script>
+<script src="../../static/plugins/prism/prism.js"></script>
+<script src="../../../static/js/init.js"></script>
+</head>
+<body class="gray">
+<div id="wrap" class="wrap">
+  <div id="header" class="header">
+    <header>
+      <h1>头部</h1>
+      <div class="group toleft">
+        <a class="icon back" href="index.html"></a>
+      </div>
+      <div class="group toright">
+        <a class="txt bg" href="javascript://" rel="body_bg"></a>
+      </div>
+    </header>
+  </div>
+
+  <div class="demo_intro">
+    <div class="detail">
+<pre class="language-html"><code class="html">&lt;div class="header"&gt;
+  &lt;header&gt;
+    &lt;h1&gt;&lt;/h1&gt;
+  &lt;/header&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+  </div>
+
+  <div id="option_form" class="form mt">
+    <dl class="row">
+      <dt>Position</dt>
+      <dd>
+        <input type="checkbox" name="style" id="opt_notfixed" class="checkbox" value="notfixed">
+        <label for="opt_notfixed">Not Fixed</label>
+      </dd>
+    </dl>
+    <dl class="row">
+      <dt>Style</dt>
+      <dd>
+        <input type="checkbox" name="style" id="opt_line" class="checkbox" value="line">
+        <label for="opt_line">Line</label>
+        <input type="checkbox" name="style" id="opt_shadow" class="checkbox" value="shadow">
+        <label for="opt_shadow">Shadow</label>
+        <input type="checkbox" name="style" id="opt_transparent" class="checkbox" value="transparent">
+        <label for="opt_transparent">Transparent</label>
+        <input type="checkbox" name="style" id="opt_darktext" class="checkbox" value="darktext">
+        <label for="opt_darktext">Dark Text</label>
+        <input type="checkbox" name="style" id="opt_notsize" class="checkbox" value="notsize">
+        <label for="opt_notsize">Not Size</label>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="demo_intro mt">
+    <div class="detail">
+      <p><code>.notfixed</code></p>
+      <p>鉴于移动端的特性，头部默认为 fixed，需要非固定时再添加。</p>
+
+      <p><code>.transparent</code></p>
+      <p>适用于页面顶部有背景时，可将头部背景去除。（另可根据 scrollTop 距离切换该样式，避免在页面滚动后，头部无背景难以识别。）</p>
+
+      <p><code>.darktext</code></p>
+      <p>若顶部背景为亮色调时，可将文字调整为暗色调。</p>
+
+      <p><code>.notsize</code></p>
+      <p>适用于顶部背景的元素设在头部元素之后，去除头部的高度，让该元素到达顶部。</p>
+
+      <hr>
+
+      <h5>添加操作区域</h5>
+<pre class="language-html"><code class="html">&lt;div class="header"&gt;
+  &lt;header&gt;
+    &lt;h1&gt;&lt;/h1&gt;
+    &lt;div class="group toleft"&gt;
+      &lt;a class="icon back" href="index.html"&gt;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="group toright"&gt;
+      &lt;a class="icon go" href="login.html"&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+&lt;/div&gt;</code></pre>
+
+      <p>增加<code>div.group</code>标签，通过<code>.toleft</code>,<code>.toright</code>设置位置。</p>
+      <p>内部可添加<code>a</code>标签，或其他内容。</p>
+      <p>a 标签支持样式：</p>
+      <p><code>class="txt"</code>纯文字按钮</p>
+      <p><code>class="arrow back"</code>带左箭头的文字按钮</p>
+      <p><code>class="arrow go"</code>带右箭头的文字按钮</p>
+      <p><code>class="icon back"</code>后退按钮</p>
+      <p><code>class="icon go"</code>前进按钮</p>
+      <p><code>class="icon close"</code>关闭按钮</p>
+      <p><code>class="icon add"</code>加号按钮</p>
+      <p><code>class="icon *"</code>其他自定义按钮</p>
+
+      <hr>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+      <p>内容</p>
+    </div>
+  </div>
+
+  <footer id="tabbar" class="tabbar" data-target="module"></footer>
+</div>
+<script src="../../../static/js/ready.js"></script>
+<script src="../../static/js/main.js"></script>
+<script>
+(function() {
+  var thePage = {
+    dom: {}
+  };
+
+  thePage.init = function() {
+    var self = this;
+
+    self.dom.header = $('#header');
+    self.dom.optionForm = $('#option_form');
+
+    self.dom.optionForm.on('change', 'input, select', function(event) {
+      var _this = this;
+      var _name = _this.name;
+      var _value = _this.value;
+
+      switch (_name) {
+        // 圆角、位置
+        case 'style':
+          if (_this.checked) {
+            self.dom.header.addClass(_value);
+          } else {
+            self.dom.header.removeClass(_value);
+          };
+          break;
+      };
+    });
+  };
+
+  thePage.init();
+})();
+</script>
+</body>
+</html>
