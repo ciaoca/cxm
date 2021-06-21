@@ -22,11 +22,10 @@ $.cxDialog.defaults.ok = function(){};
 
   thePage.init = function() {
     var self = this;
-    var backurl = GLOBAL.purl.param('backurl');
 
     self.dom.body = $('body');
 
-    if (document.getElementById('header_back') && typeof backurl === 'string' && backurl.length) {
+    if (document.getElementById('header_back')) {
       self.updateBackUrl();
     };
 
@@ -69,15 +68,6 @@ $.cxDialog.defaults.ok = function(){};
         event.preventDefault();
         APP.panelToggle(_rev, _opt);
 
-      // 显示二维码
-      } else if (_rel === 'call_qrcode') {
-        event.preventDefault();
-        _opt = $.extend({
-          info: _rev
-        }, _opt);
-
-        APP.qrcodeToggle(_opt);
-
       // 发送短信验证码
       } else if (_rel === 'call_sms') {
         event.preventDefault();
@@ -89,20 +79,23 @@ $.cxDialog.defaults.ok = function(){};
   // 返回按钮 URL
   thePage.updateBackUrl = function() {
     var self = this;
+    var backurl = GLOBAL.purl.param('backurl');
 
     self.dom.headerBack = document.getElementById('header_back');
 
-    if (backurl === '_none') {
-      self.dom.headerBack.style.display = 'none';
+    if (typeof backurl === 'string' && backurl.length) {
+      if (backurl === '_none') {
+        self.dom.headerBack.style.display = 'none';
 
-    } else if (backurl === '_back') {
-      var regHost = new RegExp('^http(s?)://'+location.host+'/');
-      if (document.referrer && regHost.test(document.referrer)) {
-        self.dom.headerBack.href = 'javascript:history.back();';
+      } else if (backurl === '_back') {
+        var regHost = new RegExp('^http(s?)://'+location.host+'/');
+        if (document.referrer && regHost.test(document.referrer)) {
+          self.dom.headerBack.href = 'javascript:history.back();';
+        };
+
+      } else {
+        self.dom.headerBack.href = decodeURIComponent(backurl);
       };
-
-    } else {
-      self.dom.headerBack.href = decodeURIComponent(backurl);
     };
   };
 
