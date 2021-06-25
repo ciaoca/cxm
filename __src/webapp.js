@@ -41,10 +41,10 @@
  * --------------------
  * tipShow              显示 Tip
  * tipHide              隐藏 Tip
- * tipToggle            显示/隐藏 Tip
+ * tipToggle            显示或隐藏 Tip
  * loadingShow          显示 Loading
  * loadingHide          隐藏 Loading
- * loadingToggle        显示/隐藏 Loading
+ * loadingToggle        显示或隐藏 Loading
  * panelShow            显示面板
  * panelHide            隐藏面板
  * panelToggle          显示/隐藏面板
@@ -612,7 +612,7 @@
   };
 
 
-  // 显示/隐藏 Tip
+  // 显示或隐藏 Tip
   app.prototype.tipToggle = function(baseclass) {
     if (this.isVisible(this.dom.tip)) {
       this.tipHide();
@@ -668,7 +668,7 @@
     if (this.isVisible(this.dom.loading)) {
       this.loadingHide();
     } else {
-      this.loadingShow(text);
+      this.loadingShow(options);
     };
   };
 
@@ -738,7 +738,7 @@
     };
   };
 
-  // 显示/隐藏面板
+  // 显示或隐藏面板
   app.prototype.panelToggle = function(el, options) {
     if (typeof el === 'string' && el.length) {
       el = document.getElementById(el);
