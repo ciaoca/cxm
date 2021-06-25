@@ -21,10 +21,10 @@
   <div id="header" class="header">
     <header>
       <h1>侧面板</h1>
-      <div class="group toleft">
+      <div class="group onleft">
         <a class="icon back" href="index.html"></a>
       </div>
-      <div class="group toright">
+      <div class="group onright">
         <a class="txt bg" href="javascript://" rel="body_bg"></a>
       </div>
     </header>
@@ -110,7 +110,7 @@
     &lt;div class="header"&gt;
       &lt;header&gt;
         &lt;h1&gt;&lt;/h1&gt;
-        &lt;div class="group toright"&gt;
+        &lt;div class="group onright"&gt;
           &lt;a class="icon close" href="javascript://" rel="call_panel" rev="panel_id"&gt;&lt;/a&gt;
         &lt;/div&gt;
       &lt;/header&gt;
@@ -140,7 +140,7 @@
 &lt;/div&gt;</code></pre>
 
       <hr>
-      <h5>调用面板</h5>
+      <h5>调用方法</h5>
 <pre class="language-js"><code class="js">// 参数传递元素 ID 或者元素对象均可
 APP.panelShow('panel_id');
 APP.panelHide(document.getElementById('panel_id'));
@@ -191,7 +191,7 @@ APP.panelToggle($('#panel_id'));</code></pre>
       <div class="header">
         <header>
           <h1>侧面板</h1>
-          <div class="group toright">
+          <div class="group onright">
             <a class="icon close" href="javascript://" rel="call_panel" rev="demo_panel"></a>
           </div>
         </header>

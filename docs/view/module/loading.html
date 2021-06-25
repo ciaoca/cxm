@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>CXM - 全屏提示</title>
+<title>CXM - Loading</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -20,7 +20,7 @@
 <div id="wrap" class="wrap">
   <div id="header" class="header">
     <header>
-      <h1>全屏提示</h1>
+      <h1>Loading</h1>
       <div class="group onleft">
         <a class="icon back" href="index.html"></a>
       </div>
@@ -32,17 +32,26 @@
 
   <div class="demo_intro">
     <div class="detail">
-      <h5>调用方法</h5>
-<pre class="language-js"><code class="js">APP.tipShow('className');
-APP.tipHide('className');
-APP.tipToggle('className');</code></pre>
-      <p>页面中通过<code>&lt;a&gt;</code>调用</p>
-<pre class="language-html"><code class="html">&lt;a rel="call_tip" rev='className'&gt;&lt;/a&gt;</code></pre>
+      <h5>占位符 Loading 动画</h5>
+<pre class="language-html"><code class="html">&lt;div class="loading"&gt;&lt;/div&gt;</code></pre>
+<div class="loading"></div>
+
+      <hr>
+      <h5>全屏 Loading 动画</h5>
+<pre class="language-js"><code class="js">var options = {
+  text: '提示文字',
+  mask: false // 是否显示遮罩
+};
+
+APP.loadingShow(options);
+APP.loadingHide();
+APP.loadingToggle(options);</code></pre>
     </div>
   </div>
 
   <div class="mbox mt">
-    <a class="button primary small" href="javascript://" rel="call_tip" rev="demo">例：分享到朋友圈</a>
+    <a class="button primary small" href="javascript://" rel="loading_test">APP.loadingShow</a>
+    <a class="button primary small" href="javascript://" rel="loading_test" rev="notmask">Not Mask</a>
     <div class="detail">
     </div>
   </div>
@@ -51,5 +60,36 @@ APP.tipToggle('className');</code></pre>
 </div>
 <script src="../../../static/js/ready.js"></script>
 <script src="../../static/js/main.js"></script>
+<script>
+(function() {
+  var thePage = {
+    dom: {}
+  };
+
+  thePage.init = function() {
+    var self = this;
+
+    $('body').on('click', 'a', function(event) {
+      var _this = this;
+      var _rel = _this.rel;
+      var _rev = _this.rev;
+
+      if (_rel === 'loading_test') {
+        event.preventDefault();
+        APP.loadingShow({
+          text: '3秒后自动关闭',
+          mask: _rev === 'notmask' ? false : true
+        });
+
+        setTimeout(function() {
+          APP.loadingHide();
+        }, 3000);
+      };
+    });
+  };
+
+  thePage.init();
+})();
+</script>
 </body>
 </html>
