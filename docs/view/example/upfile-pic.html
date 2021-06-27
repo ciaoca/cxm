@@ -35,23 +35,26 @@
       <p>选择图片文件后，本地将图片转换为<code>base64</code>格式，上传到服务端后，需解析并转为图片文件保存。</p>
 <pre class="language-html"><code class="html">&lt;!--
 data-* 参数
-  maxLength 最多上传数量
-  maxWidth 最大宽度（超过会进行缩放）
-  maxHeight 最大高度（超过会进行缩放）
-  haveClass 包含文件时的 className
+  max-length 最多上传数量
+  max-width 最大宽度（超过会进行压缩）
+  max-height 最大高度（超过会进行压缩）
+  have-class 包含文件时的 className
 --&gt;
 </code></pre>
     </div>
   </div>
 
-  <div class="mbox mt_large">
+  <div class="mbox mt">
     <form id="upload_form" action="javascript://" method="post">
-      <ul id="upfile_pic" class="upfile_pic clearfix" data-max="9">
+      <ul id="upfile_pic" class="upfile_pic clearfix" data-max-length="5">
         <!-- 已上传的图片（不允许删除） -->
-        <li class="have" style="background-image:url(http://temp.im/100x100)"></li>
+        <li class="have">
+          <label style="background-image:url(http://temp.im/100x100)"></label>
+        </li>
 
         <!-- 已上传的图片（允许删除）-->
-        <li class="have" style="background-image:url(http://temp.im/100x100)">
+        <li class="have">
+          <label style="background-image:url(http://temp.im/100x100)"></label>
           <a href="javascript://" rel="remove"></a>
         </li>
 
@@ -59,7 +62,8 @@ data-* 参数
         已上传的图片（允许删除，并通知服务端删除）
         data-url-delete 删除文件的 API 接口
         -->
-        <li class="have" style="background-image:url(http://temp.im/100x100)">
+        <li class="have">
+          <label style="background-image:url(http://temp.im/100x100)"></label>
           <a href="javascript://" rel="remove" data-url-delete="../../ajax/success.json"></a>
         </li>
 

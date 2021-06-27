@@ -1,4 +1,52 @@
 /**
+ * Themes
+ * ------------------------------ */
+:root{
+/* 颜色配置 */
+/*--text-color:#333;*/
+--primary-color:#111;
+/*--success-color:#8cc152;
+--info-color:#aaa;
+--warn-color:#e9573f;
+--danger-color:#da4453;
+--body-gray:#f6f6f6;
+--input-border-color:#ddd;
+--checkswitch-color:#4bd763;*/
+
+/*--blue-color:#4a89dc;
+--green-color:#8cc152;
+--red-color:#da4453;
+--orange-color:#e9573f;
+--yellow-color:#f6bb42;
+--purple-color:#967adc;
+--pink-color:#d770ad;
+--gray-color:#aaa;
+--lightgray-color:#ccc;
+--mediumgray-color:#888;
+--darkgray-color:#555;
+--white-color:#fff;*/
+
+/* 尺寸配置 */
+--size-mini:24px;
+--size-small:32px;
+--size-default:40px;
+--size-large:48px;
+
+/* 间距配置 */
+--gap-mini:0.5em;
+--gap-small:0.5em;
+--gap-default:1em;
+--gap-large:1.5em;
+
+/* 圆角 */
+--radius:0;
+
+/* 头部高度 */
+--header-size:44px;
+}
+
+
+/**
  * Layout
  * ------------------------------ */
 
