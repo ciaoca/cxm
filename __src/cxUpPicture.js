@@ -1,9 +1,9 @@
 /*!
- * cxUpPicture 1.0
+ * cxUpPicture 1.1
  * http://code.ciaoca.com/
  * E-mail: ciaoca@gmail.com
  * Released under the MIT license
- * Date: 2016-06-07
+ * Date: 2021-06-27
  * 
  * @param {object} settings 参数设置
  *   maxLength {int} 最多上传数量
@@ -38,7 +38,7 @@
 
     upPicture.init = function(){
       var self = this;
-      var _settings;
+      var settings;
 
       // 分配参数
       for (var i = 0, l = arguments.length; i < l; i++) {
@@ -47,13 +47,13 @@
         } else if (self.isElement(arguments[i])) {
           self.dom.box = $(arguments[i]);
         } else if (typeof arguments[i] === 'object') {
-          _settings = arguments[i];
+          settings = arguments[i];
         };
       };
 
       if (!self.dom.box.length || !self.dom.box.find('li').length) {return};
 
-      self.settings = $.extend({}, $.cxUpPicture.defaults, _settings, {
+      self.settings = $.extend({}, $.cxUpPicture.defaults, settings, {
         maxLength: self.dom.box.data('maxLength'),
         maxWidth: self.dom.box.data('maxWidth'),
         maxHeight: self.dom.box.data('maxHeight'),
@@ -66,7 +66,7 @@
       self.dom.box.on('click', 'a', function() {
         var _this = this;
         var _rel = _this.rel;
-        var _li = $(_this).closest('li')
+        var _li = $(_this).closest('li');
 
         if (_rel === 'remove') {
           event.preventDefault();
@@ -94,12 +94,15 @@
       });
 
       self.dom.box.on('change', 'input', function() {
-        if (this.type === 'file') {
-          var _file = this.files[0];
-          var _li = $(this).closest('li');
+        var _this = this;
+
+        if (_this.type === 'file') {
+          var _file = _this.files[0];
+          var _label = $(_this).closest('label');
+          var _li = _label.closest('li');
 
           EXIF.getData(_file, function(){
-            var _orientation = EXIF.getTag(this, 'Orientation');
+            var _orientation = EXIF.getTag(_this, 'Orientation');
             var _rotate = 0;
 
             switch(_orientation) {
@@ -128,9 +131,8 @@
             setTimeout(function() {
               var _sImgData = self.dom.fileCanvas.toDataURL();
 
-              _li.addClass(self.settings.haveClass).css({
-                'backgroundImage': 'url(' + _sImgData + ')'
-              });
+              _li.addClass(self.settings.haveClass);
+              _label.css('backgroundImage', 'url(' + _sImgData + ')');
 
               if (_li.find('input[type=hidden]').length) {
                 _li.find('input[type=hidden]').val(_sImgData);
