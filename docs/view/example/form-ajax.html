@@ -75,16 +75,16 @@
 <pre class="language-js"><code class="js">/**
  * 表单 Ajax 提交
  * @param {object} options - 选项
- * @param {element} options.form - ID / DOM / jQuery
- * @param {string} options.url - 表单提交 URL (默认取 action 的值)
- * @param {string} options.type - 提交类型 (默认取 method 的值)
- * @param {array} options.data - 提交数据 (默认为表单数据)
- * @param {string} options.dataType - 返回类型 (默认为 json)
- * @param {object} options.urlData - 增加 URL 提交的数据
- * @param {array} options.addData - 增加 data 提交的数据
- * @param {function} options.complete - 完成回调函数
- * @param {function} options.success - 成功回调函数
- * @param {function} options.error - 错误回调函数
+ * @param {string|element|object} options.form - ID / DOM / jQuery
+ * @param {string} [options.url] - 表单提交 URL (默认取 action 的值)
+ * @param {string} [options.type] - 提交类型 (默认取 method 的值)
+ * @param {array} [options.data] - 提交数据 (默认为表单数据)
+ * @param {string} [options.dataType] - 返回类型 (默认为 json)
+ * @param {object} [options.urlData] - 增加 URL 提交的数据
+ * @param {array} [options.addData] - 增加 data 提交的数据
+ * @param {function} [options.complete] - 完成回调函数
+ * @param {function} [options.success] - 成功回调函数
+ * @param {function} [options.error] - 错误回调函数
  */
 APP.formAjax({
   form: 'my_form',

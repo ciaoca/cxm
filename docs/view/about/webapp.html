@@ -28,91 +28,214 @@
   <div class="mbox mt">
     <div class="detail">
       <p>初始化时已实例化，通过全局变量<code>APP</code>使用。</p>
+      <p>参数说明中，使用<code>[]</code>表示为可选项。</p>
 
       <hr>
       <h3>常用检查方法</h3>
-      <p><code>APP.isElement()</code>检测是否是 DOM 元素</p>
-      <p><code>APP.isJquery()</code>检测是否是 jQuery 对象</p>
-      <p><code>APP.isZepto()</code>检测是否是 Zepto 对象</p>
-      <p><code>APP.isString()</code>检测是否是 String 字符串</p>
-      <p><code>APP.isNumber()</code>检测是否是 Number 数字</p>
-      <p><code>APP.isBoolean()</code>检测是否是 Boolean 布尔值</p>
-      <p><code>APP.isFunction()</code>检测是否是 Function 函数</p>
-      <p><code>APP.isArray()</code>检测是否是 Array 数组</p>
-      <p><code>APP.isNull()</code>检测是否是 Null</p>
-      <p><code>APP.isUndefined()</code>检测是否是 Undefined</p>
-      <p><code>APP.isObject()</code>检测是否是 Object 对象</p>
-      <p><code>APP.isDate()</code>检测是否是 Date 日期对象</p>
-      <p><code>APP.isRegExp()</code>检测是否是 RegExp 正则表达式</p>
-      <p><code>APP.isError()</code>检测是否是 Error 对象</p>
-      <p><code>APP.isJson()</code>检测是否是 JSON</p>
-      <p><code>APP.isLeapYear()</code>检测是否是闰年</p>
-      <p><code>APP.isHidden()</code>检测元素是否不可见</p>
-      <p><code>APP.isVisible()</code>检测元素是否可见</p>
+      <blockquote><span>返回</span><code>boolean</code>类型 (true / false)</blockquote>
+      <p><code>APP.isElement(value)</code>检测是否是 DOM 元素</p>
+      <p><code>APP.isJquery(value)</code>检测是否是 jQuery 对象</p>
+      <p><code>APP.isZepto(value)</code>检测是否是 Zepto 对象</p>
+      <p><code>APP.isString(value)</code>检测是否是 String 字符串</p>
+      <p><code>APP.isNumber(value)</code>检测是否是 Number 数字</p>
+      <p><code>APP.isBoolean(value)</code>检测是否是 Boolean 布尔值</p>
+      <p><code>APP.isFunction(value)</code>检测是否是 Function 函数</p>
+      <p><code>APP.isArray(value)</code>检测是否是 Array 数组</p>
+      <p><code>APP.isNull(value)</code>检测是否是 Null</p>
+      <p><code>APP.isUndefined(value)</code>检测是否是 Undefined</p>
+      <p><code>APP.isObject(value)</code>检测是否是 Object 对象</p>
+      <p><code>APP.isDate(value)</code>检测是否是 Date 日期对象</p>
+      <p><code>APP.isRegExp(value)</code>检测是否是 RegExp 正则表达式</p>
+      <p><code>APP.isError(value)</code>检测是否是 Error 对象</p>
+      <p><code>APP.isJson(value)</code>检测是否是 JSON</p>
+      <p><code>APP.isLeapYear(value)</code>检测是否是闰年</p>
+      <p><code>APP.isHidden(value)</code>检测元素是否不可见</p>
+      <p><code>APP.isVisible(value)</code>检测元素是否可见</p>
 
       <hr>
-      <h3>临时缓存 sessionStorage</h3>
-      <p><code>APP.setStorage()</code>保存缓存</p>
-      <p><code>APP.getStorage()</code>读取缓存</p>
-      <p><code>APP.removeStorage()</code>删除缓存</p>
-      <p><code>APP.clearStorage()</code>清空缓存</p>
+      <h3>缓存</h3>
+      <h5>临时缓存 sessionStorage</h5>
+      <p><code>APP.setStorage(key, data)</code>保存缓存</p>
+      <p><code>APP.getStorage(key)</code>读取缓存</p>
+      <p><code>APP.removeStorage(key)</code>删除缓存</p>
+      <p><code>APP.clearStorage(key)</code>清空缓存</p>
 
       <hr>
-      <h3>本地存储 localStorage</h3>
-      <p><code>APP.setLocalStorage()</code>保存本地存储</p>
-      <p><code>APP.getLocalStorage()</code>读取本地存储</p>
-      <p><code>APP.removeLocalStorage()</code>删除本地存储</p>
-      <p><code>APP.clearLocalStorage()</code>清空本地存储</p>
+      <h5>本地存储 localStorage</h5>
+      <p><code>APP.setLocalStorage(key, data)</code>保存本地存储</p>
+      <p><code>APP.getLocalStorage(key)</code>读取本地存储</p>
+      <p><code>APP.removeLocalStorage(key)</code>删除本地存储</p>
+      <p><code>APP.clearLocalStorage(key)</code>清空本地存储</p>
 
       <hr>
-      <h3>数字处理</h3>
-      <p><code>APP.toFloat()</code>转换浮点数</p>
-      <p><code>APP.numberFormat()</code>格式化数字</p>
+      <h3>数值处理</h3>
+      <h5>转换浮点数</h5>
+      <p><code>APP.toFloat(value, decimals)</code></p>
+<pre><code>{number} value - 数值
+{integer} [decimals] - 保留小数点位数</code></pre>
+
+      <hr>
+      <h5>格式化数字</h5>
+      <p><code>APP.numberFormat(value, decimals, mustKeepZero, decimalpoint, separator)</code></p>
+<pre><code>{number} value - 数值
+{integer} [decimals] - 保留小数点位数，默认值: 0
+{boolean} [mustKeepZero] - 是否用零补全，默认值: false
+{string} [decimalpoint] - 小数点的字符串，默认值: '.'
+{string} [separator] - 千位分隔符的字符串，默认值: ','</code></pre>
 
       <hr>
       <h3>数组处理</h3>
-      <p><code>APP.arrayUnique()</code>数组去重</p>
+      <h5>数组去重</h5>
+      <p><code>APP.arrayUnique(array)</code></p><pre><code>返回一个新的不重复的数组。</code></pre>
 
       <hr>
-      <h3>生成随机内容</h3>
-      <p><code>APP.getRandomNumber()</code>生成随机整数</p>
-      <p><code>APP.getRandomString()</code>生成随机字符串</p>
+      <h3>随机内容</h3>
+      <h5>生成随机整数</h5>
+      <p><code>APP.getRandomNumber(min, max)</code></p>
+<pre><code>{integer} min - 最小值（含）
+{integer} min - 最大值（含）</code></pre>
 
       <hr>
-      <h3>替换内容</h3>
-      <p><code>APP.replaceEnter()</code>替换换行</p>
-      <p><code>APP.replaceQuot()</code>替换引号</p>
-      <p><code>APP.replaceHtml()</code>替换 HTML 标签</p>
+      <h5>生成随机字符串</h5>
+      <p><code>APP.getRandomString(length, scope)</code></p>
+<pre><code>{integer} length - 字符串长度，默认值: 0
+{string} [scope] - 字符范围，默认值: /0-9a-zA-Z/</code></pre>
+
+      <hr>
+      <h3>文本替换</h3>
+
+      <h5>替换换行符</h5>
+      <p><code>APP.replaceEnter(value)</code></p>
+      <pre><code>{string} value: 字符串</code></pre>
+
+      <hr>
+      <h5>替换引号字符实体</h5>
+      <p><code>APP.replaceQuot(value, decode)</code></p>
+<pre><code>{string} value: 字符串
+{boolean} [decode] - 反向替换，默认值: false</code></pre>
+
+      <hr>
+      <h5>替换 HTML 标签</h5>
+      <p><code>APP.replaceHtml(value, decode)</code></p>
+<pre><code>{string} value: 字符串
+{boolean} [decode] - 反向替换，默认值: false</code></pre>
 
       <hr>
       <h3>组件相关</h3>
-      <p><code>APP.tipShow()</code>显示 Tip</p>
+      <h5>Tip</h5>
+      <p><code>APP.tipShow(baseclass)</code>显示 Tip</p>
       <p><code>APP.tipHide()</code>隐藏 Tip</p>
-      <p><code>APP.tipToggle()</code>显示/隐藏 Tip</p>
-      <p><code>APP.loadingShow()</code>显示 Loading</p>
-      <p><code>APP.loadingHide()</code>隐藏 Loading</p>
-      <p><code>APP.loadingToggle()</code>显示/隐藏 Loading</p>
-      <p><code>APP.panelShow()</code>显示面板</p>
-      <p><code>APP.panelHide()</code>隐藏面板</p>
-      <p><code>APP.panelToggle()</code>显示/隐藏面板</p>
+      <p><code>APP.tipToggle(baseclass)</code>显示或隐藏 Tip</p>
+<pre><code>{string} [baseclass] - 自定义 class，默认值: null</code></pre>
+
       <hr>
-      <p><code>APP.initTabBar()</code>初始化 TabBar</p>
-      <p><code>APP.buildTabBar()</code>构建 TabBar</p>
-      <p><code>APP.initFilterTool()</code>初始化 FilterTool</p>
-      <p><code>APP.buildFilterTool()</code>构建 FilterTool</p>
+      <h5>Loading</h5>
+      <p><code>APP.loadingShow(options)</code>显示 Loading</p>
+      <p><code>APP.loadingHide()</code>隐藏 Loading</p>
+      <p><code>APP.loadingToggle(options)</code>显示或隐藏 Loading</p>
+<pre><code>{object} [options] - 选项
+{string} options.text - 提示文字，默认值: ''
+{boolean} options.mask - 是否使用遮罩，默认值: true</code></pre>
+
+      <hr>
+      <h5>Panel</h5>
+      <p><code>APP.panelShow(el, options)</code>显示面板</p>
+      <p><code>APP.panelHide(el)</code>隐藏面板</p>
+      <p><code>APP.panelToggle(el, options)</code>显示或隐藏面板</p>
+<pre><code>{string|element|object} el - ID / DOM / jQuery
+{object} [options] - 选项
+{boolean} options.lock - 是否锁定背景，默认值: true
+{boolean} options.blur - 是否使用模糊背景，默认值: false</code></pre>
+
+      <hr>
+      <h5>TabBar</h5>
+      <p><code>APP.initTabBar(el, data, target)</code>初始化 TabBar</p>
+      <p><code>APP.buildTabBar(el, data, target)</code>构建 TabBar</p>
+<pre><code>{string|element|object} el - ID / DOM / jQuery
+{object} data - 配置数据
+{string} [target] - 当前选中项</code></pre>
+
+      <hr>
+      <h5>FilterTool</h5>
+      <p><code>APP.initFilterTool(el, data)</code>初始化 FilterTool</p>
+      <p><code>APP.buildFilterTool(el, data)</code>构建 FilterTool</p>
+<pre><code>{string|element|object} el - ID / DOM / jQuery
+{object} data - 配置数据</code></pre>
 
       <hr>
       <h3>常用交互</h3>
-      <p><code>APP.scrollTo()</code>滚动到位置</p>
-      <p><code>APP.createUrlHash()</code>创建 Hash URL</p>
-      <p><code>APP.getFormData()</code>获取表单提交的数据</p>
-      <p><code>APP.getPageHtml()</code>生成分页代码</p>
-      <p><code>APP.compressPicture()</code>压缩图片</p>
+      <h5>滚动到位置</h5>
+      <p><code>APP.scrollTo(options)</code></p>
+<pre><code>{object} [options] - 选项
+{integer} options.y - 纵向坐标，默认值: 0</code></pre>
+
+      <hr>
+      <h5>创建 Hash URL</h5>
+      <p><code>APP.createUrlHash(querys, keys, isPush)</code></p>
+<pre><code>{object} querys - 提交参数
+{array} [keys] - 参数范围，不传或部位数组时，视为使用全部参数。
+{boolean} [isPush] - 是否插入新历史记录，默认值: false</code></pre>
+
+      <hr>
+      <h5>获取表单提交的数据</h5>
+      <p><code>APP.getFormData(el)</code></p>
+<pre><code>{string|element|object} el - ID / DOM / jQuery</code></pre>
+
+      <hr>
+      <h5>生成分页代码</h5>
+      <p><code>APP.getPageHtml(options)</code></p>
+<pre><code>{object} options - 选项
+{integer} options.page - 当前页码
+{integer} options.pageCount - 总页数
+{string} [options.url] - 链接地址
+{string} [options.rel] - 非跳转方式使用关键词
+{string} [options.code] - 分页结构，默认值: '{{count}}{{cur}}{{first}}{{last}}{{number}}{{prev}}{{next}}'
+{integer} [options.numberLength] - 数字页码长度，默认值: 9</code></pre>
+
+      <hr>
+      <h5>压缩图片</h5>
+      <p><code>APP.compressPicture(files, options, callback)</code></p>
+<pre><code>{element|file} files - img 元素或 file 文件（单个或数组）
+{object} [options] - 选项
+{string} options.fileType - 文件格式，默认值: 'image/jpeg'
+{integer} options.maxWidth - 最大宽度，默认不限制
+{integer} options.maxHeight - 最大高度，默认不限制
+{float} options.quality - 图片质量，默认值: 0.8
+{function} [callback] - 完成回调函数</code></pre>
 
       <hr>
       <h3>特定场景</h3>
-      <p><code>APP.formAjax()</code>表单 AJAX 提交</p>
-      <p><code>APP.smsSend()</code>发送短信验证码</p>
+      <h5>表单 AJAX 提交</h5>
+      <p><code>APP.formAjax(options)</code></p>
+<pre><code>{object} options - 选项
+{string|element|object} options.form - ID / DOM / jQuery
+{string} [options.url] - 表单提交 URL (默认取 action 的值)
+{string} [options.type] - 提交类型 (默认取 method 的值)
+{array} [options.data] - 提交数据 (默认为表单数据)
+{string} [options.dataType] - 返回类型 (默认为 json)
+{object} [options.urlData] - 增加 URL 提交的数据
+{array} [options.addData] - 增加 data 提交的数据
+{function} [options.complete] - 完成回调函数
+{function} [options.success] - 成功回调函数
+{function} [options.error] - 错误回调函数</code></pre>
+
+      <hr>
+      <h5>发送短信验证码</h5>
+      <p><code>APP.smsSend(options)</code></p>
+<pre><code>{object} options - 选项
+{string|element|object} options.button - ID / DOM / jQuery
+{element} [options.input] - 手机号码输入框元素
+{element} [options.captcha] - 图片验证码输入框元素
+{string} [options.phoneName] - 手机号字段名称（默认取 input 的 name）
+{string} [options.captchaName] - 图片验证码字段名称（默认取 captcha 的 name）
+{string} [options.url] - 发送短信的接口地址
+{string} [options.type] - 传输方式（get/post），默认值: 'get'
+{integer} [options.second] - 发送间隔时间（秒），默认值: 60
+{string} [options.tipText] - 正在发送的提示文字，默认值: '短信正在发送中，请稍等。'
+{string} [options.loopText] - 倒计时按钮显示的文字，默认值: '正在发送({{time}})'
+{string} [options.endText] - 倒计时结束后显示的文字，默认值: '重新发送'
+{function} [options.success] - 成功回调函数
+{function} [options.error] - 错误回调函数</code></pre>
 
     </div>
   </div>

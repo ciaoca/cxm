@@ -41,11 +41,11 @@ $.cxDialog.defaults.ok = function(){};
       self.buildPageQrcode();
     };
 
-    self.bindBodyLinkEvent();
+    self.bindBodyEvent();
   };
 
   // 全局操作
-  thePage.bindBodyLinkEvent = function() {
+  thePage.bindBodyEvent = function() {
     var self = this;
 
     self.dom.body.on('click', 'a', function(event){
