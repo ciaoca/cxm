@@ -47,7 +47,7 @@
  * loadingToggle        显示或隐藏 Loading
  * panelShow            显示面板
  * panelHide            隐藏面板
- * panelToggle          显示/隐藏面板
+ * panelToggle          显示或隐藏面板
  * --------------------
  * initTabBar           初始化 TabBar
  * buildTabBar          构建 TabBar
@@ -74,7 +74,7 @@
     var defaults = {
       prefix: ''    // 本地缓存命名前缀
     };
-    self.option = $.extend({}, defaults, options);
+    self.options = $.extend({}, defaults, options);
 
     self.dom = {};
 
@@ -95,17 +95,22 @@
       // };
     });
 
-    self.getDom = function(el) {
+    self.getDom = function(el, needJquery) {
       var dom;
 
       if (self.isJquery(el) || self.isZepto(el)) {
-        return el;
+        return needJquery ? el : el[0];
       };
 
-      if (self.isElement(el)) {
-        dom = $(el);
-      } else if (self.isString(el) && el.length) {
-        dom = $('#'+el);
+      if (self.isString(el) && el.length) {
+        dom = document.getElementById(el);
+
+      } else if (self.isElement(el)) {
+        dom = el;
+      };
+
+      if (needJquery && self.isElement(dom)) {
+        dom = $(dom);
       };
 
       return dom;
@@ -297,12 +302,12 @@
   };
 
   // 保存缓存（sessionStorage）
-  app.prototype.setStorage = function(name,data) {
+  app.prototype.setStorage = function(name, data) {
     if (!name || !name.length) {
       return;
     };
 
-    name = this.option.prefix + name;
+    name = this.options.prefix + name;
     sessionStorage.setItem(name, JSON.stringify(data));
   };
 
@@ -312,7 +317,7 @@
       return null;
     };
 
-    name = this.option.prefix + name;
+    name = this.options.prefix + name;
 
     if (!sessionStorage.getItem(name)) {
       return null;
@@ -327,7 +332,7 @@
       return;
     };
 
-    name = this.option.prefix + name;
+    name = this.options.prefix + name;
 
     if (!sessionStorage.getItem(name)) {
       return;
@@ -339,10 +344,10 @@
   // 清空缓存（sessionStorage）
   app.prototype.clearStorage = function() {
     var storage = sessionStorage;
-    var _prelength = this.option.prefix.length;
+    var _prelength = this.options.prefix.length;
 
     for (var i = 0, j = 0, l = storage.length; i < l; i++) {
-      if (storage.key(j).slice(0,_prelength) === this.option.prefix) {
+      if (storage.key(j).slice(0,_prelength) === this.options.prefix) {
         storage.removeItem(storage.key(j));
       } else {
         j++;
@@ -351,12 +356,12 @@
   };
 
   // 保存本地存储（localStorage）
-  app.prototype.setLocalStorage = function(name,data) {
+  app.prototype.setLocalStorage = function(name, data) {
     if (!name || !name.length) {
       return;
     };
 
-    name = this.option.prefix + name;
+    name = this.options.prefix + name;
     
     localStorage.setItem(name, JSON.stringify(data));
   };
@@ -367,7 +372,7 @@
       return null;
     };
 
-    name = this.option.prefix + name;
+    name = this.options.prefix + name;
 
     if (!localStorage.getItem(name)) {
       return null;
@@ -386,7 +391,7 @@
       return;
     };
 
-    name = this.option.prefix + name;
+    name = this.options.prefix + name;
 
     if (!localStorage.getItem(name)) {
       return;
@@ -398,10 +403,10 @@
   // 清空本地存储（localStorage）
   app.prototype.clearLocalStorage = function() {
     var storage = localStorage;
-    var _prelength = this.option.prefix.length;
+    var _prelength = this.options.prefix.length;
 
     for (var i = 0, j = 0, l = storage.length; i < l; i++) {
-      if (storage.key(j).slice(0,_prelength) === this.option.prefix) {
+      if (storage.key(j).slice(0,_prelength) === this.options.prefix) {
         storage.removeItem(storage.key(j));
       } else {
         j++;
@@ -471,7 +476,7 @@
 
   /**
    * 数组去重
-   * @param array {array}
+   * @param {array} array
    * @returns {array}
    */
   app.prototype.arrayUnique = function(array) {
@@ -663,7 +668,7 @@
     };
   };
 
-  // 显示/隐藏 Loading
+  // 显示或隐藏 Loading
   app.prototype.loadingToggle = function(options) {
     if (this.isVisible(this.dom.loading)) {
       this.loadingHide();
@@ -674,58 +679,56 @@
 
   /**
    * 显示面板
-   * @param {element|string} el - DOM 元素或 ID
+   * @param {element|string} el - ID / DOM / jQuery
    * @param {object} [options] - 选项
    * @param {string} options.lock - 是否锁定背景
    * @param {boolean} options.blur - 是否使用模糊背景
    */
   app.prototype.panelShow = function(el, options) {
     var self = this;
+    var domPanel = self.getDom(el);
+
+    if (!domPanel) {
+      return;
+    };
 
     options = $.extend({
       lock: true,
       blur: false
     }, options);
 
-    if (typeof el === 'string' && el.length) {
-      el = document.getElementById(el);
+    domPanel.classList.remove('out');
+
+    if (!domPanel.classList.contains('in')) {
+      self.panelCount++;
+      domPanel.classList.add('in');
     };
 
-    if (self.isElement(el)) {
-      el.classList.remove('out');
-
-      if (!el.classList.contains('in')) {
-        self.panelCount++;
-        el.classList.add('in');
-      };
-
-      if (options.lock) {
-        self.dom.body.classList.add('lock');
-      };
-      if (options.blur) {
-        self.dom.body.classList.add('blur');
-      };
+    if (options.lock) {
+      self.dom.body.classList.add('lock');
+    };
+    if (options.blur) {
+      self.dom.body.classList.add('blur');
     };
   };
 
   /**
    * 隐藏面板
-   * @param {element|string} el - DOM 元素或 ID
+   * @param {element|string} el - ID / DOM / jQuery
    */
   app.prototype.panelHide = function(el) {
     var self = this;
+    var domPanel = self.getDom(el);
 
-    if (typeof el === 'string' && el.length) {
-      el = document.getElementById(el);
+    if (!domPanel) {
+      return;
     };
 
-    if (this.isElement(el)) {
-      el.classList.remove('in');
+    domPanel.classList.remove('in');
 
-      if (!el.classList.contains('out')) {
-        self.panelCount--;
-        el.classList.add('out');
-      };
+    if (!domPanel.classList.contains('out')) {
+      self.panelCount--;
+      domPanel.classList.add('out');
     };
 
     if (self.panelCount < 0) {
@@ -740,30 +743,31 @@
 
   // 显示或隐藏面板
   app.prototype.panelToggle = function(el, options) {
-    if (typeof el === 'string' && el.length) {
-      el = document.getElementById(el);
+    var self = this;
+    var domPanel = self.getDom(el);
+
+    if (!domPanel) {
+      return;
     };
 
-    if (this.isElement(el)) {
-      if (el.classList.contains('in')) {
-        this.panelHide(el);
-      } else {
-        this.panelShow(el, options);
-      };
+    if (domPanel.classList.contains('in')) {
+      this.panelHide(domPanel);
+    } else {
+      this.panelShow(domPanel, options);
     };
   };
 
 
   /**
    * 初始化 TabBar
-   * @param {element|string} el - DOM 元素或 ID
+   * @param {element|string} el - ID / DOM / jQuery
    * @param {object} [data] - 配置项
    * @param {object} [target] - 当前选中项
    * @returns {ZeptoDom}
    */
   app.prototype.initTabBar = function(el, data, target) {
     var self = this;
-    var domBar = self.getDom(el);
+    var domBar = self.getDom(el, true);
 
     if (!domBar) {
       return;
@@ -795,14 +799,14 @@
 
   /**
    * 构建 TabBar
-   * @param {element|string} el - DOM 元素或 ID
+   * @param {element|string} el - ID / DOM / jQuery
    * @param {object} data - 配置项
    * @param {object} [target] - 当前选中项
    * @returns {element}
    */
   app.prototype.buildTabBar = function(el, data, target) {
     var self = this;
-    var domBar = self.getDom(el);
+    var domBar = self.getDom(el, true);
 
     if (!domBar) {
       return;
@@ -826,13 +830,13 @@
 
   /**
    * 初始化 FilterTool
-   * @param {element|string} el - DOM 元素或 ID
+   * @param {element|string} el - ID / DOM / jQuery
    * @param {object} [data] - 配置项
    * @returns {element}
    */
   app.prototype.initFilterTool = function(el, data) {
     var self = this;
-    var domTool = self.getDom(el);
+    var domTool = self.getDom(el, true);
 
     if (!domTool) {
       return;
@@ -896,12 +900,12 @@
 
   /**
    * 构建 FilterTool
-   * @param {element|string} el - DOM 元素或 ID
+   * @param {element|string} el - ID / DOM / jQuery
    * @param {object} data - 配置项
    */
   app.prototype.buildFilterTool = function(el, data) {
     var self = this;
-    var domTool = self.getDom(el);
+    var domTool = self.getDom(el, true);
 
     if (!domTool) {
       return;
@@ -964,18 +968,16 @@
     if (Array.isArray(keys)) {
       for (var x in querys) {
         if (keys.indexOf(x) >= 0 && querys[x]) {
-          querys[x] = String(querys[x]);
-          if (querys[x].length) {
-            data[x] = querys[x];
+          if (String(querys[x]).length) {
+            data[x] = String(querys[x]);
             values.push(x + '=' + querys[x]);
           };
         };
       };
     } else {
       for (var x in querys) {
-        querys[x] = String(querys[x]);
-        if (querys[x].length) {
-          data[x] = querys[x];
+        if (String(querys[x]).length) {
+          data[x] = String(querys[x]);
           values.push(x + '=' + querys[x]);
         };
       };
@@ -994,21 +996,18 @@
 
   /**
    * 获取表单提交的数据
-   * @param {element} form - 表单元素
+   * @param {element} el - 表单元素
    * @returns {object}
    */
-  app.prototype.getFormData = function(form) {
+  app.prototype.getFormData = function(el) {
     var self = this;
+    var domForm = self.getDom(el, true);
 
-    if (!self.isJquery(form) && !self.isZepto(form)) {
-      if (self.isElement(form)) {
-        form = $(form);
-      } else {
-        return;
-      };
+    if (!domForm) {
+      return;
     };
 
-    var dataArray = form.serializeArray();
+    var dataArray = domForm.serializeArray();
     var dataObject = {};
     var _tempValue;
 
@@ -1041,6 +1040,7 @@
    * @returns {string}
    */
   app.prototype.getPageHtml = function(options) {
+    var self = this;
     var html = '';
 
     options = $.extend({
@@ -1048,7 +1048,7 @@
       numberLength: 9
     }, options);
 
-    if (!this.isNumber(options.page) || !this.isNumber(options.pageCount || options.page < 1 || options.pageCount < 1)) {
+    if (!self.isNumber(options.page) || !self.isNumber(options.pageCount || options.page < 1 || options.pageCount < 1)) {
       return html;
     };
 
@@ -1267,10 +1267,11 @@
    */
   app.prototype.compressPicture = function(files, options, callback) {
     var _canvas = document.createElement('canvas');
+    var fileList = [];
     var result = [];
 
     if ((Object.prototype.toString.call(files) !== '[object FileList]' && !Array.isArray(files)) || !files.length) {
-      files = Array(files);
+      fileList = Array(files);
     };
 
     options = $.extend({
@@ -1285,7 +1286,7 @@
     var compress = function(index) {
       index = (index >= 0) ? index : 0;
 
-      var _file = files[index];
+      var _file = fileList[index];
       var _type = options.fileType ? options.fileType : _file.type;
 
       if (!_type) {
@@ -1324,7 +1325,7 @@
 
           index++;
 
-          if (index < files.length) {
+          if (index < fileList.length) {
             compress(index);
           } else {
             complete();
@@ -1345,8 +1346,8 @@
 
   /**
    * 表单 Ajax 提交
-   * @param {element} form - 表单元素
-   * @param {object|function} [options] - 选项
+   * @param {object} options - 选项
+   * @param {element} options.form - ID / DOM / jQuery
    * @param {string} options.url - 表单提交 URL (默认取 action 的值)
    * @param {string} options.type - 提交类型 (默认取 method 的值)
    * @param {array} options.data - 提交数据 (默认为表单数据)
@@ -1358,48 +1359,47 @@
    * @param {function} options.error - 错误回调函数
    *
    * @example 简易方法
-   * formAjax({}[, successCallback, errorCallback])
+   * formAjax(form[, successCallback, errorCallback])
    *
    * @example 接口返回示例
-   * {status:'success',message:'text',}
-   *
-   *
-   *
+   * {"status":"success","message":"text","nextUrl":"URL"}
    */
-  app.prototype.formAjax = function(form, options, errorCallback) {
+  app.prototype.formAjax = function(options, successCallback, errorCallback) {
     var self = this;
 
-    if (!self.isJquery(form) && !self.isZepto(form)) {
-      if (self.isElement(form)) {
-        form = $(form);
-      } else {
-        return;
-      };
-    };
-
-    var defaults = {
-      url: form.attr('action'),
-      type: form.attr('method'),
-      data: form.serializeArray(),    // 格式: [{name:"key_1",value:"value_1"},{name:"key_2",value:"value_2"}]
-      dataType: 'json',
-      urlData: undefined,             // 格式: {key_1:value_1,key_2:value_2}
-      addData: undefined,             // 格式与 data 相同（仅有 1 个对象时，可直接使用对象类型）
-      complete: undefined,            // 提交完成后，成功或失败都执行的回调函数
-      success: undefined,             // 提交完成后，返回状态为成功时的回调函数
-      error: undefined                // 提交完成后，返回状态为错误时的回调函数
-    };
-
-    if (typeof options === 'function') {
+    if (typeof options === 'string' || self.isElement(options) || typeof self.isJquery(options) || self.isZepto(options)) {
       options = {
-        success: options
+        form: self.getDom(options, true)
       };
+    };
+
+    options = $.extend({
+      url: options.form.attr('action'),
+      type: options.form.attr('method'),
+      data: options.form.serializeArray(), // 格式: [{name:"key_1",value:"value_1"},{name:"key_2",value:"value_2"}]
+      dataType: 'json',
+      urlData: undefined,                   // 格式: {key_1:value_1,key_2:value_2}
+      addData: undefined,                   // 格式与 data 相同（仅有 1 个对象时，可直接使用对象类型）
+      complete: undefined,
+      success: undefined,
+      error: undefined
+    }, options);
+
+    if (!self.isJquery(options.form) && !self.isZepto(options.form)) {
+      options.form = self.getDom(form, true);
+    };
+
+    if (!options.form) {
+      return;
+    };
+
+    if (typeof successCallback === 'function') {
+      options.success = successCallback;
     };
 
     if (typeof errorCallback === 'function') {
       options.error = errorCallback;
     };
-
-    options = $.extend({}, defaults, options);
 
     if (options.urlData) {
       options.url += (options.url.indexOf('?') >= 0) ? '&' : '?';
@@ -1412,7 +1412,7 @@
       options.data.push(options.addData);
     };
 
-    form.find('button[type="submit"]').prop('disabled', true);
+    options.form.find('button[type="submit"]').prop('disabled', true);
 
     $.ajax({
       url: options.url, 
@@ -1424,16 +1424,18 @@
         options.complete();
       };
     }).done(function(data, textStatus, xhr) {
-      form.find('button[type="submit"]').prop('disabled', false);
+      options.form.find('button[type="submit"]').prop('disabled', false);
 
       if (!data) {
         return;
+      };
 
-      } else if (data.status !== 'success' && typeof options.error === 'function') {
+      if (data.status !== 'success' && typeof options.error === 'function') {
         options.error(data);
         return;
+      };
 
-      } else if (data.status === 'success' && typeof options.success === 'function') {
+      if (data.status === 'success' && typeof options.success === 'function') {
         options.success(data);
         return;
       };
@@ -1441,7 +1443,7 @@
       formAjaxFinish(data);
 
     }).fail(function(xhr, textStatus, errorThrown) {
-      form.find('button[type="submit"]').prop('disabled', false);
+      options.form.find('button[type="submit"]').prop('disabled', false);
 
       $.cxDialog({
         title: '错误',
@@ -1449,7 +1451,14 @@
       });
     });
 
-    // Ajax 完成后的处理方式
+    /**
+     * 默认完成后的处理方式
+     * 格式约定: {"message":'需要展示的描述，不需展示留空','nextUrl':'URL or Key'}
+     *
+     * nextUrl:
+     * close: 关闭当前窗口
+     * reload: 刷新当前窗口
+     */
     var formAjaxFinish = function(data) {
       if (typeof data.message === 'string' && data.message.length) {
         $.cxDialog({
@@ -1481,76 +1490,80 @@
 
   /**
    * 发送短信
-   * @param {element} el - 按钮元素
+   * @param {object} options - 选项
+   * @param {string} options.url - 发送短信的接口地址
+   * @param {string} options.type - 传输方式（get/post）
+   * @param {integer} options.second - 发送间隔时间（秒）
+   * @param {element} options.button - 按钮元素
+   * @param {element} input - 手机号码输入框元素
+   * @param {element} captcha - 图片验证码输入框元素
+   * @param {string} phoneName - 手机号字段名称（默认取 input 的 name）
+   * @param {string} captchaName - 图片验证码字段名称（默认取 captcha 的 name）
+   * @param {string} options.tipText - 正在发送的提示文字
+   * @param {string} options.loopText - 倒计时按钮显示的文字
+   * @param {string} options.endText - 倒计时结束后显示的文字
+   * @param {function} options.success - 成功回调函数
+   * @param {function} options.error - 错误回调函数
    *
-   * @example 按钮的 data- 参数
-   *   second         发送间隔时间（秒）
-   *   url            发送短信的接口地址
-   *   type           传输方式（get/post）
-   *   input          手机号码输入框
-   *   captcha        验证码输入框
-   *   phone-name     URL 中手机号码的参数名称
-   *   captcha-name   URL 中验证码的参数名称
-   *   tip-text       正在发送的提示文字
-   *   loop-text      倒计时按钮显示的文字
-   *   end-text       倒计时结束后显示的文字
+   * @example 按钮 data- 可配置参数（优先级高于 options）
+   *   [url, type, second, input, captcha, phone-name, captcha-name, tip-text, loop-text, end-text]
    *
    *   例：
    *   <div data-url="your-api.php" data-input="user-phone" data-phone-name="phone">发送短信</div>
    *   <a href="your-api.php" data-input="user-phone" data-phone-name="phone">发送短信</a>
    */
-  app.prototype.smsSend = function(options, success, error) {
+  app.prototype.smsSend = function(options, successCallback, errorCallback) {
     var self = this;
     var nowTime = new Date().getTime();
     var inputPhone, inputCaptcha, phoneValue, captchaValue;
     var query = {};
 
-    if (self.isJquery(options) || self.isZepto(options) || self.isElement(options)) {
+    if (typeof options === 'string' || self.isElement(options) || typeof self.isJquery(options) || self.isZepto(options)) {
       options = {
-        el: options
+        button: self.getDom(options)
       };
-    } else {
-      options: {}
-    };
-
-    if (typeof success === 'function') {
-      options.success = success;
-    };
-
-    if (typeof error === 'function') {
-      options.error = error;
     };
 
     options = $.extend({
-      second: 60,
       type: 'get',
+      second: 60,
       tipText: '短信正在发送中，请稍等。',
       loopText: '正在发送({{time}})',
       endText: '重新发送'
     }, options);
 
-    if (self.isJquery(options.el) || self.isZepto(options.el)) {
-      options.el = options.el[0];
-    } else if (!self.isElement(options.el)) {
+    if (!self.isElement(options.button)) {
+      options.button = self.getDom(options);
+    };
+
+    if (!options.button) {
       return;
     };
 
+    if (typeof successCallback === 'function') {
+      options.success = successCallback;
+    };
+
+    if (typeof errorCallback === 'function') {
+      options.error = errorCallback;
+    };
+
     $.extend(options, {
-      second: options.el.dataset.second,
-      url: options.el.dataset.url,
-      type: options.el.dataset.type,
-      input: options.el.dataset.input,
-      captcha: options.el.dataset.captcha,
-      phoneName: options.el.dataset.phoneName,
-      captchaName: options.el.dataset.captchaName,
-      tipText: options.el.dataset.tipText,
-      loopText: options.el.dataset.loopText,
-      endText: options.el.dataset.endText
+      url: options.button.dataset.url,
+      type: options.button.dataset.type,
+      second: options.button.dataset.second,
+      input: options.button.dataset.input,
+      captcha: options.button.dataset.captcha,
+      phoneName: options.button.dataset.phoneName,
+      captchaName: options.button.dataset.captchaName,
+      tipText: options.button.dataset.tipText,
+      loopText: options.button.dataset.loopText,
+      endText: options.button.dataset.endText
     });
 
     // 获取发送接口
-    if (!options.url && options.el.tagName.toLowerCase() === 'a') {
-      options.url = options.el.getAttribute('href');
+    if (!options.url && options.button.tagName.toLowerCase() === 'a') {
+      options.url = options.button.getAttribute('href');
     };
 
     if (!options.url) {
@@ -1562,7 +1575,7 @@
     };
 
     // 已发送提示
-    if (options.el.dataset.time > nowTime) {
+    if (options.button.dataset.time > nowTime) {
       $.cxDialog({
         title: '提示',
         info: options.tipText
@@ -1571,8 +1584,10 @@
     };
 
     // 如果设置了手机号码输入框，需要输入手机号码
-    if (typeof options.input === 'string' && options.input.length) {
-      if (!document.getElementById(options.input)) {
+    if (options.input) {
+      inputPhone = self.getDom(options.input);
+
+      if (!inputPhone) {
         $.cxDialog({
           title: '提示',
           info: '缺少手机号码输入框'
@@ -1580,7 +1595,6 @@
         return;
       };
 
-      inputPhone = document.getElementById(options.input);
       phoneValue = inputPhone.value;
 
       if (!phoneValue.length || !/^1\d{10}$/.test(phoneValue)) {
@@ -1597,7 +1611,9 @@
 
     // 如果设置了验证码输入框，需要输入验证码
     if (typeof options.captcha === 'string' && options.captcha.length) {
-      if (!document.getElementById(options.input)) {
+      inputCaptcha = self.getDom(options.captcha);
+
+      if (!inputCaptcha) {
         $.cxDialog({
           title: '提示',
           info: '缺少验证码输入框'
@@ -1605,7 +1621,6 @@
         return;
       };
 
-      inputCaptcha = document.getElementById(options.captcha);
       captchaValue = inputCaptcha.value;
 
       if (!captchaValue.length) {
@@ -1620,30 +1635,30 @@
       };
     };
 
-    options.el.dataset.time = nowTime + (options.second * 1000);
+    options.button.dataset.time = nowTime + (options.second * 1000);
 
     // 发送短信倒计时
     var sendLoop = function(options) {
       var nowTime = new Date().getTime();
-      var diffTime = parseInt(options.el.dataset.time, 10) - nowTime;
+      var diffTime = parseInt(options.button.dataset.time, 10) - nowTime;
 
       if (diffTime > 0) {
-        options.el.innerHTML = options.loopText.replace('{{time}}', Math.round(diffTime / 1000));
+        options.button.innerHTML = options.loopText.replace('{{time}}', Math.round(diffTime / 1000));
         setTimeout(sendLoop.bind(this, options), 1000);
 
       } else {
-        options.el.dataset.time = 0;
-        options.el.innerHTML = options.endText;
+        options.button.dataset.time = 0;
+        options.button.innerHTML = options.endText;
       };
     };
 
     var sendComplete = function(options, data) {
       if (data.status !== 'success') {
-        options.el.dataset.time = 0;
+        options.button.dataset.time = 0;
         sendLoop(options);
 
         if (typeof options.error === 'function') {
-          options.error.call(options.el);
+          options.error.call(options.button);
         } else {
           $.cxDialog({
             title: '提示',
@@ -1654,7 +1669,7 @@
       };
 
       if (typeof options.success === 'function') {
-        options.success.call(options.el);
+        options.success.call(options.button);
       };
     };
 

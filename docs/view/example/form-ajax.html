@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CXM - 表单提交</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../../../static/css/cxm.css">
+<link rel="stylesheet" href="../../static/css/layout.css">
+<link rel="stylesheet" href="../../static/plugins/prism/prism.css">
+<script src="../../../static/plugins/zepto/zepto.min.js"></script>
+<script src="../../../static/js/plugins.js"></script>
+<script src="../../../static/plugins/cxValidation/cxvalidation.min.js"></script>
+<script src="../../static/plugins/prism/prism.js"></script>
+<script src="../../../static/js/init.js"></script>
+</head>
+<body class="gray">
+<div id="wrap" class="wrap">
+  <div id="header" class="header">
+    <header>
+      <h1>表单提交</h1>
+      <div class="group onleft">
+        <a class="icon back" href="index.html"></a>
+      </div>
+      <div class="group onright">
+        <a class="txt bg" href="javascript://" rel="body_bg"></a>
+      </div>
+    </header>
+  </div>
+
+  <div class="demo_intro">
+    <div class="detail">
+      <p>使用方法</p>
+<pre class="language-html"><code class="html">&lt;form id="my_form"&gt;...&lt;/form&gt;
+</code></pre>
+<pre class="language-js"><code class="js">$('#my_form').on('submit', function(event) {
+  event.preventDefault();
+  APP.formAjax(this);
+});
+</code></pre>
+    </div>
+  </div>
+
+  <form action="../../ajax/success.json" method="post" id="test_form" class="mt">
+    <div class="form">
+      <dl class="row">
+        <dt>用户名</dt>
+        <dd><input type="text" name="user" class="input full" data-validation="required" data-validation-title="用户名" placeholder="请输入"></dd>
+      </dl>
+      <dl class="row">
+        <dt>密码</dt>
+        <dd><input type="password" name="password" class="input full" data-validation="required" data-validation-title="密码" placeholder="请输入"></dd>
+      </dl>
+    </div>
+
+    <div class="mbox mt">
+      <button type="submit" class="button primary full">提交</button>
+    </div>
+  </form>
+
+  <div class="demo_intro mt">
+    <div class="detail">
+      <h5>快速使用方法</h5>
+<pre class="language-js"><code class="js">APP.formAjax('my_form', function() {
+  // 成功: status === 'success'
+}, function() {
+  // 失败: status !== 'success'
+});</code></pre>
+      <p>通过标签的属性<code>data-validation</code>中设置验证规则。</p>
+      <hr>
+      <h5>完整配置</h5>
+<pre class="language-js"><code class="js">/**
+ * 表单 Ajax 提交
+ * @param {object} options - 选项
+ * @param {element} options.form - ID / DOM / jQuery
+ * @param {string} options.url - 表单提交 URL (默认取 action 的值)
+ * @param {string} options.type - 提交类型 (默认取 method 的值)
+ * @param {array} options.data - 提交数据 (默认为表单数据)
+ * @param {string} options.dataType - 返回类型 (默认为 json)
+ * @param {object} options.urlData - 增加 URL 提交的数据
+ * @param {array} options.addData - 增加 data 提交的数据
+ * @param {function} options.complete - 完成回调函数
+ * @param {function} options.success - 成功回调函数
+ * @param {function} options.error - 错误回调函数
+ */
+APP.formAjax({
+  form: 'my_form',
+  urlData: {
+    key_1: value_1,
+    key_2: value_2
+  },
+  addData: [
+    {
+      name: "key_1",
+      value: "value_1"
+    },
+    {
+      name: "key_2",
+      value: "value_2"
+    }
+  ],
+  complete: function() {},
+  success: function() {},
+  error: function() {}
+});
+</code></pre>
+    </div>
+  </div>
+
+  <footer id="tabbar" class="tabbar" data-target="example"></footer>
+</div>
+
+<script src="../../../static/js/ready.js"></script>
+<script src="../../static/js/main.js"></script>
+<script>
+(function() {
+  var form = $('#test_form');
+
+  // 验证后再提交
+  cxValidation.attach(form, {
+    success: function() {
+      APP.formAjax(form);
+    }
+  });
+
+  // 无需验证提交
+  // form.on('submit', function(event) {
+  //   event.preventDefault();
+  //   APP.formAjax(this);
+  // });
+})();
+</script>
+</body>
+</html>
