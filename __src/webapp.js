@@ -35,8 +35,8 @@
  * arrayUnique          数组去重
  * getRandomNumber      生成随机整数
  * getRandomString      生成随机字符串
- * replaceEnter         替换换行
- * replaceQuot          替换引号
+ * replaceEnter         替换换行符
+ * replaceQuot          替换引号字符实体
  * replaceHtml          替换 HTML 标签
  * --------------------
  * tipShow              显示 Tip
@@ -416,11 +416,15 @@
 
   /**
    * 转换浮点数
-   * @param {number} value
+   * @param {number} value - 数值
    * @param {integer} [decimals] - 保留小数点位数
    * @returns {number}
    */
   app.prototype.toFloat = function(value, decimals) {
+    if (!this.isNumber(value)) {
+      value = parseInt(value, 10);
+    };
+
     if (!this.isNumber(decimals)) {
       decimals = 0;
     };
@@ -430,17 +434,33 @@
 
   /**
    * 格式化数字
-   * @param {number} value
+   * @param {number} value - 数值
    * @param {integer} [decimals] - 保留小数点位数
+   * @param {boolean} [mustKeepZero] - 是否用零补全
    * @param {string} [decimalpoint] - 小数点的字符串
    * @param {string} [separator] - 千位分隔符的字符串
    * @returns {string}
    */
   app.prototype.numberFormat = function(value, decimals, mustKeepZero, decimalpoint, separator) {
-    if (!this.isNumber(decimals)) {decimals = 0};
-    if (mustKeepZero !== true) {mustKeepZero = false};
-    if (!this.isString(decimalpoint)) {decimalpoint = '.'};
-    if (!this.isString(separator)) {separator = ','};
+    if (!this.isNumber(value)) {
+      value = parseInt(value, 10);
+    };
+
+    if (!this.isNumber(decimals)) {
+      decimals = 0;
+    };
+
+    if (mustKeepZero !== true) {
+      mustKeepZero = false;
+    };
+
+    if (!this.isString(decimalpoint)) {
+      decimalpoint = '.';
+    };
+
+    if (!this.isString(separator)) {
+      separator = ',';
+    };
 
     value = this.toFloat(value, decimals);
     value = value.toFixed(decimals);
@@ -484,15 +504,15 @@
       return array;
     };
 
-    var newArray=[];
+    var newArray = [];
     var provisionalTable = {};
 
-    for (var i = 0, item; (item= array[i]) != null; i++) {
+    for (var i = 0, item; (item = array[i]) != null; i++) {
       if (!provisionalTable[item]) {
         newArray.push(item);
         provisionalTable[item] = true;
-      }
-    }
+      };
+    };
 
     return newArray;
   };
@@ -517,20 +537,20 @@
   /**
    * 生成随机字符串
    * @param {integer} length - 字符串长度
-   * @param {string} [string] - 字符范围
+   * @param {string} [scope] - 字符范围
    * @returns {string}
    */
-  app.prototype.getRandomString = function(length, string) {
+  app.prototype.getRandomString = function(length, scope) {
     length = this.isNumber(length) ? parseInt(length, 10) : 0;
-    string = (typeof string === 'string' && string.length) ? string : 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    scope = (typeof scope === 'string' && scope.length) ? scope : 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
     return Array.apply(0, Array(length)).map(function () {
-      return string.charAt(Math.floor(Math.random() * string.length));
+      return scope.charAt(Math.floor(Math.random() * scope.length));
     }).join('');
   };
   
   /**
-   * 替换换行
+   * 替换换行符
    * @param {string} string
    * @returns {string}
    */
@@ -546,7 +566,7 @@
   };
 
   /**
-   * 替换引号
+   * 替换引号字符实体
    * @param {string} string
    * @param {boolean} [decode] - 解码
    * @returns {string}
@@ -595,7 +615,7 @@
 
   /**
    * 显示 Tip
-   * @param {string} baseclass: 自定义 class
+   * @param {string} [baseclass] - 自定义 class
    */
   app.prototype.tipShow = function(baseclass) {
     var self = this;
@@ -679,7 +699,7 @@
 
   /**
    * 显示面板
-   * @param {element|string} el - ID / DOM / jQuery
+   * @param {string|element|object} el - ID / DOM / jQuery
    * @param {object} [options] - 选项
    * @param {string} options.lock - 是否锁定背景
    * @param {boolean} options.blur - 是否使用模糊背景
@@ -714,7 +734,7 @@
 
   /**
    * 隐藏面板
-   * @param {element|string} el - ID / DOM / jQuery
+   * @param {string|element|object} el - ID / DOM / jQuery
    */
   app.prototype.panelHide = function(el) {
     var self = this;
@@ -760,8 +780,8 @@
 
   /**
    * 初始化 TabBar
-   * @param {element|string} el - ID / DOM / jQuery
-   * @param {object} [data] - 配置项
+   * @param {string|element|object} el - ID / DOM / jQuery
+   * @param {object} [data] - 配置数据
    * @param {object} [target] - 当前选中项
    * @returns {ZeptoDom}
    */
@@ -799,8 +819,8 @@
 
   /**
    * 构建 TabBar
-   * @param {element|string} el - ID / DOM / jQuery
-   * @param {object} data - 配置项
+   * @param {string|element|object} el - ID / DOM / jQuery
+   * @param {object} data - 配置数据
    * @param {object} [target] - 当前选中项
    * @returns {element}
    */
@@ -830,8 +850,8 @@
 
   /**
    * 初始化 FilterTool
-   * @param {element|string} el - ID / DOM / jQuery
-   * @param {object} [data] - 配置项
+   * @param {string|element|object} el - ID / DOM / jQuery
+   * @param {object} [data] - 配置数据
    * @returns {element}
    */
   app.prototype.initFilterTool = function(el, data) {
@@ -900,8 +920,8 @@
 
   /**
    * 构建 FilterTool
-   * @param {element|string} el - ID / DOM / jQuery
-   * @param {object} data - 配置项
+   * @param {string|element|object} el - ID / DOM / jQuery
+   * @param {object} data - 配置数据
    */
   app.prototype.buildFilterTool = function(el, data) {
     var self = this;
@@ -1031,12 +1051,12 @@
   /**
    * 生成分页代码
    * @param {object} options - 选项
-   * @param {object} options.page - 当前页码
-   * @param {object} options.pageCount - 总页数
-   * @param {object} options.url - 链接地址
-   * @param {object} options.rel - 非跳转方式使用关键词
-   * @param {object} options.code - 分页结构
-   * @param {object} options.numberLength - 数字页码长度
+   * @param {integer} options.page - 当前页码
+   * @param {integer} options.pageCount - 总页数
+   * @param {string} [options.url] - 链接地址
+   * @param {string} [options.rel] - 非跳转方式使用关键词
+   * @param {string} [options.code] - 分页结构
+   * @param {integer} [options.numberLength] - 数字页码长度
    * @returns {string}
    */
   app.prototype.getPageHtml = function(options) {
@@ -1347,16 +1367,16 @@
   /**
    * 表单 Ajax 提交
    * @param {object} options - 选项
-   * @param {element} options.form - ID / DOM / jQuery
-   * @param {string} options.url - 表单提交 URL (默认取 action 的值)
-   * @param {string} options.type - 提交类型 (默认取 method 的值)
-   * @param {array} options.data - 提交数据 (默认为表单数据)
-   * @param {string} options.dataType - 返回类型 (默认为 json)
-   * @param {object} options.urlData - 增加 URL 提交的数据
-   * @param {array} options.addData - 增加 data 提交的数据
-   * @param {function} options.complete - 完成回调函数
-   * @param {function} options.success - 成功回调函数
-   * @param {function} options.error - 错误回调函数
+   * @param {string|element|object} options.form - ID / DOM / jQuery
+   * @param {string} [options.url] - 表单提交 URL (默认取 action 的值)
+   * @param {string} [options.type] - 提交类型 (默认取 method 的值)
+   * @param {array} [options.data] - 提交数据 (默认为表单数据)
+   * @param {string} [options.dataType] - 返回类型 (默认为 json)
+   * @param {object} [options.urlData] - 增加 URL 提交的数据
+   * @param {array} [options.addData] - 增加 data 提交的数据
+   * @param {function} [options.complete] - 完成回调函数
+   * @param {function} [options.success] - 成功回调函数
+   * @param {function} [options.error] - 错误回调函数
    *
    * @example 简易方法
    * formAjax(form[, successCallback, errorCallback])
@@ -1491,14 +1511,14 @@
   /**
    * 发送短信
    * @param {object} options - 选项
+   * @param {string|element|object} options.button - ID / DOM / jQuery
+   * @param {element} options.input - 手机号码输入框元素
+   * @param {element} options.captcha - 图片验证码输入框元素
+   * @param {string} options.phoneName - 手机号字段名称（默认取 input 的 name）
+   * @param {string} options.captchaName - 图片验证码字段名称（默认取 captcha 的 name）
    * @param {string} options.url - 发送短信的接口地址
    * @param {string} options.type - 传输方式（get/post）
    * @param {integer} options.second - 发送间隔时间（秒）
-   * @param {element} options.button - 按钮元素
-   * @param {element} input - 手机号码输入框元素
-   * @param {element} captcha - 图片验证码输入框元素
-   * @param {string} phoneName - 手机号字段名称（默认取 input 的 name）
-   * @param {string} captchaName - 图片验证码字段名称（默认取 captcha 的 name）
    * @param {string} options.tipText - 正在发送的提示文字
    * @param {string} options.loopText - 倒计时按钮显示的文字
    * @param {string} options.endText - 倒计时结束后显示的文字
@@ -1549,13 +1569,13 @@
     };
 
     $.extend(options, {
-      url: options.button.dataset.url,
-      type: options.button.dataset.type,
-      second: options.button.dataset.second,
       input: options.button.dataset.input,
       captcha: options.button.dataset.captcha,
       phoneName: options.button.dataset.phoneName,
       captchaName: options.button.dataset.captchaName,
+      url: options.button.dataset.url,
+      type: options.button.dataset.type,
+      second: options.button.dataset.second,
       tipText: options.button.dataset.tipText,
       loopText: options.button.dataset.loopText,
       endText: options.button.dataset.endText
