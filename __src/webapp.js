@@ -1,6 +1,7 @@
 /**
- * WebApp
- * @author ciaoca <ciaoca@gmail.com>
+ * webapp.js
+ * @site https://github.com/ciaoca/cxm
+ *
  * --------------------
  * isElement            检测是否是 DOM 元素
  * isJquery             检测是否是 jQuery 对象

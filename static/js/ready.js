@@ -1,3 +1,8 @@
+/**
+ * ready.js
+ * 通常加载在 </body> 之前，页面内容已加载完毕。
+ * ------------------------------ */
+
 // FastClick Only iOS
 // 在 Android 低端机下，效果不理想，不使用
 if ('addEventListener' in document && GLOBAL.platform && GLOBAL.platform.system === 'ios') {
