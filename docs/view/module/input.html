@@ -30,14 +30,7 @@
     </header>
   </div>
 
-  <div class="demo_intro">
-    <div class="detail">
-<pre class="language-html"><code class="html">&lt;input type="text" class="input"&gt;
-&lt;textarea class="input"&gt;&lt;/textarea&gt;</code></pre>
-    </div>
-  </div>
-
-  <div id="option_form" class="form mt">
+  <div id="option_form" class="form">
     <dl class="row">
       <dt>Size</dt>
       <dd>
@@ -65,60 +58,106 @@
   <div id="demo">
     <div class="demo_box demo_input">
       <h3>Input</h3>
+
+      <div class="detail mb">
+<pre class="language-html"><code class="html">&lt;input type="text" class="input"&gt;
+&lt;input type="text" class="input full"&gt;</code></pre>
+      </div>
+
       <p><input type="text" class="input" placeholder="Placeholder"></p>
       <p><input type="text" class="input" value="Readonly" readonly></p>
       <p><input type="text" class="input" value="Disabled" disabled></p>
-      <p>
-        <input type="text" class="input" placeholder="Unit"><span class="input_unit">Unit</span>
-      </p>
-      <p>
-        <label class="input_label">Label</label><input type="text" class="input beforelabel" placeholder="Before Label">
-      </p>
-      <p>
-        <input type="text" class="input afterlabel" placeholder="After Label"><label class="input_label">Label</label>
-      </p>
-      <p>
-        <label class="input_label">Label</label><input type="text" class="input beforelabel afterlabel" placeholder="Before & After Label"><label class="input_label">Label</label>
-      </p>
       <p><input type="text" class="input" size="24" placeholder="Set 'size' For Width"></p>
       <p><input type="text" class="input full" placeholder="Full Width"></p>
     </div>
 
     <div class="demo_box demo_input">
+      <h3>Label</h3>
+
+      <div class="detail mb">
+<pre class="language-html"><code class="html">&lt;div class="input_group"&gt;
+  &lt;label class="input_label"&gt;Label&lt;/label&gt;
+  &lt;input type="text" class="input"&gt;
+  &lt;label class="input_label"&gt;Label&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <div class="input_group">
+        <label class="input_label">Label</label>
+        <input type="text" class="input" placeholder="Before Label">
+      </div>
+      <div class="input_group">
+        <input type="text" class="input" placeholder="After Label">
+        <label class="input_label">Label</label>
+      </div>
+      <div class="input_group">
+        <label class="input_label">Label</label>
+        <input type="text" class="input" placeholder="Before & After Label">
+        <label class="input_label">Label</label>
+      </div>
+    </div>
+
+    <div class="demo_box demo_input">
       <h3>Box</h3>
+
+      <div class="detail mb">
+<pre class="language-html"><code class="html">&lt;div class="input_box"&gt;
+  &lt;input type="text" class="input"&gt;
+  &lt;input type="text" class="input"&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
       <div class="input_box">
         <input type="text" class="input" placeholder="First">
         <input type="text" class="input" placeholder="Second">
       </div>
       <div class="input_box">
-        <label class="input_label">Label</label><input type="text" class="input beforelabel" placeholder="Before Label">
-        <input type="text" class="input afterlabel" placeholder="After Label"><label class="input_label">Label</label>
+        <input type="text" class="input" placeholder="First">
+        <input type="text" class="input" placeholder="Second">
+        <input type="text" class="input" placeholder="Third">
+      </div>
+      <div class="input_box">
+        <div class="input_group">
+          <label class="input_label">Label</label>
+          <input type="text" class="input" placeholder="Before Label">
+        </div>
+        <div class="input_group">
+          <input type="text" class="input" placeholder="After Label">
+          <label class="input_label">Label</label>
+        </div>
       </div>
     </div>
 
     <div class="demo_box demo_input">
       <h3>Group</h3>
+
+      <div class="detail mb">
+<pre class="language-html"><code class="html">&lt;div class="input_group"&gt;
+  &lt;input type="text" class="input"&gt;
+  &lt;input type="text" class="input"&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
       <div class="input_group">
         <input type="text" class="input" placeholder="First">
         <input type="text" class="input" placeholder="Second">
       </div>
+
       <div class="input_group">
-        <input type="text" class="input afterlabel" placeholder="Unit"><span class="input_unit">Unit</span>
-      </div>
-      <div class="input_group">
-        <label class="input_label">Label</label><input type="text" class="input beforelabel" placeholder="Before Label">
-      </div>
-      <div class="input_group">
-        <input type="text" class="input afterlabel" placeholder="After Label"><label class="input_label">Label</label>
-      </div>
-      <div class="input_group">
-        <label class="input_label">Label</label><input type="text" class="input beforelabel afterlabel" placeholder="Before & After Label"><label class="input_label">Label</label>
-      </p>
+        <input type="text" class="input" placeholder="First">
+        <input type="text" class="input" placeholder="Second">
+        <input type="text" class="input" placeholder="Third">
       </div>
     </div>
 
     <div class="demo_box demo_input">
       <h3>Textarea</h3>
+
+      <div class="detail mb">
+<pre class="language-html"><code class="html">&lt;textarea class="input"&gt;&lt;/textarea&gt;
+&lt;textarea class="input full"&gt;&lt;/textarea&gt;</code></pre>
+      </div>
+
       <p><textarea class="input" placeholder="Placeholder"></textarea></p>
       <p><textarea class="input" readonly>Readonly</textarea></p>
       <p><textarea class="input" disabled>Disabled</textarea></p>

@@ -30,13 +30,7 @@
     </header>
   </div>
 
-  <div class="demo_intro">
-    <div class="detail">
-<pre class="language-html"><code class="html">&lt;select class="select"&gt;&lt;/select&gt;</code></pre>
-    </div>
-  </div>
-
-  <div id="option_form" class="form mt">
+  <div id="option_form" class="form">
     <dl class="row">
       <dt>Size</dt>
       <dd>
@@ -63,6 +57,13 @@
 
   <div id="demo">
     <div class="demo_box demo_select">
+      <h3>Select</h3>
+
+      <div class="detail mb">
+<pre class="language-html"><code class="html">&lt;select class="select"&gt;&lt;/select&gt;
+&lt;select class="select full"&gt;&lt;/select&gt;</code></pre>
+      </div>
+
       <p>
         <select class="select">
           <option>Select</option>
@@ -80,36 +81,6 @@
             <option>Option 3</option>
           </optgroup>
         </select>
-      </p>
-      <p>
-        <label class="input_label">Label</label><select class="select beforelabel">
-          <option>Before Label</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-      </p>
-      <p>
-        <select class="select afterlabel">
-          <option>After Label</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select><label class="input_label">Label</label>
-      </p>
-      <p>
-        <label class="input_label">Label</label><select class="select beforelabel afterlabel">
-          <option>Before & After Label</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select><label class="input_label">Label</label>
       </p>
       <p>
         <select class="select full">
@@ -131,8 +102,69 @@
       </p>
     </div>
 
+    <div class="demo_box demo_input">
+      <h3>Label</h3>
+
+      <div class="detail mb">
+<pre class="language-html"><code class="html">&lt;div class="input_group"&gt;
+  &lt;label class="input_label"&gt;Label&lt;/label&gt;
+  &lt;select class="select"&gt;&lt;/select&gt;
+  &lt;label class="input_label"&gt;Label&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <p>
+        <div class="input_group">
+          <label class="input_label">Label</label>
+          <select class="select">
+            <option>Before Label</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+        </div>
+      </p>
+      <p>
+        <div class="input_group">
+          <select class="select">
+            <option>After Label</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <label class="input_label">Label</label>
+        </div>
+      </p>
+      <p>
+        <div class="input_group">
+        <label class="input_label">Label</label>
+          <select class="select">
+            <option>Before & After Label</option>
+            <optgroup label="optgroup">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+          </select>
+          <label class="input_label">Label</label>
+        </div>
+      </p>
+    </div>
+
     <div class="demo_box demo_select">
       <h3>Box</h3>
+
+      <div class="detail mb">
+<pre class="language-html"><code class="html">&lt;div class="input_box"&gt;
+  &lt;select class="select"&gt;&lt;/select&gt;
+  &lt;select class="select"&gt;&lt;/select&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
       <div class="input_box">
         <select class="select">
           <option>Select</option>
@@ -191,6 +223,14 @@
 
     <div class="demo_box demo_select">
       <h3>Group</h3>
+
+      <div class="detail mb">
+<pre class="language-html"><code class="html">&lt;div class="input_group"&gt;
+  &lt;select class="select"&gt;&lt;/select&gt;
+  &lt;select class="select"&gt;&lt;/select&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
       <div class="input_group">
         <select class="select">
           <option>Select</option>
@@ -200,26 +240,6 @@
             <option>Option 3</option>
           </optgroup>
         </select>
-      </div>
-      <div class="input_group">
-        <label class="input_label">Label</label><select class="select beforelabel">
-          <option>Before Label</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select>
-      </div>
-      <div class="input_group">
-        <select class="select afterlabel">
-          <option>After Label</option>
-          <optgroup label="optgroup">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </optgroup>
-        </select><label class="input_label">Label</label>
       </div>
       <div class="input_group">
         <select class="select">
