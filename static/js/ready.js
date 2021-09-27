@@ -42,7 +42,7 @@ $.cxDialog.defaults.ok = function(){};
       self.fixInputFixed();
     };
 
-    if (window.innerWidth < 1000) {
+    if (window.innerWidth > 1000) {
       self.buildPageQrcode();
     };
 
