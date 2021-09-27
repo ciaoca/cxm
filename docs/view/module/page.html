@@ -85,12 +85,17 @@ document.getElementById('pages').innerHTML = html;
           <label for="opt_prev">Prev</label>
           <input type="checkbox" name="template" id="opt_next" class="checkbox" value="next" checked>
           <label for="opt_next">Next</label>
+          <!-- <input type="checkbox" name="template" id="opt_sizeSet" class="checkbox" value="sizeSet">
+          <label for="opt_sizeSet">SizeSet</label> -->
         </dd>
       </dl>
       <dl class="row">
         <dt>Length</dt>
         <dd>
-          <input type="text" name="numberLength" class="input full" value="5" pattern="\d*">
+          <div class="input_group">
+            <input type="text" name="numberLength" class="input full" value="5" pattern="\d*">
+            <div class="input_label notbg">Numbers</div>
+          </div>
         </dd>
       </dl>
     </div>
@@ -136,6 +141,17 @@ document.getElementById('pages').innerHTML = html;
       if (_rel === 'page' && _rev) {
         event.preventDefault();
         self.queryData.page = parseInt(_rev, 10);
+        self.dom.optionForm.trigger('submit');
+      };
+    });
+
+    self.dom.page.on('change', 'select', function(event) {
+      var _this = this;
+      var _name = _this.name;
+      var _value = _this.value;
+
+      if (_name === 'page_size') {
+        self.queryData.pageSize = parseInt(_value, 10);
         self.dom.optionForm.trigger('submit');
       };
     });
@@ -187,6 +203,10 @@ document.getElementById('pages').innerHTML = html;
       };
 
       options.code = options.code.join('');
+
+      if (formData.template.indexOf('sizeSet') >= 0) {
+        options.sizeList = [10,20,50,100];
+      };
     };
 
     var html = APP.getPageHtml(options);

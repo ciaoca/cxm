@@ -31,6 +31,7 @@
  * removeLocalStorage   删除本地存储（localStorage）
  * clearLocalStorage    清空本地存储（localStorage）
  * --------------------
+ * getObjectValue       获取对象值
  * toFloat              转换浮点数
  * numberFormat         格式化数字
  * arrayUnique          数组去重
@@ -57,6 +58,7 @@
  * --------------------
  * scrollTo             滚动到位置
  * createUrlHash        创建 Hash URL
+ * removeUrlHash        删除 Hash URL
  * getFormData          获取表单提交的数据
  * getPageHtml          生成分页代码
  * compressPicture      压缩图片
@@ -413,6 +415,47 @@
         j++;
       };
     };
+  };
+
+  /**
+   * 获取对象值
+   * @param {object} options - 选项
+   * @param {string} options.keys - 对象链（使用.分隔）
+   * @param {object} [options.scope] - 在指定对象中查找，默认为全局变量 window
+   * @param {any} [options.value] - 默认返回值，默认 undefined
+   * @return {any}
+   *
+   * @example
+   * getObjectValue({keys:'a.b.c'}) 获取 window.a.b.c 的值
+   * getObjectValue({keys:'a.b.c',scope:myObj}) 获取 myObj.a.b.c 的值
+   * getObjectValue({keys:'a.b.c',scope:myObj, value: '-'}) 获取 myObj.a.b.c 的值，若不存在则返回 '-'
+   */
+  app.prototype.getObjectValue = function(options) {
+    var self = this;
+    var item;
+
+    if (typeof options.keys !== 'string') {
+      return options.value;
+    };
+
+    options.keys = options.keys.split('.');
+
+    if (self.isObject(options.scope)) {
+      item = options.scope;
+    } else {
+      item = window;
+    };
+
+    for (var i = 0, l = options.keys.length; i < l; i++) {
+      if (self.isUndefined(item[options.keys[i]])) {
+        item = options.value;
+        break;
+      };
+
+      item = item[options.keys[i]];
+    };
+
+    return item;
   };
 
   /**
@@ -978,8 +1021,9 @@
    *
    * @example
    * createUrlHash({a:1,b:2,c:3}) => !#a=1&b=2&c=3
-   * createUrlHash({a:1,b:2,c:3},[]) => !#
-   * createUrlHash({a:1,b:2,c:3},['a','c']) => !#a=1&c=3
+   * createUrlHash({a:1,b:2,c:3}, true) => !#a=1&b=2&c=3
+   * createUrlHash({a:1,b:2,c:3}, []) => !#
+   * createUrlHash({a:1,b:2,c:3}, ['a','c']) => !#a=1&c=3
    */
   app.prototype.createUrlHash = function(querys, keys, isPush) {
     var data = {};
@@ -1013,6 +1057,36 @@
     } else {
       history.replaceState(data, document.title, hash);
     };
+  };
+
+  /**
+   * 删除 Hash URL
+   * @param {array} querys - 要删除的参数列表
+   * @param {boolean} [isPush] - 是否插入新历史记录
+   *
+   * @example
+   * removeUrlHash(['a','b','c'])
+   */
+  app.prototype.removeUrlHash = function(querys, isPush) {
+    var self = this;
+    var hash = location.hash.replace(/^\#\!?/, '');
+    var values = hash.split('&');
+    var data = {};
+    var key;
+
+    for (var i = 0, l = values.length; i < l; i++) {
+      if (values[i].indexOf('=')) {
+        key = values[i].slice(0, values[i].indexOf('='));
+
+        if (Array.isArray(querys) && querys.length && querys.indexOf(key) >= 0) {
+          continue;
+        };
+
+        data[key] = values[i].slice(values[i].indexOf('=') + 1);
+      };
+    };
+
+    self.createUrlHash(data, true, isPush);
   };
 
   /**
@@ -1058,6 +1132,8 @@
    * @param {string} [options.rel] - 非跳转方式使用关键词
    * @param {string} [options.code] - 分页结构
    * @param {integer} [options.numberLength] - 数字页码长度
+   * @param {object} [options.sizeList] - 单页长度数量列表
+   * @param {object} [options.sizeSet] - 单页数量值
    * @returns {string}
    */
   app.prototype.getPageHtml = function(options) {
@@ -1076,11 +1152,28 @@
     var config = {
       count: '<span>共 ' + options.pageCount + ' 页</span>',
       cur: '<span>第 ' + options.page + ' 页</span>',
+      sizeSet: '',
       number: '',
       prev: '',
       next: '',
       first: '',
       last: ''
+    };
+
+    if (Array.isArray(options.sizeList) && options.sizeList.length) {
+      config.sizeSet = '<select class="select" name="' + options.rel + '_size">';
+
+      for (var i = 0, l = options.sizeList.length; i < l; i++) {
+        config.sizeSet += '<option value="'+options.sizeList[i]+'"';
+
+        if (options.sizeSet === options.sizeList[i]) {
+          config.sizeSet += ' selected';
+        };
+
+        config.sizeSet += '>'+options.sizeList[i]+'条/页</option>';
+      };
+
+      config.sizeSet += '</select>';
     };
 
     if (options.pageCount > 1) {
