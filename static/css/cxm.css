@@ -151,7 +151,7 @@ row-gap:var(--gap-default);
 .pages a,
 .pages span,
 .pages strong{box-sizing:border-box;display:inline-block;overflow:hidden;min-width:var(--size-default);margin-left:var(--gap-default);padding:0 1em;border:1px solid transparent;border-radius:var(--radius);text-align:center;vertical-align:top;white-space:nowrap;
-flex:0 0 auto;
+flex:none;
 }
 .pages a{border-color:var(--input-border-color);background-color:#fff;color:#888;text-decoration:none;}
 .pages span{min-width:auto;padding:0;}
@@ -864,7 +864,7 @@ display:flex;
 .header .group .txt,
 .header .group .arrow,
 .header .group .icon{position:relative;left:auto;right:auto;height:100%;
-flex:0 0 auto;
+flex:none;
 }
 
 /* 位置 */
@@ -1094,7 +1094,7 @@ transition-delay:0.2s;
 .panel_page .header + .filter_tool.fixed nav{position:relative;top:0;}
 
 .panel_body{overflow-x:hidden;overflow-y:auto;position:absolute;top:0;bottom:0;left:0;right:0;
-overscroll-behavior:none;
+overscroll-behavior:contain;
 -webkit-overflow-scrolling:touch;
 }
 
