@@ -9,10 +9,8 @@
 <meta name="apple-touch-fullscreen" content="yes">
 <meta name="format-detection" content="telephone=no">
 <link rel="stylesheet" href="../../../static/css/cxm.css">
+<link rel="stylesheet" href="../../../static/plugins/prism/prism.css">
 <link rel="stylesheet" href="../../static/css/layout.css">
-<script src="../../../static/plugins/zepto/zepto.min.js"></script>
-<script src="../../../static/js/plugins.js"></script>
-<script src="../../../static/js/init.js"></script>
 </head>
 <body class="gray">
 <div id="wrap" class="wrap">
@@ -20,7 +18,7 @@
     <header>
       <h1>按钮</h1>
       <div class="group onleft">
-        <a class="icon back" href="index.html"></a>
+        <a id="header_back" class="icon back" href="index.html"></a>
       </div>
       <div class="group onright">
         <a class="txt bg" href="javascript://" rel="body_bg"></a>
@@ -130,7 +128,11 @@
 
   <footer id="tabbar" class="tabbar" data-target="module"></footer>
 </div>
-<script src="../../../static/js/ready.js"></script>
+
+<script src="../../../static/plugins/zepto/zepto.min.js"></script>
+<script src="../../../static/plugins/prism/prism.js"></script>
+<script src="../../../static/js/plugins.js"></script>
+<script src="../../../static/js/init.js"></script>
 <script src="../../static/js/main.js"></script>
 <script>
 (function() {

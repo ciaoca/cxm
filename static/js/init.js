@@ -1,14 +1,15 @@
 /**
- * init.js
- * 通常加载在 </head> 之前，不进行 DOM 相关的操作。
+ * 全局配置
  * ------------------------------ */
 window.GLOBAL = {
   version: '1.0.0',
   prefix: '', // 缓存前缀
-  timestamp: new Date().getTime(),
+  platform: {},
   template: {},
+  timestamp: new Date().getTime(),
   url: {
-    base: '/cxm/'
+    base: '/cxm/',
+    cityData: '/cxm/static/plugins/cxSelect/json/cityData.min.json',
   },
   dom: {}
 };
@@ -59,9 +60,7 @@ GLOBAL.tabBarConfig = {
   var ua = navigator.userAgent.toLowerCase();
   var version;
 
-  GLOBAL.platform = {
-    isHttps: !!('https:' === document.location.protocol)
-  };
+  GLOBAL.platform.isHttps = !!('https:' === document.location.protocol);
 
   if(/(iphone|ipad|ipod|ios)/i.test(ua)){
     version = ua.match(/os\s([\d\.\_]+)/i);
@@ -111,7 +110,7 @@ GLOBAL.tabBarConfig = {
 })();
 
 
-// 解析当前页 URL
+// GLOBAL.purl 解析当前页 URL
 (function() {
   var url = location.hash;
 
@@ -131,85 +130,13 @@ window.APP = new WebApp({
 });
 
 
-/**
- * artTemplate 模板引擎添加方法
- */
-template.defaults.imports.tfEncodeURIComponent = function(string) {
-  return encodeURIComponent(string);
-};
-template.defaults.imports.tfReplace = function(string, regexp, replacement) {
-  if (typeof string !== 'string') {
-    string = String(string);
-  };
+// __init/template.js
+template.defaults.imports.tfEncodeURIComponent=function(a){return encodeURIComponent(a)},template.defaults.imports.tfArrayIndexOf=function(a,b,c,d){return"number"===d&&(a=parseInt(a,10)),Array.isArray(b)&&b.indexOf(a)>=0?c:""},template.defaults.imports.tfReplace=function(a,b,c){return"string"!=typeof a&&(a=String(a)),a.length&&(a=a.replace(new RegExp(b,"gi"),c)),a},template.defaults.imports.tfReplaceEnter=function(){return APP.replaceEnter.apply(APP,arguments)},template.defaults.imports.tfNumberFormat=function(){return"number"==typeof arguments[0]?APP.numberFormat.apply(APP,arguments):arguments[0]},template.defaults.imports.tfDate=function(a,b){return"number"==typeof a&&a>0?moment(a).format(b):"-"},template.defaults.imports.tfGetWeekName=function(a){var b=a,c=parseInt(a,10),d=["周日","周一","周二","周三","周四","周五","周六"];return isNaN(c)?b:(c>=7?c%=7:0>c&&(c=Math.abs(c)),"string"==typeof d[c]&&(b=d[c]),b)},template.defaults.imports.tfUrlAddQuery=function(a,b){return"string"==typeof b&&b.length&&(a+=a.indexOf("?")>=0?"&":"?",a+=b),a},GLOBAL.template.footerNav='<nav>{{each data item alias}}{{if item.sub}}<dl class="col {{alias}}{{if target == alias}} n{{/if}}"><dt><a href="javascript://" rel="sub">{{item.name}}</a></dt><dd>{{each item.sub val key}}<a class="{{key}}" {{if val.link}}href="{{val.link}}"{{else}}href="javascript://" rel="{{key}}"{{/if}}>{{val.name}}</a>{{/each}}</dd></dl>{{else}}<a class="col {{alias}}{{if target == alias}} n{{/if}}" {{if item.link}}href="{{item.link}}"{{else}}href="javascript://" rel="{{alias}}"{{/if}}>{{item.name}}</a>{{/if}}{{/each}}</nav>',GLOBAL.template.filterTool='<a class="bgclose" href="javascript://" rel="close"></a><nav>{{each data item alias}}<dl class="col {{alias}}"><dt data-title="{{item.title}}">{{if (item.default && item.default.title)}}{{item.default.title}}{{else}}{{item.title}}{{/if}}</dt>{{if item.list}}<dd{{if item.cols}} class="a_col a_col_{{item.cols}}"{{/if}}>{{each item.list val bIndex}}<a{{if ((item.default && item.default.value == val.value) || ((!item.default || !item.default.value) && bIndex === 0 && !val.value))}} class="n"{{/if}} href="javascript://" rel="filter_{{alias}}" rev="{{val.value}}" data-title="{{val.title}}">{{val.title}}</a>{{/each}}</dd>{{else if item.sub}}<dd class="sub_col">{{each item.sub val bIndex}}<dl class="row"><dt>{{if !val.sub || !val.sub.length}}<a{{if ((item.default && item.default.value == val.value) || ((!item.default || !item.default.value) && !val.value))}} class="n"{{/if}} href="javascript://" rel="filter_{{alias}}" rev="{{val.value}}" data-title="{{val.title}}">{{val.title}}</a>{{else}}{{val.title}}{{/if}}</dt><dd>{{each val.sub child}}<a{{if (item.default && item.default.value == child.value)}} class="n"{{/if}} href="javascript://" rel="filter_{{alias}}" rev="{{child.value}}" data-title="{{child.title}}">{{child.title}}</a>{{/each}}</dd></dl>{{/each}}</dd>{{/if}}</dl>{{/each}}</nav>';
 
-  if (string.length) {
-    string = string.replace(new RegExp(regexp, 'gi'), replacement);
-  };
 
-  return string;
-};
-template.defaults.imports.tfReplaceEnter = function() {
-  return APP.replaceEnter.apply(APP, arguments);
-};
-template.defaults.imports.tfNumberFormat = function() {
-  return APP.numberFormat.apply(APP, arguments);
-};
-template.defaults.imports.tfDate = function(time, style) {
-  return cxDate(style, time);
-};
+// __init/plugins.js
+"addEventListener"in document&&GLOBAL.platform&&"ios"===GLOBAL.platform.system&&document.addEventListener("DOMContentLoaded",function(){FastClick.attach(document.body)},!1),$.cxDialog&&($.cxDialog.defaults.baseClass="ios",$.cxDialog.defaults.background="rgba(0,0,0,0.4)",$.cxDialog.defaults.title="提示",$.cxDialog.defaults.ok=function(){}),$.cxSelect&&($.cxSelect.defaults.url=GLOBAL.url.cityData);
 
-// 模板: 底部导航
-GLOBAL.template.footerNav = '<nav>'
-  + '{{each data item alias}}'
-    + '{{if item.sub}}'
-      + '<dl class="col {{alias}}{{if target == alias}} n{{/if}}">'
-        + '<dt><a href="javascript://" rel="sub">{{item.name}}</a></dt>'
-        + '<dd>'
-          + '{{each item.sub val key}}'
-            + '<a class="{{key}}" '
-            + '{{if val.link}}href="{{val.link}}"{{else}}href="javascript://" rel="{{key}}"{{/if}}'
-            + '>{{val.name}}</a>'
-          + '{{/each}}'
-        + '</dd>'
-      + '</dl>'
-    + '{{else}}'
-      + '<a class="col {{alias}}{{if target == alias}} n{{/if}}" '
-      + '{{if item.link}}href="{{item.link}}"{{else}}href="javascript://" rel="{{alias}}"{{/if}}'
-      + '>{{item.name}}</a>'
-    + '{{/if}}'
-  + '{{/each}}'
-+ '</nav>';
 
-// 模板: 筛选栏
-GLOBAL.template.filterTool = '<a class="bgclose" href="javascript://" rel="close"></a>'
-+ '<nav>'
-  + '{{each data item alias}}'
-    + '<dl class="col {{alias}}">'
-      + '<dt data-title="{{item.title}}">{{if (item.default && item.default.title)}}{{item.default.title}}{{else}}{{item.title}}{{/if}}</dt>'
-      + '{{if item.list}}'
-        + '<dd{{if item.cols}} class="a_col a_col_{{item.cols}}"{{/if}}>'
-          + '{{each item.list val bIndex}}'
-            + '<a{{if ((item.default && item.default.value == val.value) || ((!item.default || !item.default.value) && bIndex === 0 && !val.value))}} class="n"{{/if}} href="javascript://" rel="filter_{{alias}}" rev="{{val.value}}" data-title="{{val.title}}">{{val.title}}</a>'
-          + '{{/each}}'
-        + '</dd>'
-      + '{{else if item.sub}}'
-        + '<dd class="sub_col">'
-          + '{{each item.sub val bIndex}}'
-            + '<dl class="row">'
-              + '<dt>'
-                + '{{if !val.sub || !val.sub.length}}'
-                  + '<a{{if ((item.default && item.default.value == val.value) || ((!item.default || !item.default.value) && !val.value))}} class="n"{{/if}} href="javascript://" rel="filter_{{alias}}" rev="{{val.value}}" data-title="{{val.title}}">{{val.title}}</a>'
-                + '{{else}}{{val.title}}{{/if}}'
-              + '</dt>'
-              + '<dd>'
-                + '{{each val.sub child}}'
-                  + '<a{{if (item.default && item.default.value == child.value)}} class="n"{{/if}} href="javascript://" rel="filter_{{alias}}" rev="{{child.value}}" data-title="{{child.title}}">{{child.title}}</a>'
-                + '{{/each}}'
-              + '</dd>'
-            + '</dl>'
-          + '{{/each}}'
-        + '</dd>'
-      + '{{/if}}'
-    + '</dl>'
-  + '{{/each}}'
-+ '</nav>';
+// __init/page.js
+!function(){var a={dom:{}};a.init=function(){var a=this;a.dom.body=$("body"),document.getElementById("header_back")&&a.updateBackUrl(),document.getElementById("tabbar")&&(GLOBAL.dom.tabbar=APP.initTabBar(document.getElementById("tabbar"),GLOBAL.tabBarConfig)),"addEventListener"in document&&/(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase())&&a.fixInputFixed(),window.innerWidth>1e3&&a.buildPageQrcode(),a.bindBodyEvent()},a.bindBodyEvent=function(){var a=this;a.dom.body.on("click","a",function(a){var b=this,c=b.rel,d=b.rev,e=b.dataset.option;try{e=JSON.parse(e)}catch(f){}"call_tip"===c?(a.preventDefault(),APP.tipToggle(d)):"call_panel"===c?(a.preventDefault(),APP.panelToggle(d,e)):"call_sms"===c&&(a.preventDefault(),APP.smsSend(b))})},a.updateBackUrl=function(){var c,a=this,b=GLOBAL.purl.param("backurl");a.dom.headerBack=document.getElementById("header_back"),"string"==typeof b&&b.length&&("_none"===b?a.dom.headerBack.style.display="none":"_back"===b?(c=new RegExp("^http(s?)://"+location.host+"/"),document.referrer&&c.test(document.referrer)&&(a.dom.headerBack.href="javascript:history.back();")):a.dom.headerBack.href=decodeURIComponent(b))},a.buildPageQrcode=function(){var a=document.createElement("div"),b=document.createElement("div");new QRCode(b,{text:encodeURI(location.href),width:88,height:88,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.L}),a.classList.add("page_qrcode"),a.appendChild(b),a.insertAdjacentHTML("beforeend","<p>在手机上浏览</p>"),document.body.appendChild(a)},a.fixInputFixed=function(){var b=document.body,c=function(a){var b=["input","textarea","select"],c=["checkbox","radio","file","button","submit","reset","image","range"],d=a.target.nodeName.toLowerCase(),e=!1;return b.indexOf(d)>=0&&!a.target.readOnly&&!a.target.disabled&&("input"===d?c.indexOf(a.target.type)<=-1&&(e=!0):("textarea"===d||"select"===d)&&(e=!0)),e};b.addEventListener("focus",function(a){c(a)&&!b.classList.contains("onfocus")&&b.classList.add("onfocus")},!0),b.addEventListener("blur",function(a){c(a)&&b.classList.remove("onfocus")},!0)},a.init()}();

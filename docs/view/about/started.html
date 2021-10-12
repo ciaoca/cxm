@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>CXM - 全屏提示</title>
+<title>CXM</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -12,38 +12,42 @@
 <link rel="stylesheet" href="../../../static/plugins/prism/prism.css">
 <link rel="stylesheet" href="../../static/css/layout.css">
 </head>
-<body class="gray">
+<body>
 <div id="wrap" class="wrap">
   <div id="header" class="header">
     <header>
-      <h1>全屏提示</h1>
+      <h1>快速上手</h1>
       <div class="group onleft">
         <a id="header_back" class="icon back" href="index.html"></a>
-      </div>
-      <div class="group onright">
-        <a class="txt bg" href="javascript://" rel="body_bg"></a>
       </div>
     </header>
   </div>
 
-  <div class="demo_intro">
-    <div class="detail">
-      <h5>调用方法</h5>
-<pre class="language-js"><code class="js">APP.tipShow('className');
-APP.tipHide('className');
-APP.tipToggle('className');</code></pre>
-      <p>页面中通过<code>&lt;a&gt;</code>调用</p>
-<pre class="language-html"><code class="html">&lt;a rel="call_tip" rev='className'&gt;&lt;/a&gt;</code></pre>
-    </div>
-  </div>
-
   <div class="mbox mt">
-    <a class="button primary small" href="javascript://" rel="call_tip" rev="demo">例：分享到朋友圈</a>
     <div class="detail">
+      <p>打开<code>/view/default/template.html</code>，这就已经搭建好手脚架的页面，只需要在其中增加自己的内容即可。</p>
+
+      <hr>
+      <h3>页面中引入的文件</h3>
+
+      <h5>cxm.css</h5>
+      <blockquote>框架基础样式文件，引入即可，不建议修改内容。</blockquote>
+      <br>
+
+      <h5>layout.css</h5>
+      <blockquote>新项目的样式文件，如果需要覆盖 cxm.css 的样式，可以在该文件中配置覆盖。</blockquote>
+      <br>
+
+      <h5>zepto.min.js 和 plugins.js</h5>
+      <blockquote>第三方插件文件，zepto.js 是一个更适合移动端使用的类 jQuery 的库。</blockquote>
+      <br>
+
+      <h5>init.js</h5>
+      <blockquote>初始化处理文件</blockquote>
     </div>
   </div>
 
-  <footer id="tabbar" class="tabbar" data-target="example"></footer>
+  <footer id="tabbar" class="tabbar"></footer>
 </div>
 
 <script src="../../../static/plugins/zepto/zepto.min.js"></script>
@@ -51,5 +55,4 @@ APP.tipToggle('className');</code></pre>
 <script src="../../../static/js/plugins.js"></script>
 <script src="../../../static/js/init.js"></script>
 <script src="../../static/js/main.js"></script>
-</body>
 </html>

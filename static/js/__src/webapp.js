@@ -1,5 +1,8 @@
 /**
  * webapp.js
+ * 
+ * @author ciaoca
+ * @email ciaoca@gmail.com
  * @site https://github.com/ciaoca/cxm
  *
  * --------------------

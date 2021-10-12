@@ -1,25 +1,12 @@
 /**
- * ready.js
- * 通常加载在 </body> 之前，页面内容已加载完毕。
- * ------------------------------ */
-
-// FastClick Only iOS
-// 在 Android 低端机下，效果不理想，不使用
-if ('addEventListener' in document && GLOBAL.platform && GLOBAL.platform.system === 'ios') {
-  document.addEventListener('DOMContentLoaded', function(){
-    FastClick.attach(document.body);
-  }, false);
-};
-
-
-// cxDialog 默认设置
-$.cxDialog.defaults.baseClass = 'ios';
-$.cxDialog.defaults.background = 'rgba(0,0,0,0.4)';
-$.cxDialog.defaults.title = '提示';
-$.cxDialog.defaults.ok = function(){};
-
-
-// 初始化界面
+ * 初始化界面
+ *
+ * bindBodyEvent              全局操作
+ * updateBackUrl              返回按钮 URL
+ * buildPageQrcode            当前页面二维码
+ * fixInputFixed              解决 iOS 输入框获取焦点时 fixed 错位
+ * --------------------
+ */
 (function() {
   var thePage = {
     dom: {}
