@@ -135,7 +135,7 @@ template.defaults.imports.tfEncodeURIComponent=function(a){return encodeURICompo
 
 
 // __init/plugins.js
-"addEventListener"in document&&GLOBAL.platform&&"ios"===GLOBAL.platform.system&&document.addEventListener("DOMContentLoaded",function(){FastClick.attach(document.body)},!1),$.cxDialog&&($.cxDialog.defaults.baseClass="ios",$.cxDialog.defaults.background="rgba(0,0,0,0.4)",$.cxDialog.defaults.title="提示",$.cxDialog.defaults.ok=function(){}),$.cxSelect&&($.cxSelect.defaults.url=GLOBAL.url.cityData);
+"addEventListener"in document&&GLOBAL.platform&&"ios"===GLOBAL.platform.system&&document.addEventListener("DOMContentLoaded",function(){FastClick.attach(document.body)},!1),$.cxDialog&&($.cxDialog.defaults.baseClass="ios",$.cxDialog.defaults.title="提示",$.cxDialog.defaults.ok=function(){},cxValidation&&cxValidation.setOptions({error:function(a){var b=a.element.nodeName.toLowerCase();$.cxDialog({info:a.message,ok:function(){("input"!==b||-1===["radio","checkbox","color","range","file"].indexOf(a.element.type))&&a.element.focus()}})}})),$.cxSelect&&($.cxSelect.defaults.url=GLOBAL.url.cityData);
 
 
 // __init/page.js

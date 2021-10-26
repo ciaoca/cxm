@@ -3,6 +3,7 @@
  *
  * FastClick
  * cxDialog
+ * cxValidation
  * cxSelect
  * --------------------
  */
@@ -19,9 +20,26 @@ if ('addEventListener' in document && GLOBAL.platform && GLOBAL.platform.system 
 // cxDialog 设置
 if ($.cxDialog) {
   $.cxDialog.defaults.baseClass = 'ios';
-  $.cxDialog.defaults.background = 'rgba(0,0,0,0.4)';
   $.cxDialog.defaults.title = '提示';
   $.cxDialog.defaults.ok = function(){};
+
+  // cxValidation 配置
+  if (cxValidation) {
+    cxValidation.setOptions({
+      error: function(result) {
+        var nodeName = result.element.nodeName.toLowerCase();
+
+        $.cxDialog({
+          info: result.message,
+          ok: function() {
+            if (nodeName !== 'input' || ['radio','checkbox','color','range','file'].indexOf(result.element.type) === -1) {
+              result.element.focus();
+            };
+          }
+        });
+      }
+    });
+  };
 };
 
 
