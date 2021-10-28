@@ -135,7 +135,7 @@ template.defaults.imports.tfEncodeURIComponent=function(a){return encodeURICompo
 
 
 // __init/plugins.js
-"addEventListener"in document&&GLOBAL.platform&&"ios"===GLOBAL.platform.system&&document.addEventListener("DOMContentLoaded",function(){FastClick.attach(document.body)},!1),$.cxDialog&&($.cxDialog.defaults.baseClass="ios",$.cxDialog.defaults.title="提示",$.cxDialog.defaults.ok=function(){},cxValidation&&cxValidation.setOptions({error:function(a){var b=a.element.nodeName.toLowerCase();$.cxDialog({info:a.message,ok:function(){("input"!==b||-1===["radio","checkbox","color","range","file"].indexOf(a.element.type))&&a.element.focus()}})}})),$.cxSelect&&($.cxSelect.defaults.url=GLOBAL.url.cityData);
+"addEventListener"in document&&GLOBAL.platform&&"ios"===GLOBAL.platform.system&&document.addEventListener("DOMContentLoaded",function(){FastClick.attach(document.body)},!1),"function"==typeof cxDate&&cxDate.setLanguage({monthAbbr:["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","十二月"],monthName:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],weekAbbr:["周日","周一","周二","周三","周四","周五","周六"],weekName:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],amName:["上午","下午"],AMName:["上午","下午"]}),$.cxDialog&&($.cxDialog.defaults.baseClass="ios",$.cxDialog.defaults.title="提示",$.cxDialog.defaults.ok=function(){},cxValidation&&cxValidation.setOptions({error:function(a){var b=a.element.nodeName.toLowerCase();$.cxDialog({info:a.message,ok:function(){("input"!==b||-1===["radio","checkbox","color","range","file"].indexOf(a.element.type))&&a.element.focus()}})}})),$.cxSelect&&($.cxSelect.defaults.url=GLOBAL.url.cityData);
 
 
 // __init/page.js
