@@ -10,9 +10,10 @@
 <meta name="format-detection" content="telephone=no">
 <link rel="stylesheet" href="../../../static/css/cxm.css">
 <link rel="stylesheet" href="../../../static/plugins/prism/prism.css">
+<link rel="stylesheet" href="../../../static/css/plugins.css">
 <link rel="stylesheet" href="../../static/css/layout.css">
 </head>
-<body>
+<body class="max_640">
 <div id="wrap" class="wrap">
   <div id="header" class="header">
     <header>
@@ -28,7 +29,7 @@
       <h3>默认字体尺寸</h3>
       <p></p>
       <pre class="language-css"><code class="css">html{font-size:10px;}
-body{font-size:1.2rem;} /* 1rem = 10px */</code></pre>
+body{font-size:1.4rem;} /* 1rem = 10px */</code></pre>
 
       <hr>
       <h3>组件尺寸</h3>
@@ -40,7 +41,7 @@ body{font-size:1.2rem;} /* 1rem = 10px */</code></pre>
       <hr>
       <h3>Header</h3>
       <p>默认高度为<code>46px</code></p>
-      <p>参考 iOS 系统，从 iPhone 6 开始高度 46px，更旧的设备为 44px，考虑到老旧设备已经没有多少用户，所以不再做兼容调整，统一使用 46px。</p>
+      <p>参考 iOS 系统，从 iPhone 6 开始高度 46px，更旧的设备为 44px，考虑到老旧设备用户量非常少，所以不再做兼容调整，统一使用 46px。</p>
       <p>如果打包为 APP，且设置了全屏（StatusBar 覆盖在页面上的情况下），可引入或参考<code>cxm-iphone.css</code>，为顶部状态栏留出空间。</p>
 
       <hr>
@@ -49,9 +50,9 @@ body{font-size:1.2rem;} /* 1rem = 10px */</code></pre>
       <p>当设备为 iPhone X~12 时，会将底部抬高，避免被底部控制按钮遮挡。</p>
 
       <hr>
-      <h3>自适应</h3>
-      <p>考虑到移动端设备大多为竖屏使用，而 PC 端大多为横屏，如果将移动端的设计放到 PC 端满屏，会显得非常不友好。</p>
-      <p>因此宽度最大支持<code>640px</code>，超过时居中布局。</p>
+      <h3>响应式</h3>
+      <p>移动端设备大多为竖屏使用，而 PC 端大多为横屏，如果将移动端的设计放到 PC 端满屏，会显得不太友好。</p>
+      <p>可以在<code>body</code>增加样式<code>max_640 / max_1024</code>，在屏幕宽度过大时居中布局。</p>
     </div>
   </div>
 

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>cxCalendar 日期选择器 - 位置设定</title>
+<link rel="stylesheet" href="../css/cxcalendar.css">
+<link rel="stylesheet" href="../css/demo.css">
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>cxCalendar 日期选择器</h1>
+  </div>
+</header>
+<div class="main">
+  <div class="wrap">
+    <nav>
+      <a href="index.html">常规示例</a>
+      <a class="active" href="position.html">位置设定</a>
+      <a href="bind.html">动态绑定</a>
+    </nav>
+
+    <h2>位置设定</h2>
+    <p>默认自适应，避免显示位置超出窗口。</p>
+
+    <fieldset>
+      <legend>bottom</legend>
+      <label>选择日期：</label>
+      <input type="text" class="input" readonly data-position="bottom">
+    </fieldset>
+
+    <fieldset>
+      <legend>top</legend>
+      <label>选择日期：</label>
+      <input type="text" class="input" readonly data-position="top">
+    </fieldset>
+
+    <fieldset>
+      <legend>left</legend>
+      <label>选择日期：</label>
+      <input type="text" class="input" readonly data-position="left">
+    </fieldset>
+
+    <fieldset>
+      <legend>right</legend>
+      <label>选择日期：</label>
+      <input type="text" class="input" readonly data-position="right">
+    </fieldset>
+
+    <fieldset>
+      <legend>fixed</legend>
+      <label>选择日期：</label>
+      <input type="text" class="input" readonly data-position="fixed" data-base-class="fixed" data-lock-row="1">
+    </fieldset>
+
+    <div class="about">
+      <section>
+        <h2>文档</h2>
+        <p><a target="_blank" href="https://github.com/ciaoca/cxCalendar">Github</a></p>
+      </section>
+      <section>
+        <h2>作者</h2>
+        <p><a target="_blank" href="http://ciaoca.com/">Ciaoca</a></p>
+      </section>
+      <section>
+        <h2>协议</h2>
+        <p>Released under the MIT license</p>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- <script src="//cdn.staticfile.org/jquery/1.7.1/jquery.min.js"></script> -->
+<script src="//cdn.staticfile.org/zepto/1.1.1/zepto.min.js"></script>
+<script src="../js/cxcalendar.js"></script>
+<script>
+$('input').cxCalendar();
+</script>
+</body>
+</html>

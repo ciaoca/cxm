@@ -10,9 +10,10 @@
 <meta name="format-detection" content="telephone=no">
 <link rel="stylesheet" href="../../../static/css/cxm.css">
 <link rel="stylesheet" href="../../../static/plugins/prism/prism.css">
+<link rel="stylesheet" href="../../../static/css/plugins.css">
 <link rel="stylesheet" href="../../static/css/layout.css">
 </head>
-<body class="gray">
+<body class="max_640 gray">
 <div id="wrap" class="wrap">
   <div id="header" class="header">
     <header>
@@ -47,6 +48,15 @@
         <label for="opt_radius">Radius</label>
         <input type="checkbox" name="style" id="opt_notbg" class="checkbox" value="notbg">
         <label for="opt_notbg">Not Background</label>
+      </dd>
+    </dl>
+    <dl class="row">
+      <dt>Box/Group</dt>
+      <dd>
+        <div class="input_group full">
+          <input type="checkbox" name="boxstyle" id="opt_boxfull" class="checkbox" value="full">
+          <label for="opt_boxfull">Full</label>
+        </div>
       </dd>
     </dl>
   </div>
@@ -88,6 +98,13 @@
       <div class="input_group">
         <label class="input_label">Label</label>
         <input type="text" class="input" placeholder="Before & After Label">
+        <label class="input_label">Label</label>
+      </div>
+      <div class="input_group">
+        <label class="input_label">Label</label>
+        <input type="text" class="input" placeholder="Start">
+        <label class="input_label">-</label>
+        <input type="text" class="input" placeholder="End">
         <label class="input_label">Label</label>
       </div>
     </div>
@@ -197,6 +214,17 @@
             self.dom.demo.find('.input, .input_label').addClass(_value);
           } else {
             self.dom.demo.find('.input, .input_label').removeClass(_value);
+          };
+          break;
+
+        // Box / Group
+        case 'boxstyle':
+          if (_this.checked) {
+            self.dom.demo.find('.input_box').addClass(_value);
+            self.dom.demo.find('.input_group').addClass(_value);
+          } else {
+            self.dom.demo.find('.input_box').removeClass(_value);
+            self.dom.demo.find('.input_group').removeClass(_value);
           };
           break;
       };

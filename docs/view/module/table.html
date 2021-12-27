@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CXM - 表单</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../../../static/css/cxm.css">
+<link rel="stylesheet" href="../../../static/plugins/prism/prism.css">
+<link rel="stylesheet" href="../../../static/css/plugins.css">
+<link rel="stylesheet" href="../../static/css/layout.css">
+</head>
+<body class="max_640 gray">
+<div id="wrap" class="wrap">
+  <div id="header" class="header">
+    <header>
+      <h1>表格</h1>
+      <div class="group onleft">
+        <a id="header_back" class="icon back" href="index.html"></a>
+      </div>
+      <div class="group onright">
+        <a class="txt bg" href="javascript://" rel="body_bg"></a>
+      </div>
+    </header>
+  </div>
+
+  <form action="javascript://" id="option_form">
+    <div class="form">
+      <dl class="row">
+        <dt>Style</dt>
+        <dd>
+          <div class="input_group">
+            <input type="checkbox" name="style" id="opt_full" class="checkbox" value="full">
+            <label for="opt_full">Full</label>
+            <input type="checkbox" name="style" id="opt_border" class="checkbox" value="border">
+            <label for="opt_border">Border</label>
+          </div>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt>Length</dt>
+        <dd>
+          <input type="checkbox" name="boxStyle" id="opt_length" class="checkbox" value="table_scroll">
+          <label for="opt_length">Long & Scroll</label>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt>Other</dt>
+        <dd>
+          <input type="checkbox" name="module" id="opt_head" class="checkbox" value="head" checked>
+          <label for="opt_head">Table Head</label>
+          <input type="checkbox" name="module" id="opt_foot" class="checkbox" value="foot" checked>
+          <label for="opt_foot">Table Foot</label>
+          <input type="checkbox" name="style" id="opt_airtable" class="checkbox" value="airtable">
+          <label for="opt_airtable">Air Table</label>
+        </dd>
+      </dl>
+    </div>
+  </form>
+
+  <div class="demo_box">
+    <div id="table_box">
+      <table id="table" class="table"></table>
+    </div>
+  </div>
+
+  <div class="demo_intro">
+    <div class="detail">
+<pre class="language-html"><code class="html">&lt;table class="table"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+
+      <p>在表格外层增加<code>.table_scroll</code>，内容超宽时将支持水平滚动；如果限制了高度，也会支持垂直滚动。</p>
+
+      <p><code>.table</code>增加<code>.airtable</code>样式，在移动端时会更改表格布局，将内容完整显示。</p>
+    </div>
+  </div>
+
+  <footer id="tabbar" class="tabbar" data-target="module"></footer>
+</div>
+
+<script src="../../../static/plugins/zepto/zepto.min.js"></script>
+<script src="../../../static/plugins/prism/prism.js"></script>
+<script src="../../../static/js/plugins.js"></script>
+<script src="../../../static/js/init.js"></script>
+<script src="../../static/js/main.js"></script>
+<script>
+(function() {
+  var thePage = {
+    dom: {}
+  };
+
+  thePage.init = function() {
+    var self = this;
+
+    self.dom.box = $('#table_box');
+    self.dom.table = $('#table');
+    self.dom.optionForm = $('#option_form');
+
+    self.dom.optionForm.on('change', 'input, select', function(event) {
+      self.buildTable();
+    });
+
+    self.buildTable();
+  };
+
+  thePage.buildTable = function() {
+    var self = this;
+    var formData = APP.getFormData(self.dom.optionForm);
+    var options = {
+      style: ['table'],
+      boxStyle: [],
+      module: [],
+      colNum: 3,
+    };
+
+    if (typeof formData.style === 'string') {
+      options.style.push(formData.style);
+    } else if (Array.isArray(formData.style) && formData.style.length) {
+      options.style = options.style.concat(formData.style);
+    };
+
+    if (typeof formData.boxStyle === 'string') {
+      options.boxStyle.push(formData.boxStyle);
+    } else if (Array.isArray(formData.boxStyle) && formData.boxStyle.length) {
+      options.boxStyle = options.boxStyle.concat(formData.boxStyle);
+    };
+
+    if (typeof formData.module === 'string') {
+      options.module.push(formData.module);
+    } else if (Array.isArray(formData.module) && formData.module.length) {
+      options.module = options.module.concat(formData.module);
+    };
+
+    self.dom.table.removeAttr('class');
+    self.dom.box.removeAttr('class');
+
+    if (Array.isArray(options.style) && options.style.length) {
+      self.dom.table.attr('class', options.style.join(' '));
+    };
+
+    if (Array.isArray(options.boxStyle) && options.boxStyle.length) {
+      self.dom.box.attr('class', options.boxStyle.join(' '));
+      if (options.boxStyle.indexOf('table_scroll') >= 0) {
+        options.colNum = APP.getRandomNumber(10,20);
+      };
+    };
+
+    var list = [];
+    var html = '';
+
+    for (var i = 0; i < options.colNum; i++) {
+      list.push(i);
+    };
+
+    if (options.module.indexOf('head') >= 0) {
+      html = '<thead><tr><th>表头' + list.join('</th><th>表头') + '</th></tr></thead>';
+    };
+
+    html += '<tbody>';
+    for (var i = 0, l = APP.getRandomNumber(1,9); i < l; i++) {
+      html += '<tr><td>内容' + list.join('</td><td>内容') + '</td></tr>';
+    };
+    html += '</tbody>';
+
+    if (options.module.indexOf('foot') >= 0) {
+      html += '<tfoot><tr><td>脚注' + list.join('</td><td>脚注') + '</td></tr></tfoot>';
+    };
+
+    self.dom.table.html(html);
+  };
+
+  thePage.init();
+})();
+</script>
+</body>
+</html>

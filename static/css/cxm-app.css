@@ -1,13 +1,13 @@
 /**
  * 适用于 APP 获得更好体验的特性
  * ------------------------------ */
-body{
-/* 长按不选择内容 */
--webkit-user-select:none;
-user-select:none;
+body {
+  /* 长按不选择内容 */
+  -webkit-user-select: none;
+  user-select: none;
 }
 
-a{
-/* 长按链接不出现菜单 */
--webkit-touch-callout:none;
+a {
+  /* 长按链接不出现菜单 */
+  -webkit-touch-callout: none;
 }

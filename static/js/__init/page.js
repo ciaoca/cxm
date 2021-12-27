@@ -9,6 +9,7 @@
  */
 (function() {
   var thePage = {
+    config: {},
     dom: {}
   };
 
@@ -16,6 +17,10 @@
     var self = this;
 
     self.dom.body = $('body');
+
+    if (APP.isObject(window.PageConfig)) {
+      $.extend(self.config, window.PageConfig);
+    };
 
     if (document.getElementById('header_back')) {
       self.updateBackUrl();
@@ -29,10 +34,7 @@
       self.fixInputFixed();
     };
 
-    if (window.innerWidth > 1000) {
-      self.buildPageQrcode();
-    };
-
+    self.buildPageQrcode();
     self.bindBodyEvent();
   };
 
@@ -61,9 +63,9 @@
         APP.panelToggle(_rev, _opt);
 
       // 发送短信验证码
-      } else if (_rel === 'call_sms') {
-        event.preventDefault();
-        APP.smsSend(_this);
+      // } else if (_rel === 'call_sms') {
+      //   event.preventDefault();
+      //   APP.smsSend(_this);
       };
     });
   };
@@ -148,5 +150,7 @@
     }, true);
   };
 
-  thePage.init();
+  document.addEventListener('DOMContentLoaded', function() {
+    thePage.init();
+  });
 })();

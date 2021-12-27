@@ -1,13 +1,16 @@
 /**
  * artTemplate 模板引擎扩展
  *
- * tfEncodeURIComponent       URI 编码
- * tfArrayIndexOf             根据值是否存在输出内容
+ * tfIsString                 是否是字符串
+ * tfIsNumber                 是否是数字
+ * tfIsArray                  是否是数组
+ * tfInArray                  是否存在于数组
  * tfReplace                  替换内容
  * tfReplaceEnter             替换换行
  * tfNumberFormat             数字格式化
  * tfDate                     日期格式化
  * tfGetWeekName              获取星期值
+ * tfEncodeURIComponent       URI 编码
  * tfUrlAddQuery              给 URL 增加参数
  *
  * --------------------       模板 GLOBAL.template.X
@@ -16,35 +19,17 @@
  * --------------------
  */
 
-/**
- * URI 编码
- * @param {string} string - 字符串
- * @param {object} data - 数据
- * @param {array} data.body - 表格主题
- * @param {array} [data.header] - 表头
- * @param {array} [data.footer] - 表注
- * @param {element} [options] - 配置
- * @param {string} options.skipCols - 跳过的列
- */
-template.defaults.imports.tfEncodeURIComponent = function(string) {
-  return encodeURIComponent(string);
+template.defaults.imports.tfIsString = function(val) {
+  return APP.isString(val);
 };
-
-/**
- * 根据值是否存在输出内容
- * @param {array} arr - 数组
- * @param {string} val - 要查找的值
- * @param {string} text - 如果存在要返回的内容
- * @param {string} rule - 规则
- */
-template.defaults.imports.tfArrayIndexOf = function(val, arr, text, rule) {
-  var result = false;
-
-  if (rule === 'number') {
-    val = parseInt(val, 10);
-  };
-
-  return (Array.isArray(arr) && arr.indexOf(val) >= 0) ? text : '';
+template.defaults.imports.tfIsNumber = function(val) {
+  return APP.isNumber(val);
+};
+template.defaults.imports.tfIsArray = function(val) {
+  return APP.isArray(val);
+};
+template.defaults.imports.tfInArray = function(val, arr) {
+  return (Array.isArray(arr) && arr.indexOf(val) >= 0) ? true : false;
 };
 
 /**
@@ -82,7 +67,7 @@ template.defaults.imports.tfNumberFormat = function() {
 // 日期格式化
 template.defaults.imports.tfDate = function(time, style) {
   if (typeof time === 'number' && time > 0) {
-    return moment(time).format(style);
+    return dayjs(time).format(style);
   } else {
     return '-';
   };
@@ -109,6 +94,20 @@ template.defaults.imports.tfGetWeekName = function(num) {
   };
 
   return value;
+};
+
+/**
+ * URI 编码
+ * @param {string} string - 字符串
+ * @param {object} data - 数据
+ * @param {array} data.body - 表格主题
+ * @param {array} [data.header] - 表头
+ * @param {array} [data.footer] - 表注
+ * @param {element} [options] - 配置
+ * @param {string} options.skipCols - 跳过的列
+ */
+template.defaults.imports.tfEncodeURIComponent = function(string) {
+  return encodeURIComponent(string);
 };
 
 /**

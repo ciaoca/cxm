@@ -1,28 +1,7 @@
 /**
  * Themes
  * ------------------------------ */
-:root{
-/* 颜色配置 */
---primary-color:#111;
-
-/* 尺寸配置 */
---size-mini:24px;
---size-small:32px;
---size-default:40px;
---size-large:48px;
-
-/* 间距配置 */
---gap-mini:0.5em;
---gap-small:0.5em;
---gap-default:1em;
---gap-large:1.5em;
-
-/* 圆角 */
---radius:0;
-
-/* 头部高度 */
---header-height:44px;
-}
+:root {}
 
 
 /**
@@ -31,23 +10,21 @@
 
 
 
+
+
 /**
  * Responsive
  * ------------------------------ */
-@media (min-width:375px){
-}
+@media (min-width:375px) {}
 
-@media (min-width:480px){
-}
+@media (min-width:768px) {}
 
-@media (min-width:568px){
-}
+@media (min-width:1024px) {}
 
-@media (min-width:640px){
-}
+@media (min-width:1280px) {}
 
-@media (min-width:1000px){
-}
+@media (min-width:1440px) {}
 
-@media (min-width:1200px){
-}
+@media (min-width:1600px) {}
+
+@media (min-width:1920px) {}

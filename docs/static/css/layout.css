@@ -45,9 +45,41 @@ flex:1;
 
 
 /**
- * 链接
+ * 目录
  * ------------------------------ */
-.demo_link{font-size:1.4rem;line-height:2;}
+.demo_nav {
+  font-size: var(--font-default);
+  line-height: var(--size-default);
+}
+
+.demo_nav a {
+  display: block;
+  position: relative;
+  padding-left: var(--gap-default);
+  background-color: #fff;
+}
+
+.demo_nav a:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: var(--gap-default);
+  width: 6px;
+  height: 6px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  color: rgba(0, 0, 0, 0.2);
+  ;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.demo_nav a+a {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.demo_nav .group+.group {
+  margin-top: var(--gap-default);
+}
 
 
 /**

@@ -3,39 +3,65 @@
  * ------------------------------ */
 
 /* iPhone 5 ~ 8 */
-@media (width:320px) and (height:568px), (width:375px) and (height:667px), (width:414px) and (height:736px), (width:375px) and (height:812px), (width:414px) and (height:896px), (width:390px) and (height:844px), (width:428px) and (height:926px) {
-:root{
---iphone-header-fix:20px;
-}
+@media (width:320px) and (height:568px),
+(width:375px) and (height:667px),
+(width:414px) and (height:736px),
+(width:375px) and (height:812px),
+(width:414px) and (height:896px),
+(width:390px) and (height:844px),
+(width:428px) and (height:926px) {
+  :root {
+    --iphone-header-fix: 20px;
+  }
 
-.header{height:calc(var(--header-size) + var(--iphone-header-fix));}
-.header header{padding-top:var(--iphone-header-fix);}
-.header .onleft,
-.header .onright{top:var(--iphone-header-fix);}
+  .header {
+    height: calc(var(--header-size) + var(--iphone-header-fix));
+  }
+  .header header {
+    padding-top: var(--iphone-header-fix);
+  }
 
-.header + .panel_body,
-.header + .tabnav.fixed nav,
-.header + .filter_tool.fixed nav{top:calc(var(--header-size) + var(--iphone-header-fix));}
+  .header .onleft,
+  .header .onright {
+    top: var(--iphone-header-fix);
+  }
 
-.header + .tabnav + .panel_body,
-.header + .tabnav.fixed + .filter_tool.fixed nav,
-.header + .filter_tool + .panel_body,
-.header + .filter_tool.fixed + .tabnav.fixed nav{top:calc(var(--header-size) + var(--iphone-header-fix) + var(--tabnav-height) + var(--filter-tool-height));}
+  .header+.panel_body,
+  .header+.tabnav.fixed nav,
+  .header+.filter_tool.fixed nav {
+    top: calc(var(--header-size) + var(--iphone-header-fix));
+  }
 
-.header + .tabnav.radius + .panel_body,
-.header + .tabnav.radius.fixed + .filter_tool.fixed nav{top:calc(var(--header-size) + var(--iphone-header-fix) + var(--tabnav-radius-height) + var(--filter-tool-height));}
+  .header+.tabnav+.panel_body,
+  .header+.tabnav.fixed+.filter_tool.fixed nav,
+  .header+.filter_tool+.panel_body,
+  .header+.filter_tool.fixed+.tabnav.fixed nav {
+    top: calc(var(--header-size) + var(--iphone-header-fix) + var(--tabnav-height) + var(--filter-tool-height));
+  }
 
-.header + .tabnav + .filter_tool + .panel_body,
-.header + .filter_tool + .tabnav + .panel_body{top:calc(var(--header-size) + var(--iphone-header-fix) + var(--tabnav-height) + var(--filter-tool-height));}
+  .header+.tabnav.radius+.panel_body,
+  .header+.tabnav.radius.fixed+.filter_tool.fixed nav {
+    top: calc(var(--header-size) + var(--iphone-header-fix) + var(--tabnav-radius-height) + var(--filter-tool-height));
+  }
 
-.header + .tabnav.radius + .filter_tool + .panel_body,
-.header + .filter_tool + .tabnav.radius + .panel_body{top:calc(var(--header-size) + var(--iphone-header-fix) + var(--tabnav-radius-height) + var(--filter-tool-height));}
+  .header+.tabnav+.filter_tool+.panel_body,
+  .header+.filter_tool+.tabnav+.panel_body {
+    top: calc(var(--header-size) + var(--iphone-header-fix) + var(--tabnav-height) + var(--filter-tool-height));
+  }
+
+  .header+.tabnav.radius+.filter_tool+.panel_body,
+  .header+.filter_tool+.tabnav.radius+.panel_body {
+    top: calc(var(--header-size) + var(--iphone-header-fix) + var(--tabnav-radius-height) + var(--filter-tool-height));
+  }
 }
 
 
 /* iPhone X ~ 12 */
-@media (width:375px) and (height:812px), (width:414px) and (height:896px), (width:390px) and (height:844px), (width:428px) and (height:926px) {
-:root{
---iphone-header-fix:44px;
-}
+@media (width:375px) and (height:812px),
+(width:414px) and (height:896px),
+(width:390px) and (height:844px),
+(width:428px) and (height:926px) {
+  :root {
+    --iphone-header-fix: 44px;
+  }
 }
