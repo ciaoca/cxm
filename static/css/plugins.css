@@ -40,6 +40,7 @@
 }
 .notyf__wrapper{
   padding: 0;
+  border: var(--radius);
 }
 .notyf__message{
   padding: 8px 12px 8px 32px;

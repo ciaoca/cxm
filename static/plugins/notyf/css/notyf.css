@@ -345,6 +345,7 @@
   line-height: 1.5em;
 }
 
+/*
 @media only screen and (max-width:480px) {
   .notyf {
     padding: 0;
@@ -368,3 +369,4 @@
     width: 56px;
   }
 }
+*/
