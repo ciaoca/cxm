@@ -34,7 +34,10 @@
       self.fixInputFixed();
     };
 
-    self.buildPageQrcode();
+    if (GLOBAL.mediaMode === 'pc') {
+      self.buildPageQrcode();
+    };
+
     self.bindBodyEvent();
   };
 
@@ -62,10 +65,6 @@
         event.preventDefault();
         APP.panelToggle(_rev, _opt);
 
-      // 发送短信验证码
-      // } else if (_rel === 'call_sms') {
-      //   event.preventDefault();
-      //   APP.smsSend(_this);
       };
     });
   };
