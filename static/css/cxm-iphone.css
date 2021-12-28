@@ -26,31 +26,31 @@
     top: var(--iphone-header-fix);
   }
 
-  .header+.panel_body,
-  .header+.tabnav.fixed nav,
-  .header+.filter_tool.fixed nav {
+  .header + .panel_body,
+  .header + .tabnav.fixed nav,
+  .header + .filter_tool.fixed nav {
     top: calc(var(--header-size) + var(--iphone-header-fix));
   }
 
-  .header+.tabnav+.panel_body,
-  .header+.tabnav.fixed+.filter_tool.fixed nav,
-  .header+.filter_tool+.panel_body,
-  .header+.filter_tool.fixed+.tabnav.fixed nav {
+  .header + .tabnav + .panel_body,
+  .header + .tabnav.fixed + .filter_tool.fixed nav,
+  .header + .filter_tool + .panel_body,
+  .header + .filter_tool.fixed + .tabnav.fixed nav {
     top: calc(var(--header-size) + var(--iphone-header-fix) + var(--tabnav-height) + var(--filter-tool-height));
   }
 
-  .header+.tabnav.radius+.panel_body,
-  .header+.tabnav.radius.fixed+.filter_tool.fixed nav {
+  .header + .tabnav.radius + .panel_body,
+  .header + .tabnav.radius.fixed + .filter_tool.fixed nav {
     top: calc(var(--header-size) + var(--iphone-header-fix) + var(--tabnav-radius-height) + var(--filter-tool-height));
   }
 
-  .header+.tabnav+.filter_tool+.panel_body,
-  .header+.filter_tool+.tabnav+.panel_body {
+  .header + .tabnav + .filter_tool + .panel_body,
+  .header + .filter_tool + .tabnav + .panel_body {
     top: calc(var(--header-size) + var(--iphone-header-fix) + var(--tabnav-height) + var(--filter-tool-height));
   }
 
-  .header+.tabnav.radius+.filter_tool+.panel_body,
-  .header+.filter_tool+.tabnav.radius+.panel_body {
+  .header + .tabnav.radius + .filter_tool + .panel_body,
+  .header + .filter_tool + .tabnav.radius + .panel_body {
     top: calc(var(--header-size) + var(--iphone-header-fix) + var(--tabnav-radius-height) + var(--filter-tool-height));
   }
 }

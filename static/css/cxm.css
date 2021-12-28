@@ -773,9 +773,9 @@ textarea.input.radius {
   display: none;
 }
 
-.radio+label,
-.checkbox+label,
-.checkswitch+label {
+.radio + label,
+.checkbox + label,
+.checkswitch + label {
   display: block;
   box-sizing: border-box;
   overflow: hidden;
@@ -789,24 +789,24 @@ textarea.input.radius {
   cursor: pointer;
 }
 
-label+.radio+label,
-label+.checkbox+label,
-label+.checkswitch+label {
+label + .radio + label,
+label + .checkbox + label,
+label + .checkswitch + label {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.radio+label:before,
-.radio+label:after,
-.checkbox+label:after,
-.checkswitch+label:before,
-.checkswitch+label:after {
+.radio + label:before,
+.radio + label:after,
+.checkbox + label:after,
+.checkswitch + label:before,
+.checkswitch + label:after {
   content: '';
   position: absolute;
   top: 50%;
 }
 
 /* 单选框 */
-.radio+label:before {
+.radio + label:before {
   left: 12px;
   width: 18px;
   height: 18px;
@@ -818,7 +818,7 @@ label+.checkswitch+label {
   transition-property: color;
   transition-duration: 0.2s;
 }
-.radio+label:after {
+.radio + label:after {
   left: 18px;
   width: 8px;
   height: 8px;
@@ -829,13 +829,13 @@ label+.checkswitch+label {
   transition-property: color;
   transition-duration: 0.2s;
 }
-.radio:checked+label:before,
-.radio:checked+label:after {
+.radio:checked + label:before,
+.radio:checked + label:after {
   color: var(--primary-color);
 }
 
 /* 复选框 */
-.checkbox+label:after {
+.checkbox + label:after {
   left: 19px;
   width: 4px;
   height: 10px;
@@ -847,15 +847,15 @@ label+.checkswitch+label {
   transition-property: color;
   transition-duration: 0.2s;
 }
-.checkbox:checked+label:after {
+.checkbox:checked + label:after {
   color: var(--primary-color);
 }
 
 /* 开关 */
-.checkswitch+label {
+.checkswitch + label {
   padding-left: 64px;
 }
-.checkswitch+label:before {
+.checkswitch + label:before {
   left: 11px;
   width: 38px;
   height: 22px;
@@ -867,7 +867,7 @@ label+.checkswitch+label {
   transition-property: border-color, color;
   transition-duration: 0.2s;
 }
-.checkswitch+label:after {
+.checkswitch + label:after {
   left: 12px;
   width: 22px;
   height: 22px;
@@ -878,57 +878,57 @@ label+.checkswitch+label {
   transition-property: left;
   transition-duration: 0.2s;
 }
-.checkswitch:checked+label:before {
+.checkswitch:checked + label:before {
   border-color: var(--checkswitch-color);
   color: var(--checkswitch-color);
 }
-.checkswitch:checked+label:after {
+.checkswitch:checked + label:after {
   left: 28px;
 }
 
 /* 右侧 */
-.radio.onright+label,
-.checkbox.onright+label,
-.checkswitch.onright+label {
+.radio.onright + label,
+.checkbox.onright + label,
+.checkswitch.onright + label {
   padding-left: var(--gap-default);
   padding-right: 44px;
 }
-.checkswitch.onright+label {
+.checkswitch.onright + label {
   padding-right: 64px;
 }
 
-.radio.onright+label:before {
+.radio.onright + label:before {
   left: auto;
   right: 12px;
 }
-.radio.onright+label:after {
+.radio.onright + label:after {
   left: auto;
   right: 18px;
 }
 
-.checkbox.onright+label:after {
+.checkbox.onright + label:after {
   left: auto;
   right: 19px;
 }
 
-.checkswitch.onright+label:before {
+.checkswitch.onright + label:before {
   left: auto;
   right: 11px;
 }
-.checkswitch.onright+label:after {
+.checkswitch.onright + label:after {
   left: auto;
   right: 28px;
   transition-property: right;
   transition-duration: 0.2s;
 }
-.checkswitch.onright:checked+label:after {
+.checkswitch.onright:checked + label:after {
   right: 12px;
 }
 
 /* Mini */
-.radio.mini+label,
-.checkbox.mini+label,
-.checkswitch.mini+label {
+.radio.mini + label,
+.checkbox.mini + label,
+.checkswitch.mini + label {
   height: var(--size-mini);
   padding-left: 24px;
   padding-right: var(--gap-mini);
@@ -936,24 +936,24 @@ label+.checkswitch+label {
   line-height: var(--size-mini);
 }
 
-.checkswitch.mini+label {
+.checkswitch.mini + label {
   padding-left: 32px;
 }
 
-.radio.mini+label:before {
+.radio.mini + label:before {
   left: 6px;
   width: 10px;
   height: 10px;
   margin-top: -6px;
 }
-.radio.mini+label:after {
+.radio.mini + label:after {
   left: 10px;
   width: 4px;
   height: 4px;
   margin-top: -2px;
 }
 
-.checkbox.mini+label:after {
+.checkbox.mini + label:after {
   left: 10px;
   width: 3px;
   height: 7px;
@@ -962,64 +962,64 @@ label+.checkswitch+label {
   border-right-width: 1px;
 }
 
-.checkswitch.mini+label:before {
+.checkswitch.mini + label:before {
   left: 5px;
   width: 18px;
   height: 10px;
   margin-top: -6px;
 }
-.checkswitch.mini+label:after {
+.checkswitch.mini + label:after {
   left: 6px;
   width: 10px;
   height: 10px;
   margin-top: -5px;
 }
 
-.checkswitch.mini:checked+label:after {
+.checkswitch.mini:checked + label:after {
   left: 14px;
 }
 
-.radio.onright.mini+label,
-.checkbox.onright.mini+label,
-.checkswitch.onright.mini+label {
+.radio.onright.mini + label,
+.checkbox.onright.mini + label,
+.checkswitch.onright.mini + label {
   padding-left: var(--gap-mini);
   padding-right: 24px;
 }
 
-.checkswitch.onright.mini+label {
+.checkswitch.onright.mini + label {
   padding-right: 32px;
 }
 
-.radio.onright.mini+label:before {
+.radio.onright.mini + label:before {
   left: auto;
   right: 6px;
 }
-.radio.onright.mini+label:after {
+.radio.onright.mini + label:after {
   left: auto;
   right: 10px;
 }
 
-.checkbox.onright.mini+label:after {
+.checkbox.onright.mini + label:after {
   left: auto;
   right: 10px;
 }
 
-.checkswitch.onright.mini+label:before {
+.checkswitch.onright.mini + label:before {
   left: auto;
   right: 5px;
 }
-.checkswitch.onright.mini+label:after {
+.checkswitch.onright.mini + label:after {
   left: auto;
   right: 14px;
 }
-.checkswitch.onright.mini:checked+label:after {
+.checkswitch.onright.mini:checked + label:after {
   right: 6px;
 }
 
 /* Small */
-.radio.small+label,
-.checkbox.small+label,
-.checkswitch.small+label {
+.radio.small + label,
+.checkbox.small + label,
+.checkswitch.small + label {
   height: var(--size-small);
   padding-left: 36px;
   padding-right: var(--gap-small);
@@ -1027,87 +1027,87 @@ label+.checkswitch+label {
   line-height: var(--size-small);
 }
 
-.checkswitch.small+label {
+.checkswitch.small + label {
   padding-left: 44px;
 }
 
-.radio.small+label:before {
+.radio.small + label:before {
   left: 10px;
   width: 14px;
   height: 14px;
   margin-top: -8px;
 }
-.radio.small+label:after {
+.radio.small + label:after {
   left: 15px;
   width: 6px;
   height: 6px;
   margin-top: -3px;
 }
 
-.checkbox.small+label:after {
+.checkbox.small + label:after {
   left: 15px;
   width: 3px;
   height: 8px;
   margin-top: -6px;
 }
 
-.checkswitch.small+label:before {
+.checkswitch.small + label:before {
   left: 9px;
   width: 24px;
   height: 14px;
   margin-top: -8px;
 }
-.checkswitch.small+label:after {
+.checkswitch.small + label:after {
   left: 10px;
   width: 14px;
   height: 14px;
   margin-top: -7px;
 }
-.checkswitch.small:checked+label:after {
+.checkswitch.small:checked + label:after {
   left: 20px;
 }
 
-.radio.onright.small+label,
-.checkbox.onright.small+label,
-.checkswitch.onright.small+label {
+.radio.onright.small + label,
+.checkbox.onright.small + label,
+.checkswitch.onright.small + label {
   padding-left: var(--gap-small);
   padding-right: 36px;
 }
 
-.checkswitch.onright.small+label {
+.checkswitch.onright.small + label {
   padding-right: 44px;
 }
 
-.radio.onright.small+label:before {
+.radio.onright.small + label:before {
   left: auto;
   right: 10px;
 }
-.radio.onright.small+label:after {
+.radio.onright.small + label:after {
   left: auto;
   right: 15px;
 }
 
-.checkbox.onright.small+label:after {
+.checkbox.onright.small + label:after {
   left: auto;
   right: 15px;
 }
 
-.checkswitch.onright.small+label:before {
+.checkswitch.onright.small + label:before {
   left: auto;
   right: 10px;
 }
-.checkswitch.onright.small+label:after {
+.checkswitch.onright.small + label:after {
   left: auto;
   right: 20px;
 }
-.checkswitch.onright.small:checked+label:after {
+.checkswitch.onright.small:checked + label:after {
   right: 11px;
 }
 
 /* Large */
-.radio.large+label,
-.checkbox.large+label,
-.checkswitch.large+label {
+.radio.large + label,
+.checkbox.large + label,
+.checkswitch.large + label {
   height: var(--size-large);
   padding-left: 56px;
   padding-right: var(--gap-large);
@@ -1115,80 +1115,80 @@ label+.checkswitch+label {
   line-height: var(--size-large);
 }
 
-.checkswitch.large+label {
+.checkswitch.large + label {
   padding-left: 84px;
 }
 
-.radio.large+label:before {
+.radio.large + label:before {
   left: 16px;
   width: 22px;
   height: 22px;
   margin-top: -12px;
 }
-.radio.large+label:after {
+.radio.large + label:after {
   left: 23px;
   width: 10px;
   height: 10px;
   margin-top: -5px;
 }
 
-.checkbox.large+label:after {
+.checkbox.large + label:after {
   left: 24px;
   width: 5px;
   height: 12px;
   margin-top: -8px;
 }
 
-.checkswitch.large+label:before {
+.checkswitch.large + label:before {
   left: 15px;
   width: 50px;
   height: 28px;
   margin-top: -15px;
 }
-.checkswitch.large+label:after {
+.checkswitch.large + label:after {
   left: 16px;
   width: 28px;
   height: 28px;
   margin-top: -14px;
 }
-.checkswitch.large:checked+label:after {
+.checkswitch.large:checked + label:after {
   left: 38px;
 }
 
-.radio.onright.large+label,
-.checkbox.onright.large+label,
-.checkswitch.onright.large+label {
+.radio.onright.large + label,
+.checkbox.onright.large + label,
+.checkswitch.onright.large + label {
   padding-left: var(--gap-large);
   padding-right: 56px;
 }
 
-.checkswitch.onright.large+label {
+.checkswitch.onright.large + label {
   padding-right: 84px;
 }
 
-.radio.onright.large+label:before {
+.radio.onright.large + label:before {
   left: auto;
   right: 16px;
 }
-.radio.onright.large+label:after {
+.radio.onright.large + label:after {
   left: auto;
   right: 23px;
 }
 
-.checkbox.onright.large+label:after {
+.checkbox.onright.large + label:after {
   left: auto;
   right: 24px;
 }
 
-.checkswitch.onright.large+label:before {
+.checkswitch.onright.large + label:before {
   left: auto;
   right: 15px;
 }
-.checkswitch.onright.large+label:after {
+.checkswitch.onright.large + label:after {
   left: auto;
   right: 38px;
 }
-.checkswitch.onright.large:checked+label:after {
+.checkswitch.onright.large:checked + label:after {
   right: 16px;
 }
 
@@ -1203,30 +1203,30 @@ label+.checkswitch+label {
 .input[disabled],
 .select[disabled],
 .button[disabled],
-.radio[disabled]+label,
-.checkbox[disabled]+label,
+.radio[disabled] + label,
+.checkbox[disabled] + label,
 .input:disabled,
 .select:disabled,
 .button:disabled,
-.radio:disabled+label,
-.checkbox:disabled+label,
-.checkswitch:disabled+label {
+.radio:disabled + label,
+.checkbox:disabled + label,
+.checkswitch:disabled + label {
   color: var(--disabled-color);
   cursor: no-drop;
 }
 
-.radio:disabled:checked+label:before,
-.radio:disabled:checked+label:after,
-.checkbox:disabled:checked+label:after {
+.radio:disabled:checked + label:before,
+.radio:disabled:checked + label:after,
+.checkbox:disabled:checked + label:after {
   color: var(--disabled-color);
 }
 
-.checkswitch:disabled+label:before {
+.checkswitch:disabled + label:before {
   border-color: #ddd;
   color: #eee;
 }
 
-.checkswitch:disabled:checked+label:before {
+.checkswitch:disabled:checked + label:before {
   border-color: #ccc;
   color: #ccc;
 }
@@ -1235,24 +1235,24 @@ label+.checkswitch+label {
 /**
  * 间距
  * ------------------------------ */
-.button+.button.full,
-.input+.input.full,
-.select+.select.full {
+.button + .button.full,
+.input + .input.full,
+.select + .select.full {
   margin-top: var(--gap-default);
 }
-.button+.button.mini.full,
-.input+.input.mini.full,
-.select+.select.mini.full {
+.button + .button.mini.full,
+.input + .input.mini.full,
+.select + .select.mini.full {
   margin-top: var(--gap-mini);
 }
-.button+.button.small.full,
-.input+.input.small.full,
-.select+.select.small.full {
+.button + .button.small.full,
+.input + .input.small.full,
+.select + .select.small.full {
   margin-top: var(--gap-small);
 }
-.button+.button.large.full,
-.input+.input.large.full,
-.select+.select.large.full {
+.button + .button.large.full,
+.input + .input.large.full,
+.select + .select.large.full {
   margin-top: var(--gap-large);
 }
 
@@ -1265,36 +1265,36 @@ label+.checkswitch+label {
   display: flex;
 }
 
-.input_box+.input_box,
-.input_box+.input_group,
-.input_group+.input_group,
-.input_group+.input_box {
+.input_box + .input_box,
+.input_box + .input_group,
+.input_group + .input_group,
+.input_group + .input_box {
   margin-top: var(--gap-default);
 }
-.input_box+.input_box.mini,
-.input_box+.input_group.mini,
-.input_group+.input_group.mini,
-.input_group+.input_box.mini {
+.input_box + .input_box.mini,
+.input_box + .input_group.mini,
+.input_group + .input_group.mini,
+.input_group + .input_box.mini {
   margin-top: var(--gap-mini);
 }
-.input_box+.input_box.small,
-.input_box+.input_group.small,
-.input_group+.input_group.small,
-.input_group+.input_box.small {
+.input_box + .input_box.small,
+.input_box + .input_group.small,
+.input_group + .input_group.small,
+.input_group + .input_box.small {
   margin-top: var(--gap-small);
 }
-.input_box+.input_box.large,
-.input_box+.input_group.large,
-.input_group+.input_group.large,
-.input_group+.input_box.large {
+.input_box + .input_box.large,
+.input_box + .input_group.large,
+.input_group + .input_group.large,
+.input_group + .input_box.large {
   margin-top: var(--gap-large);
 }
 
 /* 兼容 gap */
 .input_box .input,
-.input_box .radio+label,
-.input_box .checkbox+label,
-.input_box .checkswitch+label,
+.input_box .radio + label,
+.input_box .checkbox + label,
+.input_box .checkswitch + label,
 .input_box .select,
 .input_box .button,
 .input_box .input_box,
@@ -1302,9 +1302,9 @@ label+.checkswitch+label {
   margin-right: var(--gap-default);
 }
 .input_box .input:last-child,
-.input_box .radio+label:last-child,
-.input_box .checkbox+label:last-child,
-.input_box .checkswitch+label:last-child,
+.input_box .radio + label:last-child,
+.input_box .checkbox + label:last-child,
+.input_box .checkswitch + label:last-child,
 .input_box .select:last-child,
 .input_box .button:last-child,
 .input_box .input_box:last-child,
@@ -1313,17 +1313,17 @@ label+.checkswitch+label {
 }
 
 .input_box .input,
-.input_box .radio+label,
-.input_box .checkbox+label,
-.input_box .checkswitch+label,
+.input_box .radio + label,
+.input_box .checkbox + label,
+.input_box .checkswitch + label,
 .input_box .select,
 .input_box .button,
 .input_box .input_box,
 .input_box .input_group,
 .input_group .input,
-.input_group .radio+label,
-.input_group .checkbox+label,
-.input_group .checkswitch+label,
+.input_group .radio + label,
+.input_group .checkbox + label,
+.input_group .checkswitch + label,
 .input_group .select,
 .input_group .button,
 .input_group .input_box,
@@ -1332,17 +1332,17 @@ label+.checkswitch+label {
 }
 
 .input_box.full .input,
-.input_box.full .radio+label,
-.input_box.full .checkbox+label,
-.input_box.full .checkswitch+label,
+.input_box.full .radio + label,
+.input_box.full .checkbox + label,
+.input_box.full .checkswitch + label,
 .input_box.full .select,
 .input_box.full .button,
 .input_box.full .input_box,
 .input_box.full .input_group,
 .input_group.full .input,
-.input_group.full .radio+label,
-.input_group.full .checkbox+label,
-.input_group.full .checkswitch+label,
+.input_group.full .radio + label,
+.input_group.full .checkbox + label,
+.input_group.full .checkswitch + label,
 .input_group.full .select,
 .input_group.full .button,
 .input_group.full .input_box,
@@ -1355,8 +1355,8 @@ label+.checkswitch+label {
   width: 100%;
 }
 
-.input_box .input_group+.input_group,
-.input_group .input_group+.input_group {
+.input_box .input_group + .input_group,
+.input_group .input_group + .input_group {
   margin-top: 0;
 }
 
@@ -1367,7 +1367,7 @@ label+.checkswitch+label {
   border-radius: 0;
 }
 
-.input_group .button+.button:after {
+.input_group .button + .button:after {
   content: '';
   position: absolute;
   top: 0;
@@ -1376,7 +1376,7 @@ label+.checkswitch+label {
   width: 1px;
   background-color: rgba(255, 255, 255, 0.1);
 }
-.input_group .button.border+.button.border:after {
+.input_group .button.border + .button.border:after {
   display: none;
 }
 
@@ -1384,22 +1384,22 @@ label+.checkswitch+label {
   flex: 0 1 auto;
 }
 
-.input_group .button.border+.button.border,
-.input_group .button.border+.input.border,
-.input_group .button.border+.input_label.border,
-.input_group .button.border+.select.border,
-.input_group .input.border+.button.border,
-.input_group .input.border+.input.border,
-.input_group .input.border+.input_label.border,
-.input_group .input.border+.select.border,
-.input_group .input_label.border+.button.border,
-.input_group .input_label.border+.input.border,
-.input_group .input_label.border+.input_label.border,
-.input_group .input_label.border+.select.border,
-.input_group .select.border+.button.border,
-.input_group .select.border+.input.border,
-.input_group .select.border+.input_label.border,
-.input_group .select.border+.select.border {
+.input_group .button.border + .button.border,
+.input_group .button.border + .input.border,
+.input_group .button.border + .input_label.border,
+.input_group .button.border + .select.border,
+.input_group .input.border + .button.border,
+.input_group .input.border + .input.border,
+.input_group .input.border + .input_label.border,
+.input_group .input.border + .select.border,
+.input_group .input_label.border + .button.border,
+.input_group .input_label.border + .input.border,
+.input_group .input_label.border + .input_label.border,
+.input_group .input_label.border + .select.border,
+.input_group .select.border + .button.border,
+.input_group .select.border + .input.border,
+.input_group .select.border + .input_label.border,
+.input_group .select.border + .select.border {
   border-left: none;
 }
 
@@ -1446,12 +1446,12 @@ label+.checkswitch+label {
 }
 
 /* Radio, Checkbox */
-.input_box .radio+label,
-.input_box .checkbox+label,
-.input_box .checkswitch+label,
-.input_group .radio+label,
-.input_group .checkbox+label,
-.input_group .checkswitch+label {
+.input_box .radio + label,
+.input_box .checkbox + label,
+.input_box .checkswitch + label,
+.input_group .radio + label,
+.input_group .checkbox + label,
+.input_group .checkswitch + label {
   border-top: none;
 }
 
@@ -1467,10 +1467,10 @@ label+.checkswitch+label {
   position: relative;
   background-color: #fff;
 }
-.form .row+.row {
+.form .row + .row {
   padding-top: 1px;
 }
-.form .row+.row:before {
+.form .row + .row:before {
   content: '';
   position: absolute;
   top: 0;
@@ -1512,7 +1512,7 @@ label+.checkswitch+label {
   position: relative;
   background-color: #fff;
 }
-.form .row_group+.row_group {
+.form .row_group + .row_group {
   margin-top: var(--gap-default);
 }
 
@@ -1538,7 +1538,7 @@ label+.checkswitch+label {
 .form.mini {
   font-size: var(--font-mini);
 }
-.form.mini .row+.row:before {
+.form.mini .row + .row:before {
   left: var(--gap-mini);
 }
 .form.mini .row>dt,
@@ -1552,7 +1552,7 @@ label+.checkswitch+label {
 .form.small {
   font-size: var(--font-small);
 }
-.form.small .row+.row:before {
+.form.small .row + .row:before {
   left: var(--gap-small);
 }
 .form.small .row>dt,
@@ -1566,7 +1566,7 @@ label+.checkswitch+label {
 .form.large {
   font-size: var(--font-large);
 }
-.form.large .row+.row:before {
+.form.large .row + .row:before {
   left: var(--gap-large);
 }
 .form.large .row>dt,
@@ -2197,7 +2197,7 @@ label+.checkswitch+label {
   left: 10px;
   margin: -12px 0 0 0;
 }
-.tabbar dl.col dd a+a {
+.tabbar dl.col dd a + a {
   border-top: 1px solid #eee;
 }
 .tabbar dl.col:first-child dd {
@@ -2219,7 +2219,7 @@ label+.checkswitch+label {
   border-width: 1px 0 0 1px;
   border-radius: 3px 0 0 0;
 }
-.tabbar dl.col dt.hover+dd {
+.tabbar dl.col dt.hover + dd {
   max-height: 270px;
   transition-timing-function: ease-in;
 }
@@ -2299,7 +2299,7 @@ label+.checkswitch+label {
 .tabnav.radius a:last-child {
   border-radius: 0 16px 16px 0;
 }
-.tabnav.radius a+a {
+.tabnav.radius a + a {
   border-left: none;
 }
 .tabnav.radius a.n {
@@ -2391,7 +2391,7 @@ label+.checkswitch+label {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.filter_tool a+a:before {
+.filter_tool a + a:before {
   content: '';
   position: absolute;
   top: 0;
@@ -2598,8 +2598,8 @@ label+.checkswitch+label {
   margin: auto;
 }
 
-.panel_page .header+.tabnav.fixed nav,
-.panel_page .header+.filter_tool.fixed nav {
+.panel_page .header + .tabnav.fixed nav,
+.panel_page .header + .filter_tool.fixed nav {
   position: relative;
   top: 0;
 }
@@ -2656,8 +2656,8 @@ label+.checkswitch+label {
   position: relative;
   top: auto;
 }
-.panel_page.size_auto.ontop .header+.tabnav.radius+.panel_body,
-.panel_page.size_auto.onbottom .header+.tabnav.radius+.panel_body {
+.panel_page.size_auto.ontop .header + .tabnav.radius + .panel_body,
+.panel_page.size_auto.onbottom .header + .tabnav.radius + .panel_body {
   top: auto;
 }
 
@@ -2904,31 +2904,31 @@ label+.checkswitch+label {
   transform: rotate(45deg);
 }
 
-.ajax_list+.pull {
+.ajax_list + .pull {
   display: none;
   padding: var(--gap-default);
   color: #888;
   line-height: 20px;
   text-align: center;
 }
-.ajax_list+.pull:after {
+.ajax_list + .pull:after {
   content: '上拉加载更多';
 }
 
-.ajax_list+.loading,
-.ajax_list.load+.pull,
-.ajax_list.ready:empty+.pull {
+.ajax_list + .loading,
+.ajax_list.load + .pull,
+.ajax_list.ready:empty + .pull {
   display: none;
 }
-.ajax_list.ready+.pull,
-.ajax_list.load+.loading {
+.ajax_list.ready + .pull,
+.ajax_list.load + .loading {
   display: block;
 }
 
-.ajax_list+.tipbox.empty {
+.ajax_list + .tipbox.empty {
   display: none;
 }
-.ajax_list.empty+.tipbox.empty {
+.ajax_list.empty + .tipbox.empty {
   display: block;
 }
 
@@ -2993,7 +2993,7 @@ label+.checkswitch+label {
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
 }
-.slide .btns i+i {
+.slide .btns i + i {
   margin-left: 4px;
 }
 .slide .btns i.n {
@@ -3088,53 +3088,53 @@ label+.checkswitch+label {
 /**
  * 顶部固定位置调整
  * ------------------------------ */
-.tabnav+.panel_body,
-.tabnav.fixed+.filter_tool.fixed nav,
-.filter_tool+.panel_body,
-.filter_tool.fixed+.tabnav nav {
+.tabnav + .panel_body,
+.tabnav.fixed + .filter_tool.fixed nav,
+.filter_tool + .panel_body,
+.filter_tool.fixed + .tabnav nav {
   top: var(--tabnav-height);
 }
 
-.tabnav.radius+.panel_body,
-.tabnav.radius.fixed+.filter_tool.fixed nav {
+.tabnav.radius + .panel_body,
+.tabnav.radius.fixed + .filter_tool.fixed nav {
   top: var(--tabnav-radius-height);
 }
 
-.tabnav+.filter_tool+.panel_body,
-.filter_tool+.tabnav+.panel_body {
+.tabnav + .filter_tool + .panel_body,
+.filter_tool + .tabnav + .panel_body {
   top: calc(var(--tabnav-height) + var(--filter-tool-height));
 }
 
-.tabnav.radius+.filter_tool+.panel_body,
-.filter_tool+.tabnav.radius+.panel_body {
+.tabnav.radius + .filter_tool + .panel_body,
+.filter_tool + .tabnav.radius + .panel_body {
   top: calc(var(--tabnav-radius-height) + var(--filter-tool-height));
 }
 
-.header+.panel_body,
-.header+.tabnav.fixed nav,
-.header+.filter_tool.fixed nav {
+.header + .panel_body,
+.header + .tabnav.fixed nav,
+.header + .filter_tool.fixed nav {
   top: var(--header-height);
 }
 
-.header+.tabnav+.panel_body,
-.header+.tabnav.fixed+.filter_tool.fixed nav,
-.header+.filter_tool+.panel_body,
-.header+.filter_tool.fixed+.tabnav.fixed nav {
+.header + .tabnav + .panel_body,
+.header + .tabnav.fixed + .filter_tool.fixed nav,
+.header + .filter_tool + .panel_body,
+.header + .filter_tool.fixed + .tabnav.fixed nav {
   top: calc(var(--header-height) + var(--tabnav-height));
 }
 
-.header+.tabnav.radius+.panel_body,
-.header+.tabnav.radius.fixed+.filter_tool.fixed nav {
+.header + .tabnav.radius + .panel_body,
+.header + .tabnav.radius.fixed + .filter_tool.fixed nav {
   top: calc(var(--header-height) + var(--tabnav-radius-height));
 }
 
-.header+.tabnav+.filter_tool+.panel_body,
-.header+.filter_tool+.tabnav+.panel_body {
+.header + .tabnav + .filter_tool + .panel_body,
+.header + .filter_tool + .tabnav + .panel_body {
   top: calc(var(--header-height) + var(--tabnav-height) + var(--filter-tool-height));
 }
 
-.header+.tabnav.radius+.filter_tool+.panel_body,
-.header+.filter_tool+.tabnav.radius+.panel_body {
+.header + .tabnav.radius + .filter_tool + .panel_body,
+.header + .filter_tool + .tabnav.radius + .panel_body {
   top: calc(var(--header-height) + var(--tabnav-radius-height) + var(--filter-tool-height));
 }
 
@@ -3191,9 +3191,9 @@ label+.checkswitch+label {
   }
 
   .input_box .input,
-  .input_box .radio+label,
-  .input_box .checkbox+label,
-  .input_box .checkswitch+label,
+  .input_box .radio + label,
+  .input_box .checkbox + label,
+  .input_box .checkswitch + label,
   .input_box .select,
   .input_box .button,
   .input_box .input_box,
@@ -3242,8 +3242,8 @@ label+.checkswitch+label {
   .pages.group a:hover {
     border-left-color: var(--primary-color);
   }
-  .pages.group a:hover+a,
-  .pages.group a:hover+span {
+  .pages.group a:hover + a,
+  .pages.group a:hover + span {
     border-left-color: var(--primary-color);
   }
 

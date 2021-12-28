@@ -1,56 +1,36 @@
+*
+ * 项目发布时，建议将 import 的内容转为实际样式。
+ */
 @import url('../plugins/notyf/css/notyf.css');
 @import url('../plugins/cxDialog/css/jquery.cxdialog.css');
 @import url('../plugins/cxCalendar/css/cxcalendar.css');
 
 
-@font-face {
-  font-family: 'FontAwesome';
-  font-style: normal;
-  font-weight: 400;
-  font-display: block;
-  src: url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/webfonts/fa-regular-400.eot');
-  src: url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/webfonts/fa-regular-400.eot?#iefix') format('embedded-opentype'),
-    url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/webfonts/fa-regular-400.woff2') format('woff2'),
-    url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/webfonts/fa-regular-400.woff') format('woff'),
-    url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/webfonts/fa-regular-400.ttf') format('truetype'),
-    url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/webfonts/fa-regular-400.svg#fontawesome') format('svg');
-}
-@font-face {
-  font-family: 'FontAwesome';
-  font-style: normal;
-  font-weight: 900;
-  font-display: block;
-  src: url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/webfonts/fa-solid-900.eot');
-  src: url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/webfonts/fa-solid-900.eot?#iefix') format('embedded-opentype'),
-    url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/webfonts/fa-solid-900.woff2') format('woff2'),
-    url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/webfonts/fa-solid-900.woff') format('woff'),
-    url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/webfonts/fa-solid-900.ttf') format('truetype'),
-    url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/webfonts/fa-solid-900.svg#fontawesome') format('svg');
-}
-
-
 /**
- * Notyf
+ * Notyf 自定义
  * ------------------------------ */
 .notyf {
   padding: var(--gap-default);
 }
-.notyf__toast{
+.notyf__toast {
   padding: 0;
+  transform: none;
 }
-.notyf__wrapper{
-  padding: 0;
-  border: var(--radius);
+.notyf__wrapper {
+  padding: 8px 12px;
 }
-.notyf__message{
-  padding: 8px 12px 8px 32px;
+
+.notyf__message,
+.notyf__toast--disappear {
+  animation-delay: 0s;
 }
-.notyf__message:before{
-  position: absolute;
-  top: 8px;
-  left: 12px;
-  font-family: 'FontAwesome';
-  font-weight: 900;
+
+.notyf__dismiss {
+  margin-right: 0;
+  opacity: 1;
+}
+.notyf__toast--dismissible .notyf__wrapper {
+  padding-right: 32px;
 }
 
 .notyf__toast--upper {
@@ -60,15 +40,111 @@
   margin-top: var(--gap-default);
 }
 
-.notyf__cxm--success .notyf__message:before{
+/* 扩展 */
+.notyf-cxm-success .notyf__icon,
+.notyf-cxm-error .notyf__icon,
+.notyf-cxm-warn .notyf__icon,
+.notyf-cxm-info .notyf__icon {
+  position: relative;
+  width: 16px;
+  margin-right: 8px;
+  opacity: 1;
+}
+.notyf-cxm-success .notyf__icon i,
+.notyf-cxm-error .notyf__icon i,
+.notyf-cxm-warn .notyf__icon i,
+.notyf-cxm-info .notyf__icon i {
+  display: block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.notyf-cxm-success .notyf__icon i:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 3px;
+  margin: -3px 0 0 -4px;
+  border-bottom: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+  transform: rotate(-45deg);
+}
+
+.notyf-cxm-error .notyf__icon i:before,
+.notyf-cxm-error .notyf__icon i:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 2px;
+  margin: -1px 0 0 -4px;
+  background-color: currentColor;
+  transform: rotate(-45deg);
+}
+.notyf-cxm-error .notyf__icon i:after {
+  transform: rotate(45deg);
+}
+
+.notyf-cxm-warn .notyf__icon i:before,
+.notyf-cxm-warn .notyf__icon i:after,
+.notyf-cxm-info .notyf__icon i:before,
+.notyf-cxm-info .notyf__icon i:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 2px;
+  margin: 2px 0 0 -1px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+.notyf-cxm-warn .notyf__icon i:after {
+  height: 5px;
+  margin: -4px 0 0 -1px;
+  border-radius: 2px;
+}
+.notyf-cxm-info .notyf__icon i:before {
+  height: 2px;
+  margin-top: -4px;
+}
+.notyf-cxm-info .notyf__icon i:after {
+  height: 5px;
+  margin-top: -1px;
+  border-radius: 2px;
+}
+
+/* 如果使用 Font Awesome 可以参考以下样式 */
+/*
+.notyf-fontawesome-success .notyf__icon,
+.notyf-fontawesome-error .notyf__icon,
+.notyf-fontawesome-warn .notyf__icon,
+.notyf-fontawesome-info .notyf__icon {
+  font-size: var(--font-default);
+  opacity: 1;
+}
+.notyf-fontawesome-success .notyf__icon:before,
+.notyf-fontawesome-error .notyf__icon:before,
+.notyf-fontawesome-warn .notyf__icon:before,
+.notyf-fontawesome-info .notyf__icon:before {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
+.notyf-fontawesome-success .notyf__icon:before {
   content: '\f058';
 }
-.notyf__cxm--info .notyf__message:before{
-  content: '\f05a';
+.notyf-fontawesome-error .notyf__icon:before {
+  content: '\f057';
 }
-.notyf__cxm--warn .notyf__message:before{
+.notyf-fontawesome-warn .notyf__icon:before {
   content: '\f06a';
 }
-.notyf__cxm--error .notyf__message:before{
-  content: '\f057';
+.notyf-fontawesome-info .notyf__icon:before {
+  content: '\f05a';
 }

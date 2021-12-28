@@ -39,28 +39,28 @@ if (typeof Notyf === 'function') {
     types: [
       {
         type: 'success',
-        className: 'notyf__cxm--success',
+        className: 'notyf-cxm-success',
         background: 'rgba(140, 193, 82, 0.9)',
-        icon: false
+        icon: {}
       },
       {
         type: 'info',
-        className: 'notyf__cxm--info',
+        className: 'notyf-cxm-info',
         background: 'rgba(51, 51, 51, 0.9)',
-        icon: false
+        icon: {}
       },
       {
         type: 'warn',
-        className: 'notyf__cxm--warn',
+        className: 'notyf-cxm-warn',
         background: 'rgba(254, 153, 57, 0.9)',
-        icon: false
+        icon: {}
       },
       {
         type: 'error',
-        className: 'notyf__cxm--error',
+        className: 'notyf-cxm-error',
         background: 'rgba(218, 68, 83, 0.9)',
-        icon: false
-      }
+        icon: {}
+      },
     ]
   });
 
