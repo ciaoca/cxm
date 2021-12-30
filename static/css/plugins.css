@@ -1,6 +1,4 @@
-*
- * 项目发布时，建议将 import 的内容转为实际样式。
- */
+/* 项目发布时，建议将 import 的内容转为实际样式 */
 @import url('../plugins/notyf/css/notyf.css');
 @import url('../plugins/cxDialog/css/jquery.cxdialog.css');
 @import url('../plugins/cxCalendar/css/cxcalendar.css');
@@ -9,47 +7,6 @@
 /**
  * Notyf 自定义
  * ------------------------------ */
-.notyf {
-  padding: var(--gap-default);
-}
-.notyf__toast {
-  padding: 0;
-  transform: none;
-}
-.notyf__wrapper {
-  padding: 8px 12px;
-}
-
-.notyf__message,
-.notyf__toast--disappear {
-  animation-delay: 0s;
-}
-
-.notyf__dismiss {
-  margin-right: 0;
-  opacity: 1;
-}
-.notyf__toast--dismissible .notyf__wrapper {
-  padding-right: 32px;
-}
-
-.notyf__toast--upper {
-  margin-bottom: var(--gap-default);
-}
-.notyf__toast--lower {
-  margin-top: var(--gap-default);
-}
-
-/* 扩展 */
-.notyf-cxm-success .notyf__icon,
-.notyf-cxm-error .notyf__icon,
-.notyf-cxm-warn .notyf__icon,
-.notyf-cxm-info .notyf__icon {
-  position: relative;
-  width: 16px;
-  margin-right: 8px;
-  opacity: 1;
-}
 .notyf-cxm-success .notyf__icon i,
 .notyf-cxm-error .notyf__icon i,
 .notyf-cxm-warn .notyf__icon i,

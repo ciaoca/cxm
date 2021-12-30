@@ -1483,20 +1483,20 @@ label + .checkswitch + label {
 .form dl.row {
   display: flex;
 }
-.form .row>dt {
+.form .row > dt {
   position: relative;
   min-height: 20px;
   flex: 0 0 5em;
 }
-.form .row>dt>label {
+.form .row > dt > label {
   display: block;
 }
-.form .row>dd {
+.form .row > dd {
   position: relative;
   flex: 1;
 }
-.form .row>dt,
-.form .row.note>dd {
+.form .row > dt,
+.form .row.note > dd {
   padding: calc((var(--size-default) - 20px) / 2) var(--gap-default);
   line-height: 20px;
 }
@@ -1516,23 +1516,26 @@ label + .checkswitch + label {
   margin-top: var(--gap-default);
 }
 
-.form.dt_2 .row>dt {
+.form.dt_2 .row > dt {
   flex: 0 0 2em;
 }
-.form.dt_3 .row>dt {
+.form.dt_3 .row > dt {
   flex: 0 0 3em;
 }
-.form.dt_4 .row>dt {
+.form.dt_4 .row > dt {
   flex: 0 0 4em;
 }
-.form.dt_6 .row>dt {
+.form.dt_6 .row > dt {
   flex: 0 0 6em;
 }
-.form.dt_7 .row>dt {
+.form.dt_7 .row > dt {
   flex: 0 0 7em;
 }
-.form.dt_8 .row>dt {
+.form.dt_8 .row > dt {
   flex: 0 0 8em;
+}
+.form.dt_9 .row > dt {
+  flex: 0 0 9em;
 }
 
 .form.mini {
@@ -1541,8 +1544,8 @@ label + .checkswitch + label {
 .form.mini .row + .row:before {
   left: var(--gap-mini);
 }
-.form.mini .row>dt,
-.form.mini .row.note>dd {
+.form.mini .row > dt,
+.form.mini .row.note > dd {
   padding: calc((var(--size-mini) - 20px) / 2) var(--gap-mini);
 }
 .form.mini .note {
@@ -1555,8 +1558,8 @@ label + .checkswitch + label {
 .form.small .row + .row:before {
   left: var(--gap-small);
 }
-.form.small .row>dt,
-.form.small .row.note>dd {
+.form.small .row > dt,
+.form.small .row.note > dd {
   padding: calc((var(--size-small) - 20px) / 2) var(--gap-small);
 }
 .form.small .note {
@@ -1569,8 +1572,8 @@ label + .checkswitch + label {
 .form.large .row + .row:before {
   left: var(--gap-large);
 }
-.form.large .row>dt,
-.form.large .row.note>dd {
+.form.large .row > dt,
+.form.large .row.note > dd {
   padding: calc((var(--size-large) - 20px) / 2) var(--gap-large);
 }
 .form.large .note {
@@ -2417,14 +2420,14 @@ label + .checkswitch + label {
 .filter_tool dl.col {
   flex: 1;
 }
-.filter_tool dl.col>dt {
+.filter_tool dl.col > dt {
   z-index: 2;
   background-color: #fff;
   text-align: center;
   transition-property: color;
   transition-duration: 0.2s;
 }
-.filter_tool dl.col>dt:after {
+.filter_tool dl.col > dt:after {
   content: '';
   display: inline-block;
   position: relative;
@@ -2438,7 +2441,7 @@ label + .checkswitch + label {
   vertical-align: top;
   opacity: 0.5;
 }
-.filter_tool dl.col>dd {
+.filter_tool dl.col > dd {
   overflow-y: auto;
   position: absolute;
   top: 100%;
@@ -2452,10 +2455,10 @@ label + .checkswitch + label {
   transition-property: transform;
   transition-duration: 0.4s;
 }
-.filter_tool dl.col.hover>dt {
+.filter_tool dl.col.hover > dt {
   color: var(--primary-color);
 }
-.filter_tool dl.col.hover>dd {
+.filter_tool dl.col.hover > dd {
   transform: translate(0, 0);
 }
 
@@ -2514,11 +2517,11 @@ label + .checkswitch + label {
   padding: 0;
   background: none;
 }
-.filter_tool dl.row.hover>dt {
+.filter_tool dl.row.hover > dt {
   width: 120px;
   background-color: #fff;
 }
-.filter_tool dl.row.hover>dd {
+.filter_tool dl.row.hover > dd {
   display: block;
 }
 
@@ -2562,7 +2565,7 @@ label + .checkswitch + label {
   transition-duration: 0.2s;
 }
 
-.panel_page>.inwrap {
+.panel_page > .inwrap {
   box-sizing: border-box;
   position: absolute;
   top: 0;
@@ -2617,38 +2620,38 @@ label + .checkswitch + label {
 }
 
 /* Position */
-.panel_page.onleft>.inwrap {
+.panel_page.onleft > .inwrap {
   right: auto;
   transform: translate(-100%, 0%);
 }
-.panel_page.onright>.inwrap {
+.panel_page.onright > .inwrap {
   left: auto;
   transform: translate(100%, 0%);
 }
-.panel_page.ontop>.inwrap {
+.panel_page.ontop > .inwrap {
   bottom: auto;
   transform: translate(0%, -100%);
 }
-.panel_page.onbottom>.inwrap {
+.panel_page.onbottom > .inwrap {
   top: auto;
   transform: translate(0%, 100%);
 }
 
 /* Size */
-.panel_page.size_half.onleft>.inwrap,
-.panel_page.size_half.onright>.inwrap {
+.panel_page.size_half.onleft > .inwrap,
+.panel_page.size_half.onright > .inwrap {
   width: 80%;
 }
-.panel_page.size_half.ontop>.inwrap,
-.panel_page.size_half.onbottom>.inwrap {
+.panel_page.size_half.ontop > .inwrap,
+.panel_page.size_half.onbottom > .inwrap {
   height: 50%;
 }
-.panel_page.size_auto.onleft>.inwrap,
-.panel_page.size_auto.onright>.inwrap {
+.panel_page.size_auto.onleft > .inwrap,
+.panel_page.size_auto.onright > .inwrap {
   width: auto;
 }
-.panel_page.size_auto.ontop>.inwrap,
-.panel_page.size_auto.onbottom>.inwrap {
+.panel_page.size_auto.ontop > .inwrap,
+.panel_page.size_auto.onbottom > .inwrap {
   height: auto;
 }
 .panel_page.size_auto.ontop .panel_body,
@@ -2662,10 +2665,10 @@ label + .checkswitch + label {
 }
 
 /* Background */
-.panel_page.bg_gray>.inwrap {
+.panel_page.bg_gray > .inwrap {
   background-color: var(--body-gray-color);
 }
-.panel_page.bg_not>.inwrap {
+.panel_page.bg_not > .inwrap {
   background-color: transparent;
 }
 
@@ -2685,7 +2688,7 @@ label + .checkswitch + label {
 
 /* Status */
 .panel_page.in,
-.panel_page.in>.inwrap {
+.panel_page.in > .inwrap {
   transform: translate(0%, 0%);
 }
 .panel_page.in:before {
@@ -2942,11 +2945,11 @@ label + .checkswitch + label {
   visibility: hidden;
   position: relative;
 }
-.slide>ul {
+.slide > ul {
   overflow: hidden;
   position: relative;
 }
-.slide>ul li {
+.slide > ul li {
   position: relative;
   float: left;
   width: 100%;
@@ -3210,8 +3213,8 @@ label + .checkswitch + label {
  * Responsive
  * ------------------------------ */
 @media (min-width:375px) {
-  .panel_page.size_half.onleft>.inwrap,
-  .panel_page.size_half.onright>.inwrap {
+  .panel_page.size_half.onleft > .inwrap,
+  .panel_page.size_half.onright > .inwrap {
     width: 75%;
   }
 }
@@ -3248,7 +3251,7 @@ label + .checkswitch + label {
   }
 
   .tabnav a:hover,
-  .filter_tool dl.col>dt:hover {
+  .filter_tool dl.col > dt:hover {
     color: var(--primary-color);
   }
 
@@ -3279,9 +3282,6 @@ label + .checkswitch + label {
     right: auto;
     width: 640px;
     margin-left: -320px;
-  }
-  body.max_640 .page_qrcode {
-    display: block;
   }
   body.max_640.gray .wrap {
     background-color: var(--body-gray-color);
@@ -3315,6 +3315,10 @@ label + .checkswitch + label {
   }
   .airtable td {
     border-top: none;
+  }
+
+  body.max_640 .page_qrcode {
+    display: block;
   }
 
   body.max_1024 {

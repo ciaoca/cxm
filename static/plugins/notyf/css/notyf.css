@@ -1,24 +1,14 @@
 /**
  * Notyf
  * ------------------------------ */
-@keyframes notyf-fadeinup{
-  0%{opacity:0;/*transform:translateY(25%);*/}
-  to{opacity:1;/*transform:translateY(0);*/}
+@keyframes notyf-in{
+  0%{max-height:0;opacity:0;}
+  to{max-height:300px;opacity:1;}
 }
 
-@keyframes notyf-fadeinleft{
-  0%{opacity:0;transform:translateX(25%);}
-  to{opacity:1;transform:translateX(0);}
-}
-
-@keyframes notyf-fadeoutright{
-  0%{opacity:1;transform:translateX(0);}
-  to{opacity:0;transform:translateX(25%);}
-}
-
-@keyframes notyf-fadeoutdown{
-  0%{opacity:1;/*transform:translateY(0);*/}
-  to{opacity:0;/*transform:translateY(25%);*/}
+@keyframes notyf-out{
+  0%{max-height:300px;opacity:1;}
+  to{max-height:0;margin:0;opacity:0;}
 }
 
 @keyframes notyf-ripple{
@@ -26,102 +16,74 @@
   to{transform:scale(1) translateY(-45%) translateX(13%);}
 }
 
-.notyf{box-sizing:border-box;display:flex;position:fixed;top:0;left:0;width:100%;height:100%;padding:20px;z-index:9999;color:#fff;pointer-events:none;
+.notyf{box-sizing:border-box;position:fixed;top:0;left:0;z-index:9999;width:100%;height:100%;padding:var(--gap-default);color:#fff;pointer-events:none;
+display:flex;
 flex-direction:column;
 align-items:flex-end;
 justify-content:flex-end;
 }
 
-.notyf__icon--error,
-.notyf__icon--success{display:block;position:relative;width:21px;height:21px;margin:0 auto;border-radius:50%;background:#fff;}
-.notyf__icon--error:after,
-.notyf__icon--error:before{content:'';display:block;position:absolute;top:5px;left:9px;width:3px;height:12px;border-radius:3px;background:currentColor;}
-.notyf__icon--error:after{transform:rotate(-45deg);}
-.notyf__icon--error:before{transform:rotate(45deg);}
-
-.notyf__icon--success:after,
-.notyf__icon--success:before{content:'';display:block;position:absolute;width:3px;border-radius:3px;background:currentColor;}
-.notyf__icon--success:after{top:9px;left:6px;height:6px;transform:rotate(-45deg);}
-.notyf__icon--success:before{top:5px;left:10px;height:11px;transform:rotate(45deg);}
-
-.notyf__toast{box-sizing:border-box;display:block;overflow:hidden;position:relative;max-width:300px;padding:0 15px;box-shadow:0 3px 7px 0 rgba(0, 0, 0, .25);border-radius:2px;pointer-events:auto;
+.notyf__toast{box-sizing:border-box;overflow:hidden;position:relative;max-width:300px;padding:0;border-radius:3px;box-shadow:0 4px 4px -2px rgba(0,0,0,0.3);pointer-events:auto;
+display:block;
 flex-shrink:0;
-transform:translateY(25%);
-animation:notyf-fadeinup .3s ease-in forwards;
+animation:notyf-in 0.3s ease-in forwards;
 }
 
-.notyf__toast--disappear{
-transform:translateY(0);
-animation:notyf-fadeoutdown .3s forwards;
-animation-delay:.25s;
-}
+.notyf__toast--upper{margin-bottom:var(--gap-default);}
+.notyf__toast--lower{margin-top:var(--gap-default);}
 
-.notyf__toast--disappear .notyf__icon,
-.notyf__toast--disappear .notyf__message{opacity:1;
-transform:translateY(0);
-animation:notyf-fadeoutdown .3s forwards;
-}
-
-.notyf__toast--disappear .notyf__dismiss{opacity:1;
-/*animation:notyf-fadeoutright .3s forwards;*/
-/*transform:translateX(0);*/
-}
-
-.notyf__toast--disappear .notyf__message{
-animation-delay:.05s;
-}
-
-.notyf__toast--upper{margin-bottom:20px;}
-.notyf__toast--lower{margin-top:20px;}
-
-.notyf__toast--dismissible .notyf__wrapper{padding-right:30px;}
-
-.notyf__ripple{position:absolute;right:0;top:0;z-index:5;width:400px;height:400px;border-radius:50%;
-transform:scale(0) translateY(-51%) translateX(13%);
-transform-origin:bottom right;
-animation:notyf-ripple .4s ease-out forwards;
-}
-
-.notyf__wrapper{display:flex;position:relative;z-index:10;padding-top:17px;padding-bottom:17px;padding-right:15px;border-radius:3px;
+.notyf__wrapper{position:relative;z-index:10;padding:8px 12px;
+display:flex;
 align-items:center;
 }
 
-.notyf__icon{width:22px;margin-right:13px;font-size:1.3em;text-align:center;opacity:0;
-/*animation:notyf-fadeinup .3s forwards;*/
-/*animation-delay:.3s;*/
-}
 
-.notyf__dismiss{position:absolute;top:0;right:0;height:100%;width:26px;margin-right:-15px;opacity:0;
-/*animation:notyf-fadeinleft .3s forwards;*/
-/*animation-delay:.35s;*/
-}
+/* 内容 */
+.notyf__message{position:relative;line-height:1.5em;vertical-align:middle;}
 
-.notyf__dismiss-btn{width:100%;height:100%;border:none;background-color:rgba(0, 0, 0, .25);outline:none;opacity:.35;cursor:pointer;
-transition:opacity .2s ease, background-color .2s ease;
+
+/* 图标 */
+.notyf__icon{margin-right:8px;}
+
+.notyf__icon--error,
+.notyf__icon--success{display:block;position:relative;width:16px;height:16px;margin:0 auto;border-radius:50%;background-color:#fff;}
+
+.notyf__icon--success:before{content:'';display:block;position:absolute;top:50%;left:50%;width:6px;height:3px;margin:-3px 0 0 -4px;border-bottom:2px solid currentColor;border-left:2px solid currentColor;
+transform:rotate(-45deg);
 }
-.notyf__dismiss-btn:after,
-.notyf__dismiss-btn:before{content:'';position:absolute;top:calc(50% - 5px);left:calc(50% - 1px);height:12px;width:2px;background:#fff;border-radius:3px;}
-.notyf__dismiss-btn:after{transform:rotate(-45deg);}
+.notyf__icon--error:before,
+.notyf__icon--error:after{content:'';display:block;position:absolute;top:50%;left:50%;width:8px;height:2px;margin:-1px 0 0 -4px;border-radius:2px;background-color:currentColor;}
+.notyf__icon--error:before{transform:rotate(45deg);}
+.notyf__icon--error:after{transform:rotate(-45deg);}
+
+
+/* 关闭按钮 */
+.notyf__toast--dismissible .notyf__wrapper{padding-right:32px;}
+
+.notyf__dismiss{position:absolute;top:0;bottom:0;right:0;width:24px;}
+
+.notyf__dismiss-btn{position:absolute;top:0;left:0;width:100%;height:100%;border:none;background:rgba(0,0,0,0.1);outline:none;cursor:pointer;
+transition-property:background-color;
+transition-duration:0.2s;
+}
+.notyf__dismiss-btn:before,
+.notyf__dismiss-btn:after{content:'';position:absolute;top:50%;left:50%;width:10px;height:2px;margin:-1px 0 0 -5px;border-radius:2px;background-color:#fff;}
 .notyf__dismiss-btn:before{transform:rotate(45deg);}
+.notyf__dismiss-btn:after{transform:rotate(-45deg);}
 
-.notyf__dismiss-btn:hover{background-color:rgba(0, 0, 0, .15);opacity:.7;}
-.notyf__dismiss-btn:active{opacity:.8;}
+.notyf__dismiss-btn:hover{background-color:rgba(0,0,0,0.15);}
+.notyf__dismiss-btn:active{background-color:rgba(0,0,0,0.2);}
 
-.notyf__message{position:relative;line-height:1.5em;vertical-align:middle;opacity:0;
-animation:notyf-fadeinup .3s forwards;
-animation-delay:.25s;
+
+/* 水波效果 */
+.notyf__ripple{position:absolute;top:0;right:0;z-index:5;width:400px;height:400px;border-radius:50%;
+transform:scale(0) translateY(-51%) translateX(13%);
+transform-origin:bottom right;
+animation:notyf-ripple 0.4s ease-out forwards;
 }
 
-/*
-@media only screen and (max-width:480px){
-  .notyf{padding:0;}
 
-  .notyf__ripple{width:600px;height:600px;
-    animation-duration:.5s;
-  }
-
-  .notyf__toast{width:100%;max-width:none;border-radius:0;box-shadow:0 -2px 7px 0 rgba(0, 0, 0, .13);}
-
-  .notyf__dismiss{width:56px;}
+/* 关闭动画 */
+.notyf__toast--disappear{
+animation:notyf-out 0.3s forwards;
 }
-*/
