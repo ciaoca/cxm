@@ -715,6 +715,7 @@ textarea.input.radius {
   background-position: right 8px center;
   background-origin: border-box;
   font-size: var(--font-default);
+  line-height: var(--size-default);
   outline: none;
   vertical-align: top;
   -webkit-appearance: none;
@@ -743,6 +744,16 @@ textarea.input.radius {
 
 .select.border {
   border-color: var(--input-border-color);
+  line-height: calc(var(--size-default) - 2px);
+}
+.select.border.mini {
+  line-height: calc(var(--size-default) - 2px);
+}
+.select.border.small {
+  line-height: calc(var(--size-small) - 2px);
+}
+.select.border.large {
+  line-height: calc(var(--size-large) - 2px);
 }
 
 .select.radius {
@@ -2579,7 +2590,6 @@ label + .checkswitch + label {
   opacity: 1;
   transition-property: transform;
   transition-duration: 0.4s;
-  transition-delay: 0.2s;
 }
 
 .panel_page .bgclose {
@@ -2690,9 +2700,11 @@ label + .checkswitch + label {
 .panel_page.in,
 .panel_page.in > .inwrap {
   transform: translate(0%, 0%);
+  transition-delay: 0s;
 }
 .panel_page.in:before {
   opacity: 1;
+  transition-delay: 0s;
 }
 .panel_page.in .bgclose {
   display: block;
