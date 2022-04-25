@@ -2,86 +2,80 @@
  * 初始化界面
  *
  * bindBodyEvent              全局操作
- * updateBackUrl              返回按钮 URL
+ * buildBackUrl               返回按钮 URL
  * buildPageQrcode            当前页面二维码
  * fixInputFixed              解决 iOS 输入框获取焦点时 fixed 错位
  * --------------------
  */
 (function() {
-  var thePage = {
+  const thePage = {
     config: {},
     dom: {}
   };
 
   thePage.init = function() {
-    var self = this;
+    const self = this;
 
-    self.dom.body = $('body');
+    self.dom.body = document.body;
 
-    if (APP.isObject(window.PageConfig)) {
-      $.extend(self.config, window.PageConfig);
+    if (WebApp.isObject(window.PageConfig)) {
+      Object.assign(self.config, window.PageConfig);
     };
 
-    if (document.getElementById('header_back')) {
-      self.updateBackUrl();
-    };
-
-    if (document.getElementById('tabbar')) {
-      GLOBAL.dom.tabbar = APP.initTabBar(document.getElementById('tabbar'), GLOBAL.tabBarConfig);
-    };
-
-    if ('addEventListener' in document && /(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase())) {
-      self.fixInputFixed();
-    };
-
-    if (GLOBAL.mediaMode === 'pc') {
-      self.buildPageQrcode();
+    if (WebApp.isElement(document.getElementById('tabbar'))) {
+      GLOBAL.dom.tabbar = WebApp.initTabBar(document.getElementById('tabbar'), GLOBAL.tabBarConfig);
     };
 
     self.bindBodyEvent();
+    self.buildBackUrl();
+    self.buildPageQrcode();
+    self.fixInputFixed();
   };
 
   // 全局操作
   thePage.bindBodyEvent = function() {
-    var self = this;
+    self.dom.body.addEventListener('click', (e) => {
+      const el = e.target;
+      const nodeName = el.nodeName.toLowerCase();
 
-    self.dom.body.on('click', 'a', function(event){
-      var _this = this;
-      var _rel = _this.rel;
-      var _rev = _this.rev;
-      var _opt = _this.dataset.option;
+      if (nodeName === 'a') {
+        const rel = el.rel;
+        const rev = el.rev;
+        const opts = _this.dataset.option;
 
-      try {
-        _opt = JSON.parse(_opt);
-      } catch (e) {};
+        try {
+          opts = JSON.parse(opts);
+        } catch (e) {};
 
-      // 显示提示
-      if (_rel === 'call_tip') {
-        event.preventDefault();
-        APP.tipToggle(_rev);
-
-      // 显示面板
-      } else if (_rel === 'call_panel') {
-        event.preventDefault();
-        APP.panelToggle(_rev, _opt);
-
+        // 显示面板
+        if (rel === 'call_panel') {
+          event.preventDefault();
+          WebApp.panelToggle(rev, opts);
+        };
       };
+    });
+    this.dom.body.on('click', 'a', function(event){
     });
   };
 
   // 返回按钮 URL
-  thePage.updateBackUrl = function() {
-    var self = this;
-    var backurl = GLOBAL.purl.param('backurl');
+  thePage.buildBackUrl = function() {
+    const self = this;
+    const backurl = GLOBAL.purl.param('backurl');
+
+    if (!document.getElementById('header_back')) {
+      return;
+    };
 
     self.dom.headerBack = document.getElementById('header_back');
 
-    if (typeof backurl === 'string' && backurl.length) {
+    if (WebApp.isString(backurl) && backurl.length) {
       if (backurl === '_none') {
         self.dom.headerBack.style.display = 'none';
 
       } else if (backurl === '_back') {
-        var regHost = new RegExp('^http(s?)://'+location.host+'/');
+        const regHost = new RegExp('^http(s?)://' + location.host + '/');
+
         if (document.referrer && regHost.test(document.referrer)) {
           self.dom.headerBack.href = 'javascript:history.back();';
         };
@@ -94,10 +88,14 @@
 
   // 当前页面二维码
   thePage.buildPageQrcode = function() {
-    var box = document.createElement('div');
-    var pic = document.createElement('div');
+    if (GLOBAL.mediaMode !== 'pc') {
+      return;
+    };
 
-    var qrcode = new QRCode(pic, {
+    const box = document.createElement('div');
+    const pic = document.createElement('div');
+
+    const qrcode = new QRCode(pic, {
       text: encodeURI(location.href),
       width: 88,
       height: 88,
@@ -109,19 +107,20 @@
     box.classList.add('page_qrcode');
     box.appendChild(pic);
     box.insertAdjacentHTML('beforeend', '<p>在手机上浏览</p>');
-    document.body.appendChild(box);
+    self.dom.body.appendChild(box);
   };
 
   // 解决 iOS 输入框获取焦点时 fixed 错位
   thePage.fixInputFixed = function() {
-    var self = this;
-    var domBody = document.body;
+    if ('addEventListener' in document && /(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase()) === false) {
+      return;
+    };
 
-    var hasFix = function(e) {
-      var tags = ['input', 'textarea', 'select'];
-      var types = ['checkbox', 'radio', 'file', 'button', 'submit', 'reset', 'image', 'range'];
-      var tagName = e.target.nodeName.toLowerCase();
-      var result = false;
+    const hasFix = function(e) {
+      const tags = ['input', 'textarea', 'select'];
+      const types = ['checkbox', 'radio', 'file', 'button', 'submit', 'reset', 'image', 'range'];
+      const tagName = e.target.nodeName.toLowerCase();
+      let result = false;
 
       if (tags.indexOf(tagName) >= 0 && !e.target.readOnly && !e.target.disabled) {
         if (tagName === 'input') {
@@ -136,15 +135,15 @@
       return result;
     };
 
-    domBody.addEventListener('focus', function(e) {
-      if (hasFix(e) && !domBody.classList.contains('onfocus')) {
-        domBody.classList.add('onfocus');
+    self.dom.body.addEventListener('focus', function(e) {
+      if (hasFix(e) && !self.dom.body.classList.contains('onfocus')) {
+        self.dom.body.classList.add('onfocus');
       };
     }, true);
 
-    domBody.addEventListener('blur', function(e) {
+    self.dom.body.addEventListener('blur', function(e) {
       if (hasFix(e)) {
-        domBody.classList.remove('onfocus');
+        self.dom.body.classList.remove('onfocus');
       };
     }, true);
   };

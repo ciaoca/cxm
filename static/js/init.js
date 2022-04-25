@@ -1,164 +1,17 @@
-/**
- * 全局配置
- * ------------------------------ */
-window.GLOBAL = {
-  version: '1.0.0',
-  prefix: '', // 缓存前缀
-  platform: {},
-  dom: {},
-  template: {},
-  mediaMode: 'mobile',
+"use strict";
 
-  // URL 配置
-  url: {
-    base: '/cxm/',
-    cityData: '/cxm/static/plugins/cxSelect/json/cityData.min.json', // cxSelect 省市数据
-  },
-  urlHashTag: '!',
-
-  // 分页配置
-  pagesConfig: {
-    code: '{{count}}{{cur}}{{number}}{{prev}}{{next}}',
-    numberLength: 3,
-  },
-};
-
-if (window.innerWidth > 1024) {
-  GLOBAL.mediaMode = 'pc';
-  GLOBAL.pagesConfig.code = '{{count}}{{cur}}{{first}}{{last}}{{number}}{{prev}}{{next}}';
-  GLOBAL.pagesConfig.numberLength = 9;
-
-} else if (window.innerWidth > 640) {
-  GLOBAL.mediaMode = 'pad';
-  GLOBAL.pagesConfig.code = '{{count}}{{cur}}{{number}}{{prev}}{{next}}';
-  GLOBAL.pagesConfig.numberLength = 5;
-};
-
-// tabBar 配置
-GLOBAL.tabBarConfig = {
-  home: {
-    name: '首页',
-    link: GLOBAL.url.base + 'docs/view/about/index.html'
-  },
-  module: {
-    name: '组件',
-    link: GLOBAL.url.base + 'docs/view/module/index.html'
-  },
-  example: {
-    name: '实例',
-    link: GLOBAL.url.base + 'docs/view/example/index.html'
-  },
-  more: {
-    name: '更多',
-    sub: {
-      github: {
-        name: 'Github',
-        link: 'https://github.com/ciaoca/cxm'
-      },
-      plugins: {
-        name: '插件列表',
-        link: GLOBAL.url.base + 'docs/view/about/plugins.html'
-      },
-      test: {
-        name: '测试',
-        link: GLOBAL.url.base + 'docs/view/test/index.html'
-      }
-    }
-  }
-};
-
-
-/**
- * GLOBAL.platform 系统信息
- * isHttps          是否为 https 环境
- * system           系统
- * version          系统版本号
- * browser          浏览器
- * browserVersion   浏览器版本号
- */
-(function() {
-  var ua = navigator.userAgent.toLowerCase();
-  var version;
-
-  GLOBAL.platform.isHttps = !!('https:' === document.location.protocol);
-
-  if(/(iphone|ipad|ipod|ios)/i.test(ua)){
-    version = ua.match(/os\s([\d\.\_]+)/i);
-    GLOBAL.platform.system = 'ios';
-
-  } else if(/android/i.test(ua)){
-    version = ua.match(/android\s([\d\.]+)/i);
-    GLOBAL.platform.system = 'android';
-
-  } else if(/windows nt/i.test(ua)){
-    version = ua.match(/windows nt\s([\d\.]+)/i);
-    GLOBAL.platform.system = 'windows';
-
-  } else if(/mac os x/i.test(ua)){
-    version = ua.match(/mac os x\s([\d\.]+)/i);
-    GLOBAL.platform.system = 'mac';
-  };
-
-  if (Array.isArray(version) && version.length > 1) {
-    GLOBAL.platform.version = parseFloat(version[1].replace(/[\-\_]/g, '.'));
-  };
-
-  if(/micromessenger/i.test(ua)){
-    GLOBAL.platform.browser = 'wechat';
-    version = ua.match(/micromessenger\/([\d\.]+)/i);
-
-  } else if (/msie/i.test(ua)) {
-    GLOBAL.platform.browser = 'ie';
-    version = ua.match(/msie\s([\d\.]+)/i);
-
-  } else if (/trident/i.test(ua)) {
-    GLOBAL.platform.browser = 'ie';
-    version = ua.match(/rv:([\d\.]+)/);
-
-  } else if (/chrome/i.test(ua)) {
-    GLOBAL.platform.browser = 'chrome';
-    version = ua.match(/chrome\/([\d\.]+)/i);
-
-  } else if (/safari/i.test(ua)) {
-    version = ua.match(/version\/([\d\.]+)/i);
-    GLOBAL.platform.browser = 'safari';
-  };
-
-  if (Array.isArray(version) && version.length > 1) {
-    GLOBAL.platform.browserVersion = parseFloat(version[1].replace(/[\-\_]/g, '.'));
-  };
-})();
-
-
-// GLOBAL.purl 解析当前页 URL
-(function() {
-  var url = location.hash;
-  var tag = '#' + GLOBAL.urlHashTag;
-
-  if (url.indexOf(tag) === 0) {
-    url = location.href;
-    url = url.replace(tag, '#');
-    GLOBAL.purl = purl(url);
-  } else {
-    GLOBAL.purl = purl();
-  };
-})();
-
-
-// 初始化 APP 插件
-window.APP = new WebApp({
-  prefix: GLOBAL.prefix,
-  hashTag: GLOBAL.urlHashTag,
-});
+// __init/global.js
+window.GLOBAL={version:"1.0.0",prefix:"",dom:{},platform:{},template:{},mediaMode:"mobile",url:{base:"/cxm/",cityData:"/cxm/static/plugins/cxSelect/json/cityData.min.json"},urlHashTag:"!",pagesConfig:{code:"{{count}}{{cur}}{{number}}{{prev}}{{next}}",numberLength:3}},1024<window.innerWidth?(GLOBAL.mediaMode="pc",GLOBAL.pagesConfig.code="{{count}}{{cur}}{{first}}{{last}}{{number}}{{prev}}{{next}}",GLOBAL.pagesConfig.numberLength=9):640<window.innerWidth&&(GLOBAL.mediaMode="pad",GLOBAL.pagesConfig.code="{{count}}{{cur}}{{number}}{{prev}}{{next}}",GLOBAL.pagesConfig.numberLength=5),GLOBAL.tabBarConfig={home:{name:"首页",link:GLOBAL.url.base+"docs/view/about/index.html"},module:{name:"组件",link:GLOBAL.url.base+"docs/view/module/index.html"},example:{name:"实例",link:GLOBAL.url.base+"docs/view/example/index.html"},more:{name:"更多",sub:{github:{name:"Github",link:"https://github.com/ciaoca/cxm"},plugins:{name:"插件列表",link:GLOBAL.url.base+"docs/view/about/plugins.html"},test:{name:"测试",link:GLOBAL.url.base+"docs/view/test/index.html"}}}},function(){const e=navigator.userAgent.toLowerCase();let t;GLOBAL.platform.isHttps=!("https:"!==document.location.protocol),/(iphone|ipad|ipod|ios)/i.test(e)?(t=e.match(/os\s([\d\.\_]+)/i),GLOBAL.platform.system="ios"):/android/i.test(e)?(t=e.match(/android\s([\d\.]+)/i),GLOBAL.platform.system="android"):/windows nt/i.test(e)?(t=e.match(/windows nt\s([\d\.]+)/i),GLOBAL.platform.system="windows"):/mac os x/i.test(e)&&(t=e.match(/mac os x\s([\d\.]+)/i),GLOBAL.platform.system="mac"),Array.isArray(t)&&1<t.length&&(GLOBAL.platform.version=parseFloat(t[1].replace(/[\-\_]/g,"."))),/micromessenger/i.test(e)?(t=e.match(/micromessenger\/([\d\.]+)/i),GLOBAL.platform.browser="wechat"):/chrome/i.test(e)?(t=e.match(/chrome\/([\d\.]+)/i),GLOBAL.platform.browser="chrome"):/safari/i.test(e)?(t=e.match(/version\/([\d\.]+)/i),GLOBAL.platform.browser="safari"):/msie/i.test(e)?(t=e.match(/msie\s([\d\.]+)/i),GLOBAL.platform.browser="ie"):/trident/i.test(e)&&(t=e.match(/rv:([\d\.]+)/),GLOBAL.platform.browser="ie"),Array.isArray(t)&&1<t.length&&(GLOBAL.platform.browserVersion=parseFloat(t[1].replace(/[\-\_]/g,".")))}(),function(){let e=location.hash;var t="#"+GLOBAL.urlHashTag;0===e.indexOf(t)?(e=location.href,e=e.replace(t,"#"),GLOBAL.purl=purl(e)):GLOBAL.purl=purl()}(),WebApp.setOptions({prefix:GLOBAL.prefix,hashTag:GLOBAL.urlHashTag});
 
 
 // __init/template.js
-template.defaults.imports.tfIsString=function(a){return APP.isString(a)},template.defaults.imports.tfIsNumber=function(a){return APP.isNumber(a)},template.defaults.imports.tfIsArray=function(a){return APP.isArray(a)},template.defaults.imports.tfInArray=function(a,b){return Array.isArray(b)&&b.indexOf(a)>=0?!0:!1},template.defaults.imports.tfReplace=function(a,b,c){return"string"!=typeof a&&(a=String(a)),a.length&&(a=a.replace(new RegExp(b,"gi"),c)),a},template.defaults.imports.tfReplaceEnter=function(){return APP.replaceEnter.apply(APP,arguments)},template.defaults.imports.tfNumberFormat=function(){return"number"==typeof arguments[0]?APP.numberFormat.apply(APP,arguments):arguments[0]},template.defaults.imports.tfDate=function(a,b){return"number"==typeof a&&a>0?dayjs(a).format(b):"-"},template.defaults.imports.tfGetWeekName=function(a){var b=a,c=parseInt(a,10),d=["周日","周一","周二","周三","周四","周五","周六"];return isNaN(c)?b:(c>=7?c%=7:0>c&&(c=Math.abs(c)),"string"==typeof d[c]&&(b=d[c]),b)},template.defaults.imports.tfEncodeURIComponent=function(a){return encodeURIComponent(a)},template.defaults.imports.tfUrlAddQuery=function(a,b){return"string"==typeof b&&b.length&&(a+=a.indexOf("?")>=0?"&":"?",a+=b),a},GLOBAL.template.footerNav='<nav>{{each data item alias}}{{if item.sub}}<dl class="col {{alias}}{{if target == alias}} n{{/if}}"><dt><a href="javascript://" rel="sub">{{item.name}}</a></dt><dd>{{each item.sub val key}}<a class="{{key}}" {{if val.link}}href="{{val.link}}"{{else}}href="javascript://" rel="{{key}}"{{/if}}>{{val.name}}</a>{{/each}}</dd></dl>{{else}}<a class="col {{alias}}{{if target == alias}} n{{/if}}" {{if item.link}}href="{{item.link}}"{{else}}href="javascript://" rel="{{alias}}"{{/if}}>{{item.name}}</a>{{/if}}{{/each}}</nav>',GLOBAL.template.filterTool='<a class="bgclose" href="javascript://" rel="close"></a><nav>{{each data item alias}}<dl class="col {{alias}}"><dt data-title="{{item.title}}">{{if (item.default && item.default.title)}}{{item.default.title}}{{else}}{{item.title}}{{/if}}</dt>{{if item.list}}<dd{{if item.cols}} class="a_col a_col_{{item.cols}}"{{/if}}>{{each item.list val bIndex}}<a{{if ((item.default && item.default.value == val.value) || ((!item.default || !item.default.value) && bIndex === 0 && !val.value))}} class="n"{{/if}} href="javascript://" rel="filter_{{alias}}" rev="{{val.value}}" data-title="{{val.title}}">{{val.title}}</a>{{/each}}</dd>{{else if item.sub}}<dd class="sub_col">{{each item.sub val bIndex}}<dl class="row"><dt>{{if !val.sub || !val.sub.length}}<a{{if ((item.default && item.default.value == val.value) || ((!item.default || !item.default.value) && !val.value))}} class="n"{{/if}} href="javascript://" rel="filter_{{alias}}" rev="{{val.value}}" data-title="{{val.title}}">{{val.title}}</a>{{else}}{{val.title}}{{/if}}</dt><dd>{{each val.sub child}}<a{{if (item.default && item.default.value == child.value)}} class="n"{{/if}} href="javascript://" rel="filter_{{alias}}" rev="{{child.value}}" data-title="{{child.title}}">{{child.title}}</a>{{/each}}</dd></dl>{{/each}}</dd>{{/if}}</dl>{{/each}}</nav>';
+template.defaults.imports.tfIsString=function(e){return WebApp.isString(e)},template.defaults.imports.tfIsNumber=function(e){return WebApp.isNumber(e)},template.defaults.imports.tfIsArray=function(e){return WebApp.isArray(e)},template.defaults.imports.tfInArray=function(e,t){return!!(Array.isArray(t)&&0<=t.indexOf(e))},template.defaults.imports.tfReplace=function(e,t,a){return e=(e=WebApp.isString(e)?e:String(e)).length?e.replace(new RegExp(t,"gi"),a):e},template.defaults.imports.tfReplaceEnter=function(){return WebApp.replaceEnter.apply(APP,arguments)},template.defaults.imports.tfNumberFormat=function(){return WebApp.isNumber(arguments[0])?WebApp.numberFormat.apply(APP,arguments):arguments[0]},template.defaults.imports.tfDate=function(e,t){return WebApp.isNumber(e)&&0<e?dayjs(e).format(t):"-"},template.defaults.imports.tfGetWeekName=function(e){let t=WebApp.isNumber(e)?e:parseInt(e,10);return isNaN(t)?e:(7<=t?t%=7:t<0&&(t=Math.abs(t)),t=["周日","周一","周二","周三","周四","周五","周六"][key])},template.defaults.imports.tfEncodeURIComponent=function(e){return encodeURIComponent(e)},template.defaults.imports.tfUrlAddQuery=function(e,t){return e="string"==typeof t&&t.length?e+(0<=e.indexOf("?")?"&":"?")+t:e},GLOBAL.template.footerNav=`<nav>{{each data item alias}}{{if item.sub}}<dl class="col {{alias}}{{if target == alias}} n{{/if}}"><dt><a href="javascript://" rel="sub">{{item.name}}</a></dt><dd>{{each item.sub val key}}<a class="{{key}}" {{if val.link}}href="{{val.link}}"{{else}}href="javascript://" rel="{{key}}"{{/if}}>{{val.name}}</a>{{/each}}</dd></dl>{{else}}<a class="col {{alias}}{{if target == alias}} n{{/if}}" {{if item.link}}href="{{item.link}}"{{else}}href="javascript://" rel="{{alias}}"{{/if}}>{{item.name}}</a>{{/if}}{{/each}}</nav>`,GLOBAL.template.filterTool=`<a class="bgclose" href="javascript://" rel="close"></a>
+<nav>{{each data item alias}}<dl class="col {{alias}}"><dt data-title="{{item.title}}">{{if (item.default && item.default.title)}}{{item.default.title}}{{else}}{{item.title}}{{/if}}</dt>{{if item.list}}<dd{{if item.cols}} class="a_col a_col_{{item.cols}}"{{/if}}>{{each item.list val bIndex}}<a{{if ((item.default && item.default.value == val.value) || ((!item.default || !item.default.value) && bIndex === 0 && !val.value))}} class="n"{{/if}} href="javascript://" rel="filter_{{alias}}" rev="{{val.value}}" data-title="{{val.title}}">{{val.title}}</a>{{/each}}</dd>{{else if item.sub}}<dd class="sub_col">{{each item.sub val bIndex}}<dl class="row"><dt>{{if !val.sub || !val.sub.length}}<a{{if ((item.default && item.default.value == val.value) || ((!item.default || !item.default.value) && !val.value))}} class="n"{{/if}} href="javascript://" rel="filter_{{alias}}" rev="{{val.value}}" data-title="{{val.title}}">{{val.title}}</a>{{else}}{{val.title}}{{/if}}</dt><dd>{{each val.sub child}}<a{{if (item.default && item.default.value == child.value)}} class="n"{{/if}} href="javascript://" rel="filter_{{alias}}" rev="{{child.value}}" data-title="{{child.title}}">{{child.title}}</a>{{/each}}</dd></dl>{{/each}}</dd>{{/if}}</dl>{{/each}}</nav>`;
 
 
 // __init/plugins.js
-if("addEventListener"in document&&GLOBAL.platform&&"ios"===GLOBAL.platform.system&&document.addEventListener("DOMContentLoaded",function(){FastClick.attach(document.body)},!1),$.cxDialog&&($.cxDialog.defaults.baseClass="ios",$.cxDialog.defaults.title="提示",$.cxDialog.defaults.ok=function(){}),"function"==typeof Notyf){var notyf=new Notyf({ripple:!1,position:{x:"center",y:"top"},types:[{type:"success",className:"notyf-cxm-success",background:"rgba(140, 193, 82, 0.9)",icon:{}},{type:"info",className:"notyf-cxm-info",background:"rgba(51, 51, 51, 0.9)",icon:{}},{type:"warn",className:"notyf-cxm-warn",background:"rgba(254, 153, 57, 0.9)",icon:{}},{type:"error",className:"notyf-cxm-error",background:"rgba(218, 68, 83, 0.9)",icon:{}}]});cxValidation&&cxValidation.setOptions({complete:function(){notyf.dismissAll()},error:function(a){notyf.open({type:"info",message:a.message});var b=a.element.nodeName.toLowerCase();("input"!==b||-1===["radio","checkbox","color","range","file"].indexOf(a.element.type))&&a.element.focus()}})}$.cxSelect&&($.cxSelect.defaults.url=GLOBAL.url.cityData),$.cxCalendar&&"mobile"===GLOBAL.mediaMode&&($.cxCalendar.defaults.position="fixed",$.cxCalendar.defaults.baseClass="fixed");
+"addEventListener"in document&&GLOBAL.platform&&"ios"===GLOBAL.platform.system&&document.addEventListener("DOMContentLoaded",function(){FastClick.attach(document.body)},!1),$.cxDialog&&($.cxDialog.defaults.baseClass="ios",$.cxDialog.defaults.title="提示",$.cxDialog.defaults.ok=function(){}),"function"==typeof Notyf&&(window.notyf=new Notyf({ripple:!1,position:{x:"center",y:"top"},types:[{type:"success",className:"notyf-cxm-success",background:"rgba(140, 193, 82, 0.9)",icon:{}},{type:"info",className:"notyf-cxm-info",background:"rgba(51, 51, 51, 0.9)",icon:{}},{type:"warn",className:"notyf-cxm-warn",background:"rgba(254, 153, 57, 0.9)",icon:{}},{type:"error",className:"notyf-cxm-error",background:"rgba(218, 68, 83, 0.9)",icon:{}}]}),cxValidation&&cxValidation.setOptions({complete:function(e){notyf.dismissAll()},error:function(e){notyf.open({type:"info",message:e.message}),"input"===e.element.nodeName.toLowerCase()&&-1!==["radio","checkbox","color","range","file"].indexOf(e.element.type)||e.element.focus()}})),$.cxSelect&&($.cxSelect.defaults.url=GLOBAL.url.cityData),$.cxCalendar&&"mobile"===GLOBAL.mediaMode&&($.cxCalendar.defaults.position="fixed",$.cxCalendar.defaults.baseClass="fixed");
 
 
 // __init/page.js
-!function(){var a={config:{},dom:{}};a.init=function(){var a=this;a.dom.body=$("body"),APP.isObject(window.PageConfig)&&$.extend(a.config,window.PageConfig),document.getElementById("header_back")&&a.updateBackUrl(),document.getElementById("tabbar")&&(GLOBAL.dom.tabbar=APP.initTabBar(document.getElementById("tabbar"),GLOBAL.tabBarConfig)),"addEventListener"in document&&/(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase())&&a.fixInputFixed(),"pc"===GLOBAL.mediaMode&&a.buildPageQrcode(),a.bindBodyEvent()},a.bindBodyEvent=function(){var a=this;a.dom.body.on("click","a",function(a){var b=this,c=b.rel,d=b.rev,e=b.dataset.option;try{e=JSON.parse(e)}catch(f){}"call_tip"===c?(a.preventDefault(),APP.tipToggle(d)):"call_panel"===c&&(a.preventDefault(),APP.panelToggle(d,e))})},a.updateBackUrl=function(){var c,a=this,b=GLOBAL.purl.param("backurl");a.dom.headerBack=document.getElementById("header_back"),"string"==typeof b&&b.length&&("_none"===b?a.dom.headerBack.style.display="none":"_back"===b?(c=new RegExp("^http(s?)://"+location.host+"/"),document.referrer&&c.test(document.referrer)&&(a.dom.headerBack.href="javascript:history.back();")):a.dom.headerBack.href=decodeURIComponent(b))},a.buildPageQrcode=function(){var a=document.createElement("div"),b=document.createElement("div");new QRCode(b,{text:encodeURI(location.href),width:88,height:88,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.L}),a.classList.add("page_qrcode"),a.appendChild(b),a.insertAdjacentHTML("beforeend","<p>在手机上浏览</p>"),document.body.appendChild(a)},a.fixInputFixed=function(){var b=document.body,c=function(a){var b=["input","textarea","select"],c=["checkbox","radio","file","button","submit","reset","image","range"],d=a.target.nodeName.toLowerCase(),e=!1;return b.indexOf(d)>=0&&!a.target.readOnly&&!a.target.disabled&&("input"===d?c.indexOf(a.target.type)<=-1&&(e=!0):("textarea"===d||"select"===d)&&(e=!0)),e};b.addEventListener("focus",function(a){c(a)&&!b.classList.contains("onfocus")&&b.classList.add("onfocus")},!0),b.addEventListener("blur",function(a){c(a)&&b.classList.remove("onfocus")},!0)},document.addEventListener("DOMContentLoaded",function(){a.init()})}();
+!function(){const e={config:{},dom:{},init:function(){var e=this;e.dom.body=document.body,WebApp.isObject(window.PageConfig)&&Object.assign(e.config,window.PageConfig),WebApp.isElement(document.getElementById("tabbar"))&&(GLOBAL.dom.tabbar=WebApp.initTabBar(document.getElementById("tabbar"),GLOBAL.tabBarConfig)),e.bindBodyEvent(),e.buildBackUrl(),e.buildPageQrcode(),e.fixInputFixed()},bindBodyEvent:function(){self.dom.body.addEventListener("click",e=>{const t=e.target;if("a"===t.nodeName.toLowerCase()){var n=t.rel,o=t.rev;const d=_this.dataset.option;try{d=JSON.parse(d)}catch(e){}"call_panel"===n&&(event.preventDefault(),WebApp.panelToggle(o,d))}}),this.dom.body.on("click","a",function(e){})},buildBackUrl:function(){var e=this,t=GLOBAL.purl.param("backurl");if(document.getElementById("header_back")&&(e.dom.headerBack=document.getElementById("header_back"),WebApp.isString(t)&&t.length))if("_none"===t)e.dom.headerBack.style.display="none";else if("_back"===t){const n=new RegExp("^http(s?)://"+location.host+"/");document.referrer&&n.test(document.referrer)&&(e.dom.headerBack.href="javascript:history.back();")}else e.dom.headerBack.href=decodeURIComponent(t)},buildPageQrcode:function(){if("pc"===GLOBAL.mediaMode){const t=document.createElement("div");var e=document.createElement("div");new QRCode(e,{text:encodeURI(location.href),width:88,height:88,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.L});t.classList.add("page_qrcode"),t.appendChild(e),t.insertAdjacentHTML("beforeend","<p>在手机上浏览</p>"),self.dom.body.appendChild(t)}},fixInputFixed:function(){if(!("addEventListener"in document&&!1===/(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase()))){const t=function(e){var t=e.target.nodeName.toLowerCase();let n=!1;return 0<=["input","textarea","select"].indexOf(t)&&!e.target.readOnly&&!e.target.disabled&&("input"===t?["checkbox","radio","file","button","submit","reset","image","range"].indexOf(e.target.type)<=-1&&(n=!0):"textarea"!==t&&"select"!==t||(n=!0)),n};self.dom.body.addEventListener("focus",function(e){t(e)&&!self.dom.body.classList.contains("onfocus")&&self.dom.body.classList.add("onfocus")},!0),self.dom.body.addEventListener("blur",function(e){t(e)&&self.dom.body.classList.remove("onfocus")},!0)}}};document.addEventListener("DOMContentLoaded",function(){e.init()})}();

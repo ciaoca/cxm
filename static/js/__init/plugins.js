@@ -30,7 +30,7 @@ if ($.cxDialog) {
 
 // Notyf 通知提示
 if (typeof Notyf === 'function') {
-  var notyf = new Notyf({
+  window.notyf = new Notyf({
     ripple: false,
     position: {
       x: 'center',
@@ -76,7 +76,7 @@ if (typeof Notyf === 'function') {
           message: result.message
         });
 
-        var nodeName = result.element.nodeName.toLowerCase();
+        const nodeName = result.element.nodeName.toLowerCase();
 
         if (nodeName !== 'input' || ['radio','checkbox','color','range','file'].indexOf(result.element.type) === -1) {
           result.element.focus();
