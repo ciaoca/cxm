@@ -16,7 +16,11 @@
   --danger-color: #da4453;
 
   --body-gray-color: #f6f6f6;     /* 页面灰底色 */
+
+  --input-text-color: #555;       /* 输入控件文字颜色 */
+  --input-bg-color: #fff;         /* 输入控件背景颜色 */
   --input-border-color: #ddd;     /* 输入控件边框颜色 */
+
   --readonly-color: #888;         /* 输入控件只读内容颜色 */
   --disabled-color: #aaa;         /* 输入控件禁用内容颜色 */
   --checkswitch-color: #4bd763;   /* 开关按钮颜色 */
@@ -285,8 +289,8 @@ a.notund:hover {
 
 .pages a {
   border-color: var(--input-border-color);
-  background-color: #fff;
-  color: #555;
+  background-color: var(--input-bg-color);
+  color: var(--input-text-color);
   text-decoration: none;
 }
 .pages strong {
@@ -380,7 +384,7 @@ a.notund:hover {
   margin: 0 -1px 0 0;
   border-color: var(--input-border-color);
   border-radius: 0;
-  background-color: #fff;
+  background-color: var(--input-bg-color);
 }
 .pages.group span {
   padding-left: var(--gap-default);
@@ -570,7 +574,8 @@ a.notund:hover {
   padding: 0 calc(var(--gap-default) - 1px);
   border: 1px solid transparent;
   border-radius: var(--radius);
-  background-color: #fff;
+  background-color: var(--input-bg-color);
+  color: var(--input-text-color);
   font-size: var(--font-default);
   line-height: var(--size-default);
   outline: none;
@@ -709,11 +714,12 @@ textarea.input.radius {
   padding: 0 23px 0 calc(var(--gap-default) - 1px);
   border: 1px solid transparent;
   border-radius: var(--radius);
-  background-color: #fff;
+  background-color: var(--input-bg-color);
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAAACXU8ZrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RjZENEEzNDgyM0NDMTFFNkJGNzlERURDQzlGQUE2NUQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RjZENEEzNDkyM0NDMTFFNkJGNzlERURDQzlGQUE2NUQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGNkQ0QTM0NjIzQ0MxMUU2QkY3OURFRENDOUZBQTY1RCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpGNkQ0QTM0NzIzQ0MxMUU2QkY3OURFRENDOUZBQTY1RCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PlP2IVAAAAAwSURBVHjaYuno6PjPQAAwlZeXM+JTAJJngjFwKQCbhC6Alf///38UDHIjuhhAgAEA4DslhcbS5kEAAAAASUVORK5CYII=);
   background-repeat: no-repeat;
   background-position: right 8px center;
   background-origin: border-box;
+  color: var(--input-text-color);
   font-size: var(--font-default);
   line-height: var(--size-default);
   outline: none;
@@ -793,6 +799,7 @@ textarea.input.radius {
   position: relative;
   height: var(--size-default);
   padding: 0 var(--gap-default) 0 44px;
+  color: var(--input-text-color);
   font-size: var(--font-default);
   line-height: var(--size-default);
   text-overflow: ellipsis;
@@ -824,7 +831,7 @@ label + .checkswitch + label {
   margin-top: -10px;
   border: 1px solid currentColor;
   border-radius: 50%;
-  background: #fff;
+  background: var(--input-bg-color);
   color: var(--input-border-color);
   transition-property: color;
   transition-duration: 0.2s;
@@ -2534,6 +2541,7 @@ label + .checkswitch + label {
 }
 .filter_tool dl.row.hover > dd {
   display: block;
+  z-index: 5;
 }
 
 .filter_tool.hover .bgclose {
