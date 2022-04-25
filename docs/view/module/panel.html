@@ -136,9 +136,9 @@
       <hr>
       <h5>调用方法</h5>
 <pre class="language-js"><code class="js">// 参数传递元素 ID 或者元素对象均可
-APP.panelShow('panel_id');
-APP.panelHide(document.getElementById('panel_id'));
-APP.panelToggle($('#panel_id'));</code></pre>
+WebApp.panelShow('panel_id');
+WebApp.panelHide(document.getElementById('panel_id'));
+WebApp.panelToggle($('#panel_id'));</code></pre>
       <p>页面中通过<code>&lt;a&gt;</code>标签调用面板</p>
 <pre class="language-html"><code class="html">&lt;a rel="call_panel" rev="panel_id"&gt;&lt;/a&gt;</code></pre>
 
@@ -237,7 +237,7 @@ APP.panelToggle($('#panel_id'));</code></pre>
 
   thePage.buildPanel = function() {
     var self = this;
-    var formData = APP.getFormData(self.dom.optionForm);
+    var formData = WebApp.getFormData(self.dom.optionForm);
     var _class = ['panel_page'];
 
     _class.push('on'+formData.position);

@@ -30,7 +30,7 @@
   <div class="demo_intro">
     <div class="detail">
 <pre class="language-html"><code class="html">&lt;div id="pages" class="pages"&gt;&lt;/div&gt;</code></pre>
-<pre class="language-js"><code class="js">var html = APP.getPageHtml({
+<pre class="language-js"><code class="js">var html = WebApp.getPageHtml({
   page: 1,
   pageCount: 9
   rel: 'page', // 监听事件处理
@@ -162,7 +162,7 @@ document.getElementById('pages').innerHTML = html;
 
   thePage.buildPage = function() {
     var self = this;
-    var formData = APP.getFormData(self.dom.optionForm);
+    var formData = WebApp.getFormData(self.dom.optionForm);
     var options = {
       page: self.queryData.page,
       pageCount: 9,
@@ -210,7 +210,7 @@ document.getElementById('pages').innerHTML = html;
       };
     };
 
-    var html = APP.getPageHtml(options);
+    var html = WebApp.getPageHtml(options);
     self.dom.page.html(html);
   };
 

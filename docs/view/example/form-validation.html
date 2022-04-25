@@ -222,9 +222,7 @@ var vaildUserName = function(el) {
 };
 
 (function() {
-  var form = $('#test_form');
-
-  cxValidation.attach(form, {
+  cxValidation.attach(document.getElementById('test_form'), {
     success: function() {
       console.log('验证通过');
     }

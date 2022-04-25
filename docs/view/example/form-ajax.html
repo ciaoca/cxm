@@ -34,7 +34,7 @@
 </code></pre>
 <pre class="language-js"><code class="js">$('#my_form').on('submit', function(event) {
   event.preventDefault();
-  APP.formAjax(this);
+  WebApp.formAjax(this);
 });
 </code></pre>
     </div>
@@ -60,7 +60,7 @@
   <div class="demo_intro mt">
     <div class="detail">
       <h5>快速使用方法</h5>
-<pre class="language-js"><code class="js">APP.formAjax('my_form', function() {
+<pre class="language-js"><code class="js">WebApp.formAjax('my_form', function() {
   // 成功: status === 'success'
 }, function() {
   // 失败: status !== 'success'
@@ -82,7 +82,7 @@
  * @param {function} [options.success] - 成功回调函数
  * @param {function} [options.error] - 错误回调函数
  */
-APP.formAjax({
+WebApp.formAjax({
   form: 'my_form',
   urlData: {
     key_1: value_1,
@@ -116,19 +116,19 @@ APP.formAjax({
 <script src="../../static/js/main.js"></script>
 <script>
 (function() {
-  var form = $('#test_form');
+  var form = document.getElementById('test_form');
 
   // 验证后再提交
   cxValidation.attach(form, {
     success: function() {
-      APP.formAjax(form);
+      WebApp.formAjax(form);
     }
   });
 
   // 无需验证提交
   // form.on('submit', function(event) {
   //   event.preventDefault();
-  //   APP.formAjax(this);
+  //   WebApp.formAjax(this);
   // });
 })();
 </script>

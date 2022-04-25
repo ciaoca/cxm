@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>CXM - 底部导航</title>
+<title>CXM - 压缩图片</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -17,7 +17,7 @@
 <div id="wrap" class="wrap">
   <div id="header" class="header">
     <header>
-      <h1>底部导航</h1>
+      <h1>压缩图片</h1>
       <div class="group onleft">
         <a id="header_back" class="icon back" href="index.html"></a>
       </div>
@@ -27,39 +27,29 @@
     </header>
   </div>
 
-  <div class="demo_intro">
+  <div class="form">
+    <dl class="row">
+      <dt><label for="file">选择图片</label></dt>
+      <dd>
+        <label><input type="file" class="input full" id="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg"></label>
+      </dd>
+    </dl>
+    <dl class="row">
+      <dt><label for="file_multi">多选图片</label></dt>
+      <dd>
+        <label><input type="file" class="input full" id="file_multi" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" multiple></label>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="demo_intro mt">
     <div class="detail">
-      <p>配置内容在<code>/static/js/init.js</code></p>
-<pre class="language-js"><code class="js">// 配置示例
-GLOBAL.tabBarConfig = {
-  menu_1: {
-    name: '主菜单名称',
-    link: 'url'
-  },
-  menu_2: {
-    name: '含有子菜单',
-    sub: {
-      menu_3: {
-        name: '子菜单名称',
-        link: 'url'
-      },
-      menu_4: {
-        name: '子菜单名称',
-        link: 'url'
-      }
-    }
-  }
-};</code></pre>
-<p>需要使用 TabBar 的页面，添加以下标签，页面初始化时会自动构建。</p>
-<pre class="language-html"><code class="html">&lt;footer id="tabbar" class="tabbar" data-target="menu_1"&gt;&lt;/footer&gt;</code></pre>
-<p>参数<code>data-target</code>可设置为需要选中的主菜单的键名。</p>
-<p>如需动态更改 TabBar 的内容，可通过以下操作：</p>
-<pre class="language-js"><code class="js">var newConfig = {...};
-WebApp.buildTabBar('tabbar', newConfig, 'newTarget');</code></pre>
+      <p>预览</p>
+      <div id="preview"></div>
     </div>
   </div>
 
-  <footer id="tabbar" class="tabbar" data-target="module"></footer>
+  <footer id="tabbar" class="tabbar" data-target="example"></footer>
 </div>
 
 <script src="../../../static/plugins/zepto/zepto.min.js"></script>
@@ -67,5 +57,24 @@ WebApp.buildTabBar('tabbar', newConfig, 'newTarget');</code></pre>
 <script src="../../../static/js/plugins.js"></script>
 <script src="../../../static/js/init.js"></script>
 <script src="../../static/js/main.js"></script>
+<script>
+(function() {
+  document.body.addEventListener('change', function() {
+    let el = event.target;
+
+    if (el.nodeName.toLowerCase() === 'input' && el.type === 'file') {
+      WebApp.compressPicture(el.files, {}, function(data) {
+        let html = '';
+
+        for (let x of data) {
+          html += '<p><img src="' + x + '"></p>'
+        };
+
+        document.getElementById('preview').innerHTML = html;
+      });
+    };
+  });
+})();
+</script>
 </body>
 </html>

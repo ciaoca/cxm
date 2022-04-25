@@ -117,10 +117,10 @@ var config = {
     ]
   },
 };
-APP.initFilterTool('elementId', config);</code></pre>
+WebApp.initFilterTool('elementId', config);</code></pre>
 <p>如需动态更改 FilterTool 的内容，可通过以下操作：</p>
 <pre class="language-js"><code class="js">var newConfig = {...};
-APP.buildFilterTool('elementId', newConfig);</code></pre>
+WebApp.buildFilterTool('elementId', newConfig);</code></pre>
 
       <hr>
       <p>监听<code>&lt;a&gt;</code>的<code>click</code>事件，获取键名和选中的值。</p>
@@ -262,7 +262,7 @@ APP.buildFilterTool('elementId', newConfig);</code></pre>
     self.dom.filterTool = $('#filter_tool');
     self.dom.optionForm = $('#option_form');
 
-    APP.initFilterTool(self.dom.filterTool, thePage.filterData);
+    WebApp.initFilterTool(self.dom.filterTool, thePage.filterData);
 
     self.dom.filterTool.on('click', 'a', function() {
       if (this.rel && this.rel.slice(0,7) === 'filter_') {
@@ -290,9 +290,9 @@ APP.buildFilterTool('elementId', newConfig);</code></pre>
 
         case 'length':
           if (_this.checked) {
-            self.changeLength(APP.getRandomNumber(0,99));
+            self.changeLength(WebApp.getRandomNumber(0,99));
           } else {
-            self.changeLength(APP.getRandomNumber(1,5));
+            self.changeLength(WebApp.getRandomNumber(1,5));
           };
           break;
       };

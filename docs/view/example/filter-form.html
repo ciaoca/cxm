@@ -159,13 +159,13 @@
 
     self.initSearchForm();
 
-    APP.initFilterTool(self.dom.filterTool, self.filterData);
+    WebApp.initFilterTool(self.dom.filterTool, self.filterData);
 
     self.dom.searchForm.on('submit', function(event) {
-      var formData = APP.getFormData(self.dom.searchForm);
+      var formData = WebApp.getFormData(self.dom.searchForm);
 
       // 创建 URL 参数
-      APP.createUrlHash(formData);
+      WebApp.createUrlHash(formData);
     });
 
     $('body').on('click', 'a', function(event) {

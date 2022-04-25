@@ -123,7 +123,7 @@
 
   thePage.buildTable = function() {
     var self = this;
-    var formData = APP.getFormData(self.dom.optionForm);
+    var formData = WebApp.getFormData(self.dom.optionForm);
     var options = {
       style: ['table'],
       boxStyle: [],
@@ -159,7 +159,7 @@
     if (Array.isArray(options.boxStyle) && options.boxStyle.length) {
       self.dom.box.attr('class', options.boxStyle.join(' '));
       if (options.boxStyle.indexOf('table_scroll') >= 0) {
-        options.colNum = APP.getRandomNumber(10,20);
+        options.colNum = WebApp.getRandomNumber(10,20);
       };
     };
 
@@ -175,7 +175,7 @@
     };
 
     html += '<tbody>';
-    for (var i = 0, l = APP.getRandomNumber(1,9); i < l; i++) {
+    for (var i = 0, l = WebApp.getRandomNumber(1,9); i < l; i++) {
       html += '<tr><td>内容' + list.join('</td><td>内容') + '</td></tr>';
     };
     html += '</tbody>';
