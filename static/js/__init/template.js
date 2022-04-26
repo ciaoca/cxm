@@ -52,16 +52,16 @@ template.defaults.imports.tfReplace = function(string, regexp, replacement) {
 
 // 替换换行
 template.defaults.imports.tfReplaceEnter = function() {
-  return WebApp.replaceEnter.apply(APP, arguments);
+  return WebApp.replaceEnter.apply(WebApp, arguments);
 };
 
 // 数值格式化
 template.defaults.imports.tfNumberFormat = function() {
-  if (WebApp.isNumber(arguments[0])) {
-    return WebApp.numberFormat.apply(APP, arguments);
-  } else {
+  if (!this.isNumber(arguments[0])) {
     return arguments[0];
   };
+
+  return WebApp.numberFormat.apply(WebApp, arguments);
 };
 
 /**
@@ -71,11 +71,11 @@ template.defaults.imports.tfNumberFormat = function() {
  * @return {string}
  */
 template.defaults.imports.tfDate = function(time, style) {
-  if (WebApp.isNumber(time) && time > 0) {
-    return dayjs(time).format(style);
-  } else {
+  if (!this.isNumber(time) || time <= 0) {
     return '-';
   };
+
+  return dayjs(time).format(style);
 };
 
 /**

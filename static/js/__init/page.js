@@ -1,9 +1,9 @@
 /**
  * 初始化界面
  *
- * bindBodyEvent              全局操作
  * buildBackUrl               返回按钮 URL
  * buildPageQrcode            当前页面二维码
+ * bindBodyEvent              全局操作
  * fixInputFixed              解决 iOS 输入框获取焦点时 fixed 错位
  * --------------------
  */
@@ -20,52 +20,28 @@
 
     if (WebApp.isObject(window.PageConfig)) {
       Object.assign(self.config, window.PageConfig);
+    } else {
+      window.PageConfig = {};
     };
 
     if (WebApp.isElement(document.getElementById('tabbar'))) {
       GLOBAL.dom.tabbar = WebApp.initTabBar(document.getElementById('tabbar'), GLOBAL.tabBarConfig);
     };
 
-    self.bindBodyEvent();
     self.buildBackUrl();
     self.buildPageQrcode();
+    self.bindBodyEvent();
     self.fixInputFixed();
-  };
-
-  // 全局操作
-  thePage.bindBodyEvent = function() {
-    self.dom.body.addEventListener('click', (e) => {
-      const el = e.target;
-      const nodeName = el.nodeName.toLowerCase();
-
-      if (nodeName === 'a') {
-        const rel = el.rel;
-        const rev = el.rev;
-        const opts = _this.dataset.option;
-
-        try {
-          opts = JSON.parse(opts);
-        } catch (e) {};
-
-        // 显示面板
-        if (rel === 'call_panel') {
-          event.preventDefault();
-          WebApp.panelToggle(rev, opts);
-        };
-      };
-    });
-    this.dom.body.on('click', 'a', function(event){
-    });
   };
 
   // 返回按钮 URL
   thePage.buildBackUrl = function() {
-    const self = this;
-    const backurl = GLOBAL.purl.param('backurl');
-
     if (!document.getElementById('header_back')) {
       return;
     };
+
+    const self = this;
+    const backurl = GLOBAL.purl.param('backurl');
 
     self.dom.headerBack = document.getElementById('header_back');
 
@@ -110,13 +86,37 @@
     self.dom.body.appendChild(box);
   };
 
+  // 全局操作
+  thePage.bindBodyEvent = function() {
+    this.dom.body.addEventListener('click', (e) => {
+      const el = e.target;
+      const nodeName = el.nodeName.toLowerCase();
+
+      if (nodeName === 'a') {
+        const rel = el.rel;
+        const rev = el.rev;
+        const opts = el.dataset.option;
+
+        try {
+          opts = JSON.parse(opts);
+        } catch (e) {};
+
+        // 显示面板
+        if (rel === 'call_panel') {
+          event.preventDefault();
+          WebApp.panelToggle(rev, opts);
+        };
+      };
+    });
+  };
+
   // 解决 iOS 输入框获取焦点时 fixed 错位
   thePage.fixInputFixed = function() {
     if ('addEventListener' in document && /(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase()) === false) {
       return;
     };
 
-    const hasFix = function(e) {
+    const hasFix = (e) => {
       const tags = ['input', 'textarea', 'select'];
       const types = ['checkbox', 'radio', 'file', 'button', 'submit', 'reset', 'image', 'range'];
       const tagName = e.target.nodeName.toLowerCase();
@@ -148,7 +148,7 @@
     }, true);
   };
 
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', () => {
     thePage.init();
   });
 })();

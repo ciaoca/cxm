@@ -14,7 +14,7 @@
 // FastClick Only iOS
 // 在 Android 低端机下，效果不理想，不使用
 if ('addEventListener' in document && GLOBAL.platform && GLOBAL.platform.system === 'ios') {
-  document.addEventListener('DOMContentLoaded', function(){
+  document.addEventListener('DOMContentLoaded', () => {
     FastClick.attach(document.body);
   }, false);
 };
@@ -24,7 +24,7 @@ if ('addEventListener' in document && GLOBAL.platform && GLOBAL.platform.system 
 if ($.cxDialog) {
   $.cxDialog.defaults.baseClass = 'ios';
   $.cxDialog.defaults.title = '提示';
-  $.cxDialog.defaults.ok = function(){};
+  $.cxDialog.defaults.ok = () => {};
 };
 
 
@@ -67,10 +67,10 @@ if (typeof Notyf === 'function') {
   // cxValidation 配置
   if (cxValidation) {
     cxValidation.setOptions({
-      complete: function(result) {
+      complete: (result) => {
         notyf.dismissAll();
       },
-      error: function(result) {
+      error: (result) => {
         notyf.open({
           type: 'info',
           message: result.message
