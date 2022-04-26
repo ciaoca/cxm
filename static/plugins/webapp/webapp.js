@@ -1,6 +1,5 @@
 /**
  * webapp.js
- * 
  * @author ciaoca
  * @email ciaoca@gmail.com
  * @site https://github.com/ciaoca/cxm
@@ -8,7 +7,6 @@
  */
 
 /**
- * --------------------
  * isElement            检测是否是 DOM 元素
  * isJquery             检测是否是 jQuery 对象
  * isZepto              检测是否是 Zepto 对象
@@ -1246,7 +1244,7 @@
 
   /**
    * 压缩图片
-   * @param {element|file}  files                 img 元素或 file 文件（单个或数组）
+   * @param {file}          files                 input file 元素的 file (单个或数组)
    * @param {object}        [options]             选项
    * @param {integer}       [options.maxWidth]    最大宽度
    * @param {integer}       [options.maxHeight]   最大高度

@@ -149,7 +149,7 @@ GLOBAL.tabBarConfig = {
 })();
 
 
-// 初始化 APP 插件
+// 配置 WebApp
 WebApp.setOptions({
   prefix: GLOBAL.prefix,
   hashTag: GLOBAL.urlHashTag,
