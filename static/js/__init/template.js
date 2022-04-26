@@ -57,7 +57,7 @@ template.defaults.imports.tfReplaceEnter = function() {
 
 // 数值格式化
 template.defaults.imports.tfNumberFormat = function() {
-  if (!this.isNumber(arguments[0])) {
+  if (!WebApp.isNumber(arguments[0])) {
     return arguments[0];
   };
 
@@ -71,7 +71,7 @@ template.defaults.imports.tfNumberFormat = function() {
  * @return {string}
  */
 template.defaults.imports.tfDate = function(time, style) {
-  if (!this.isNumber(time) || time <= 0) {
+  if (!WebApp.isNumber(time) || time <= 0) {
     return '-';
   };
 
