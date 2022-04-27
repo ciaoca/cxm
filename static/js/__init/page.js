@@ -83,7 +83,7 @@
     box.classList.add('page_qrcode');
     box.appendChild(pic);
     box.insertAdjacentHTML('beforeend', '<p>在手机上浏览</p>');
-    self.dom.body.appendChild(box);
+    this.dom.body.appendChild(box);
   };
 
   // 全局操作
@@ -112,10 +112,11 @@
 
   // 解决 iOS 输入框获取焦点时 fixed 错位
   thePage.fixInputFixed = function() {
-    if ('addEventListener' in document && /(iphone|ipad|ipod|ios)/i.test(navigator.userAgent.toLowerCase()) === false) {
+    if (GLOBAL.platform && GLOBAL.platform.system !== 'ios') {
       return;
     };
 
+    const self = this;
     const hasFix = (e) => {
       const tags = ['input', 'textarea', 'select'];
       const types = ['checkbox', 'radio', 'file', 'button', 'submit', 'reset', 'image', 'range'];

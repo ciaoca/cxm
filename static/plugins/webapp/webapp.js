@@ -15,9 +15,9 @@
  * isBoolean            检测是否是 Boolean 布尔值
  * isFunction           检测是否是 Function 函数
  * isArray              检测是否是 Array 数组
+ * isObject             检测是否是 Object 对象
  * isNull               检测是否是 Null
  * isUndefined          检测是否是 Undefined
- * isObject             检测是否是 Object 对象
  * isDate               检测是否是 Date 日期对象
  * isLeapYear           检测是否是闰年
  * isRegExp             检测是否是 RegExp 正则表达式
@@ -190,9 +190,22 @@
   app.prototype.isArray = function(value) {
     if (typeof Array.isArray === 'function') { 
       return Array.isArray(value);
-    } else { 
+    } else {
       return Object.prototype.toString.call(value) === '[object Array]';
     };
+  };
+
+  // 检测是否是 Object
+  app.prototype.isObject = function(value) {
+    if (value === undefined || value === null || Object.prototype.toString.call(value) !== '[object Object]') {
+      return false;
+    };
+
+    if (value.constructor && !Object.prototype.hasOwnProperty.call(value.constructor.prototype, 'isPrototypeOf')) {
+      return false;
+    };
+
+    return true;
   };
 
   // 检测是否是 Null
@@ -203,20 +216,6 @@
   // 检测是否是 Undefined
   app.prototype.isUndefined = function(value) {
     return Object.prototype.toString.call(value) === '[object Undefined]';
-  };
-
-  // 检测是否是 Object
-  app.prototype.isObject = function(value) {
-    if (typeof value !== 'object' || value.nodeType || value !== null && value !== undefined && value === value.window) {
-      return false;
-    };
-
-    if (value.constructor &&
-      !Object.prototype.hasOwnProperty.call(value.constructor.prototype, 'isPrototypeOf')) {
-      return false;
-    };
-
-    return true;
   };
 
   // 检测是否是 Date 日期
