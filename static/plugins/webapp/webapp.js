@@ -81,7 +81,7 @@
   };
 
   // 初始化
-  app.prototype.init = function(options) {
+  app.prototype.init = function() {
     const self = this;
 
     self.options = {

@@ -95,7 +95,7 @@
       if (nodeName === 'a') {
         const rel = el.rel;
         const rev = el.rev;
-        const opts = el.dataset.option;
+        let opts = el.dataset.option;
 
         try {
           opts = JSON.parse(opts);
