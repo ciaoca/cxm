@@ -20,6 +20,7 @@
   --input-text-color: #555;       /* 输入控件文字颜色 */
   --input-bg-color: #fff;         /* 输入控件背景颜色 */
   --input-border-color: #ddd;     /* 输入控件边框颜色 */
+  --input-placeholder-color: rgba(0, 0, 0, 0.2);
 
   --readonly-color: #888;         /* 输入控件只读内容颜色 */
   --disabled-color: #aaa;         /* 输入控件禁用内容颜色 */
@@ -570,6 +571,7 @@ a.notund:hover {
  * 表单控件
  * ------------------------------ */
 .input {
+  display: inline-block;
   box-sizing: border-box;
   padding: 0 calc(var(--gap-default) - 1px);
   border: 1px solid transparent;
@@ -585,7 +587,7 @@ a.notund:hover {
 }
 
 .input::-webkit-input-placeholder {
-  color: rgba(0, 0, 0, 0.2);
+  color: var(--input-placeholder-color);
 }
 .input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -652,28 +654,29 @@ a.notund:hover {
   border-radius: 100px;
 }
 
-input.input,
+.input,
 .input_label {
   height: var(--size-default);
   line-height: var(--size-default);
 }
-input.input.mini,
+.input.mini,
 .input_label.mini {
   height: var(--size-mini);
   line-height: var(--size-mini);
 }
-input.input.small,
+.input.small,
 .input_label.small {
   height: var(--size-small);
   line-height: var(--size-small);
 }
-input.input.large,
+.input.large,
 .input_label.large {
   height: var(--size-large);
   line-height: var(--size-large);
 }
 
 textarea.input {
+  height: auto;
   padding-top: calc((var(--size-default) - 1.5em) / 2);
   padding-bottom: calc((var(--size-default) - 1.5em) / 2);
   line-height: 1.5;
