@@ -2255,6 +2255,7 @@ label + .checkswitch + label {
  * ------------------------------ */
 .tabnav {
   position: relative;
+  z-index: 9;
   height: var(--tabnav-height);
 }
 .tabnav nav {
@@ -2350,7 +2351,7 @@ label + .checkswitch + label {
 
 /* 定位 */
 .tabnav.fixed {
-  z-index: 198;
+  z-index: 190;
 }
 .tabnav.fixed nav {
   position: fixed;
@@ -2365,9 +2366,13 @@ label + .checkswitch + label {
  * ------------------------------ */
 .filter_tool {
   position: relative;
-  z-index: 197;
+  z-index: 9;
   height: var(--filter-tool-height);
 }
+.tabnav + .filter_tool {
+  z-index: 8;
+}
+
 /* 部分 iOS 版本可能会引起错位，可隐藏 .bgclose */
 .filter_tool .bgclose {
   /*display: none;*/
@@ -2547,6 +2552,13 @@ label + .checkswitch + label {
 .filter_tool.hover .bgclose {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+.filter_tool.fixed {
+  z-index: 190;
+}
+.tabnav.fixed + .filter_tool.fixed {
+  z-index: 189;
 }
 
 .filter_tool.fixed nav {
@@ -3114,7 +3126,7 @@ label + .checkswitch + label {
 .tabnav + .panel_body,
 .tabnav.fixed + .filter_tool.fixed nav,
 .filter_tool + .panel_body,
-.filter_tool.fixed + .tabnav nav {
+.filter_tool.fixed + .tabnav.fixed nav {
   top: var(--tabnav-height);
 }
 
