@@ -821,7 +821,7 @@
   /**
    * 构建 TabBar
    * @param   {string|element}  el        ID / DOM
-   * @param   {object}          data      配置数据
+   * @param   {object}          [data]    配置数据
    * @param   {string}          [target]  当前选中项
    * @returns {element}
    */
