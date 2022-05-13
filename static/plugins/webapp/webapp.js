@@ -686,10 +686,10 @@
 
   /**
    * 显示面板
-   * @param {string|element}  el              ID / DOM
-   * @param {object}          [options]       选项
-   * @param {string}          [options.lock]  是否锁定背景
-   * @param {boolean}         [options.blur]  是否模糊背景
+   * @param   {string|element}  el              ID / DOM
+   * @param   {object}          [options]       选项
+   * @param   {string}          [options.lock]  是否锁定背景
+   * @param   {boolean}         [options.blur]  是否模糊背景
    * @returns {element}
    */
   app.prototype.panelShow = function(el, options) {
@@ -731,7 +731,7 @@
 
   /**
    * 隐藏面板
-   * @param {string|element} el   ID / DOM
+   * @param   {string|element} el   ID / DOM
    * @returns {element}
    */
   app.prototype.panelHide = function(el) {
@@ -1243,13 +1243,13 @@
 
   /**
    * 压缩图片
-   * @param {file}          files                 input file 元素的 file (单个或数组)
-   * @param {object}        [options]             选项
-   * @param {integer}       [options.maxWidth]    最大宽度
-   * @param {integer}       [options.maxHeight]   最大高度
-   * @param {float}         [options.quality]     图片质量 [0-1]
-   * @param {string}        [options.fileType]    文件格式
-   * @param {function}      [callback]            回调函数
+   * @param {file}      files                 input file 元素的 file (单个或数组)
+   * @param {object}    [options]             选项
+   * @param {integer}   [options.maxWidth]    最大宽度
+   * @param {integer}   [options.maxHeight]   最大高度
+   * @param {float}     [options.quality]     图片质量 [0-1]
+   * @param {string}    [options.fileType]    文件格式
+   * @param {function}  [callback]            回调函数
    */
   app.prototype.compressPicture = function(files, options, callback) {
     const self = this;
