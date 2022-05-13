@@ -503,7 +503,7 @@ a.notund:hover {
   padding-left: var(--gap-mini);
   padding-right: var(--gap-mini);
   font-size: var(--font-mini);
-  line-height: var(--size-mini);
+  line-height: calc(var(--size-mini) - 2px);
 }
 .button.small {
   min-width: var(--size-small);
@@ -511,7 +511,7 @@ a.notund:hover {
   padding-left: var(--gap-small);
   padding-right: var(--gap-small);
   font-size: var(--font-small);
-  line-height: var(--size-small);
+  line-height: calc(var(--size-small) - 2px);
 }
 .button.large {
   min-width: var(--size-large);
@@ -519,7 +519,7 @@ a.notund:hover {
   padding-left: var(--gap-large);
   padding-right: var(--gap-large);
   font-size: var(--font-large);
-  line-height: var(--size-large);
+  line-height: calc(var(--size-large) - 2px);
 }
 
 .button.full {
@@ -573,13 +573,14 @@ a.notund:hover {
 .input {
   display: inline-block;
   box-sizing: border-box;
+  height: var(--size-default);
   padding: 0 calc(var(--gap-default) - 1px);
   border: 1px solid transparent;
   border-radius: var(--radius);
   background-color: var(--input-bg-color);
   color: var(--input-text-color);
   font-size: var(--font-default);
-  line-height: var(--size-default);
+  line-height: calc(var(--size-default) - 2px);
   outline: none;
   vertical-align: top;
   -webkit-appearance: none;
@@ -603,27 +604,33 @@ a.notund:hover {
   background-color: #e3e3e3;
   color: #888;
   font-size: var(--font-default);
-  line-height: var(--size-default);
+  line-height: calc(var(--size-default) - 2px);
   vertical-align: top;
 }
 
 .input.mini,
 .input_label.mini {
+  height: var(--size-mini);
   padding-left: calc(var(--gap-mini) - 1px);
   padding-right: calc(var(--gap-mini) - 1px);
   font-size: var(--font-mini);
+  line-height: calc(var(--size-mini) - 2px);
 }
 .input.small,
 .input_label.small {
+  height: var(--size-small);
   padding-left: calc(var(--gap-small) - 1px);
   padding-right: calc(var(--gap-small) - 1px);
   font-size: var(--font-small);
+  line-height: calc(var(--size-small) - 2px);
 }
 .input.large,
 .input_label.large {
+  height: var(--size-large);
   padding-left: calc(var(--gap-large) - 1px);
   padding-right: calc(var(--gap-large) - 1px);
   font-size: var(--font-large);
+  line-height: calc(var(--size-large) - 2px);
 }
 
 .input.full {
@@ -634,45 +641,10 @@ a.notund:hover {
 .input.border,
 .input_label.border {
   border-color: var(--input-border-color);
-  line-height: calc(var(--size-default) - 2px);
-}
-
-.input.border.mini,
-.input_label.border.mini {
-  line-height: calc(var(--size-mini) - 2px);
-}
-.input.border.small,
-.input_label.border.small {
-  line-height: calc(var(--size-small) - 2px);
-}
-.input.border.large,
-.input_label.border.large {
-  line-height: calc(var(--size-large) - 2px);
 }
 
 .input.radius {
   border-radius: 100px;
-}
-
-.input,
-.input_label {
-  height: var(--size-default);
-  line-height: var(--size-default);
-}
-.input.mini,
-.input_label.mini {
-  height: var(--size-mini);
-  line-height: var(--size-mini);
-}
-.input.small,
-.input_label.small {
-  height: var(--size-small);
-  line-height: var(--size-small);
-}
-.input.large,
-.input_label.large {
-  height: var(--size-large);
-  line-height: var(--size-large);
 }
 
 textarea.input {
@@ -724,7 +696,7 @@ textarea.input.radius {
   background-origin: border-box;
   color: var(--input-text-color);
   font-size: var(--font-default);
-  line-height: var(--size-default);
+  line-height: calc(var(--size-default) - 2px);
   outline: none;
   vertical-align: top;
   -webkit-appearance: none;
@@ -734,16 +706,19 @@ textarea.input.radius {
   height: var(--size-mini);
   padding-left: calc(var(--gap-mini) - 1px);
   font-size: var(--font-mini);
+  line-height: calc(var(--size-mini) - 2px);
 }
 .select.small {
   height: var(--size-small);
   padding-left: calc(var(--gap-small) - 1px);
   font-size: var(--font-small);
+  line-height: calc(var(--size-small) - 2px);
 }
 .select.large {
   height: var(--size-large);
   padding-left: calc(var(--gap-large) - 1px);
   font-size: var(--font-large);
+  line-height: calc(var(--size-large) - 2px);
 }
 
 .select.full {
@@ -753,16 +728,6 @@ textarea.input.radius {
 
 .select.border {
   border-color: var(--input-border-color);
-  line-height: calc(var(--size-default) - 2px);
-}
-.select.border.mini {
-  line-height: calc(var(--size-default) - 2px);
-}
-.select.border.small {
-  line-height: calc(var(--size-small) - 2px);
-}
-.select.border.large {
-  line-height: calc(var(--size-large) - 2px);
 }
 
 .select.radius {
